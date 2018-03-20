@@ -38,4 +38,17 @@ map.on('load', function() {
       },
       filter: ['==', ['number', ['get', 'Hour']], 12]
     }, 'admin-2-boundaries-dispute');
-  });
+});
+
+document.getElementById('slider').addEventListener('input', function(e) {
+    var hour = parseInt(e.target.value);
+    // update the map
+    map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
+
+    // converting 0-23 hour to AMPM format
+    var ampm = hour >= 12 ? 'PM' : 'AM';
+    var hour12 = hour % 12 ? hour % 12 : 12;
+
+    // update text in the UI
+    document.getElementById('active-hour').innerText = hour12 + ampm;
+});
