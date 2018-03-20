@@ -11,6 +11,7 @@ map.on('load', function() {
 
     var filterStartYear = ['<', ['number', ['get', 'yearStart']], 2017];
     var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2017];
+    var filterRenewable = ['!=', ['string', ['get','isRenewable']], 'placeholder'];
 
     map.addLayer({
       id: 'collisions',
@@ -49,7 +50,7 @@ map.on('load', function() {
       // update the map
       filterStartYear = ['<', ['number', ['get', 'yearStart']], year];
       filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
-      map.setFilter('collisions', ['all', filterStartYear, filterEndYear]);
+      map.setFilter('collisions', ['all', filterStartYear, filterEndYear, filterRenewable]);
 
       // // converting 0-23 hour to AMPM format
       // var ampm = year >= 12 ? 'PM' : 'AM';
@@ -59,20 +60,20 @@ map.on('load', function() {
       document.getElementById('active-hour').innerText = year;
     });
 
-    // document.getElementById('filters').addEventListener('change', function(e) {
-    //   var day = e.target.value;
-    //   // update the map filter
-    //   if (day === 'all') {
-    //     filterDay = ['!=', ['string', ['get','Day']], 'placeholder'];
-    //   } else if (day === 'weekday') {
-    //     filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], false, true];
-    //   } else if (day === 'weekend') {
-    //     filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], true, false];
-    //   } else {
-    //     console.log('error');
-    //   };
-    //   map.setFilter('collisions', ['all', filterYear, filterDay]);
-    // });
+    document.getElementById('filters').addEventListener('change', function(e) {
+      var radio = e.target.value;
+      // update the map filter
+      if (radio === 'all') {
+        filterRenewable = ['!=', ['string', ['get','isRenewable']], 'placeholder'];
+      } else if (radio === 'renewable') {
+        filterRenewable = ['match', ['get', 'isRenewable'], ['Renewable'], true, false];
+      } else if (radio === 'nonrenewable') {
+        filterRenewable = ['match', ['get', 'isRenewable'], ['Non-renewable'], true, false];
+      } else {
+        console.log('error');
+      };
+      map.setFilter('collisions', ['all', filterStartYear, filterEndYear, filterRenewable]);
+    });
 
 });
   
