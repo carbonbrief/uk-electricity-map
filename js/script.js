@@ -35,6 +35,7 @@ map.on('load', function() {
           5, '#AA5E79'
         ],
         'circle-opacity': 0.8
-      }
+      },
+      filter: ['==', ['number', ['get', 'Hour']], 12]
     }, 'admin-2-boundaries-dispute');
   });
