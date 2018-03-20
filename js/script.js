@@ -3,75 +3,76 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284c
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
-    center: [-74.0059, 40.7128],
-    zoom: 11
+    center: [-1.3, 52],
+    zoom: 5
 });
 
 map.on('load', function() {
 
-    var filterHour = ['==', ['number',['get', 'Hour']], 12];
-    var filterDay = ['!=', ['string',['get', 'Day']], 'placeholder'];
+    var filterStartYear = ['<', ['number', ['get', 'yearStart']], 2017];
+    var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2017];
 
     map.addLayer({
       id: 'collisions',
       type: 'circle',
       source: {
         type: 'geojson',
-        data: './data/collisions1601.geojson'
+        data: './data/dummy.geojson'
       },
       paint: {
         'circle-radius': [
           'interpolate',
-          ['linear'],
-          ['number', ['get', 'Casualty']],
-          0, 4,
-          5, 24
+          ['exponential', 1.2],
+          ['number', ['get', 'capacity']],
+          0, 3,
+          1000, 25
         ],
         'circle-color': [
           'interpolate',
           ['linear'],
-          ['number', ['get', 'Casualty']],
+          ['number', ['get', 'capacity']],
           0, '#2DC4B2',
-          1, '#3BB3C3',
-          2, '#669EC4',
-          3, '#8B88B6',
-          4, '#A2719B',
-          5, '#AA5E79'
+          5, '#3BB3C3',
+          10, '#669EC4',
+          50, '#8B88B6',
+          100, '#A2719B',
+          500, '#AA5E79'
         ],
         'circle-opacity': 0.8
       },
-      'filter': ['all', filterHour, filterDay]
+      //'filter': ['all', filterYear, filterDay]
     }, 'admin-2-boundaries-dispute');
 
     // update hour filter when the slider is dragged
     document.getElementById('slider').addEventListener('input', function(e) {
-      var hour = parseInt(e.target.value);
+      var year = parseInt(e.target.value);
       // update the map
-      filterHour = ['==', ['number', ['get', 'Hour']], hour];
-      map.setFilter('collisions', ['all', filterHour, filterDay]);
+      filterStartYear = ['<', ['number', ['get', 'yearStart']], year];
+      filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
+      map.setFilter('collisions', ['all', filterStartYear, filterEndYear]);
 
-      // converting 0-23 hour to AMPM format
-      var ampm = hour >= 12 ? 'PM' : 'AM';
-      var hour12 = hour % 12 ? hour % 12 : 12;
+      // // converting 0-23 hour to AMPM format
+      // var ampm = year >= 12 ? 'PM' : 'AM';
+      // var hour12 = hour % 12 ? hour % 12 : 12;
 
       // update text in the UI
-      document.getElementById('active-hour').innerText = hour12 + ampm;
+      document.getElementById('active-hour').innerText = year;
     });
 
-    document.getElementById('filters').addEventListener('change', function(e) {
-      var day = e.target.value;
-      // update the map filter
-      if (day === 'all') {
-        filterDay = ['!=', ['string', ['get','Day']], 'placeholder'];
-      } else if (day === 'weekday') {
-        filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], false, true];
-      } else if (day === 'weekend') {
-        filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], true, false];
-      } else {
-        console.log('error');
-      };
-      map.setFilter('collisions', ['all', filterHour, filterDay]);
-    });
+    // document.getElementById('filters').addEventListener('change', function(e) {
+    //   var day = e.target.value;
+    //   // update the map filter
+    //   if (day === 'all') {
+    //     filterDay = ['!=', ['string', ['get','Day']], 'placeholder'];
+    //   } else if (day === 'weekday') {
+    //     filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], false, true];
+    //   } else if (day === 'weekend') {
+    //     filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], true, false];
+    //   } else {
+    //     console.log('error');
+    //   };
+    //   map.setFilter('collisions', ['all', filterYear, filterDay]);
+    // });
 
 });
   
