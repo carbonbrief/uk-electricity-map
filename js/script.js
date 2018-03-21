@@ -11,7 +11,7 @@ map.on('load', function() {
 
     var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
     var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2017];
-    var filterRenewable = ['!=', ['string', ['get','isRenewable']], 'placeholder'];
+    var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 
     map.addLayer({
       id: 'collisions',
@@ -41,7 +41,7 @@ map.on('load', function() {
         ],
         'circle-opacity': 0.8
       },
-      'filter': ['all', filterStartYear, filterEndYear, filterRenewable]
+      'filter': ['all', filterStartYear, filterEndYear, filterType]
     }, 'admin-2-boundaries-dispute');
 
     // update hour filter when the slider is dragged
@@ -50,29 +50,25 @@ map.on('load', function() {
       // update the map
       filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
       filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
-      map.setFilter('collisions', ['all', filterStartYear, filterEndYear, filterRenewable]);
-
-      // // converting 0-23 hour to AMPM format
-      // var ampm = year >= 12 ? 'PM' : 'AM';
-      // var hour12 = hour % 12 ? hour % 12 : 12;
+      map.setFilter('collisions', ['all', filterStartYear, filterEndYear, filterType]);
 
       // update text in the UI
       document.getElementById('active-hour').innerText = year;
     });
 
-    document.getElementById('filters').addEventListener('change', function(e) {
-      var radio = e.target.value;
+    document.getElementById('selectorType').addEventListener('change', function(e) {
+      var dropdown = e.target.value;
       // update the map filter
-      if (radio === 'all') {
-        filterRenewable = ['!=', ['string', ['get','isRenewable']], 'placeholder'];
-      } else if (radio === 'renewable') {
-        filterRenewable = ['match', ['get', 'isRenewable'], ['Renewable'], true, false];
-      } else if (radio === 'nonrenewable') {
-        filterRenewable = ['match', ['get', 'isRenewable'], ['Non-renewable'], true, false];
+      if (dropdown === 'All') {
+        filterType = ['!=', ['string', ['get','type']], 'placeholder'];
+      } else if (dropdown === 'Coal') {
+        filterType = ['==', ['string', ['get','type']], 'Coal'];
+      } else if (dropdown === 'Gas') {
+        filterType = ['==', ['string', ['get','type']], 'Gas'];
       } else {
         console.log('error');
       };
-      map.setFilter('collisions', ['all', filterStartYear, filterEndYear, filterRenewable]);
+      map.setFilter('collisions', ['all', filterStartYear, filterEndYear, filterType]);
     });
 
 });
