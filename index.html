@@ -6,16 +6,17 @@
         <meta name="description" content="A map of UK energy sources">
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
         <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <div id='map'></div>
         <div id='console'>
-            <h1>Motor vehicle collisions</h1>
-            <p>Data: <a href='https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95'>Motor vehicle collision injuries and deaths</a> in NYC, Jan 2016</p>
+            <h1>UK electricity map</h1>
+            <p>Subtitle explanation</p>
             <div class='session'>
-                    <h2>Casualty</h2>
+                    <h2>Key</h2>
                     <div class='row colors'>
                     </div>
                     <div class='row labels'>
@@ -28,19 +29,29 @@
                     </div>
             </div>
             <div class='session' id='sliderbar'>
-                    <h2>Hour: <label id='active-hour'>12PM</label></h2>
-                    <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
+                    <h2>Year: <label id='active-hour'>2017</label></h2>
+                    <input id='slider' autocomplete="off" class='row' type='range' min='2007' max='2017' step='1' value='2017' />
             </div>
             <div class='session'>
-                    <h2>Day of the week</h2>
-                    <div class='row' id='filters'>
-                      <input id='all' type='radio' name='toggle' value='all' checked='checked'>
-                      <label for='all'>All</label>
-                      <input id='weekday' type='radio' name='toggle' value='weekday'>
-                      <label for='weekday'>Weekday</label>
-                      <input id='weekend' type='radio' name='toggle' value='weekend'>
-                      <label for='weekend'>Weekend</label>
-                    </div>
+                <h2>Type</h2>
+                <select id='selectorType'>
+                    <option value='All' selected='selected'>All types</option>
+                    <option value='LowCarbon' >Low carbon</option>
+                    <option value='HighCarbon' >High carbon</option>
+                    <option value='Biomass' >Biomass</option>
+                    <option value='Coal' >Coal</option>
+                    <option value='Gas' >Gas</option>
+                    <option value='Geothermal' >Geothermal</option>
+                    <option value='Hydro' >Hydro</option>
+                    <option value='Interconnectors' >Interconnectors</option>
+                    <option value='Nuclear' >Nuclear</option>
+                    <option value='Oil' >Oil</option>
+                    <option value='Other' >Other</option>
+                    <option value='Solar' >Solar</option>
+                    <option value='Storage' >Storage</option>
+                    <option value='Waste' >Waste</option>
+                    <option value='Wind' >Wind</option>
+                </select>
             </div>
         </div>
         <script src="js/script.js"></script>
