@@ -29,15 +29,21 @@ map.on('load', function() {
           1000, 25
         ],
         'circle-color': [
-          'interpolate',
-          ['linear'],
-          ['number', ['get', 'capacity']],
-          0, '#2DC4B2',
-          5, '#3BB3C3',
-          10, '#669EC4',
-          50, '#8B88B6',
-          100, '#A2719B',
-          500, '#AA5E79'
+          'match',
+          ['get', 'type'],
+          "Coal", "#333333",
+          "Gas", "#216184",
+          "Solar", "#EFC530",
+          "Nuclear", "#A14A7B",
+          "Oil", "#673b9b",
+          "Hydro", "#2cb0c1",
+          "Wind", "#136400",
+          "Biomass", "#A7B734",
+          "Waste", "#d67b36",
+          "Storage", "#e58888",
+          "Geothermal", "#C7432B",
+          "Other", "#7c5641",
+          /* other */ '#ccc'
         ],
         'circle-opacity': 0.8
       },
@@ -62,9 +68,9 @@ map.on('load', function() {
       if (dropdown === 'All') {
         filterType = ['!=', ['string', ['get','type']], 'placeholder'];
       } else if (dropdown === 'HighCarbon') {
-        filterType = ['==', ['string', ['get','type']], 'Coal'];
+        filterType = ['match', ['get', 'type'], ['Coal', 'Gas', 'Oil'], true, false];
       } else if (dropdown === 'LowCarbon') {
-        filterType = ['==', ['string', ['get','type']], 'Gas'];
+        filterType = ['match', ['get', 'type'], ['Wind', 'Solar', 'Hydro'], true, false];
       } else if (dropdown === 'Biomass') {
         filterType = ['==', ['string', ['get','type']], 'Biomass'];
       } else if (dropdown === 'Coal') {
