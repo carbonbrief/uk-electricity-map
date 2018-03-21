@@ -6,15 +6,15 @@
         <meta name="description" content="A map of UK energy sources">
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
         <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <div id='map'></div>
         <div id='console'>
-            <h1>Motor vehicle collisions</h1>
-            <p>Data: <a href='https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95'>Motor vehicle collision injuries and deaths</a> in NYC, Jan 2016</p>
+            <h1>UK electricity map</h1>
+            <p>Subtitle explanation</p>
             <div class='session'>
                     <h2>Casualty</h2>
                     <div class='row colors'>
@@ -33,6 +33,7 @@
                     <input id='slider' autocomplete="off" class='row' type='range' min='2007' max='2017' step='1' value='2017' />
             </div>
             <div class='session'>
+                <h2>Type</h2>
                 <select id='selectorType'>
                     <option value='All' selected='selected'>All types</option>
                     <option value='LowCarbon' >Low carbon</option>

@@ -99,13 +99,13 @@ map.on('load', function() {
 
 });
 
-// reset slider and radio on window reload
+// reset dropdown on window reload
 
-// $(document).ready(function () {
-//   $("select").each(function () {
-//       $(this).val($(this).find('option[selected]').val());
-//   });
-// })
+$(document).ready(function () {
+  $("select").each(function () {
+      $(this).val($(this).find('option[selected]').val());
+  });
+})
 
 // document.addEventListener("DOMContentLoaded", function(event) {
 //   document.getElementById("slider").reset();
