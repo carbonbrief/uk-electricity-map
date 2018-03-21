@@ -121,7 +121,7 @@ map.on('load', function() {
     // Populate the popup and set its coordinates
     // based on the feature found.
     popup.setLngLat(coordinates)
-        .setHTML('<p>' + name + '</p><p>' + capacity + ' MW</p>')
+        .setHTML('<h3>' + name + '</h3><p>' + capacity + ' MW</p>')
         .addTo(map);
   });
 
