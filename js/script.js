@@ -9,7 +9,7 @@ var map = new mapboxgl.Map({
 
 map.on('load', function() {
 
-    var filterStartYear = ['<', ['number', ['get', 'yearStart']], 2017];
+    var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
     var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2017];
     var filterRenewable = ['!=', ['string', ['get','isRenewable']], 'placeholder'];
 
@@ -41,14 +41,14 @@ map.on('load', function() {
         ],
         'circle-opacity': 0.8
       },
-      //'filter': ['all', filterYear, filterDay]
+      'filter': ['all', filterStartYear, filterEndYear, filterRenewable]
     }, 'admin-2-boundaries-dispute');
 
     // update hour filter when the slider is dragged
     document.getElementById('slider').addEventListener('input', function(e) {
       var year = parseInt(e.target.value);
       // update the map
-      filterStartYear = ['<', ['number', ['get', 'yearStart']], year];
+      filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
       filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
       map.setFilter('collisions', ['all', filterStartYear, filterEndYear, filterRenewable]);
 
@@ -85,7 +85,7 @@ map.on('load', function() {
 //   });
 // })
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById("slider").reset();
-});
+// document.addEventListener("DOMContentLoaded", function(event) {
+//   document.getElementById("slider").reset();
+// });
   
