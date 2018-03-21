@@ -108,7 +108,8 @@ map.on('load', function() {
     map.getCanvas().style.cursor = 'pointer';
 
     var coordinates = e.features[0].geometry.coordinates.slice();
-    var description = e.features[0].properties.name;
+    var name = e.features[0].properties.name;
+    var capacity = e.features[0].properties.capacity;
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -120,7 +121,7 @@ map.on('load', function() {
     // Populate the popup and set its coordinates
     // based on the feature found.
     popup.setLngLat(coordinates)
-        .setHTML(description)
+        .setHTML('<p>' + name + '</p><p>' + capacity + ' MW</p>')
         .addTo(map);
   });
 
