@@ -1,0 +1,109 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 1.784722,50.903056 ]
+    },
+    "properties": {
+    "country":"France",
+    "site":"Les Mandarins converter station",
+    "interconnector":"French interconnector (HVDC Cross-channel)",
+    "type": "Interconnector"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 0.975556,51.105833 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Sellindge converter station",
+    "interconnector":"French interconnector (HVDC Cross-channel)",
+    "type": "Interconnector"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 4.021389,51.9575 ]
+    },
+    "properties": {
+    "country":"Holland",
+    "site":"Maasvlakte Static Inverter Plant",
+    "interconnector":"BritNed interconnector",
+    "type": "Interconnector"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 0.716667,51.44 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Grain Static Inverter Plant",
+    "interconnector":"BritNed interconnector",
+    "type": "Interconnector"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -5.769722,54.842778 ]
+    },
+    "properties": {
+    "country":"Northern Ireland",
+    "site":"Ballycronan More Static Inverter Plant",
+    "interconnector":"Moyle interconnector",
+    "type": "Interconnector"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.980556,55.069444 ]
+    },
+    "properties": {
+    "country":"Scotland",
+    "site":"Auchencrosh Static Inverter Plant",
+    "interconnector":"Moyle interconnector",
+    "type": "Interconnector"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -6.5675,53.471111 ]
+    },
+    "properties": {
+    "country":"Republic of Ireland",
+    "site":"Woodland HVDC Static Inverter",
+    "interconnector":"East-West interconnector",
+    "type": "Interconnector"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.072778,53.227222 ]
+    },
+    "properties": {
+    "country":"Wales",
+    "site":"Shotton Static Inverter Plant",
+    "interconnector":"East-West interconnector",
+    "type": "Interconnector"
+    }
+  }
+]
+}

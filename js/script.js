@@ -25,7 +25,7 @@ map.on('load', function() {
           'interpolate',
           ['exponential', 1.2],
           ['number', ['get', 'capacity']],
-          0, 3,
+          0, 4,
           1000, 25
         ],
         'circle-color': [
@@ -82,7 +82,7 @@ map.on('load', function() {
       } else if (dropdown === 'Hydro') {
         filterType = ['match', ['get', 'type'], ['Small Hydro', 'Large Hydro'], true, false];
       } else if (dropdown === 'Interconnectors') {
-        filterType = ['==', ['string', ['get','type']], 'Interconnectors'];
+        filterType = ['==', ['string', ['get','type']], 'Interconnector'];
       } else if (dropdown === 'Nuclear') {
         filterType = ['==', ['string', ['get','type']], 'Nuclear'];
       } else if (dropdown === 'Oil') {
