@@ -9,7 +9,8 @@
     },
     "properties": {
     "interconnector":"French interconnector (HVDC Cross-channel)",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 1986
     }
   },
   {
@@ -20,7 +21,8 @@
     },
     "properties": {
     "interconnector":"BritNed interconnector",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 2011
     }
   },
   {
@@ -31,7 +33,8 @@
     },
     "properties": {
     "interconnector":"Moyle interconnector",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 2001
     }
   },
   {
@@ -42,7 +45,8 @@
     },
     "properties": {
     "interconnector":"East-West interconnector",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 2012
     }
   }
 ]

@@ -11,7 +11,8 @@
     "country":"France",
     "site":"Les Mandarins converter station",
     "interconnector":"French interconnector (HVDC Cross-channel)",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 1986
     }
   },
   {
@@ -24,7 +25,8 @@
     "country":"England",
     "site":"Sellindge converter station",
     "interconnector":"French interconnector (HVDC Cross-channel)",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 1986
     }
   },
   {
@@ -37,7 +39,8 @@
     "country":"Holland",
     "site":"Maasvlakte Static Inverter Plant",
     "interconnector":"BritNed interconnector",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 2011
     }
   },
   {
@@ -50,7 +53,8 @@
     "country":"England",
     "site":"Grain Static Inverter Plant",
     "interconnector":"BritNed interconnector",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 2011
     }
   },
   {
@@ -63,7 +67,8 @@
     "country":"Northern Ireland",
     "site":"Ballycronan More Static Inverter Plant",
     "interconnector":"Moyle interconnector",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 2001
     }
   },
   {
@@ -76,7 +81,8 @@
     "country":"Scotland",
     "site":"Auchencrosh Static Inverter Plant",
     "interconnector":"Moyle interconnector",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 2001
     }
   },
   {
@@ -89,7 +95,8 @@
     "country":"Republic of Ireland",
     "site":"Woodland HVDC Static Inverter",
     "interconnector":"East-West interconnector",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 2012
     }
   },
   {
@@ -102,7 +109,8 @@
     "country":"Wales",
     "site":"Shotton Static Inverter Plant",
     "interconnector":"East-West interconnector",
-    "type": "Interconnector"
+    "type": "Interconnector",
+    "yearStart": 2012
     }
   }
 ]

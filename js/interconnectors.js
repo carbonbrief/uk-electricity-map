@@ -1,5 +1,6 @@
 map.on('load', function() {
 
+    var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
     var filterLines = ['!=', ['string', ['get','type']], 'placeholder'];
     var filterStations = ['!=', ['string', ['get','type']], 'placeholder'];
 
@@ -33,6 +34,17 @@ map.on('load', function() {
         }
     }, "powerplants") // to ensure that it is drawn below the powerplants layer
 
+    document.getElementById('slider').addEventListener('input', function(e) {
+        var year = parseInt(e.target.value);
+
+        filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+
+        map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
+
+        map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
+
+    })
+
     document.getElementById('selectorType').addEventListener('change', function(e) {
 
         var dropdown = e.target.value;
@@ -45,7 +57,7 @@ map.on('load', function() {
             filterLines = ['!=', ['string', ['get','type']], 'Interconnector'];
         };
 
-        map.setFilter('interconnectors', ['all', filterLines]);
+        map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
 
         if (dropdown === 'All') {
             filterStations = ['==', ['string', ['get','type']], 'Interconnector'];
@@ -55,6 +67,6 @@ map.on('load', function() {
             filterStations = ['!=', ['string', ['get','type']], 'Interconnector'];
         };
 
-        map.setFilter('interconnector-stations', ['all', filterStations]);
+        map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
     })
 })
