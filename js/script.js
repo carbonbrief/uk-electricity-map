@@ -14,7 +14,7 @@ map.on('load', function() {
     var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 
     map.addLayer({
-      id: 'collisions',
+      id: 'powerplants',
       type: 'circle',
       source: {
         type: 'geojson',
@@ -56,7 +56,7 @@ map.on('load', function() {
       // update the map
       filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
       filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
-      map.setFilter('collisions', ['all', filterStartYear, filterEndYear, filterType]);
+      map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
 
       // update text in the UI
       document.getElementById('active-hour').innerText = year;
@@ -100,7 +100,7 @@ map.on('load', function() {
       } else {
         console.log('error');
       };
-      map.setFilter('collisions', ['all', filterStartYear, filterEndYear, filterType]);
+      map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
     });
 
     // Create a popup, but don't add it to the map yet.
@@ -109,7 +109,7 @@ map.on('load', function() {
     closeOnClick: false
   });
 
-  map.on('mouseenter', 'collisions', function(e) {
+  map.on('mouseenter', 'powerplants', function(e) {
     // Change the cursor style as a UI indicator.
     map.getCanvas().style.cursor = 'pointer';
 
@@ -131,7 +131,7 @@ map.on('load', function() {
         .addTo(map);
   });
 
-  map.on('mouseleave', 'collisions', function() {
+  map.on('mouseleave', 'powerplants', function() {
       map.getCanvas().style.cursor = '';
       popup.remove();
   });

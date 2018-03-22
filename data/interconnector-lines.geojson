@@ -1,0 +1,45 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "LineString",
+       "coordinates":  [[ 1.784722,50.903056 ], [0.975556,51.105833 ]]
+    },
+    "properties": {
+    "interconnector":"French interconnector (HVDC Cross-channel)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "LineString",
+       "coordinates":  [[ 4.021389,51.9575 ], [0.716667, 51.44]]
+    },
+    "properties": {
+    "interconnector":"BritNed interconnector"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "LineString",
+       "coordinates":  [[ -5.769722,54.842778 ], [-4.980556, 55.069444]]
+    },
+    "properties": {
+    "interconnector":"Moyle interconnector"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "LineString",
+       "coordinates":  [[ -6.5675,53.471111 ], [-3.072778, 53.227222]]
+    },
+    "properties": {
+    "interconnector":"East-West interconnector"
+    }
+  }
+]
+}
