@@ -56,7 +56,7 @@ map.on('load', function() {
       // update the map
       filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
       filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
-      map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
+      map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]); //the filter only applies to the powerplants layer
 
       // update text in the UI
       document.getElementById('active-hour').innerText = year;

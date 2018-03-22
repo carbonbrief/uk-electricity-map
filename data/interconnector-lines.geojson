@@ -8,7 +8,7 @@
        "coordinates":  [[ 1.784722,50.903056 ], [0.975556,51.105833 ]]
     },
     "properties": {
-    "interconnector":"French interconnector (HVDC Cross-channel)",
+    "name":"French interconnector (HVDC Cross-channel)",
     "type": "Interconnector",
     "yearStart": 1986
     }
@@ -20,7 +20,7 @@
        "coordinates":  [[ 4.021389,51.9575 ], [0.716667, 51.44]]
     },
     "properties": {
-    "interconnector":"BritNed interconnector",
+    "name":"BritNed interconnector",
     "type": "Interconnector",
     "yearStart": 2011
     }
@@ -32,7 +32,7 @@
        "coordinates":  [[ -5.769722,54.842778 ], [-4.980556, 55.069444]]
     },
     "properties": {
-    "interconnector":"Moyle interconnector",
+    "name":"Moyle interconnector",
     "type": "Interconnector",
     "yearStart": 2001
     }
@@ -44,7 +44,7 @@
        "coordinates":  [[ -6.5675,53.471111 ], [-3.072778, 53.227222]]
     },
     "properties": {
-    "interconnector":"East-West interconnector",
+    "name":"East-West interconnector",
     "type": "Interconnector",
     "yearStart": 2012
     }
