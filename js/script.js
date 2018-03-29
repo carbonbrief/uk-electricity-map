@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284c
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9',
+    style: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
     center: [-2.5, 53.5],
     zoom: 5
 });
@@ -48,7 +48,7 @@ map.on('load', function() {
         'circle-opacity': 0.8
       },
       'filter': ['all', filterStartYear, filterEndYear, filterType]
-    }, 'admin-2-boundaries-dispute');
+    });
 
     // update hour filter when the slider is dragged
     document.getElementById('slider').addEventListener('input', function(e) {
