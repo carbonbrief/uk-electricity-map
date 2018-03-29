@@ -1,4 +1,4 @@
-function addInterconnectors () {map.on('load', function() {
+map.on('load', function() {
 
     // I don't think it's necessary to filter yearEnd as none of the interconnectors close during this time period
 
@@ -128,6 +128,4 @@ function addInterconnectors () {map.on('load', function() {
     });
 
 
-})};
-
-addInterconnectors();
+})
