@@ -62,3 +62,8 @@ body {
     display: inline-block;
     text-align: center;
   }
+
+  #line-chart {
+    width: 600px;
+    height: 400px;
+  }

@@ -5,14 +5,12 @@
         <title>UK electricity map | Carbon Brief</title>
         <meta name="description" content="A map of UK energy sources">
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-        <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script> -->
         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
-        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
-        <!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js'></script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' /> -->
-        <!-- <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.css' rel='stylesheet' /> -->
+        <script src="//d3js.org/d3.v4.min.js"></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/line-chart.css">
     </head>
     <body>
         <div id='map'></div>
@@ -57,8 +55,13 @@
                     <option value='Wind' >Wind</option>
                 </select>
             </div>
+            <div class='session'>
+                <h2>Chart</h2>
+                <div id="line-chart"></div>
+            </div>
         </div>
         <script src="js/script.js"></script>
         <script src="js/interconnectors.js"></script>
+        <script src="js/line-chart.js"></script>
     </body>
 </html>
