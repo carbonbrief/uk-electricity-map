@@ -7,7 +7,7 @@ var map = new mapboxgl.Map({
     zoom: 5
 });
 
-function addData (){ map.on('load', function() {
+map.on('load', function() {
 
     var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
     var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2017];
@@ -50,8 +50,6 @@ function addData (){ map.on('load', function() {
       'filter': ['all', filterStartYear, filterEndYear, filterType]
     });
 
-    // MAP FILTERS
-
     // update hour filter when the slider is dragged
     document.getElementById('slider').addEventListener('input', function(e) {
       var year = parseInt(e.target.value);
@@ -63,8 +61,6 @@ function addData (){ map.on('load', function() {
       // update text in the UI
       document.getElementById('active-hour').innerText = year;
     });
-
-    // filter by power plant type
 
     document.getElementById('selectorType').addEventListener('change', function(e) {
       var dropdown = e.target.value;
@@ -107,9 +103,7 @@ function addData (){ map.on('load', function() {
       map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
     });
 
-  // HOVER ACTIONS
-
-  // Create a popup, but don't add it to the map yet.
+    // Create a popup, but don't add it to the map yet.
   var popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false
@@ -142,21 +136,9 @@ function addData (){ map.on('load', function() {
       popup.remove();
   });
 
-})};
-
-// 
-
-addData();
-
-// filter basemap
-
-document.getElementById('selectorBackground').addEventListener('change', function(e) {
-  var dropdown = e.target.value;
-  map.setStyle('https://openmaptiles.github.io/' + dropdown + '/style-cdn.json');
-  addData();
 });
 
-// reset dropdowns on window reload
+// reset dropdown on window reload
 
 $(document).ready(function () {
   $("select").each(function () {
