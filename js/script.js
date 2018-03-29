@@ -7,7 +7,7 @@ var map = new mapboxgl.Map({
     zoom: 5
 });
 
-function addData (){ map.on('load', function() {
+function addPowerPlants (){ map.on('load', function() {
 
     var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
     var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2017];
@@ -146,14 +146,22 @@ function addData (){ map.on('load', function() {
 
 // 
 
-addData();
+addPowerPlants();
 
 // filter basemap
 
 document.getElementById('selectorBackground').addEventListener('change', function(e) {
+
   var dropdown = e.target.value;
+
+  map.removeLayer("powerplants");
+  map.removeLayer("interconnectors");
+  map.removeLayer("interconnector-stations");
+
   map.setStyle('https://openmaptiles.github.io/' + dropdown + '/style-cdn.json');
-  addData();
+  // think I need to add and remove layers again here
+  addPowerPlants();
+  addInterconnectors();
 });
 
 // reset dropdowns on window reload
