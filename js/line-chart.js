@@ -20,6 +20,11 @@ var valueline2 = d3.line()
 .x(function(d) { return x(d.year); })
 .y(function(d) { return y(d.Nuclear); });
 
+// define the 3rd line
+var valueline3 = d3.line()
+.x(function(d) { return x(d.year); })
+.y(function(d) { return y(d.Gas); });
+
 // append the svg obgect to the body of the page
 // appends a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
@@ -39,12 +44,13 @@ data.forEach(function(d) {
   d.year = parseTime(d.year);
   d.Coal = +d.Coal;
   d.Nuclear = +d.Nuclear;
+  d.Gas = +d.Gas;
 });
 
 // Scale the range of the data
 x.domain(d3.extent(data, function(d) { return d.year; }));
 y.domain([0, d3.max(data, function(d) {
-  return Math.max(d.Coal, d.Nuclear); })]);
+  return Math.max(d.Coal, d.Nuclear, d.Gas); })]);
 
 // Add the valueline path.
 svg.append("path")
@@ -58,6 +64,13 @@ svg.append("path")
   .attr("class", "line")
   .style("stroke", "red")
   .attr("d", valueline2);
+
+// Add the valueline2 path.
+svg.append("path")
+.data([data])
+.attr("class", "line")
+.style("stroke", "red")
+.attr("d", valueline3);
 
 // Add the X Axis
 svg.append("g")
