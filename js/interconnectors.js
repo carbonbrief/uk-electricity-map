@@ -1,5 +1,7 @@
 map.on('load', function() {
 
+    // I don't think it's necessary to filter yearEnd as none of the interconnectors close during this time period
+
     var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
     var filterLines = ['!=', ['string', ['get','type']], 'placeholder'];
     var filterStations = ['!=', ['string', ['get','type']], 'placeholder'];
@@ -57,6 +59,8 @@ map.on('load', function() {
             filterLines = ['!=', ['string', ['get','type']], 'Interconnector'];
         };
 
+        // set filter for interconnector lines
+
         map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
 
         if (dropdown === 'All') {
@@ -66,6 +70,8 @@ map.on('load', function() {
         } else {
             filterStations = ['!=', ['string', ['get','type']], 'Interconnector'];
         };
+
+        // set filter for interconnector stations
 
         map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
     })
@@ -80,24 +86,16 @@ map.on('load', function() {
 
         map.getCanvas().style.cursor = 'pointer';
 
-        // var coordinates = e.features[0].geometry.coordinates.slice();
         var name = e.features[0].properties.name;
 
-            // Ensure that if the map is zoomed out such that multiple
-            // copies of the feature are visible, the popup appears
-            // over the copy being pointed to.
-        // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        //     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-
-        // }
-
         // Populate the popup and set its coordinates
-        // based on the feature found.
+        // different strategy to the popup in the script.js since it's a line
+
         popup.setLngLat(e.lngLat)
         .setHTML('<h3>' + name + '</h3>')
         .addTo(map);
 
-        console.log(name);
+        //console.log(name);
 
     })
 
@@ -105,4 +103,29 @@ map.on('load', function() {
         map.getCanvas().style.cursor = '';
         popup.remove();
     });
+
+    map.on('mouseenter', 'interconnector-stations', function(e) {
+
+        map.getCanvas().style.cursor = 'pointer';
+
+        var name = e.features[0].properties.site;
+        var interconnector = e.features[0].properties.interconnector;
+
+        // Populate the popup and set its coordinates
+        // different strategy to the popup in the script.js since it's a line
+
+        popup.setLngLat(e.lngLat)
+        .setHTML('<h3>' + name + '</h3><p>' + interconnector + '</p>')
+        .addTo(map);
+
+        //console.log(name);
+
+    })
+
+    map.on('mouseleave', 'interconnector-stations', function() {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+
+
 })
