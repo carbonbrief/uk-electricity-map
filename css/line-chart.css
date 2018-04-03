@@ -12,7 +12,15 @@
   fill: #f3f3f3;
 }
 
-.plant-label {
+.plant.label {
+  
+}
+
+.label {
   pointer-events: none;
   font-size: 12px;
+}
+
+.axis.label {
+  fill: #333333;
 }

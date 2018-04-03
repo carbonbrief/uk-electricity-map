@@ -1,4 +1,4 @@
-var margin = {top: 20, right: 40, bottom: 30, left: 50},
+var margin = {top: 20, right: 50, bottom: 30, left: 50},
     width = 450 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
@@ -87,13 +87,17 @@ d3.csv("./data/line.csv", function(error, data) {
 
   svg.append("g")
       .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
+      .call(yAxis);
+
+    // ADD AXIS LABEL
+
+    svg.append("text")
+        .attr("class", "axis label")
       .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
+      .attr("y", 8)
+      .attr("dy", ".5em")
       .style("text-anchor", "end")
-      .text("capacity (ºF)");
+      .text("Capacity (MW)");
    
   var boo=powerplants.filter(function(d){return filterData[d.name]==true;});
   console.log("filter");
@@ -127,7 +131,7 @@ d3.csv("./data/line.csv", function(error, data) {
       .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.capacity) + ")"; })
       .attr("x", 20)
       .attr("dy", ".35em")
-      .attr("class", "plant-label")
+      .attr("class", "plant label")
       .text(function(d) { return d.name; })
       .style("fill", function(d) { return color(d.name); });
 
