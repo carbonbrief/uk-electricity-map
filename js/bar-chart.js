@@ -1,11 +1,11 @@
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 80, bottom: 30, left: 50},
-    width = 650 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 20, right: 40, bottom: 30, left: 50},
+    width = 450 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
 var x2 = d3.scaleBand()
     .range([0, width])
-    .padding(0.1);
+    .padding(0.01);
 
 var y2 = d3.scaleLinear()
     .range([height, 0]);
@@ -40,15 +40,35 @@ d3.csv("./data/bar.csv", function(error, data) {
       .attr("x", function(d) { return x2(d.year); })
       .attr("width", x2.bandwidth())
       .attr("y", function(d) { return y2(d.value); })
-      .attr("height", function(d) { return height - y2(d.value); });
+      .attr("height", function(d) { return height - y2(d.value); })
+      .style("opacity", 0);
 
-//   // add the x Axis
-//   svg.append("g")
-//       .attr("transform", "translate(0," + height + ")")
-//       .call(d3.axisBottom(x));
+    svg2.selectAll(".bar")
+      .filter(function(d) { return d.year == 2017 })
+      .style("opacity", 1);
 
-//   // add the y Axis
-//   svg.append("g")
-//       .call(d3.axisLeft(y));
+//   not adding any axes since just for highlighting
+
 
 });
+
+
+// link behaviour to slider
+// will just be changing opacity, so can avoid filtering data I think
+
+d3.selectAll(".row").on("input", highlightYear);
+
+function highlightYear() {
+
+    var thisYear = this.value;
+
+    svg2.selectAll(".bar")
+        .style("opacity", 0);
+
+    svg2.selectAll(".bar")
+        .filter(function(d) { return d.year == thisYear })
+        .style("opacity", 1);
+
+
+    //console.log(thisYear);
+}

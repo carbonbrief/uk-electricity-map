@@ -1,8 +1,9 @@
-var margin = {top: 20, right: 80, bottom: 30, left: 50},
-    width = 650 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 20, right: 40, bottom: 30, left: 50},
+    width = 450 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
 var parseDate = d3.timeParse("%Y");
+var parseDate2 = d3.timeParse("%Y%m%d");
 
 var x = d3.scaleTime()
     .range([0, width]);
@@ -19,7 +20,7 @@ var xAxis = d3.axisBottom(x);
 var yAxis = d3.axisLeft(y);
 
 var line = d3.line()
-    .curve(d3.curveCardinal) // see http://bl.ocks.org/emmasaunders/c25a147970def2b02d8c7c2719dc7502 for more details
+    .curve(d3.curveLinear) // see http://bl.ocks.org/emmasaunders/c25a147970def2b02d8c7c2719dc7502 for more details
     .x(function(d) { return x(d.year); })
     .y(function(d) { return y(d.capacity); });
 
@@ -50,7 +51,11 @@ d3.csv("./data/line.csv", function(error, data) {
     };
   });
   
-  x.domain(d3.extent(data, function(d) { return d.year; }));
+  //extend x domain of line chart so that bars align
+
+  x.domain([
+    parseDate2(20060701), parseDate2(20170701)
+  ]);
 
   y.domain([
     d3.min(powerplants, function(c) { return d3.min(c.values, function(v) { return v.capacity; }); }),
@@ -58,27 +63,7 @@ d3.csv("./data/line.csv", function(error, data) {
   ]);
   svg.selectAll("*").remove();
 
-  //LEGEND
-//   var legend = svg.selectAll('g')
-//       .data(powerplants)
-//       .enter()
-//     .append('g')
-//       .attr('class', 'legend');
-    
-//   legend.append('rect')
-//       .attr('x', width - 20)
-//       .attr('y', function(d, i){ return i *  20;})
-//       .attr('width', 10)
-//       .attr('height', 10)
-//       .style('fill', function(d) { 
-//         return color(d.name);
-//       });
-      
-      
-//   legend.append('text')
-//       .attr('x', width - 8)
-//       .attr('y', function(d, i){ return (i *  20) + 9;})
-//       .text(function(d){ return d.name; });
+
 
     // link behaviour to dropdown
 
@@ -91,13 +76,6 @@ d3.csv("./data/line.csv", function(error, data) {
 
         console.log(type);
     }
-
-//   legend
-//   		.on("click",function(d){
-//   				//filter data		
-//   				//filterData[d.name]=!filterData[d.name];
-//   				reDraw(d.name);
-//     });
 
 
     // ADD AXES
@@ -147,9 +125,12 @@ d3.csv("./data/line.csv", function(error, data) {
   plant.append("text")
       .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
       .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.capacity) + ")"; })
-      .attr("x", 3)
+      .attr("x", 20)
       .attr("dy", ".35em")
-      .text(function(d) { return d.name; });
+      .attr("class", "plant-label")
+      .text(function(d) { return d.name; })
+      .style("fill", function(d) { return color(d.name); });
+
     svg.selectAll(".plant")
       .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
       .exit()
@@ -257,14 +238,6 @@ d3.csv("./data/line.csv", function(error, data) {
 console.log(filterData);
 
 drawChart(filterData); // draw initial chart
-
-// function reDraw(name){
-	
-// 	filterData[name]=!filterData[name]; //this removes the one selected
-// 	console.log("redraw :");
-// 	console.log(filterData);
-// 	drawChart(filterData);
-// }
 
 function reDraw(type){
 	

@@ -7,3 +7,12 @@
     stroke: steelblue;
     stroke-width: 1.5px;
   }
+
+.bar {
+  fill: #f3f3f3;
+}
+
+.plant-label {
+  pointer-events: none;
+  font-size: 12px;
+}
