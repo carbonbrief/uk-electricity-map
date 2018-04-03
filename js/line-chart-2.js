@@ -78,6 +78,18 @@ d3.csv("./data/dummy.csv", function(error, data) {
       .attr('y', function(d, i){ return (i *  20) + 9;})
       .text(function(d){ return d.name; });
 
+    // link behaviour to dropdown
+
+    d3.select("#selectorType").on("change", selectType)
+
+    function selectType() {
+        var type = this.options[this.selectedIndex].value
+
+        reDraw2(type);
+
+        console.log(type);
+    }
+
   legend
   		.on("click",function(d){
   				//filter data		
@@ -138,11 +150,33 @@ d3.csv("./data/dummy.csv", function(error, data) {
       .remove();
 });
 }
+
 console.log(filterData);
-drawChart(filterData);
+
+drawChart(filterData); // draw initial chart
+
 function reDraw(name){
 	
-	filterData[name]=!filterData[name];
+	filterData[name]=!filterData[name]; //this removes the one selected
+	console.log("redraw :");
+	console.log(filterData);
+	drawChart(filterData);
+}
+
+function reDraw2(type){
+	
+    //filterData[type]==filterData[type];
+    
+    if (type == "All") {
+        filterData = {"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};
+    } else if (type == "Coal") {
+        filterData = {"Coal":true};
+    } else if (type == "Gas") {
+        filterData = {"Gas":true};
+    }  else {
+        // do nothing
+        console.log("error");
+    }
 	console.log("redraw :");
 	console.log(filterData);
 	drawChart(filterData);
