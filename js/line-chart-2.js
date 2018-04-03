@@ -10,7 +10,9 @@ var x = d3.scaleTime()
 var y = d3.scaleLinear()
     .range([height, 0]);
 
-var color = d3.scaleOrdinal(d3.schemeCategory10);
+var color = d3.scaleOrdinal()
+    .domain(["Coal", "Nuclear", "Gas", "Other", "Hydro", "Bioenergy", "Wind", "Solar"])
+    .range(["#333333", "#A14A7B", "#216184", "#7c5641", "#2cb0c1", "#d67b36", "#136400", "#EFC530"]);
 
 var xAxis = d3.axisBottom(x);
 
@@ -239,7 +241,7 @@ d3.csv("./data/dummy.csv", function(error, data) {
         }
         
         d3.select(this).select('text')
-            .text(y.invert(pos.y).toFixed(1));
+            .text(y.invert(pos.y).toFixed(0));
             
         return "translate(" + mouse[0] + "," + pos.y +")";
         });
