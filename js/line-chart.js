@@ -34,7 +34,7 @@ var svg = d3.select("#line-chart").append("svg")
 var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};//powerplants to be shown
 
 function drawChart(filterData){
-d3.csv("./data/dummy.csv", function(error, data) {
+d3.csv("./data/line.csv", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
 
   data.forEach(function(d) {
