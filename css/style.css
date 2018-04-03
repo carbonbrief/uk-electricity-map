@@ -63,7 +63,20 @@ body {
     text-align: center;
   }
 
+  #line-wrapper {
+    width: 600px;
+    height: 400px;
+  }
+
   #line-chart {
     width: 600px;
     height: 400px;
+    position: absolute;
+    z-index: 9999;
+  }
+
+  #bar-chart {
+    width: 600px;
+    height: 400px;
+    position: absolute;
   }

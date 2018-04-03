@@ -10,10 +10,9 @@ var x2 = d3.scaleBand()
 var y2 = d3.scaleLinear()
     .range([height, 0]);
           
-// append the svg object to the body of the page
-// append a 'group' element to 'svg'
-// moves the 'group' element to the top left margin
-var svg2 = d3.select("#line-chart").append("svg")
+// append the svg object to the body of the page. need to do it only once for the line and bar background
+
+var svg2 = d3.select("#bar-chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -34,7 +33,7 @@ d3.csv("./data/bar.csv", function(error, data) {
   y2.domain([0, d3.max(data, function(d) { return d.value; })]);
 
   // append the rectangles for the bar chart
-  svg.selectAll(".bar")
+  svg2.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
