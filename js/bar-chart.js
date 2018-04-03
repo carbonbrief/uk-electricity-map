@@ -45,6 +45,8 @@ d3.csv("./data/bar.csv", function(error, data) {
 
     svg2.selectAll(".bar")
       .filter(function(d) { return d.year == 2017 })
+      .transition()
+      .duration(800)
       .style("opacity", 1);
 
 //   not adding any axes since just for highlighting
