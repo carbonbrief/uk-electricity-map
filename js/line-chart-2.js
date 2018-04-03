@@ -169,8 +169,36 @@ function reDraw2(type){
     
     if (type == "All") {
         filterData = {"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};
+    } else if (type == "LowCarbon") {
+        filterData = {"Wind":true};
+    } else if (type == "HighCarbon") {
+        filterData = {"Coal":true};
+    } else if (type == "Biomass") {
+        filterData = {"Bioenergy":true};
     } else if (type == "Coal") {
         filterData = {"Coal":true};
+    } else if (type == "Gas") {
+        filterData = {"Gas":true};
+    } else if (type == "Geothermal") {
+        filterData = {"Other":true};
+    } else if (type == "Hydro") {
+        filterData = {"Hydro":true};
+    } else if (type == "Interconnectors") {
+        filterData = {"Interconnectors":true};
+    } else if (type == "Nuclear") {
+        filterData = {"Nuclear":true};
+    } else if (type == "Oil") {
+        filterData = {"Other":true};
+    } else if (type == "Other") {
+        filterData = {"Other":true};
+    } else if (type == "Solar") {
+        filterData = {"Solar":true};
+    } else if (type == "Storage") {
+        filterData = {"Other":true};
+    } else if (type == "Waste") {
+        filterData = {"Bioenergy":true};
+    } else if (type == "Wind") {
+        filterData = {"Wind":true};
     } else if (type == "Gas") {
         filterData = {"Gas":true};
     }  else {
