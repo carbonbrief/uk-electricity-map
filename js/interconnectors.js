@@ -18,7 +18,7 @@ map.on('load', function() {
             "line-cap": "round"
         },
         "paint": {
-            "line-color": "#888",
+            "line-color": "#ff8767",
             "line-width": 4,
             "line-opacity": 0.8
         }
@@ -32,7 +32,7 @@ map.on('load', function() {
             data: './data/interconnector-stations.geojson'
         },
         "paint": {
-            "circle-color": "#888",
+            "circle-color": "#ff8767",
             "circle-radius": 5,
             "circle-opacity": 0.8
         }

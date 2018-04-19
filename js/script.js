@@ -23,26 +23,28 @@ map.on('load', function() {
       paint: {
         'circle-radius': [
           'interpolate',
-          ['exponential', 1.2],
+          ['linear'],
           ['number', ['get', 'capacity']],
-          0, 4,
-          1000, 25
+          // first number is the capacity and second is the size
+          0, 3,
+          10, 5,
+          100, 11,
+          1000, 21,
+          10000, 35
         ],
         'circle-color': [
           'match',
           ['get', 'type'],
-          "Coal", "#333333",
-          "Gas", "#216184",
-          "Solar", "#EFC530",
-          "Nuclear", "#A14A7B",
-          "Oil", "#673b9b",
-          "Hydro", "#2cb0c1",
-          "Wind", "#136400",
+          "Coal", "#ced1cc",
+          "Gas", "#4e80e5",
+          "Solar", "#ffc83e",
+          "Nuclear", "#dd54b6",
+          "Oil", "#a45edb",
+          "Hydro", "#43cfef",
+          "Wind", "#00a98e",
           "Biomass", "#A7B734",
-          "Waste", "#d67b36",
-          "Storage", "#e58888",
-          "Geothermal", "#C7432B",
-          "Other", "#7c5641",
+          "Waste", "#ea545c",
+          "Other", "#cc9b7a",
           /* other */ '#ccc'
         ],
         'circle-opacity': 0.8
@@ -116,6 +118,7 @@ map.on('load', function() {
     var coordinates = e.features[0].geometry.coordinates.slice();
     var name = e.features[0].properties.name;
     var capacity = e.features[0].properties.capacity;
+    var fuelType = e.features[0].properties.type;
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -127,7 +130,7 @@ map.on('load', function() {
     // Populate the popup and set its coordinates
     // based on the feature found.
     popup.setLngLat(coordinates)
-        .setHTML('<h3>' + name + '</h3><p>' + capacity + ' MW</p>')
+        .setHTML('<h3>' + name + '</h3><p>' + capacity + ' MW</p><p>' + fuelType + '</p>')
         .addTo(map);
   });
 
