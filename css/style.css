@@ -31,6 +31,10 @@ body {
     font-weight: bold;
     font-size: 18px;
   }
+
+  .console-text {
+    color: #f3f3f3;
+  }
   
   a {
     text-decoration: none;
@@ -83,3 +87,16 @@ body {
     height: 400px; */
     position: absolute;
   }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(https://s3-eu-west-1.amazonaws.com/cbbranding/new+folder/arrow-for-map.png) 96% / 15% no-repeat #323b52;
+    background-size: 20px 13px;
+    border:2px;
+    color: #f3f3f3;
+    outline:0px;
+    -webkit-box-shadow: 6px 10px 23px 5px rgba(102,102,102,0.2);
+    -moz-box-shadow: 6px 10px 23px 5px rgba(102,102,102,0.2);
+    box-shadow: 6px 10px 23px 5px rgba(102,102,102,0.2);
+ }
