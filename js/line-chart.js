@@ -13,7 +13,7 @@ var y = d3.scaleLinear()
 
 var color = d3.scaleOrdinal()
     .domain(["Coal", "Nuclear", "Gas", "Other", "Hydro", "Bioenergy", "Wind", "Solar"])
-    .range(["#333333", "#A14A7B", "#216184", "#7c5641", "#2cb0c1", "#d67b36", "#136400", "#EFC530"]);
+    .range(["#ced1cc", "#dd54b6", "#4e80e5", "#cc9b7a", "#43cfef", "#A7B734", "#00a98e", "#ffc83e"]);
 
 var xAxis = d3.axisBottom(x);
 
