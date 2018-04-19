@@ -9,7 +9,7 @@
   }
 
 .bar {
-  fill: #f3f3f3;
+  fill: rgba(0,0,0,0.1);
 }
 
 .plant.label {
