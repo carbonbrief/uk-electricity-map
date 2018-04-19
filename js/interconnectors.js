@@ -19,7 +19,8 @@ map.on('load', function() {
         },
         "paint": {
             "line-color": "#888",
-            "line-width": 4
+            "line-width": 4,
+            "line-opacity": 0.8
         }
     }, "powerplants") // to ensure that it is drawn below the powerplants layer
 
@@ -32,7 +33,8 @@ map.on('load', function() {
         },
         "paint": {
             "circle-color": "#888",
-            "circle-radius": 5
+            "circle-radius": 5,
+            "circle-opacity": 0.8
         }
     }, "powerplants") // to ensure that it is drawn below the powerplants layer
 
