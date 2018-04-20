@@ -267,17 +267,24 @@ d3.csv("./data/line.csv", function(error, data) {
         focus.style("display", "none");
         tooltip.style("display", "none");
     }
-    function mousemove() {
+    function mousemove(d) {
 
         var i = d3.bisect(timeScales, d3.mouse(this)[0], 1);
-        var di = data[i-1];
+        var d0 = data[i-1];
 
-        focus.attr("transform", "translate(" + x(di.year) + ",0)"); // everything in the focus group (ie. the line) along to follow the mouse
+        var x0 = x.invert(d3.mouse(this)[0]),
+            //i = bisectDate(data, x0, 1),
+            d0 = data[i - 1],
+            d1 = data[i],
+            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+
+        focus.attr("transform", "translate(" + x(d0.year) + ",0)"); // everything in the focus group (ie. the line) along to follow the mouse
 
 
         tooltip.style("left", (d3.event.pageX) + "px")		
-        .style("top", (d3.event.pageY - 28) + "px");
-        //.style('fill', function(d) { return z(d.name); });
+        .style("top", (d3.event.pageY - 28) + "px")
+        .html("<p>" + d.year + "</p>");
+
     }
 
 });
