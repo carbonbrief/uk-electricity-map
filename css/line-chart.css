@@ -31,7 +31,14 @@
 }
 
 .hover-line {
-  stroke: #f3f3f3;
-  stroke-width: 2px;
-  stroke-dasharray: 3,3;
+  stroke: #c5c5c5;
+  stroke-width: 1px;
+  stroke-dasharray: 4,4;
+}
+
+#tooltip {
+  position: absolute;
+  background-color:lightgray;
+  padding: 5px;
+  display: none;
 }

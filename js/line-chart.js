@@ -236,16 +236,20 @@ d3.csv("./data/line.csv", function(error, data) {
     // MOUSE EFFECTS 2
 
     var focus = svg.append('g')
-                .attr('class', 'focus')
-                .style('display', 'none');
+    .attr('class', 'focus')
+    .style('display', 'none');
+
+    var tooltip = d3.select('#tooltip');
+
+    // append x position tracking line, originally positioned at 0
 
     focus.append('line')
     .attr('class', 'x-hover-line hover-line')
     .attr('y1' , 0)
     .attr('y2', height);
 
+    // create and overlay to track mouse movements
     svg.append('rect')
-        //.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .attr("class", "overlay")
         .attr("width", width)
         .attr("height", height)
@@ -257,20 +261,22 @@ d3.csv("./data/line.csv", function(error, data) {
 
     function mouseover() {
         focus.style("display", null);
-        d3.selectAll('.points text').style("display", null);
+        tooltip.style("display", "block");
     }
     function mouseout() {
         focus.style("display", "none");
-        d3.selectAll('.points text').style("display", "none");
+        tooltip.style("display", "none");
     }
     function mousemove() {
+
         var i = d3.bisect(timeScales, d3.mouse(this)[0], 1);
         var di = data[i-1];
-        focus.attr("transform", "translate(" + x(di.year) + ",0)");
-        d3.selectAll('.points text')
-        .attr('x', function(d) { return x(di.year) + 15; })
-        .attr('y', function(d) { return y(d.capacity[i-1].total); })
-        .text(function(d) { return d.values[i-1].total; });
+
+        focus.attr("transform", "translate(" + x(di.year) + ",0)"); // everything in the focus group (ie. the line) along to follow the mouse
+
+
+        tooltip.style("left", (d3.event.pageX) + "px")		
+        .style("top", (d3.event.pageY - 28) + "px");
         //.style('fill', function(d) { return z(d.name); });
     }
 
