@@ -91,12 +91,24 @@ body {
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url(https://s3-eu-west-1.amazonaws.com/cbbranding/new+folder/arrow-for-map.png) 96% / 15% no-repeat #323b52;
+    appearance: none;
+    background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 96% / 15% no-repeat #2e364b;
     background-size: 20px 13px;
     border:2px;
+    padding: 4px;
     color: #f3f3f3;
     outline:0px;
     -webkit-box-shadow: 6px 10px 23px 5px rgba(102,102,102,0.2);
     -moz-box-shadow: 6px 10px 23px 5px rgba(102,102,102,0.2);
     box-shadow: 6px 10px 23px 5px rgba(102,102,102,0.2);
+ }
+
+ #selectorType {
+   width: 120px;
+ }
+
+ /* nb tried getting rid of bright blue highlight but seems to be impossible without using something other than <select> or a  plugin */
+
+ #selectorType:hover {
+   background-color: #242a3a;
  }

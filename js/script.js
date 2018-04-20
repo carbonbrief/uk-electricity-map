@@ -7,6 +7,9 @@ var map = new mapboxgl.Map({
     zoom: 5
 });
 
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
+
 map.on('load', function() {
 
     var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
