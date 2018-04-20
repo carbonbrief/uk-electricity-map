@@ -41,4 +41,5 @@
   background-color:lightgray;
   padding: 5px;
   display: none;
+  z-index: 999999;
 }
