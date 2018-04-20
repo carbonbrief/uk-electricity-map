@@ -50,7 +50,7 @@ map.on('load', function() {
           "Other", "#cc9b7a",
           /* other */ '#ccc'
         ],
-        'circle-opacity': 0.8
+        'circle-opacity': 0.75
       },
       'filter': ['all', filterStartYear, filterEndYear, filterType]
     });

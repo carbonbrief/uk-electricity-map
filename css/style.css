@@ -14,13 +14,13 @@ body {
   h1 {
     font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
     font-weight: normal;
-    font-size: 25px;
+    font-size: 28px;
     line-height: 30px;
     color: #ffffff;
   }
   
   h2 {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 20px;
     margin-bottom: 10px;
     color: #c6e7fa;
@@ -33,7 +33,10 @@ body {
   }
 
   .console-text {
-    color: #f3f3f3;
+    color: #e2e2e2;
+    font-family: 'PT Serif';
+    font-style: italic;
+    font-size: 15px;
   }
   
   a {
@@ -51,17 +54,18 @@ body {
   }
 
   .session {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
   .row {
     height: 12px;
     width: 100%;
   }
-  
+
   .colors {
-    background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
+    background: linear-gradient(to right, #ced1cc, #cc9b7a, #ffc83e, #ff8767, #ea545c, #dd54b6, #a45edb, #4e80e5, #43cfef, #00a98e, #A7B734 );
     margin-bottom: 5px;
+    height: 3px;
   }
   
   .label {
