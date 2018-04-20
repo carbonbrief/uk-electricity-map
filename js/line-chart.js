@@ -269,6 +269,8 @@ d3.csv("./data/line.csv", function(error, data) {
     }
     function mousemove(d) {
 
+        yearFormat = d3.timeFormat("%Y");
+
         var i = d3.bisect(timeScales, d3.mouse(this)[0], 1);
         var d0 = data[i-1];
 
@@ -283,7 +285,7 @@ d3.csv("./data/line.csv", function(error, data) {
 
         tooltip.style("left", (d3.event.pageX) + "px")		
         .style("top", (d3.event.pageY - 28) + "px")
-        .html("<p>" + d.year + "</p>");
+        .html("<p>" + yearFormat(d.year) + "</p>");
 
     }
 
