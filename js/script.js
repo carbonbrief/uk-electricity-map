@@ -3,7 +3,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284c
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
-    center: [-2.5, 53.5],
+    center: [-7, 54],
     zoom: 5
 });
 
