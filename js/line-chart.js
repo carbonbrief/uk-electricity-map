@@ -168,26 +168,31 @@ d3.csv("./data/line.csv", function(error, data) {
         .on("mouseout", mouseout)
         .on("mousemove", mousemove);
 
-    var timeScales = data.map(function(d) { return x(d.year); });
+    
 
     function mouseover() {
         focus.style("display", null);
         tooltip.style("display", "block");
     }
+
     function mouseout() {
         focus.style("display", "none");
         tooltip.style("display", "none");
     }
+
+    var timeScales = data.map(function(d) { return x(d.year); });
+
     function mousemove(d) {
 
-        // gets line to follow mouse along discreeet data lines, deleted tooltip as this stopped the  line appearing
+        // gets line to follow mouse along discreeet data lines, deleted tooltip as this stopped the line appearing for 2017
 
         var i = d3.bisect(timeScales, d3.mouse(this)[0], 1),
-            d0 = data[i-1];
+            d0 = data[i-1]
+            d1 = data[i];
 
         focus.attr("transform", "translate(" + x(d0.year) + ",0)"); 
 
-        // yearFormat = d3.timeFormat("%Y");
+        yearFormat = d3.timeFormat("%Y");
 
         // var x0 = x.invert(d3.mouse(this)[0]),
         //     //i = bisectDate(data, x0, 1),
@@ -199,7 +204,7 @@ d3.csv("./data/line.csv", function(error, data) {
 
         tooltip.style("left", (d3.event.pageX) + "px")		
         .style("top", (d3.event.pageY - 28) + "px")
-        .html("<p>" + yearFormat(d.year) + "</p>");
+        .html("<p>" + yearFormat(d0.year) + "</p>");
 
     }
 
