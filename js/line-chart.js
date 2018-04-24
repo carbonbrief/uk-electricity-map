@@ -143,96 +143,6 @@ d3.csv("./data/line.csv", function(error, data) {
       .exit()
       .remove();
 
-    // MOUSE EFFECTS 1
-
-    // var mouseG = svg.append("g")
-    // .attr("class", "mouse-over-effects");
-
-    // mouseG.append("path") // this is the black vertical line to follow mouse
-    // .attr("class", "mouse-line")
-    // .style("stroke", "gray")
-    // .style("stroke-width", "1px")
-    // .style("opacity", "0");
-
-    // var lines = document.getElementsByClassName('line');
-
-    // var mousePerLine = mouseG.selectAll('.mouse-per-line')
-    // .data(powerplants)
-    // .enter()
-    // .append("g")
-    // .attr("class", "mouse-per-line");
-
-    // mousePerLine.append("circle")
-    //     .attr("r", 5)
-    //     .style("stroke", function(d) {
-    //     return color(d.name);
-    //     })
-    //     .style("fill", "none")
-    //     .style("stroke-width", "1px")
-    //     .style("opacity", "0");
-
-    // mousePerLine.append("text")
-    //     .attr("transform", "translate(10,3)");
-
-    // mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
-    //     .attr('width', width) // can't catch mouse events on a g element
-    //     .attr('height', height)
-    //     .attr('fill', 'none')
-    //     .attr('pointer-events', 'all')
-    //     .on('mouseout', function() { // on mouse out hide line, circles and text
-    //     d3.select(".mouse-line")
-    //         .style("opacity", "0");
-    //     d3.selectAll(".mouse-per-line circle")
-    //         .style("opacity", "0");
-    //     d3.selectAll(".mouse-per-line text")
-    //         .style("opacity", "0");
-    //     })
-    //     .on('mouseover', function() { // on mouse in show line, circles and text
-    //     d3.select(".mouse-line")
-    //         .style("opacity", "1");
-    //     d3.selectAll(".mouse-per-line circle")
-    //         .style("opacity", "1");
-    //     d3.selectAll(".mouse-per-line text")
-    //         .style("opacity", "1");
-    //     })
-    //     .on('mousemove', function() { // mouse moving over canvas
-
-    // var mouse = d3.mouse(this);
-
-    // d3.select(".mouse-line")
-    //     .attr("d", function() {
-    //     var d = "M" + mouse[0] + "," + height;
-    //     d += " " + mouse[0] + "," + 0;
-    //     return d;
-    //     });
-
-    // d3.selectAll(".mouse-per-line")
-    //     .attr("transform", function(d, i) {
-    //     //console.log(width/mouse[0])
-    //     var xDate = x.invert(mouse[0]);
-        
-    //     var beginning = 0,
-    //         end = lines[i].getTotalLength(),
-    //         target = null;
-
-    //     while (true){
-    //         target = Math.floor((beginning + end) / 2);
-    //         pos = lines[i].getPointAtLength(target);
-    //         if ((target === end || target === beginning) && pos.x !== mouse[0]) {
-    //             break;
-    //         }
-    //         if (pos.x > mouse[0])      end = target;
-    //         else if (pos.x < mouse[0]) beginning = target;
-    //         else break; //position found
-    //     }
-        
-    //     d3.select(this).select('text')
-    //         .text(y.invert(pos.y).toFixed(0));
-            
-    //     return "translate(" + mouse[0] + "," + pos.y +")";
-    //     });
-    // });
-
     // MOUSE EFFECTS 2
 
     var focus = svg.append('g')
@@ -249,6 +159,7 @@ d3.csv("./data/line.csv", function(error, data) {
     .attr('y2', height);
 
     // create and overlay to track mouse movements
+
     svg.append('rect')
         .attr("class", "overlay")
         .attr("width", width)
@@ -269,19 +180,22 @@ d3.csv("./data/line.csv", function(error, data) {
     }
     function mousemove(d) {
 
-        yearFormat = d3.timeFormat("%Y");
+        // gets line to follow mouse along discreeet data lines, deleted tooltip as this stopped the  line appearing
 
-        var i = d3.bisect(timeScales, d3.mouse(this)[0], 1);
-        var d0 = data[i-1];
+        var i = d3.bisect(timeScales, d3.mouse(this)[0], 1),
+            d0 = data[i-1];
 
-        var x0 = x.invert(d3.mouse(this)[0]),
-            //i = bisectDate(data, x0, 1),
-            d0 = data[i - 1],
-            d1 = data[i],
-            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+        focus.attr("transform", "translate(" + x(d0.year) + ",0)"); 
 
-        focus.attr("transform", "translate(" + x(d0.year) + ",0)"); // everything in the focus group (ie. the line) along to follow the mouse
+        // yearFormat = d3.timeFormat("%Y");
 
+        // var x0 = x.invert(d3.mouse(this)[0]),
+        //     //i = bisectDate(data, x0, 1),
+        //     d0 = data[i-1],
+        //     d1 = data[i],
+        //     d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+
+        //var d2 = data[i+1];
 
         tooltip.style("left", (d3.event.pageX) + "px")		
         .style("top", (d3.event.pageY - 28) + "px")
@@ -300,9 +214,9 @@ console.log(filterData);
 
 drawChart(filterData); // draw initial chart
 
+// LINK CHART TO DROPDOWN
+
 function reDraw(type){
-	
-    //filterData[type]==filterData[type];
     
     if (type == "All") {
         filterData = {"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};
