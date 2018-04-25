@@ -37,8 +37,9 @@ var div = d3.select("body").append("div")
 var yearFormat = d3.timeFormat("%Y");
 
 var decimalFormat = d3.format(".1f");
-      
-var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};//powerplants to be shown
+
+// powerplants to be shown
+var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};
 
 function drawChart(filterData){
 
@@ -62,7 +63,7 @@ function drawChart(filterData){
             };
         });
     
-        //extend x domain of line chart so that bars align
+        // extend x domain of line chart so that bars align
 
         x.domain([
 
@@ -177,7 +178,7 @@ function drawChart(filterData){
             .duration(100)
             .style("opacity", .9);
             div.html( "<h3>" + this.parentNode.__data__.name + "</h3><p>Year: <b>"+ yearFormat(d.year) + "</b></p><p> Capacity: <b>" + decimalFormat(d.capacity) + "</b></p>")
-            .style("left", (d3.event.pageX + 10) + "px")
+            .style("left", (d3.event.pageX + 20) + "px")
             .style("top", (d3.event.pageY - 50) + "px");
             })
         .on("mouseout", function(d) {
