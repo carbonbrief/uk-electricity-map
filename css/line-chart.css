@@ -37,8 +37,7 @@
 
 .axis text{
   fill: #e9e9e9;
-}  
-  
+}    
 
 .overlay {
   fill: none;
@@ -55,9 +54,10 @@
 div.tooltip {
   position: absolute;
   max-width: 150px;
-  padding: 5px;
-  font-size: 12px;
-  background: #f3f3f3;
+  padding: 7px;
+  font-size: 12.5px;
+  background: #242a3a;
+  color: #f3f3f3;
   border: 0px;
   border-radius: 4px;
   pointer-events: none;
@@ -65,7 +65,7 @@ div.tooltip {
 }
 
 div.tooltip p {
-  margin-top: 2px;
+  margin-top: 3px;
   margin-bottom: 0px;
 }
 

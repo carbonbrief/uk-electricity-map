@@ -177,7 +177,7 @@ function drawChart(filterData){
             div.transition()
             .duration(100)
             .style("opacity", .9);
-            div.html( "<h3>" + this.parentNode.__data__.name + "</h3><p>Year: <b>"+ yearFormat(d.year) + "</b></p><p> Capacity: <b>" + decimalFormat(d.capacity) + "</b></p>")
+            div.html( "<h3 style= color:" + color(this.parentNode.__data__.name) + ";>" + this.parentNode.__data__.name + "</h3><p>Year: <b>"+ yearFormat(d.year) + "</b></p><p> Capacity: <b>" + decimalFormat(d.capacity) + "</b></p>")
             .style("left", (d3.event.pageX + 20) + "px")
             .style("top", (d3.event.pageY - 50) + "px");
             })
