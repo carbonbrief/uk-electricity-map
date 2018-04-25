@@ -30,197 +30,219 @@ var svg = d3.select("#line-chart").append("svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  
+var yearFormat = d3.timeFormat("%Y");
       
 var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};//powerplants to be shown
 
 function drawChart(filterData){
-d3.csv("./data/line.csv", function(error, data) {
-  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
 
-  data.forEach(function(d) {
-    d.year = parseDate(d.year);
-  });
+    d3.csv("./data/line.csv", function(error, data) {
 
-  var powerplants = color.domain().map(function(name) {
-    return {
-      name: name,
-      values: data.map(function(d) {
-        return {
-            year: d.year, 
-            capacity: +d[name]
-        };
-      })
-    };
-  });
-  
-  //extend x domain of line chart so that bars align
+        color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
 
-  x.domain([
-    parseDate2(20060701), parseDate2(20170701)
-  ]);
+        data.forEach(function(d) {
+            d.year = parseDate(d.year);
+        });
 
-  y.domain([
-    d3.min(powerplants, function(c) { return d3.min(c.values, function(v) { return v.capacity; }); }),
-    d3.max(powerplants, function(c) { return d3.max(c.values, function(v) { return v.capacity; }); })
-  ]);
-  svg.selectAll("*").remove();
-
-
-
-    // LINK BEHAVIOUR TO DROPDOWN
-
-    d3.select("#selectorType").on("change", selectType)
-
-    function selectType() {
-        var type = this.options[this.selectedIndex].value
-
-        reDraw(type);
-
-        console.log(type);
-    }
-
-
-    // ADD AXES
-    	
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-    // ADD AXIS LABEL
-
-    svg.append("text")
-        .attr("class", "axis label")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 8)
-      .attr("dy", ".5em")
-      .style("text-anchor", "end")
-      .text("Capacity (MW)");
-   
-  var boo=powerplants.filter(function(d){return filterData[d.name]==true;});
-  console.log("filter");
-  console.log(boo);
-  
-  var plant = svg.selectAll(".plant")
-      .data(powerplants.filter(function(d){return filterData[d.name]==true;})) //.filter(function(d){return filterData[d.name]==true;})
-      .enter().append("g");
-    //  .attr("class", "plant");
-      
-     console.log(plant);  
-      svg.selectAll(".plant")
-      .data(powerplants.filter(function(d){return filterData[d.name]==true;}))//.filter(function(d){return filterData[d.name]==true;})
-      .append("g")
-      .attr("class", "plant");
-      
-      svg.selectAll(".plant")
-      .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
-      .exit()
-      .remove();
-  
-  plant.append("path")
-      .attr("class", "line")
-      .attr("d", function(d) { return line(d.values); })
-      .style("stroke", function(d) { return color(d.name); });
-
-    // ADD LINE LABELS
-
-  plant.append("text")
-      .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-      .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.capacity) + ")"; })
-      .attr("x", 20)
-      .attr("dy", ".35em")
-      .attr("class", "plant label")
-      .text(function(d) { return d.name; })
-      .style("fill", function(d) { return color(d.name); });
-
-    svg.selectAll(".plant")
-      .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
-      .exit()
-      .remove();
-
-    // MOUSE EFFECTS 2
-
-    var focus = svg.append('g')
-    .attr('class', 'focus')
-    .style('display', 'none');
-
-    var tooltip = d3.select('#tooltip');
-
-    // append x position tracking line, originally positioned at 0
-
-    focus.append('line')
-    .attr('class', 'x-hover-line hover-line')
-    .attr('y1' , 0)
-    .attr('y2', height);
-
-    // create and overlay to track mouse movements
-
-    svg.append('rect')
-        .attr("class", "overlay")
-        .attr("width", width)
-        .attr("height", height)
-        .on("mouseover", mouseover)
-        .on("mouseout", mouseout)
-        .on("mousemove", mousemove);
-
+        var powerplants = color.domain().map(function(name) {
+            return {
+            name: name,
+            values: data.map(function(d) {
+                return {
+                    year: d.year, 
+                    capacity: +d[name]
+                };
+            })
+            };
+        });
     
+        //extend x domain of line chart so that bars align
 
-    function mouseover() {
-        focus.style("display", null);
-        tooltip.style("display", "block");
-    }
+        x.domain([
 
-    function mouseout() {
-        focus.style("display", "none");
-        tooltip.style("display", "none");
-    }
+            parseDate2(20060701), parseDate2(20170701)
 
-    var timeScales = data.map(function(d) { return x(d.year); });
+        ]);
 
-    //var capacityScales = data.map(function(d) { return y(d.capacity); });
+        y.domain([
 
-    function mousemove(d) {
+            d3.min(powerplants, function(c) { return d3.min(c.values, function(v) { return v.capacity; }); }),
+            d3.max(powerplants, function(c) { return d3.max(c.values, function(v) { return v.capacity; }); })
 
-        // gets line to follow mouse along discreeet data lines, deleted tooltip as this stopped the line appearing for 2017
+        ]);
 
-        var i = d3.bisect(timeScales, d3.mouse(this)[0], 1),
-            d0 = data[i-1],
-            d1 = data[i];
+        svg.selectAll("*").remove();
 
-        // var j = d3.bisect(capacityScales, d3.mouse(this)[0], 1),
-        //     e0 = data[i-1]
-        //     e1 = data[i];
+
+
+        // LINK BEHAVIOUR TO DROPDOWN
+
+        d3.select("#selectorType").on("change", selectType)
+
+        function selectType() {
+            var type = this.options[this.selectedIndex].value
+
+            reDraw(type);
+
+            console.log(type);
+        }
+
+
+        // ADD AXES
+            
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis);
+
+        // ADD AXIS LABEL
+
+        svg.append("text")
+            .attr("class", "axis label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 8)
+            .attr("dy", ".5em")
+            .style("text-anchor", "end")
+            .text("Capacity (MW)");
+    
+    var boo=powerplants.filter(function(d){return filterData[d.name]==true;});
+    console.log("filter");
+    console.log(boo);
+    
+    var plant = svg.selectAll(".plant")
+        .data(powerplants.filter(function(d){return filterData[d.name]==true;})) //.filter(function(d){return filterData[d.name]==true;})
+        .enter().append("g");
+        //  .attr("class", "plant");
+        
+        console.log(plant);  
+        svg.selectAll(".plant")
+        .data(powerplants.filter(function(d){return filterData[d.name]==true;}))//.filter(function(d){return filterData[d.name]==true;})
+        .append("g")
+        .attr("class", "plant");
+        
+        svg.selectAll(".plant")
+        .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
+        .exit()
+        .remove();
+
+        // ADD LINES
+    
+        plant.append("path")
+        .attr("class", "line")
+        .attr("d", function(d) { return line(d.values); })
+        .style("stroke", function(d) { return color(d.name); });
+
+        // ADD DOTS WITH TOOLTIP
+
+        plant.selectAll("circle")
+        .data(function(d){return d.values})
+        .enter()
+        .append("circle")
+        .attr("r", 3)
+        .attr("cx", function(d) { return x(d.year); })
+        .attr("cy", function(d) { return y(d.capacity); })
+        .style("fill", function(d,i,j) { return color(powerplants[j].name); });
+
+        // svg.selectAll("dot")
+        // .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
+        // .enter().append("circle")
+        // .attr("cx", function(d) { return x(d.year); })
+        // .attr("cy", function(d) { return y(d.capacity); })
+        // .style("fill", function(d) { return color(d.name); })
+        // .on("mouseover", function(d) {
+        //     div.transition()
+        //     .duration(200)
+        //     .style("opacity", .9);
+        //     div.html(yearFormat(d.year) + "<br/>" + d.capacity)
+        //     .style("left", (d3.event.pageX) + "px")
+        //     .style("top", (d3.event.pageY - 28) + "px");
+        //     })
+        // .on("mouseout", function(d) {
+        //     div.transition()
+        //     .duration(500)
+        //     .style("opacity", 0);
+        //     });
+
+        // ADD LINE LABELS
+
+        plant.append("text")
+            .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
+            .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.capacity) + ")"; })
+            .attr("x", 20)
+            .attr("dy", ".35em")
+            .attr("class", "plant label")
+            .text(function(d) { return d.name; })
+            .style("fill", function(d) { return color(d.name); });
+
+        svg.selectAll(".plant")
+        .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
+        .exit()
+        .remove();
+
+        // MOUSE EFFECTS 2
+
+        var focus = svg.append('g')
+        .attr('class', 'focus')
+        .style('display', 'none');
+
+        var tooltip = d3.select('#tooltip');
+
+        // append x position tracking line, originally positioned at 0
+
+        focus.append('line')
+        .attr('class', 'x-hover-line hover-line')
+        .attr('y1' , 0)
+        .attr('y2', height);
+
+        // create and overlay to track mouse movements
+
+        svg.append('rect')
+            .attr("class", "overlay")
+            .attr("width", width)
+            .attr("height", height)
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout)
+            .on("mousemove", mousemove);
 
         
 
-        focus.attr("transform", "translate(" + x(d0.year) + ",0)"); 
+        function mouseover() {
+            focus.style("display", null);
+            tooltip.style("display", "block");
+        }
 
-        yearFormat = d3.timeFormat("%Y");
+        function mouseout() {
+            focus.style("display", "none");
+            tooltip.style("display", "none");
+        }
 
-        var y0 = y.invert(d3.mouse(this)[0]), //gets current y value of mouse
-            j = d3.bisect(data, y0, 1),
-            e0 = data[j-1],
-            e1 = data[j];
-            //e = y0 - e0.capacity > e1.capacity - y0 ? e1 : e0;
+        var timeScales = data.map(function(d) { return x(d.year); });
 
-        console.log(y0);
-        console.log(j);
-        console.log(e0);
+        //var capacityScales = data.map(function(d) { return y(d.capacity); });
 
-        //var d2 = data[i+1];
+        function mousemove(d) {
 
-        tooltip.style("left", (d3.event.pageX) + "px")		
-        .style("top", (d3.event.pageY - 28) + "px")
-        .html("<p>" + yearFormat(d0.year) + "</p><p>" + e0.values + '</p>');
+            // gets line to follow mouse along discreeet data lines, deleted tooltip as this stopped the line appearing for 2017
 
-    }
+            var i = d3.bisect(timeScales, d3.mouse(this)[0], 1),
+                d0 = data[i-1],
+                d1 = data[i];
 
-});
+            focus.attr("transform", "translate(" + x(d0.year) + ",0)"); 
+
+            
+
+            // tooltip.style("left", (d3.event.pageX) + "px")		
+            // .style("top", (d3.event.pageY - 28) + "px")
+            // .html("<p>" + yearFormat(d0.year) + "</p>");
+
+        }
+
+    });
 
 
 }
