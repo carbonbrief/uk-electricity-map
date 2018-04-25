@@ -30,6 +30,10 @@ var svg = d3.select("#line-chart").append("svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 var yearFormat = d3.timeFormat("%Y");
       
 var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};//powerplants to be shown
@@ -108,17 +112,30 @@ function drawChart(filterData){
             .attr("dy", ".5em")
             .style("text-anchor", "end")
             .text("Capacity (MW)");
+
+        // ADD UNDERLAY TO TRACK MOUSE MOVEMENTS FOR CROSSHAIR
+
+        svg.append('rect')
+        .attr("class", "overlay")
+        .attr("width", width)
+        .attr("height", height)
+        .on("mouseover", mouseover)
+        .on("mouseout", mouseout)
+        .on("mousemove", mousemove)
+
+        // ADD LINES
     
-    var boo=powerplants.filter(function(d){return filterData[d.name]==true;});
-    console.log("filter");
-    console.log(boo);
+        var boo=powerplants.filter(function(d){return filterData[d.name]==true;});
+        console.log("filter");
+        console.log(boo);
     
-    var plant = svg.selectAll(".plant")
+        var plant = svg.selectAll(".plant")
         .data(powerplants.filter(function(d){return filterData[d.name]==true;})) //.filter(function(d){return filterData[d.name]==true;})
         .enter().append("g");
         //  .attr("class", "plant");
         
-        console.log(plant);  
+        console.log(plant);
+
         svg.selectAll(".plant")
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))//.filter(function(d){return filterData[d.name]==true;})
         .append("g")
@@ -128,13 +145,11 @@ function drawChart(filterData){
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
         .exit()
         .remove();
-
-        // ADD LINES
     
         plant.append("path")
         .attr("class", "line")
         .attr("d", function(d) { return line(d.values); })
-        .style("stroke", function(d) { return color(d.name); });
+        .style("stroke", function(d) { return color(d.name); });;
 
         // ADD DOTS WITH TOOLTIP
 
@@ -145,7 +160,22 @@ function drawChart(filterData){
         .attr("r", 3)
         .attr("cx", function(d) { return x(d.year); })
         .attr("cy", function(d) { return y(d.capacity); })
-        .style("fill", function(d,i,j) { return color(powerplants[j].name); });
+        // in order to have a the circle to be the same color as the line, you need to access the data of the parentNode
+        .attr("fill", function(d){return color(this.parentNode.__data__.name)})
+        .attr("opacity", 0.2)
+        .on("mouseover", function(d) {
+            div.transition()
+            .duration(100)
+            .style("opacity", .9);
+            div.html(yearFormat(d.year) + "<br/>" + d.capacity)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()
+            .duration(500)
+            .style("opacity", 0);
+            });
 
         // svg.selectAll("dot")
         // .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
@@ -183,7 +213,7 @@ function drawChart(filterData){
         .exit()
         .remove();
 
-        // MOUSE EFFECTS 2
+        // ADD CROSSHAIR
 
         var focus = svg.append('g')
         .attr('class', 'focus')
@@ -198,18 +228,6 @@ function drawChart(filterData){
         .attr('y1' , 0)
         .attr('y2', height);
 
-        // create and overlay to track mouse movements
-
-        svg.append('rect')
-            .attr("class", "overlay")
-            .attr("width", width)
-            .attr("height", height)
-            .on("mouseover", mouseover)
-            .on("mouseout", mouseout)
-            .on("mousemove", mousemove);
-
-        
-
         function mouseover() {
             focus.style("display", null);
             tooltip.style("display", "block");
@@ -222,8 +240,6 @@ function drawChart(filterData){
 
         var timeScales = data.map(function(d) { return x(d.year); });
 
-        //var capacityScales = data.map(function(d) { return y(d.capacity); });
-
         function mousemove(d) {
 
             // gets line to follow mouse along discreeet data lines, deleted tooltip as this stopped the line appearing for 2017
@@ -233,12 +249,6 @@ function drawChart(filterData){
                 d1 = data[i];
 
             focus.attr("transform", "translate(" + x(d0.year) + ",0)"); 
-
-            
-
-            // tooltip.style("left", (d3.event.pageX) + "px")		
-            // .style("top", (d3.event.pageY - 28) + "px")
-            // .html("<p>" + yearFormat(d0.year) + "</p>");
 
         }
 

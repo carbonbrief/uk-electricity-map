@@ -36,23 +36,23 @@
   stroke-dasharray: 4,4;
 }
 
-#tooltip {
+/* #tooltip {
   position: absolute;
   background-color:lightgray;
   padding: 5px;
   display: none;
   z-index: 999999;
-}
+} */
 
 div.tooltip {
   position: absolute;
   text-align: center;
-  width: 60px;
-  height: 28px;
+  max-width: 100px;
   padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
+  font: 10px;
+  background: #f3f3f3;
   border: 0px;
-  border-radius: 8px;
+  border-radius: 4px;
   pointer-events: none;
+  z-index: 999999;
 }
