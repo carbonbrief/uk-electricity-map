@@ -182,29 +182,41 @@ d3.csv("./data/line.csv", function(error, data) {
 
     var timeScales = data.map(function(d) { return x(d.year); });
 
+    //var capacityScales = data.map(function(d) { return y(d.capacity); });
+
     function mousemove(d) {
 
         // gets line to follow mouse along discreeet data lines, deleted tooltip as this stopped the line appearing for 2017
 
         var i = d3.bisect(timeScales, d3.mouse(this)[0], 1),
-            d0 = data[i-1]
+            d0 = data[i-1],
             d1 = data[i];
+
+        // var j = d3.bisect(capacityScales, d3.mouse(this)[0], 1),
+        //     e0 = data[i-1]
+        //     e1 = data[i];
+
+        
 
         focus.attr("transform", "translate(" + x(d0.year) + ",0)"); 
 
         yearFormat = d3.timeFormat("%Y");
 
-        // var x0 = x.invert(d3.mouse(this)[0]),
-        //     //i = bisectDate(data, x0, 1),
-        //     d0 = data[i-1],
-        //     d1 = data[i],
-        //     d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+        var y0 = y.invert(d3.mouse(this)[0]), //gets current y value of mouse
+            j = d3.bisect(data, y0, 1),
+            e0 = data[j-1],
+            e1 = data[j];
+            //e = y0 - e0.capacity > e1.capacity - y0 ? e1 : e0;
+
+        console.log(y0);
+        console.log(j);
+        console.log(e0);
 
         //var d2 = data[i+1];
 
         tooltip.style("left", (d3.event.pageX) + "px")		
         .style("top", (d3.event.pageY - 28) + "px")
-        .html("<p>" + yearFormat(d0.year) + "</p>");
+        .html("<p>" + yearFormat(d0.year) + "</p><p>" + e0.values + '</p>');
 
     }
 
