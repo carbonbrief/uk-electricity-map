@@ -35,6 +35,8 @@ var div = d3.select("body").append("div")
     .style("opacity", 0);
 
 var yearFormat = d3.timeFormat("%Y");
+
+var decimalFormat = d3.format(".1f");
       
 var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};//powerplants to be shown
 
@@ -157,45 +159,38 @@ function drawChart(filterData){
         .data(function(d){return d.values})
         .enter()
         .append("circle")
-        .attr("r", 3)
+        .attr("r", 4)
         .attr("cx", function(d) { return x(d.year); })
         .attr("cy", function(d) { return y(d.capacity); })
         // in order to have a the circle to be the same color as the line, you need to access the data of the parentNode
         .attr("fill", function(d){return color(this.parentNode.__data__.name)})
-        .attr("opacity", 0.2)
+        .attr("opacity", 0)
         .on("mouseover", function(d) {
+            //show circle
+            d3.select(this)
+            .transition()
+            .duration(200)
+            .style("opacity", 0.5)
+            .attr("r", 5);
+            // show tooltip
             div.transition()
             .duration(100)
             .style("opacity", .9);
-            div.html(yearFormat(d.year) + "<br/>" + d.capacity)
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY - 28) + "px");
+            div.html( "<h3>" + this.parentNode.__data__.name + "</h3><p>Year: <b>"+ yearFormat(d.year) + "</b></p><p> Capacity: <b>" + decimalFormat(d.capacity) + "</b></p>")
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY - 50) + "px");
             })
         .on("mouseout", function(d) {
+            d3.select(this)
+            .transition()
+            .duration(200)
+            .style("opacity", 0)
+            .attr("r", 4);
+            // hide tooltip
             div.transition()
-            .duration(500)
+            .duration(200)
             .style("opacity", 0);
-            });
-
-        // svg.selectAll("dot")
-        // .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
-        // .enter().append("circle")
-        // .attr("cx", function(d) { return x(d.year); })
-        // .attr("cy", function(d) { return y(d.capacity); })
-        // .style("fill", function(d) { return color(d.name); })
-        // .on("mouseover", function(d) {
-        //     div.transition()
-        //     .duration(200)
-        //     .style("opacity", .9);
-        //     div.html(yearFormat(d.year) + "<br/>" + d.capacity)
-        //     .style("left", (d3.event.pageX) + "px")
-        //     .style("top", (d3.event.pageY - 28) + "px");
-        //     })
-        // .on("mouseout", function(d) {
-        //     div.transition()
-        //     .duration(500)
-        //     .style("opacity", 0);
-        //     });
+        });
 
         // ADD LINE LABELS
 
