@@ -50,7 +50,7 @@ map.on('load', function() {
           "Other", "#cc9b7a",
           /* other */ '#ccc'
         ],
-        'circle-opacity': 0.75
+        'circle-opacity': 0.77
       },
       'filter': ['all', filterStartYear, filterEndYear, filterType]
     });
@@ -135,32 +135,8 @@ map.on('load', function() {
     var name = e.features[0].properties.name;
     var capacity = e.features[0].properties.capacity;
     var fuelDetail = e.features[0].properties.fuelDetail;
+    // match plant type to the color in colorsArray, so that the title of the tooltip changes color
     var plantColor = colorsArray[e.features[0].properties.type]; 
-
-
-    // var plantColour = function () {
-    //   if (e.features[0].properties.type = "Coal") {
-    //     return "#ced1cc";
-    //   } else if (e.features[0].properties.type = "Gas") {
-    //     return "#4e80e5";
-    //   } else if (e.features[0].properties.type = "Solar") {
-    //     return "#ffc83e";
-    //   } else if (e.features[0].properties.type = "Nuclear") {
-    //     return "#dd54b6";
-    //   } else if (e.features[0].properties.type = "Oil") {
-    //     return "#a45edb";
-    //   } else if (e.features[0].properties.type = "Hydro") {
-    //     return "#43cfef";
-    //   } else if (e.features[0].properties.type = "Wind") {
-    //     return "#00a98e";
-    //   } else if (e.features[0].properties.type = "Biomass") {
-    //     return "#A7B734";
-    //   } else if (e.features[0].properties.type = "Waste") {
-    //     return "#ea545c";
-    //   } else if (e.features[0].properties.type = "Other") {
-    //     return "#cc9b7a";
-    //   }
-    // }
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -172,7 +148,7 @@ map.on('load', function() {
     // Populate the popup and set its coordinates
     // based on the feature found.
     popup.setLngLat(coordinates)
-        .setHTML('<h3 style = "color: ' + plantColor + ';">' + name + '</h3><p>' + capacity + ' MW</p><p>' + fuelDetail + '</p>')
+        .setHTML('<h3 style = "color: ' + plantColor + ';">' + name + '</h3><p>Capacity: <b>' + capacity + ' MW</b></p><p>Type: <b>' + fuelDetail + '</b></p>')
         .addTo(map);
   });
 
@@ -190,3 +166,28 @@ $(document).ready(function () {
       $(this).val($(this).find('option[selected]').val());
   });
 })
+
+// get slider to cycle through options once the page has loaded
+
+window.onload = function () {
+
+}
+
+$(document).ready(function(){
+
+  var i = 1;  //  set your counter to 1
+  var year = 2007
+
+  function myLoop () {           //  create a loop function
+    setTimeout(function () {    //  call a 3s setTimeout when the loop is called
+        $("#slider").val(year + i);          //  your code here
+        i++;                     //  increment the counter
+        if (i < 11) {            //  if the counter < 10, call the loop function
+          myLoop();             //  ..  again which will trigger another 
+        }                        //  ..  setTimeout()
+    }, 500)
+  }
+
+  myLoop();   
+
+});
