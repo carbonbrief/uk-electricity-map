@@ -12,8 +12,8 @@ map.addControl(new mapboxgl.NavigationControl());
 
 map.on('load', function() {
 
-    var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
-    var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2017];
+    var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2007];
+    var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2007];
     var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 
     map.addLayer({
@@ -173,21 +173,30 @@ window.onload = function () {
 
 }
 
-$(document).ready(function(){
+setTimeout(function(){
 
   var i = 1;  //  set your counter to 1
-  var year = 2007
+  var year = 2007;
 
   function myLoop () {           //  create a loop function
     setTimeout(function () {    //  call a 3s setTimeout when the loop is called
-        $("#slider").val(year + i);          //  your code here
+        // update slider
+        $("#slider").attr('value', (year));        
+        // update text in the UI
+        document.getElementById('active-hour').innerText = year;
+
+        filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+        filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
+        map.setFilter('powerplants', ['all', filterStartYear, filterEndYear]);
+
         i++;                     //  increment the counter
+        year = 2007 + i;
         if (i < 11) {            //  if the counter < 10, call the loop function
           myLoop();             //  ..  again which will trigger another 
         }                        //  ..  setTimeout()
-    }, 500)
+    }, 150)
   }
 
   myLoop();   
 
-});
+}, 1200);
