@@ -94,7 +94,7 @@ map.on('load', function() {
         // different strategy to the popup in the script.js since it's a line
 
         popup.setLngLat(e.lngLat)
-        .setHTML('<h3>' + name + '</h3>')
+        .setHTML('<h3 style="color: #ff8767;">' + name + '</h3>')
         .addTo(map);
 
         //console.log(name);
@@ -117,7 +117,7 @@ map.on('load', function() {
         // different strategy to the popup in the script.js since it's a line
 
         popup.setLngLat(e.lngLat)
-        .setHTML('<h3>' + name + '</h3><p>' + interconnector + '</p>')
+        .setHTML('<h3 style="color: #ff8767;">' + name + '</h3><p>' + interconnector + '</p>')
         .addTo(map);
 
         //console.log(name);

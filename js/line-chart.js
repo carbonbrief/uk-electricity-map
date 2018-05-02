@@ -195,19 +195,19 @@ function drawChart(filterData){
 
         // ADD LINE LABELS
 
-        plant.append("text")
-            .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-            .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.capacity) + ")"; })
-            .attr("x", 20)
-            .attr("dy", ".35em")
-            .attr("class", "plant label")
-            .text(function(d) { return d.name; })
-            .style("fill", function(d) { return color(d.name); });
+        // plant.append("text")
+        //     .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
+        //     .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.capacity) + ")"; })
+        //     .attr("x", 20)
+        //     .attr("dy", ".35em")
+        //     .attr("class", "plant label")
+        //     .text(function(d) { return d.name; })
+        //     .style("fill", function(d) { return color(d.name); });
 
-        svg.selectAll(".plant")
-        .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
-        .exit()
-        .remove();
+        // svg.selectAll(".plant")
+        // .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
+        // .exit()
+        // .remove();
 
         // ADD CROSSHAIR
 

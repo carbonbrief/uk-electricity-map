@@ -118,10 +118,49 @@ map.on('load', function() {
     // Change the cursor style as a UI indicator.
     map.getCanvas().style.cursor = 'pointer';
 
+    var colorsArray = {
+      "Coal": "#ced1cc",
+      "Gas": "#4e80e5",
+      "Solar": "#ffc83e",
+      "Nuclear": "#dd54b6",
+      "Oil": "#a45edb",
+      "Hydro": "#43cfef",
+      "Wind": "#00a98e",
+      "Biomass": "#A7B734",
+      "Waste": "#ea545c",
+      "Other": "#cc9b7a"
+    }
+
     var coordinates = e.features[0].geometry.coordinates.slice();
     var name = e.features[0].properties.name;
     var capacity = e.features[0].properties.capacity;
     var fuelDetail = e.features[0].properties.fuelDetail;
+    var plantColor = colorsArray[e.features[0].properties.type]; 
+
+
+    // var plantColour = function () {
+    //   if (e.features[0].properties.type = "Coal") {
+    //     return "#ced1cc";
+    //   } else if (e.features[0].properties.type = "Gas") {
+    //     return "#4e80e5";
+    //   } else if (e.features[0].properties.type = "Solar") {
+    //     return "#ffc83e";
+    //   } else if (e.features[0].properties.type = "Nuclear") {
+    //     return "#dd54b6";
+    //   } else if (e.features[0].properties.type = "Oil") {
+    //     return "#a45edb";
+    //   } else if (e.features[0].properties.type = "Hydro") {
+    //     return "#43cfef";
+    //   } else if (e.features[0].properties.type = "Wind") {
+    //     return "#00a98e";
+    //   } else if (e.features[0].properties.type = "Biomass") {
+    //     return "#A7B734";
+    //   } else if (e.features[0].properties.type = "Waste") {
+    //     return "#ea545c";
+    //   } else if (e.features[0].properties.type = "Other") {
+    //     return "#cc9b7a";
+    //   }
+    // }
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -133,7 +172,7 @@ map.on('load', function() {
     // Populate the popup and set its coordinates
     // based on the feature found.
     popup.setLngLat(coordinates)
-        .setHTML('<h3>' + name + '</h3><p>' + capacity + ' MW</p><p>' + fuelDetail + '</p>')
+        .setHTML('<h3 style = "color: ' + plantColor + ';">' + name + '</h3><p>' + capacity + ' MW</p><p>' + fuelDetail + '</p>')
         .addTo(map);
   });
 
