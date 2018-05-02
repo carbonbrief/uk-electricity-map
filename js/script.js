@@ -177,7 +177,7 @@ setTimeout(function(){
   function myLoop () {           //  create a loop function
     setTimeout(function () {    //  call a 3s setTimeout when the loop is called
         // update slider
-        $("#slider").attr('value', (year));        
+        $("#slider").val(year);        
         // update text in the UI
         document.getElementById('active-hour').innerText = year;
 
