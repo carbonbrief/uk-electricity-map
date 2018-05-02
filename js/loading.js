@@ -86,6 +86,6 @@ if (loading = true) {
 // timed to synchronise with the autoplay of the slider
 
 setTimeout (function() {
-    $('#loading').css('display', 'none');
+    $('#loading').css('visibility', 'hidden');
     loading = false;
 }, 1500);
