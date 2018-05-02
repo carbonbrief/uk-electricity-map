@@ -169,10 +169,6 @@ $(document).ready(function () {
 
 // get slider to cycle through options once the page has loaded
 
-window.onload = function () {
-
-}
-
 setTimeout(function(){
 
   var i = 1;  //  set your counter to 1
@@ -194,9 +190,9 @@ setTimeout(function(){
         if (i < 11) {            //  if the counter < 10, call the loop function
           myLoop();             //  ..  again which will trigger another 
         }                        //  ..  setTimeout()
-    }, 150)
+    }, 100)
   }
 
   myLoop();   
 
-}, 1200);
+}, 1650);
