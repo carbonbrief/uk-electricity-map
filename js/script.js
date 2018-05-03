@@ -195,4 +195,4 @@ setTimeout(function(){
 
   myLoop();   
 
-}, 1650);
+}, 1750);

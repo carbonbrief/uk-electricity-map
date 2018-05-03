@@ -4,7 +4,7 @@ var canvas = document.getElementById('canvas-id');
 var ctx = canvas.getContext('2d');
 var canvasWidth = 100;
 var canvasHeight = 100;
-var loading = true;
+//var loading = true;
 
 ctx.translate(10,10); // to move circle from canvas edges
 
@@ -12,7 +12,7 @@ ctx.save();
 
 function rotate () {
 
-    // Clear the canvas
+        // Clear the canvas
     ctx.restore();
 
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -73,19 +73,15 @@ function rotate () {
     ctx.stroke();
 
     ctx.restore(); // restore clipping region to default
-
 }
 
-if (loading = true) {
-    setInterval(rotate, 20);
-} else {
-    // do nothing
-}
+
+setInterval(rotate, 20);
+
 
 // removing loading mask after a short interval
 // timed to synchronise with the autoplay of the slider
 
 setTimeout (function() {
     $('#loading').css('visibility', 'hidden');
-    loading = false;
-}, 1500);
+}, 1600);

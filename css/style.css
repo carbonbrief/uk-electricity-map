@@ -15,12 +15,12 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* z-index: 999999; */
+  z-index: 999999;
   background-color: rgba(36, 42, 58, 0.86);
 }
 
   #canvas-wrapper {
-    position: absolute;
+    position: relative;
     top: calc(50% - 60px);
     left: calc(50% - 60px);
   }
@@ -77,6 +77,10 @@ body {
   .session {
     margin-bottom: 15px;
   }
+
+  #dropdown {
+    height: 120px;
+  }
   
   .row {
     height: 12px;
@@ -101,15 +105,11 @@ body {
   }
 
   #line-chart {
-    /* width: 550px;
-    height: 300px; */
     position: absolute;
     z-index: 9999;
   }
 
   #bar-chart {
-    /* width: 600px;
-    height: 400px; */
     position: absolute;
   }
 
