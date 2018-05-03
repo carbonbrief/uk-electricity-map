@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 60, bottom: 30, left: 50},
-    width = 450 - margin.left - margin.right,
+var margin = {top: 20, right: 10, bottom: 30, left: 40},
+    width = 454 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
 var x2 = d3.scaleBand()
@@ -68,7 +68,12 @@ function highlightYear() {
         .style("opacity", 0);
 
     svg2.selectAll(".bar")
-        .filter(function(d) { return d.year == thisYear })
+        .filter(function(d) { if (thisYear == 2018) {
+            // highlight jumps two spaces ahead for planned plants
+            return d.year == 2019
+        } else {
+            return d.year == thisYear
+        }})
         .style("opacity", 1);
 
 

@@ -1,4 +1,4 @@
-var margin = {top: 20, right: 60, bottom: 30, left: 50},
+var margin = {top: 20, right: 70, bottom: 30, left: 40},
     width = 450 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
@@ -183,7 +183,7 @@ function drawChart(filterData){
             2015: "2015",
             2016: "2016",
             2017: "2017",
-            2019: "planned"
+            2019: "Planned"
         }
 
         plant.selectAll("circle")

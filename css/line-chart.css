@@ -45,7 +45,7 @@
 .hover-line {
   stroke: #c5c5c5;
   stroke-width: 1px;
-  stroke-dasharray: 4,4;
+  /* stroke-dasharray: 4,4; */
   opacity: 0.3;
 }
 

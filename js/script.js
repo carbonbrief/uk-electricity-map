@@ -186,17 +186,6 @@ $(document).ready(function () {
 
 // INITIAL TRANSITIONS
 
-// function setInitialYear () {
-//   // function so filters to 2007 before setTimeout begins
-//   var year = 2007;
-//   filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
-//   filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
-//   map.setFilter('powerplants', ['all', filterStartYear, filterEndYear]);
-
-// }
-
-// setInitialYear();
-
 // get slider to cycle through options once the page has loaded
 
 setTimeout(function(){
@@ -226,3 +215,11 @@ setTimeout(function(){
   myLoop();   
 
 }, 1500);
+
+// TOGGLE BUTTON
+
+$(".toggle").click(function() {
+  $("#console").toggleClass('console-close console-open');
+  $('.arrow-right-hidden').toggleClass('arrow-right');
+  $('.arrow-left').toggleClass('arrow-left-hidden');
+});
