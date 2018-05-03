@@ -157,6 +157,23 @@ function drawChart(filterData){
 
         // ADD DOTS WITH TOOLTIP
 
+        // array to ensure that "Planned" shows instead of 2018
+
+        var getYear = {
+            2007: "2007",
+            2008: "2008",
+            2009: "2009",
+            2010: "2010",
+            2011: "2011",
+            2012: "2012",
+            2013: "2013",
+            2014: "2014",
+            2015: "2015",
+            2016: "2016",
+            2017: "2017",
+            2018: "planned"
+        }
+
         plant.selectAll("circle")
         .data(function(d){return d.values})
         .enter()
@@ -178,7 +195,11 @@ function drawChart(filterData){
             div.transition()
             .duration(100)
             .style("opacity", .9);
-            div.html( "<h3 style= color:" + color(this.parentNode.__data__.name) + ";>" + this.parentNode.__data__.name + "</h3><p>Year: <b>"+ yearFormat(d.year) + "</b></p><p> Capacity: <b>" + decimalFormat(d.capacity) + "</b></p>")
+            div.html( "<h3 style= color:" + color(this.parentNode.__data__.name) + 
+            ";>" + this.parentNode.__data__.name + 
+            "</h3><p>Year: <b>" + getYear[yearFormat(d.year)] + 
+            "</b></p><p> Capacity: <b>" + decimalFormat(d.capacity) + 
+            "</b></p>")
             .style("left", (d3.event.pageX + 20) + "px")
             .style("top", (d3.event.pageY - 50) + "px");
             })
@@ -193,22 +214,6 @@ function drawChart(filterData){
             .duration(200)
             .style("opacity", 0);
         });
-
-        // ADD LINE LABELS
-
-        // plant.append("text")
-        //     .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-        //     .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.capacity) + ")"; })
-        //     .attr("x", 20)
-        //     .attr("dy", ".35em")
-        //     .attr("class", "plant label")
-        //     .text(function(d) { return d.name; })
-        //     .style("fill", function(d) { return color(d.name); });
-
-        // svg.selectAll(".plant")
-        // .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
-        // .exit()
-        // .remove();
 
         // ADD CROSSHAIR
 
