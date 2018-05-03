@@ -157,11 +157,11 @@ function drawChart(filterData){
             // quite a hacky way of getting the planned section of the chart to be dashed without having to filter data or add new lines
             // split into if/else statement because the lines are different lengths
             if (d.name == "Coal" || d.name == "Gas") {
-                return "425,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3"
+                return "425,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
             } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
-                return "320,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3"
+                return "320,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
             } else {
-                return "325,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3"
+                return "325,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
             }
         });
 
@@ -181,7 +181,7 @@ function drawChart(filterData){
             2015: "2015",
             2016: "2016",
             2017: "2017",
-            2018: "planned"
+            2019: "planned"
         }
 
         plant.selectAll("circle")
