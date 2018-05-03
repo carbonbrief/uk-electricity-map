@@ -12,8 +12,9 @@ var y = d3.scaleLinear()
     .range([height, 0]);
 
 var color = d3.scaleOrdinal()
-    .domain(["Coal", "Nuclear", "Gas", "Other", "Hydro", "Bioenergy", "Wind", "Solar"])
-    .range(["#ced1cc", "#dd54b6", "#4e80e5", "#cc9b7a", "#43cfef", "#A7B734", "#00a98e", "#ffc83e"]);
+    // note that the order needs to be the same as the column headers in the CSV or the colours mess up
+    .domain(["Coal", "Nuclear", "Gas", "Other", "Hydro", "Biomass",  "Waste", "Wind", "Solar" ])
+    .range(["#ced1cc", "#dd54b6", "#4e80e5", "#cc9b7a", "#43cfef", "#A7B734", "#ea545c", "#00a98e", "#ffc83e"]);
 
 var xAxis = d3.axisBottom(x);
 
@@ -39,7 +40,7 @@ var yearFormat = d3.timeFormat("%Y");
 var decimalFormat = d3.format(".1f");
 
 // powerplants to be shown
-var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};
+var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Biomass":true, "Solar": true,  "Wind":true, "Waste":true };
 
 function drawChart(filterData){
 
@@ -264,19 +265,17 @@ drawChart(filterData); // draw initial chart
 function reDraw(type){
     
     if (type == "All") {
-        filterData = {"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Bioenergy":true, "Wind":true, "Solar":true};
+        filterData = {"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Biomass":true, "Wind":true, "Waste":true, "Solar":true};
     } else if (type == "LowCarbon") {
-        filterData = {"Wind":true, "Solar": true, "Hydro": true, "Biomass": true, "Waste": true};
+        filterData = {"Wind": true, "Solar": true, "Hydro": true, "Biomass": true, "Waste": true};
     } else if (type == "HighCarbon") {
         filterData = {"Coal":true, "Gas":true, "Oil": true};
     } else if (type == "Biomass") {
-        filterData = {"Bioenergy":true};
+        filterData = {"Biomass":true};
     } else if (type == "Coal") {
         filterData = {"Coal":true};
     } else if (type == "Gas") {
         filterData = {"Gas":true};
-    } else if (type == "Geothermal") {
-        filterData = {"Other":true};
     } else if (type == "Hydro") {
         filterData = {"Hydro":true};
     } else if (type == "Interconnectors") {
@@ -289,10 +288,8 @@ function reDraw(type){
         filterData = {"Other":true};
     } else if (type == "Solar") {
         filterData = {"Solar":true};
-    } else if (type == "Storage") {
-        filterData = {"Other":true};
     } else if (type == "Waste") {
-        filterData = {"Bioenergy":true};
+        filterData = {"Waste":true};
     } else if (type == "Wind") {
         filterData = {"Wind":true};
     } else if (type == "Gas") {
