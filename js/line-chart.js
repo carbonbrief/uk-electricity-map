@@ -1,4 +1,4 @@
-var margin = {top: 20, right: 50, bottom: 30, left: 50},
+var margin = {top: 20, right: 60, bottom: 30, left: 50},
     width = 450 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
@@ -156,12 +156,14 @@ function drawChart(filterData){
         .style("stroke-dasharray", function (d) {
             // quite a hacky way of getting the planned section of the chart to be dashed without having to filter data or add new lines
             // split into if/else statement because the lines are different lengths
-            if (d.name == "Coal" || d.name == "Gas") {
-                return "425,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+            if (d.name == "Coal") {
+                return "420,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
             } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
-                return "320,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                return "310,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+            } else if (d.name == "Gas") {
+                return "415,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
             } else {
-                return "325,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                return "315,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
             }
         });
 

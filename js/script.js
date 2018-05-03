@@ -15,7 +15,7 @@ map.on('load', function() {
 
     // set to 2017 initially despite play preview or you get a bug when using the type dropdown
     var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
-    var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2017];
+    var filterEndYear = ['>=', ['number', ['get', 'yearEnd']], 2017];
     var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 
     map.addLayer({
@@ -62,11 +62,26 @@ map.on('load', function() {
       var year = parseInt(e.target.value);
       // update the map
       filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
-      filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
+      filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
       map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]); //the filter only applies to the powerplants layer
 
+      var getYear = {
+        2007: "2007",
+        2008: "2008",
+        2009: "2009",
+        2010: "2010",
+        2011: "2011",
+        2012: "2012",
+        2013: "2013",
+        2014: "2014",
+        2015: "2015",
+        2016: "2016",
+        2017: "2017",
+        2018: "Planned"
+      }
+
       // update text in the UI
-      document.getElementById('active-hour').innerText = year;
+      document.getElementById('active-hour').innerText = getYear[year];
     });
 
     document.getElementById('selectorType').addEventListener('change', function(e) {
