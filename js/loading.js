@@ -12,7 +12,7 @@ ctx.save();
 
 function rotate () {
 
-        // Clear the canvas
+    // Clear the canvas
     ctx.restore();
 
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -84,4 +84,4 @@ setInterval(rotate, 20);
 
 setTimeout (function() {
     $('#loading').css('visibility', 'hidden');
-}, 1600);
+}, 1700);

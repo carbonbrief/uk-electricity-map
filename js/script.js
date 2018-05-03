@@ -12,8 +12,10 @@ map.addControl(new mapboxgl.NavigationControl());
 
 map.on('load', function() {
 
-    var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2007];
-    var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2007];
+
+    // set to 2017 initially despite play preview or you get a bug when using the type dropdown
+    var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
+    var filterEndYear = ['>', ['number', ['get', 'yearEnd']], 2017];
     var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 
     map.addLayer({
@@ -167,6 +169,19 @@ $(document).ready(function () {
   });
 })
 
+// INITIAL TRANSITIONS
+
+// function setInitialYear () {
+//   // function so filters to 2007 before setTimeout begins
+//   var year = 2007;
+//   filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+//   filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
+//   map.setFilter('powerplants', ['all', filterStartYear, filterEndYear]);
+
+// }
+
+// setInitialYear();
+
 // get slider to cycle through options once the page has loaded
 
 setTimeout(function(){
@@ -187,12 +202,12 @@ setTimeout(function(){
 
         i++;                     //  increment the counter
         year = 2007 + i;
-        if (i < 11) {            //  if the counter < 10, call the loop function
+        if (i < 11) {            //  if the counter < 11, call the loop function
           myLoop();             //  ..  again which will trigger another 
         }                        //  ..  setTimeout()
-    }, 100)
+    }, 200)
   }
 
   myLoop();   
 
-}, 1750);
+}, 1500);
