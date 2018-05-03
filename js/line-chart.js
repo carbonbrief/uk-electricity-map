@@ -134,14 +134,13 @@ function drawChart(filterData){
         console.log(boo);
     
         var plant = svg.selectAll(".plant")
-        .data(powerplants.filter(function(d){return filterData[d.name]==true;})) //.filter(function(d){return filterData[d.name]==true;})
+        .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
         .enter().append("g");
-        //  .attr("class", "plant");
         
         console.log(plant);
 
         svg.selectAll(".plant")
-        .data(powerplants.filter(function(d){return filterData[d.name]==true;}))//.filter(function(d){return filterData[d.name]==true;})
+        .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
         .append("g")
         .attr("class", "plant");
         
@@ -153,7 +152,18 @@ function drawChart(filterData){
         plant.append("path")
         .attr("class", "line")
         .attr("d", function(d) { return line(d.values); })
-        .style("stroke", function(d) { return color(d.name); });;
+        .style("stroke", function(d) { return color(d.name); })
+        .style("stroke-dasharray", function (d) {
+            // quite a hacky way of getting the planned section of the chart to be dashed without having to filter data or add new lines
+            // split into if/else statement because the lines are different lengths
+            if (d.name == "Coal" || d.name == "Gas") {
+                return "425,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3"
+            } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
+                return "320,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3"
+            } else {
+                return "325,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3"
+            }
+        });
 
         // ADD DOTS WITH TOOLTIP
 
