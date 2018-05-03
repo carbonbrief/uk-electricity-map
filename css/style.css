@@ -69,7 +69,7 @@ body {
     position: absolute;
     width: 450px;
     margin: 10px;
-    padding: 10px 20px;
+    padding: 10px 25px;
     background-color: #323b52d8;
     border-radius: 5px;
   }
@@ -84,7 +84,7 @@ body {
   
   .row {
     height: 12px;
-    width: 100%;
+    width: calc(100% - 20px);
   }
 
   .colors {

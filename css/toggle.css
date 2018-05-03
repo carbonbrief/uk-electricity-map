@@ -36,9 +36,9 @@
 }
 
 .console-close {
-    transform: translateX(calc(-100% + 35px));
-    -ms-transform: translateX(calc(-100% + 35px));
-    -webkit-transform: translateX(calc(-100% + 35px));
+    transform: translateX(calc(-100% + 25px));
+    -ms-transform: translateX(calc(-100% + 25px));
+    -webkit-transform: translateX(calc(-100% + 25px));
 }
 
 .console-open {
