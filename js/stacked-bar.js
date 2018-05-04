@@ -90,16 +90,17 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
     .attr("x", 0)
     .attr("dy", "1em")
     .attr("fill", "#00a98e")
-    .text("Low carbon");
+    .text("Low carbon %");
 
     g.append("g")
     .attr("class", "bar-labels")
     .append("text")
     .attr("y", -25)
-    .attr("x", width - 70)
+    .attr("x", width)
     .attr("dy", "1em")
     .attr("fill", "#ced1cc")
-    .text("High carbon");
+    .attr("text-anchor", "end")
+    .text("High carbon %");
 
     g.append("g")
     .attr("class", "year-label")
