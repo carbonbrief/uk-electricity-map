@@ -114,10 +114,11 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
     });
 
   d3.select("input")
-    .on("input", changed)
-    .on("change", changed);
+    //.on("input", changed)
+    .on("mouseup", changed); // previously on change..mouseup a bit smoother since transition doesn't happen up slide finished
 
   function changed() {
+
     var value = this.value;
 
     g.selectAll(".serie")
@@ -135,19 +136,15 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
 
     var label = g.selectAll(".year-label").selectAll("text");
 
-    label.remove();
+    //label.remove();
 
     // make sure that add class again or update pattern won't work a second time
     label.data(data)
-    .enter()
-    .append("text")
-    .attr("y", 10)
-    .attr("x", -40)
-    .attr("dy", "1em")
-    .attr("fill", "#e9e9e9")
     .text(function (d) {
-        return value;
+        return getYear[value];  // references array in script.js to change value for planned
     });
+
+    
 }
 
 });
