@@ -1,20 +1,24 @@
 // with help from https://bl.ocks.org/reinson/166bae46dd106b45cf2d77c7802768ca
 
-var margin = {top: 20, right: 70, bottom: 30, left: 40},
-    width = 450 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+// nb 2018 = planned in the csv
+
+// width same as line chart, margins and height different
+
+var margin2 = {top: 20, right: 25, bottom: 30, left: 40},
+    width = 450 - margin2.left - margin2.right,
+    height2 = 75 - margin2.top - margin2.bottom;
 
 var svg3 = d3.select('#stacked-bar').append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
+    .attr("width", width + margin2.left + margin2.right)
+    .attr("height", height2 + margin2.top + margin2.bottom);
 
 g = svg3.append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
 // have to create different names as using other similar variables in the same document
 
 var y3 = d3.scaleBand()			
-    .rangeRound([0, height])	
+    .rangeRound([0, height2])	
     .paddingInner(0.05)
     .align(0.1);
 
@@ -57,18 +61,20 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
     .enter().append("rect")
       .attr("y", function(d) { return y3(d.data.y); })
       .attr("x", function(d) { return x3(d[0]); })
+      .attr("rx", 5)
+      .attr("ry", 5)
       .attr("width", function(d) { return x3(d[1]) - x3(d[0]); })
-      .attr("height", y3.bandwidth());
+      .attr("height", (y3.bandwidth() - 10));
 
   g.append("g")
       .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + height/2 + ")")
+      .attr("transform", "translate(0," + height2/2 + ")")
       .style("font", "18px sans-serif")
       .call(d3.axisLeft(y3));
 
   g.append("g")
       .attr("class", "axis axis--y")
-      .attr("transform","translate(0," + height + ")")
+      .attr("transform","translate(0," + height2 + ")")
       .call(d3.axisBottom(x3).ticks(5, "s"))
     .append("text")
       .attr("y", 2)
@@ -90,10 +96,10 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
       .data(function(d) { return d; })
       .transition()
       .duration(500) 
-      .delay(function(d,i){return i*100})     
-      .attr("width", function(d) { return x3(d[0]) - x3(d[1]); })
+      .delay(500)     
+      .attr("width", function(d) { return x3(d[1]) - x3(d[0]); })
       .attr("y", function(d) { return y3(d.data.y); })
-      .attr("x", function(d) { return x3(d[1]); })
+      .attr("x", function(d) { return x3(d[0]); })
 }
 
 });
