@@ -39,6 +39,11 @@
     transform: translateX(calc(-100% + 25px));
     -ms-transform: translateX(calc(-100% + 25px));
     -webkit-transform: translateX(calc(-100% + 25px));
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    transition-property: transform;
+    -webkit-transition-property: transform;
+    -moz-transition-property: transform;
 }
 
 .console-open {

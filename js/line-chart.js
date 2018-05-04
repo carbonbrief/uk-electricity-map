@@ -169,7 +169,7 @@ function drawChart(filterData){
 
         // ADD DOTS WITH TOOLTIP
 
-        // array to ensure that "Planned" shows instead of 2018
+        // array to ensure that "Planned" shows instead of 2019
 
         var getYear = {
             2007: "2007",
@@ -211,7 +211,7 @@ function drawChart(filterData){
             ";>" + this.parentNode.__data__.name + 
             "</h3><p>Year: <b>" + getYear[yearFormat(d.year)] + 
             "</b></p><p> Capacity: <b>" + decimalFormat(d.capacity) + 
-            "</b></p>")
+            " MW</b></p>")
             .style("left", (d3.event.pageX + 20) + "px")
             .style("top", (d3.event.pageY - 50) + "px");
             })

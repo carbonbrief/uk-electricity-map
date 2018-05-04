@@ -100,8 +100,8 @@ body {
   }
 
   #line-wrapper {
-    width: 600px;
-    height: 400px;
+    width: 500px;
+    height: 300px;
   }
 
   #line-chart {
@@ -111,6 +111,11 @@ body {
 
   #bar-chart {
     position: absolute;
+  }
+
+  #stacked-bar {
+    height: 300px;
+    width: 500px;
   }
 
   select {
