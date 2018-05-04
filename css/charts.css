@@ -99,3 +99,7 @@ li {
   padding-right: 15px;
   padding-bottom: 10px;
 }
+
+.bar-labels {
+  font-size: 12.5px;
+}

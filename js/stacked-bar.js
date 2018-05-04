@@ -4,9 +4,9 @@
 
 // width same as line chart, margins and height different
 
-var margin2 = {top: 20, right: 25, bottom: 30, left: 40},
+var margin2 = {top: 50, right: 25, bottom: 30, left: 40},
     width = 450 - margin2.left - margin2.right,
-    height2 = 75 - margin2.top - margin2.bottom;
+    height2 = 105 - margin2.top - margin2.bottom;
 
 var svg3 = d3.select('#stacked-bar').append("svg")
     .attr("width", width + margin2.left + margin2.right)
@@ -66,11 +66,11 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
       .attr("width", function(d) { return x3(d[1]) - x3(d[0]); })
       .attr("height", (y3.bandwidth() - 10));
 
-  g.append("g")
-      .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + height2/2 + ")")
-      .style("font", "18px sans-serif")
-      .call(d3.axisLeft(y3));
+//   g.append("g")
+//       .attr("class", "axis axis--x")
+//       .attr("transform", "translate(0," + height2/2 + ")")
+//       .style("font", "18px sans-serif")
+//       .call(d3.axisLeft(y3));
 
   g.append("g")
       .attr("class", "axis axis--y")
@@ -82,6 +82,36 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
       .attr("dy", "0.35em")
       .attr("text-anchor", "start")
       .attr("fill", "#000");
+
+    g.append("g")
+    .attr("class", "bar-labels")
+    .append("text")
+    .attr("y", -25)
+    .attr("x", 0)
+    .attr("dy", "1em")
+    .attr("fill", "#00a98e")
+    .text("Low carbon");
+
+    g.append("g")
+    .attr("class", "bar-labels")
+    .append("text")
+    .attr("y", -25)
+    .attr("x", width - 70)
+    .attr("dy", "1em")
+    .attr("fill", "#ced1cc")
+    .text("High carbon");
+
+    g.append("g")
+    .attr("class", "year-label")
+    .data(data)
+    .append("text")
+    .attr("y", 10)
+    .attr("x", -40)
+    .attr("dy", "1em")
+    .attr("fill", "#e9e9e9")
+    .text(function (d) {
+        return d.year;
+    });
 
   d3.select("input")
     .on("input", changed)
@@ -96,10 +126,28 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
       .data(function(d) { return d; })
       .transition()
       .duration(500) 
-      .delay(500)     
+      .delay(200)     
       .attr("width", function(d) { return x3(d[1]) - x3(d[0]); })
       .attr("y", function(d) { return y3(d.data.y); })
       .attr("x", function(d) { return x3(d[0]); })
+
+    // update the label
+
+    var label = g.selectAll(".year-label").selectAll("text");
+
+    label.remove();
+
+    // make sure that add class again or update pattern won't work a second time
+    label.data(data)
+    .enter()
+    .append("text")
+    .attr("y", 10)
+    .attr("x", -40)
+    .attr("dy", "1em")
+    .attr("fill", "#e9e9e9")
+    .text(function (d) {
+        return value;
+    });
 }
 
 });

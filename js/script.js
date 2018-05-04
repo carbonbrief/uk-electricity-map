@@ -10,6 +10,21 @@ var map = new mapboxgl.Map({
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 
+var getYear = {
+  2007: "2007",
+  2008: "2008",
+  2009: "2009",
+  2010: "2010",
+  2011: "2011",
+  2012: "2012",
+  2013: "2013",
+  2014: "2014",
+  2015: "2015",
+  2016: "2016",
+  2017: "2017",
+  2018: "Planned"
+}
+
 map.on('load', function() {
 
 
@@ -64,21 +79,6 @@ map.on('load', function() {
       filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
       filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
       map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]); //the filter only applies to the powerplants layer
-
-      var getYear = {
-        2007: "2007",
-        2008: "2008",
-        2009: "2009",
-        2010: "2010",
-        2011: "2011",
-        2012: "2012",
-        2013: "2013",
-        2014: "2014",
-        2015: "2015",
-        2016: "2016",
-        2017: "2017",
-        2018: "Planned"
-      }
 
       // update text in the UI
       document.getElementById('active-hour').innerText = getYear[year];
