@@ -4,7 +4,7 @@
 
 // width same as line chart, margins and height different
 
-var margin2 = {top: 50, right: 25, bottom: 30, left: 40},
+var margin2 = {top: 50, right: 25, bottom: 30, left: 45},
     width = 450 - margin2.left - margin2.right,
     height2 = 105 - margin2.top - margin2.bottom;
 
@@ -105,19 +105,21 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
     .attr("class", "year-label")
     .data(data)
     .append("text")
-    .attr("y", 10)
-    .attr("x", -40)
+    .attr("y", 0)
+    .attr("x", -5)
+    .attr("text-anchor", "end")
     .attr("dy", "1em")
     .attr("fill", "#e9e9e9")
     .text(function (d) {
         return d.year;
     });
 
-  d3.select("input")
-    //.on("input", changed)
-    .on("mouseup", changed); // previously on change..mouseup a bit smoother since transition doesn't happen up slide finished
+  d3.selectAll(".row")
+    .on("input", highlightYear) // function in barchart.js
+    .on("change", changed); // previously on change..mouseup a bit smoother since transition doesn't happen up slide finished
 
-  function changed() {
+  
+    function changed() {
 
     var value = this.value;
 
@@ -127,7 +129,7 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
       .data(function(d) { return d; })
       .transition()
       .duration(500) 
-      .delay(200)     
+      .delay(50)     
       .attr("width", function(d) { return x3(d[1]) - x3(d[0]); })
       .attr("y", function(d) { return y3(d.data.y); })
       .attr("x", function(d) { return x3(d[0]); })
