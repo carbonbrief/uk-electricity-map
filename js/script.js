@@ -125,7 +125,7 @@ map.on('load', function() {
       map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
     });
 
-    // Create a popup, but don't add it to the map yet.
+  // Create a popup, but don't add it to the map yet.
   var popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false
