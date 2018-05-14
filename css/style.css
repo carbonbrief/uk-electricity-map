@@ -4,12 +4,12 @@ body {
     font-family: 'PT Sans', Helvetica, Arial, Sans-serif;
   }
   
-  #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 
 #loading {
   position: absolute;
@@ -19,129 +19,132 @@ body {
   background-color: rgba(36, 42, 58, 0.95);
 }
 
-  #canvas-wrapper {
-    position: relative;
-    top: calc(50% - 60px);
-    left: calc(50% - 60px);
-  }
-  
-  h1 {
-    font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
-    font-weight: normal;
-    font-size: 28px;
-    line-height: 30px;
-    color: #ffffff;
-  }
-  
-  h2 {
-    font-size: 15px;
-    line-height: 20px;
-    margin-bottom: 10px;
-    color: #c6e7fa;
+#canvas-wrapper {
+  position: relative;
+  top: calc(50% - 60px);
+  left: calc(50% - 60px);
+}
+
+h1 {
+  font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 30px;
+  color: #ffffff;
+}
+
+h2 {
+  font-size: 15px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  color: #c6e7fa;
+}
+
+h3 {
+  font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-top: 2px;
+  margin-bottom: 0px;
+}
+
+.console-text {
+  color: #e2e2e2;
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-size: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: #2dc4b2;
+}
+
+#console {
+  position: absolute;
+  width: 450px;
+  margin: 10px;
+  padding: 10px 25px;
+  background-color: #323b52d8;
+  border-radius: 5px;
+}
+
+.session {
+  margin-bottom: 15px;
+}
+
+#dropdown {
+  height: 120px;
+}
+
+.row {
+  height: 12px;
+  width: calc(100% - 20px);
+}
+
+.colors {
+  background: linear-gradient(to right, #ced1cc, #cc9b7a, #ffc83e, #ff8767, #ea545c, #dd54b6, #a45edb, #4e80e5, #43cfef, #00a98e, #A7B734 );
+  margin-bottom: 5px;
+  height: 3px;
+}
+
+.label {
+  width: 15%;
+  display: inline-block;
+  text-align: center;
+}
+
+#line-wrapper {
+  width: 500px;
+  height: 300px;
+}
+
+#line-chart {
+  position: absolute;
+  z-index: 9999;
+}
+
+#bar-chart {
+  position: absolute;
+}
+
+#stacked-bar {
+  height: 100px;
+  width: 500px;
   }
 
-  h3 {
-    font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 96% / 15% no-repeat #2e364b;
+  background-size: 20px 13px;
+  border:2px;
+  padding: 4px;
+  color: #f3f3f3;
+  outline:0px;
+}
 
-  p {
-    margin-top: 2px;
-    margin-bottom: 0px;
-  }
-
-  .console-text {
-    color: #e2e2e2;
-    font-family: 'PT Serif';
-    font-style: italic;
-    font-size: 15px;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #2dc4b2;
-  }
-  
-  #console {
-    position: absolute;
-    width: 450px;
-    margin: 10px;
-    padding: 10px 25px;
-    background-color: #323b52d8;
-    border-radius: 5px;
-  }
-
-  .session {
-    margin-bottom: 15px;
-  }
-
-  #dropdown {
-    height: 120px;
-  }
-  
-  .row {
-    height: 12px;
-    width: calc(100% - 20px);
-  }
-
-  .colors {
-    background: linear-gradient(to right, #ced1cc, #cc9b7a, #ffc83e, #ff8767, #ea545c, #dd54b6, #a45edb, #4e80e5, #43cfef, #00a98e, #A7B734 );
-    margin-bottom: 5px;
-    height: 3px;
-  }
-  
-  .label {
-    width: 15%;
-    display: inline-block;
-    text-align: center;
-  }
-
-  #line-wrapper {
-    width: 500px;
-    height: 300px;
-  }
-
-  #line-chart {
-    position: absolute;
-    z-index: 9999;
-  }
-
-  #bar-chart {
-    position: absolute;
-  }
-
-  #stacked-bar {
-    height: 100px;
-    width: 500px;
-  }
-
-  select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 96% / 15% no-repeat #2e364b;
-    background-size: 20px 13px;
-    border:2px;
-    padding: 4px;
-    color: #f3f3f3;
-    outline:0px;
- }
-
- #selectorType {
-   width: 120px;
- }
+#selectorType {
+  width: 120px;
+}
 
  /* nb tried getting rid of bright blue highlight but seems to be impossible without using something other than <select> or a  plugin */
 
- #selectorType:hover {
-   background-color: #242a3a;
- }
+#selectorType:hover {
+  background-color: #242a3a;
+}
 
- /* style the map tooltip */
+/* #region */
 
- .mapboxgl-popup-content {
+/* style the map tooltip */
+
+.mapboxgl-popup-content {
   color: #F3F3DD;
   background-color: #242a3a;
   /* border-color: #91785D; */
@@ -166,4 +169,11 @@ body {
     }
 .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
     border-left-color: #242a3a;
-    }
+}
+/* #endregion */
+
+/* region */
+
+/* make responsive */
+
+/* #endregion */

@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>UK electricity map | Carbon Brief</title>
         <meta name="description" content="A map of UK energy sources">
+        <meta name="author" content="Rosamund Pearce">
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -21,14 +22,13 @@
             </div>
             <h1>UK power sources</h1> 
             <div class='session'>
-                    <!-- <h2>Key</h2> -->
-                    <div class='row colors'>
-                    </div>
+                <div class='row colors'>
+                </div>
             </div>
             <p class="console-text">Drag the slider to explore how the UK's energy mix has changed over the past ten years.</p>
             <div class='session' id='sliderbar'>
-                    <h2>Year: <label id='active-hour'>2007</label></h2>
-                    <input id='slider' autocomplete="off" class='row' type='range' min='2007' max='2018' step='1' value='2007' />
+                <h2>Year: <label id='active-hour'>2007</label></h2>
+                <input id='slider' autocomplete="off" class='row' type='range' min='2007' max='2018' step='1' value='2007' />
             </div>
             <div class='session' id="dropdown">
                 <h2>Type</h2>
@@ -39,14 +39,12 @@
                     <option value='Biomass' >Biomass</option>
                     <option value='Coal' >Coal</option>
                     <option value='Gas' >Gas</option>
-                    <!-- <option value='Geothermal' >Geothermal</option> -->
                     <option value='Hydro' >Hydro</option>
                     <option value='Interconnectors' >Interconnectors</option>
                     <option value='Nuclear' >Nuclear</option>
                     <option value='Oil' >Oil</option>
                     <option value='Other' >Other</option>
                     <option value='Solar' >Solar</option>
-                    <!-- <option value='Storage' >Storage</option> -->
                     <option value='Waste' >Waste</option>
                     <option value='Wind' >Wind</option>
                 </select>

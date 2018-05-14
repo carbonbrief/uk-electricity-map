@@ -74,6 +74,8 @@ div.tooltip h3 {
 
 /* style the key */
 
+/* #region */
+
 .colour-key {
   width: 12px;
   height: 12px;
@@ -107,3 +109,5 @@ li {
 .year-label {
   font-size: 11px;
 }
+
+/* #endregion */
