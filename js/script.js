@@ -41,17 +41,23 @@ map.on('load', function() {
         data: './data/dummy.geojson'
       },
       paint: {
-        'circle-radius': [
-          'interpolate',
-          ['linear'],
-          ['number', ['get', 'capacity']],
-          // first number is the capacity and second is the size
-          0, 3,
-          10, 5,
-          100, 11,
-          1000, 21,
-          10000, 35
-        ],
+        'circle-radius': {
+          property: 'capacity',
+          type: 'exponential',
+          base: 0.8,
+          stops: [
+            [{zoom: 1, value: 1}, 1],
+            [{zoom: 1, value: 2500}, 20],
+            [{zoom: 4, value: 1}, 3],
+            [{zoom: 4, value: 2500}, 27],
+            [{zoom: 8, value: 1}, 4.5],
+            [{zoom: 8, value: 2500}, 32],
+            [{zoom: 12, value: 1}, 6],
+            [{zoom: 12, value: 2500}, 37],
+            [{zoom: 17, value: 1}, 8],
+            [{zoom: 17, value: 2500}, 42]
+          ]
+        },
         'circle-color': [
           'match',
           ['get', 'type'],
