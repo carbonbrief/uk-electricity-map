@@ -58,7 +58,7 @@ d3.csv("./data/bar.csv", function(error, data) {
 // link behaviour to slider
 // will just be changing opacity, so can avoid filtering data I think
 
-//d3.selectAll(".row").on("input", highlightYear);
+d3.selectAll(".row").on("input", highlightYear);
 
 function highlightYear() {
 

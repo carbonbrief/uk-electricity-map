@@ -223,3 +223,16 @@ $(".toggle").click(function() {
   $('.arrow-right-hidden').toggleClass('arrow-right');
   $('.arrow-left').toggleClass('arrow-left-hidden');
 });
+
+// HOME BUTTON
+
+$("#home-button").click(function() {
+  map.flyTo({
+      center: [-7, 54],
+      zoom: 5,
+      bearing: 0,
+      pitch: 0,
+      speed: 1,
+      animate: true
+  });
+})

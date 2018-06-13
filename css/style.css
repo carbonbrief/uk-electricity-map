@@ -134,6 +134,27 @@ select {
   width: 120px;
 }
 
+#home-button-wrapper {
+  position: absolute;
+  top: 150px;
+  right: 10px;
+  height: 18px;
+  width: 18px;
+  z-index: 999999;
+  background-color: #ffffff;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#home-button-wrapper:hover {
+  background-color: #f3f3f3;
+}
+
+#home-button {
+  color: #333333;
+}
+
  /* nb tried getting rid of bright blue highlight but seems to be impossible without using something other than <select> or a  plugin */
 
 #selectorType:hover {
