@@ -19,7 +19,9 @@ map.on('load', function() {
         },
         "paint": {
             "line-color": "#ff8767",
-            "line-width": 4,
+            "line-width": {
+                'stops': [[3, 3], [20, 8]]
+            },
             "line-opacity": 0.8
         }
     }, "powerplants") // to ensure that it is drawn below the powerplants layer
@@ -33,7 +35,10 @@ map.on('load', function() {
         },
         "paint": {
             "circle-color": "#ff8767",
-            "circle-radius": 5,
+            // make circles larger as the user zooms
+            'circle-radius': {
+                'stops': [[3, 4], [20, 15]]
+            },
             "circle-opacity": 0.8
         }
     }, "powerplants") // to ensure that it is drawn below the powerplants layer
