@@ -4,7 +4,8 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
     center: [-7, 54],
-    zoom: 5
+    zoom: 5,
+    maxZoom: 18
 });
 
 // Add zoom and rotation controls to the map.

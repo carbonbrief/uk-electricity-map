@@ -122,7 +122,27 @@ a {
 #stacked-bar {
   height: 100px;
   width: 500px;
-  }
+}
+
+#adb {
+  position: fixed;
+  visibility: visible;
+  color: #333333;
+  z-index: -999999;
+  /* height: 100px; */
+  width: 30%;
+  margin-left: 45%;
+  margin-top: 140px;
+}
+
+#adb i {
+  font-size: 18px;
+}
+
+#adb li {
+  color: #333333;
+  list-style-type: circle;
+}
 
 select {
   -webkit-appearance: none;
