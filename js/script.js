@@ -1,12 +1,14 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284cWd3bm11byJ9.V6Hg2oYJwMAxeoR9GEzkAA';
-
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
-    center: [-7, 54],
-    zoom: 5,
-    maxZoom: 18
-});
+if (!mapboxgl.supported()) {
+  alert('Your browser does not support Mapbox GL');
+} else {
+  var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
+      center: [-7, 54],
+      zoom: 5,
+      maxZoom: 18
+  });
+}
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
