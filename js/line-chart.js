@@ -31,6 +31,13 @@ var svg = d3.select("#line-chart").append("svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var svg3 = d3.select("#line-chart-background").append("svg")
+    .attr("id", "svg-3")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 var div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
@@ -38,6 +45,9 @@ var div = d3.select("body").append("div")
 var yearFormat = d3.timeFormat("%Y");
 
 var decimalFormat = d3.format(".1f");
+
+// array for background
+var allData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Biomass":true, "Solar": true,  "Wind":true, "Waste":true };
 
 // powerplants to be shown
 var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Biomass":true, "Solar": true,  "Wind":true, "Waste":true };
@@ -271,9 +281,77 @@ function drawChart(filterData){
 
 }
 
+// trace lines to appear behind the graph when filtered
+function drawBackground () {
 
+    d3.csv("./data/line.csv", function(error, data) {
 
-console.log(filterData);
+        color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
+
+        data.forEach(function(d) {
+            d.year = parseDate(d.year);
+        });
+
+        var powerplants2 = color.domain().map(function(name) {
+            return {
+            name: name,
+            values: data.map(function(d) {
+                return {
+                    year: d.year, 
+                    capacity: +d[name]
+                };
+            })
+            };
+        });
+    
+        // extend x domain of line chart so that bars align
+
+        x.domain([
+
+            parseDate2(20060701), parseDate2(20170701)
+
+        ]);
+
+        y.domain([
+
+            d3.min(powerplants2, function(c) { return d3.min(c.values, function(v) { return v.capacity; }); }),
+            d3.max(powerplants2, function(c) { return d3.max(c.values, function(v) { return v.capacity; }); })
+
+        ]);
+
+        svg3.selectAll("*").remove();
+
+        var boo2 =powerplants2.filter(function(d){return allData[d.name]==true;});
+        console.log("filter");
+        console.log(boo2);
+    
+        var plant2 = svg3.selectAll(".plant-background")
+        .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
+        .enter().append("g");
+        
+        console.log(plant2);
+
+        svg3.selectAll(".plant-background")
+        .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
+        .append("g")
+        .attr("class", "plant-background");
+        
+        svg3.selectAll(".plant-background")
+        .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
+        .exit()
+        .remove();
+    
+        plant2.append("path")
+        .attr("class", "background-line")
+        .attr("d", function(d) { return line(d.values); });
+
+    })
+
+}
+
+// console.log(filterData);
+
+drawBackground(allData);
 
 drawChart(filterData); // draw initial chart
 

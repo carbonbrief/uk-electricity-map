@@ -8,24 +8,24 @@ var margin2 = {top: 50, right: 25, bottom: 30, left: 45},
     width = 450 - margin2.left - margin2.right,
     height2 = 105 - margin2.top - margin2.bottom;
 
-var svg3 = d3.select('#stacked-bar').append("svg")
+var svg4 = d3.select('#stacked-bar').append("svg")
     .attr("width", width + margin2.left + margin2.right)
     .attr("height", height2 + margin2.top + margin2.bottom);
 
-g = svg3.append("g")
+g = svg4.append("g")
     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
 // have to create different names as using other similar variables in the same document
 
-var y3 = d3.scaleBand()			
+var y4 = d3.scaleBand()			
     .rangeRound([0, height2])	
     .paddingInner(0.05)
     .align(0.1);
 
-var x3 = d3.scaleLinear()		
+var x4 = d3.scaleLinear()		
     .rangeRound([0, width]);	
 
-var z3 = d3.scaleOrdinal()
+var z4 = d3.scaleOrdinal()
     .range(["#00a98e", "#ced1cc"]);
 
 var stack = d3.stack();
@@ -47,24 +47,24 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
   
   var cat = ["lowCarbon","highCarbon"];
 
-  y3.domain(data.map(function(d) { return d.y; }));
-  x3.domain([0, 100]).nice();
-  z3.domain(cat); 
+  y4.domain(data.map(function(d) { return d.y; }));
+  x4.domain([0, 100]).nice();
+  z4.domain(cat); 
 
   g.selectAll(".serie")
     .data(stack.keys(cat)(data))
     .enter().append("g")
       .attr("class", "serie")
-      .attr("fill", function(d) {return z3(d.key); })
+      .attr("fill", function(d) {return z4(d.key); })
     .selectAll("rect")
     .data(function(d) { return d; })
     .enter().append("rect")
-      .attr("y", function(d) { return y3(d.data.y); })
-      .attr("x", function(d) { return x3(d[0]); })
+      .attr("y", function(d) { return y4(d.data.y); })
+      .attr("x", function(d) { return x4(d[0]); })
       .attr("rx", 5)
       .attr("ry", 5)
-      .attr("width", function(d) { return x3(d[1]) - x3(d[0]); })
-      .attr("height", (y3.bandwidth() - 10));
+      .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
+      .attr("height", (y4.bandwidth() - 10));
 
 //   g.append("g")
 //       .attr("class", "axis axis--x")
@@ -75,10 +75,10 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
   g.append("g")
       .attr("class", "axis axis--y")
       .attr("transform","translate(0," + height2 + ")")
-      .call(d3.axisBottom(x3).ticks(5, "s"))
+      .call(d3.axisBottom(x4).ticks(5, "s"))
     .append("text")
       .attr("y", 2)
-      .attr("x", x3(x3.ticks(10).pop()))
+      .attr("x", x4(x4.ticks(10).pop()))
       .attr("dy", "0.35em")
       .attr("text-anchor", "start")
       .attr("fill", "#000");
@@ -131,9 +131,9 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
       .transition()
       .duration(500) 
       .delay(50)     
-      .attr("width", function(d) { return x3(d[1]) - x3(d[0]); })
-      .attr("y", function(d) { return y3(d.data.y); })
-      .attr("x", function(d) { return x3(d[0]); })
+      .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
+      .attr("y", function(d) { return y4(d.data.y); })
+      .attr("x", function(d) { return x4(d[0]); })
 
     // update the label
 
