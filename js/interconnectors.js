@@ -1,10 +1,12 @@
-map.on('load', function() {
+// declare filters
 
-    // I don't think it's necessary to filter yearEnd as none of the interconnectors close during this time period
+// I don't think it's necessary to filter yearEnd as none of the interconnectors close during this time period
 
-    var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
-    var filterLines = ['!=', ['string', ['get','type']], 'placeholder'];
-    var filterStations = ['!=', ['string', ['get','type']], 'placeholder'];
+var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
+var filterLines = ['!=', ['string', ['get','type']], 'placeholder'];
+var filterStations = ['!=', ['string', ['get','type']], 'placeholder'];
+
+function addInterconnectors () {
 
     map.addLayer({
         id: 'interconnectors',
@@ -42,6 +44,10 @@ map.on('load', function() {
             "circle-opacity": 0.8
         }
     }, "powerplants") // to ensure that it is drawn below the powerplants layer
+
+}
+
+map.on('load', function() {
 
     document.getElementById('slider').addEventListener('input', function(e) {
         var year = parseInt(e.target.value);

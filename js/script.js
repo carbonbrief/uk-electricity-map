@@ -248,6 +248,7 @@ map.on('load', function() {
 map.on('style.load', function () {
   // Triggered when `setStyle` is called.
   addDataLayers();
+  addInterconnectors();
 });
 
 // reset dropdown on window reload

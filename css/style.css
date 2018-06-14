@@ -363,7 +363,7 @@ select {
   }
 
   #line-wrapper {
-    height: 260px;
+    height: 255px;
   }
 
 }
@@ -375,7 +375,7 @@ select {
   }
 
   #line-wrapper {
-    height: 240px;
+    height: 235px;
   }
 
   .selector {
@@ -410,6 +410,14 @@ select {
 
 @media screen and (max-width: 1024px) {
 
+  #console {
+    width: 340px;
+  }
+
+  #line-wrapper {
+    height: 220px;
+  }
+
   #logo-tablet {
     visibility: visible;
   }
@@ -426,12 +434,12 @@ select {
     display: none;
   }
 
-  #line-wrapper {
-    height: 250px;
-  }
-
   #scroll-area {
     width: 30px;
+  }
+
+  #stacked-bar {
+    display: none;
   }
 
 }
@@ -439,15 +447,7 @@ select {
 @media screen and (max-width: 980px) {
 
   #console {
-    width: 310px;
-  }
-
-  #line-wrapper {
-    height: 220px;
-  }
-
-  #line-wrapper {
-    width: 310px;
+    width: 320px;
   }
 
   #home-button-wrapper {

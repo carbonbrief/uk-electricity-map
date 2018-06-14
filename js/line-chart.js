@@ -1,4 +1,4 @@
-var margin = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width"))/ 6.1), bottom: 30, left: 25},
+var margin = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width"))/ 6.1), bottom: 30, left: 35},
     width = parseInt(d3.select("#line-wrapper").style("width")) - margin.left - margin.right,
     height = responsiveHeight - margin.top - margin.bottom;
 
@@ -113,7 +113,12 @@ function drawChart(filterData){
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .selectAll("text")
+            .attr("transform", "rotate(-45)")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em");
 
         svg.append("g")
             .attr("class", "y axis")
