@@ -34,8 +34,15 @@
                 <input id='slider' autocomplete="off" class='row' type='range' min='2007' max='2018' step='1' value='2007' />
             </div>
             <div class='session' id="dropdown">
-                <h2>Type</h2>
-                <select id='selectorType'>
+                <div id="dropdown-titles">
+                    <div class="title" id="first-title">
+                        <h2>Type: <span id="region">All</span></h2>
+                    </div>
+                    <div class="title">
+                        <h2>Map: <span id="map-type">Dark</span></h2>
+                    </div>
+                </div>
+                <select id='selectorType' class="selector">
                     <option value='All' selected='selected'>All types</option>
                     <option value='LowCarbon' >Low carbon</option>
                     <option value='HighCarbon' >High carbon</option>
@@ -51,6 +58,11 @@
                     <option value='Waste' >Waste</option>
                     <option value='Wind' >Wind</option>
                 </select>
+                <select id='selectorStyle' class="selector">
+                    <option value="Dark" selected="selected">Dark</option>
+                    <option value="Light">Light (3D buildings)</option>
+                    <option value="Satellite">Satellite</option>
+                </select>  
                 <ul id="list-group">
                     <li class="list-group-item">
                         <div class="colour-key" style="background-color: #A7B734;"></div>

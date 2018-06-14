@@ -88,6 +88,18 @@ a {
   font-weight: bold;
 }
 
+#dropdown-titles {
+  width: 100%;
+}
+
+.title {
+  display: inline-block;
+}
+
+#first-title {
+  width: 200px;
+}
+
 .row {
   height: 12px;
   width: calc(100% - 20px);
@@ -156,8 +168,8 @@ select {
   outline:0px;
 }
 
-#selectorType {
-  width: 120px;
+.selector {
+  width: 200px;
 }
 
 #home-button-wrapper {

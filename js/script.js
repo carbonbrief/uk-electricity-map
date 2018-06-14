@@ -28,58 +28,95 @@ var getYear = {
   2018: "Planned"
 }
 
-map.on('load', function() {
+// declare filters
+// set to 2017 initially despite play preview or you get a bug when using the type dropdown
+var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
+var filterEndYear = ['>=', ['number', ['get', 'yearEnd']], 2017];
+var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 
-
-    // set to 2017 initially despite play preview or you get a bug when using the type dropdown
-    var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
-    var filterEndYear = ['>=', ['number', ['get', 'yearEnd']], 2017];
-    var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
-
-    map.addLayer({
-      id: 'powerplants',
-      type: 'circle',
-      source: {
-        type: 'geojson',
-        data: './data/dummy.geojson'
-      },
-      paint: {
-        'circle-radius': {
-          property: 'capacity',
-          type: 'exponential',
-          base: 0.8,
-          stops: [
-            [{zoom: 1, value: 1}, 1],
-            [{zoom: 1, value: 2500}, 20],
-            [{zoom: 4, value: 1}, 3],
-            [{zoom: 4, value: 2500}, 27],
-            [{zoom: 8, value: 1}, 4.5],
-            [{zoom: 8, value: 2500}, 32],
-            [{zoom: 12, value: 1}, 6],
-            [{zoom: 12, value: 2500}, 37],
-            [{zoom: 17, value: 1}, 8],
-            [{zoom: 17, value: 2500}, 42]
-          ]
+var baseLayers = [{
+    label: 'Dark',
+    id: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json'
+  }, {
+    label: 'Light',
+    id: 'https://openmaptiles.github.io/klokantech-3d-gl-style/style-cdn.json'
+  },{
+    label: "Satellite",
+    id: {
+        "version": 8,
+        "sources": {
+            "simple-tiles": {
+                "type": "raster",
+                // point to our third-party tiles. Note that some examples
+                // show a "url" property. This only applies to tilesets with
+                // corresponding TileJSON (such as mapbox tiles). 
+                "tiles": [
+                    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                ],
+                "tileSize": 256,
+                attribution: 'Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (<a href="https://earthdata.nasa.gov">ESDIS</a>) with funding provided by NASA/HQ.'
+            }
         },
-        'circle-color': [
-          'match',
-          ['get', 'type'],
-          "Coal", "#ced1cc",
-          "Gas", "#4e80e5",
-          "Solar", "#ffc83e",
-          "Nuclear", "#dd54b6",
-          "Oil", "#a45edb",
-          "Hydro", "#43cfef",
-          "Wind", "#00a98e",
-          "Biomass", "#A7B734",
-          "Waste", "#ea545c",
-          "Other", "#cc9b7a",
-          /* other */ '#ccc'
-        ],
-        'circle-opacity': 0.77
+        "layers": [{
+            "id": "simple-tiles",
+            "type": "raster",
+            "source": "simple-tiles",
+            "minzoom": 0,
+            "maxzoom": 22
+        }]
+    }
+}];
+
+function addDataLayers () {
+
+  map.addLayer({
+    id: 'powerplants',
+    type: 'circle',
+    source: {
+      type: 'geojson',
+      data: './data/dummy.geojson'
+    },
+    paint: {
+      'circle-radius': {
+        property: 'capacity',
+        type: 'exponential',
+        base: 0.8,
+        stops: [
+          [{zoom: 1, value: 1}, 1],
+          [{zoom: 1, value: 2500}, 20],
+          [{zoom: 4, value: 1}, 3],
+          [{zoom: 4, value: 2500}, 27],
+          [{zoom: 8, value: 1}, 4.5],
+          [{zoom: 8, value: 2500}, 32],
+          [{zoom: 12, value: 1}, 6],
+          [{zoom: 12, value: 2500}, 37],
+          [{zoom: 17, value: 1}, 8],
+          [{zoom: 17, value: 2500}, 42]
+        ]
       },
-      'filter': ['all', filterStartYear, filterEndYear, filterType]
-    });
+      'circle-color': [
+        'match',
+        ['get', 'type'],
+        "Coal", "#ced1cc",
+        "Gas", "#4e80e5",
+        "Solar", "#ffc83e",
+        "Nuclear", "#dd54b6",
+        "Oil", "#a45edb",
+        "Hydro", "#43cfef",
+        "Wind", "#00a98e",
+        "Biomass", "#A7B734",
+        "Waste", "#ea545c",
+        "Other", "#cc9b7a",
+        /* other */ '#ccc'
+      ],
+      'circle-opacity': 0.77
+    },
+    'filter': ['all', filterStartYear, filterEndYear, filterType]
+  });
+
+}
+
+map.on('load', function() {
 
     // update hour filter when the slider is dragged
     document.getElementById('slider').addEventListener('input', function(e) {
@@ -134,6 +171,24 @@ map.on('load', function() {
       map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
     });
 
+    document.getElementById("selectorStyle").addEventListener("change", function(e){
+      // update variables
+      dropdown = e.target.value;
+
+     // get id from array using the dropdown variable
+      var basemap = baseLayers.find(function(x) {
+          return x.label === dropdown;
+      }).id;
+
+      // console.log(basemap);
+
+      map.setStyle(basemap);
+
+      // update text in the UI
+      document.getElementById('map-type').innerText = [dropdown];
+      
+    })
+
   // Create a popup, but don't add it to the map yet.
   var popup = new mapboxgl.Popup({
     closeButton: false,
@@ -186,6 +241,11 @@ map.on('load', function() {
       popup.remove();
   });
 
+});
+
+map.on('style.load', function () {
+  // Triggered when `setStyle` is called.
+  addDataLayers();
 });
 
 // reset dropdown on window reload
