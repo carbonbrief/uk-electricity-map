@@ -1,16 +1,20 @@
 function getHeight () {
-    if (screenWidth > 1050) {
-        return 300
-    } else if (screenWidth < 1050) {
+    if (screenWidth > 1200) {
+        return 280
+    } else if (screenWidth < 1200  && screenWidth > 1100) {
         return 260
-    } 
+    } else if (screenWidth < 1100  && screenWidth > 1000) {
+        return 240
+    } else if (screenWidth < 1000  && screenWidth > 900) {
+        return 220
+    }
 }
 console.log(screenWidth);
 
 var responsiveHeight = getHeight();
 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 10, bottom: 30, left: 35},
+var margin = {top: 10, right: 10, bottom: 30, left: 25},
     width = parseInt(d3.select("#line-wrapper").style("width")) - margin.left - margin.right,
     height = responsiveHeight - margin.top - margin.bottom;
 

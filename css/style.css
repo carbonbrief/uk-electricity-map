@@ -32,6 +32,7 @@ h1 {
   font-size: 28px;
   line-height: 30px;
   color: #ffffff;
+  margin-top: 12px;
 }
 
 h2 {
@@ -126,7 +127,7 @@ a {
 
 #line-wrapper {
   width: 100%;
-  height: 300px;
+  height: 270px;
 }
 
 #line-chart {
@@ -171,6 +172,7 @@ a {
   border-top: 1px solid #949494;
   margin-top: 15px;
   padding-top: 10px;
+  margin-bottom: 10px;
 }
 
 #credit p {
@@ -304,12 +306,8 @@ select {
 @media screen and (max-width: 1300px) {
 
   #console {
-    width: 400px;
+    width: 420px;
   }
-
-  /* #line-wrapper {
-    width: 400px;
-  } */
 
   .selector {
     width: 180px;
@@ -352,6 +350,10 @@ select {
 
 @media screen and (max-width: 1200px) {
 
+  #console {
+    width: 400px;
+  }
+
   #home-button-wrapper {
     top: 110px;
   }
@@ -360,21 +362,21 @@ select {
     width: 40px;
   }
 
+  #line-wrapper {
+    height: 260px;
+  }
+
 }
 
 @media screen and (max-width: 1100px) {
 
   #console {
-    width: 350px;
+    width: 380px;
   }
 
-  /* #line-wrapper {
-    width: 360px;
+  #line-wrapper {
+    height: 240px;
   }
-
-  #stacked-bar {
-    width: 360px;
-  } */
 
   .selector {
     width: 160px;
@@ -382,6 +384,10 @@ select {
 
   #first-title {
     width: 160px;
+  }
+
+  #dropdown {
+    height: 120px;
   }
 
   #key {
@@ -434,6 +440,10 @@ select {
 
   #console {
     width: 310px;
+  }
+
+  #line-wrapper {
+    height: 220px;
   }
 
   #line-wrapper {
