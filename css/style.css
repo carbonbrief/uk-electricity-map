@@ -63,7 +63,7 @@ p {
 
 a {
   text-decoration: none;
-  color: #2dc4b2;
+  color: #bdbdbd;
 }
 
 #console {
@@ -71,7 +71,7 @@ a {
   width: 450px;
   margin: 10px;
   padding: 10px 25px;
-  background-color: #323b52d8;
+  background-color: rgba(50, 59, 82, 0.88);
   border-radius: 5px;
 }
 
@@ -103,6 +103,7 @@ a {
 .row {
   height: 12px;
   width: calc(100% - 20px);
+  margin-left:0px;
 }
 
 .colors {
@@ -158,6 +159,17 @@ a {
 #adb li {
   color: #333333;
   list-style-type: circle;
+}
+
+#credit {
+  border-top: 1px solid #949494;
+  margin-top: 15px;
+  padding-top: 10px;
+}
+
+#credit p {
+  color: #949494;
+  font-size: 11.5px;
 }
 
 select {
