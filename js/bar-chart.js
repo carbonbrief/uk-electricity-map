@@ -1,7 +1,18 @@
+function getHeight () {
+    if (screenWidth > 1050) {
+        return 300
+    } else if (screenWidth < 1050) {
+        return 260
+    } 
+}
+console.log(screenWidth);
+
+var responsiveHeight = getHeight();
+
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 10, bottom: 30, left: 45},
-    width = 454 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+var margin = {top: 10, right: 10, bottom: 30, left: 35},
+    width = parseInt(d3.select("#line-wrapper").style("width")) - margin.left - margin.right,
+    height = responsiveHeight - margin.top - margin.bottom;
 
 var x2 = d3.scaleBand()
     .range([0, width])

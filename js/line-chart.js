@@ -1,6 +1,8 @@
-var margin = {top: 20, right: 70, bottom: 30, left: 45},
-    width = 450 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+var margin = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width"))/ 6.1), bottom: 30, left: 35},
+    width = parseInt(d3.select("#line-wrapper").style("width")) - margin.left - margin.right,
+    height = responsiveHeight - margin.top - margin.bottom;
+
+// console.log(margin.right);
 
 var parseDate = d3.timeParse("%Y");
 var parseDate2 = d3.timeParse("%Y%m%d");
@@ -102,7 +104,7 @@ function drawChart(filterData){
 
             reDraw(type);
 
-            console.log(type);
+            // console.log(type);
         }
 
 
@@ -140,14 +142,14 @@ function drawChart(filterData){
         // ADD LINES
     
         var boo=powerplants.filter(function(d){return filterData[d.name]==true;});
-        console.log("filter");
-        console.log(boo);
+        // console.log("filter");
+        // console.log(boo);
     
         var plant = svg.selectAll(".plant")
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
         .enter().append("g");
         
-        console.log(plant);
+        // console.log(plant);
 
         svg.selectAll(".plant")
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
@@ -322,14 +324,14 @@ function drawBackground () {
         svg3.selectAll("*").remove();
 
         var boo2 =powerplants2.filter(function(d){return allData[d.name]==true;});
-        console.log("filter");
-        console.log(boo2);
+        // console.log("filter");
+        // console.log(boo2);
     
         var plant2 = svg3.selectAll(".plant-background")
         .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
         .enter().append("g");
         
-        console.log(plant2);
+        // console.log(plant2);
 
         svg3.selectAll(".plant-background")
         .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
@@ -393,7 +395,7 @@ function reDraw(type){
         // do nothing
         console.log("error");
     }
-	console.log("redraw :");
-	console.log(filterData);
+	// console.log("redraw :");
+	// console.log(filterData);
 	drawChart(filterData);
 }

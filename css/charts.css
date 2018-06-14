@@ -84,13 +84,13 @@ div.tooltip h3 {
 /* #region */
 
 .colour-key {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
   border-radius: 25px;
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 3px;
 }
 
 ul {
@@ -105,8 +105,8 @@ li {
   color: #e9e9e9;
   font-size: 12.5px;
   float: left;
-  padding-right: 15px;
-  padding-bottom: 10px;
+  padding-right: 12px;
+  padding-bottom: 8px;
 }
 
 .bar-labels {

@@ -4,9 +4,20 @@
 
 // width same as line chart, margins and height different
 
-var margin2 = {top: 50, right: 25, bottom: 30, left: 45},
-    width = 450 - margin2.left - margin2.right,
-    height2 = 105 - margin2.top - margin2.bottom;
+function getHeight2 () {
+    if (screenWidth > 1050) {
+        return 90
+    } else if (screenWidth < 1050) {
+        return 85
+    } 
+}
+console.log(screenWidth);
+
+var responsiveHeight2 = getHeight2();
+
+var margin2 = {top: 35, right: 25, bottom: 30, left: 35},
+    width = parseInt(d3.select("#stacked-bar").style("width")) - margin2.left - margin2.right,
+    height2 = responsiveHeight2 - margin2.top - margin2.bottom;
 
 var svg4 = d3.select('#stacked-bar').append("svg")
     .attr("width", width + margin2.left + margin2.right)

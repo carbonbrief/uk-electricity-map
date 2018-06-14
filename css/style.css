@@ -71,8 +71,10 @@ a {
   width: 450px;
   margin: 10px;
   padding: 10px 25px;
+  padding-right: 35px;
   background-color: rgba(50, 59, 82, 0.88);
   border-radius: 5px;
+  z-index: 5;
 }
 
 .session {
@@ -80,7 +82,7 @@ a {
 }
 
 #dropdown {
-  height: 120px;
+  height: 130px;
 }
 
 .label-title {
@@ -90,6 +92,10 @@ a {
 
 #dropdown-titles {
   width: 100%;
+}
+
+#sliderbar {
+  margin-bottom: 0px;
 }
 
 .title {
@@ -119,7 +125,7 @@ a {
 }
 
 #line-wrapper {
-  width: 500px;
+  width: 100%;
   height: 300px;
 }
 
@@ -137,8 +143,8 @@ a {
 }
 
 #stacked-bar {
-  height: 100px;
-  width: 500px;
+  height: 80px;
+  width: 100%;
 }
 
 #adb {
@@ -294,5 +300,267 @@ select {
 /* region */
 
 /* make responsive */
+
+@media screen and (max-width: 1300px) {
+
+  #console {
+    width: 400px;
+  }
+
+  /* #line-wrapper {
+    width: 400px;
+  } */
+
+  .selector {
+    width: 180px;
+  }
+
+  #first-title {
+    width: 180px;
+  }
+
+  h1 {
+    font-size: 26px;
+    line-height: 28px;
+  }
+
+  h2 {
+    font-size: 14.5px;
+  }
+
+  .console-text {
+    font-size:15px;
+  }
+
+  li {
+    font-size: 12px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+  }
+
+  .colour-key {
+    width: 9px;
+    height: 9px;
+    margin-right: 2px;
+  }
+
+  .axis.label {
+    font-size: 11.5px;
+  }
+
+}
+
+@media screen and (max-width: 1200px) {
+
+  #home-button-wrapper {
+    top: 110px;
+  }
+
+  #scroll-area {
+    width: 40px;
+  }
+
+}
+
+@media screen and (max-width: 1100px) {
+
+  #console {
+    width: 350px;
+  }
+
+  /* #line-wrapper {
+    width: 360px;
+  }
+
+  #stacked-bar {
+    width: 360px;
+  } */
+
+  .selector {
+    width: 160px;
+  }
+
+  #first-title {
+    width: 160px;
+  }
+
+  #key {
+    height: 35px;
+  }
+
+  .console-text {
+    font-size:14px;
+  }
+
+  h2 {
+    font-size: 14px;
+  }
+
+  li {
+    font-size: 11.5px;
+  }
+
+}
+
+@media screen and (max-width: 1024px) {
+
+  #logo-tablet {
+    visibility: visible;
+  }
+
+  #logo-laptop {
+    visibility: hidden;
+  }
+
+  #map {
+    height: 655px;
+  }
+
+  #credit {
+    display: none;
+  }
+
+  #line-wrapper {
+    height: 250px;
+  }
+
+  #scroll-area {
+    width: 30px;
+  }
+
+}
+
+@media screen and (max-width: 980px) {
+
+  #console {
+    width: 310px;
+  }
+
+  #line-wrapper {
+    width: 310px;
+  }
+
+  #home-button-wrapper {
+    top: 110px;
+  }
+
+  .selector {
+    width: 140px;
+  }
+
+  #first-title {
+    width: 140px;
+  }
+
+  #scroll-area {
+    width: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 26px;
+  }
+
+  h2 {
+    font-size: 14px;
+  }
+
+  .console-text {
+    font-size: 13px;
+  }
+
+}
+
+@media screen and (max-width: 850px) {
+
+  #charts {
+    display: none;
+  }
+  #dropdown {
+    display: none;
+  }
+  #console {
+    width: 400px;
+    padding: 7px 15px;
+    padding-right: 30px;
+  }
+
+  .console-text {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 640px) {
+
+  #logo-tablet {
+    /* move as mapbox credit changes */
+    top: 588px;
+  }
+
+  #home-button-wrapper {
+    display: none;
+  }
+
+  #console {
+    width: 100%;
+    margin: 0px;
+    position: relative;
+    border-radius: 0px;
+    background-color: rgb(50, 59, 82);
+  }
+
+  #adb {
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 100px;
+  }
+
+  .row {
+    width: calc(100% - 30px);
+  }
+
+  #map {
+    position: relative;
+    height: 470px;
+  }
+
+  #loading {
+    background-color: rgb(36, 42, 58);
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+  #adb {
+    visibility: hidden;
+  }
+
+  #logo-tablet {
+    visibility: hidden;
+  }
+
+  #logo-mobile {
+    visibility: visible;
+  }
+
+}
+
+@media screen and (max-width: 380px) {
+
+  #logo-mobile {
+    top: 510px;
+  }
+
+  #map {
+    height: 380px;
+  }
+
+  #key {
+    height: 35px;
+  }
+
+}
 
 /* #endregion */

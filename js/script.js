@@ -10,6 +10,8 @@ if (!mapboxgl.supported()) {
   });
 }
 
+var screenWidth = $(window).width();
+
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 
@@ -186,7 +188,7 @@ map.on('load', function() {
 
       // update text in the UI
       document.getElementById('map-type').innerText = [dropdown];
-      
+
     })
 
   // Create a popup, but don't add it to the map yet.
