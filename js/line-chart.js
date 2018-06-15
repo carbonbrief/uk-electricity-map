@@ -226,9 +226,9 @@ function drawChart(filterData){
             .style("opacity", .9);
             div.html( "<h3 style= color:" + color(this.parentNode.__data__.name) + 
             ";>" + this.parentNode.__data__.name + 
-            "</h3><p>Year: <b>" + getYear[yearFormat(d.year)] + 
-            "</b></p><p> Capacity: <b>" + decimalFormat(d.capacity) + 
-            " MW</b></p>")
+            "</h3><p><span class='label-title'>Year: </span>" + getYear[yearFormat(d.year)] + 
+            "</p><p><span class='label-title'>Capacity: </span>" + decimalFormat(d.capacity) + 
+            " MW</p>")
             .style("left", (d3.event.pageX + 20) + "px")
             .style("top", (d3.event.pageY - 50) + "px");
             })

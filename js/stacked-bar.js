@@ -86,11 +86,11 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
         div.transition()
         .duration(100)
         .style("opacity", .9);
-        div.html( "<h3 style= color:" + color(this.parentNode.__data__.name) + 
-        ";>" + data[z4] + 
-        "</h3><p>Year: <b>" + data[0].year + 
-        "</b></p><p> Capacity: <b>" + ((d[1]) - (d[0])) + 
-        " MW</b></p>")
+        div.html( 
+            "<span class='label-title'>Year: </span>" + d.data.year + 
+            "</p><p><span class='label-title'>Share: </span>" + ((d[1]) - (d[0])) + 
+            " %</p>"
+        )
         .style("left", (d3.event.pageX + 20) + "px")
         .style("top", (d3.event.pageY - 50) + "px");
         })
