@@ -117,11 +117,11 @@ a {
   background: linear-gradient(to right, #ced1cc, #cc9b7a, #ffc83e, #ff8767, #ea545c, #dd54b6, #a45edb, #4e80e5, #43cfef, #00a98e, #A7B734 );
   margin-bottom: 5px;
   height: 3px;
-  background-size: 250% 100%;
+  background-size: 170% 100%;
   /* very slow so that it isn't distracting */
-	-webkit-animation: Gradient 120s ease infinite;
-	-moz-animation: Gradient 120s ease infinite;
-	animation: Gradient 120s ease infinite;
+	-webkit-animation: Gradient 110s ease infinite;
+	-moz-animation: Gradient 110s ease infinite;
+	animation: Gradient 110s ease infinite;
 }
 
 @-webkit-keyframes Gradient {

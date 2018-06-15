@@ -165,7 +165,29 @@ function drawChart(filterData){
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
         .exit()
         .remove();
-    
+
+        var screenWidths = {
+            largeScreen: [415, 310, 405, 315],
+            mediumScreen1: [385, 285, 380, 290],
+            mediumScreen2: [365, 270, 360, 280],
+            smallScreen1: [340, 260, 325, 260],
+            smallScreen2: [320, 230, 305, 235]
+        }
+
+        function getScreensize () {
+            if (screenWidth >1300) {
+                return "largeScreen"
+            } else if (screenWidth < 1301 && screenWidth > 1200) {
+                return "mediumScreen1"
+            } else if (screenWidth < 1201 && screenWidth > 1100) {
+                return "mediumScreen2"
+            } else if (screenWidth < 1101 && screenWidth > 1024) {
+                return "smallScreen1"
+            } else {
+                return "smallScreen2"
+            }
+        }
+
         plant.append("path")
         .attr("class", "line")
         .attr("d", function(d) { return line(d.values); })
@@ -173,15 +195,19 @@ function drawChart(filterData){
         .style("stroke-dasharray", function (d) {
             // quite a hacky way of getting the planned section of the chart to be dashed without having to filter data or add new lines
             // split into if/else statement because the lines are different lengths
-            if (d.name == "Coal") {
-                return "420,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-            } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
-                return "310,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-            } else if (d.name == "Gas") {
-                return "415,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-            } else {
-                return "315,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-            }
+                
+                var screenSize = getScreensize();
+
+                if (d.name == "Coal") {
+                    return screenWidths[screenSize][0] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
+                    return screenWidths[screenSize][1] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                } else if (d.name == "Gas") {
+                    return screenWidths[screenSize][2] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                } else {
+                    return screenWidths[screenSize][3] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                }
+
         });
 
         // ADD DOTS WITH TOOLTIP
