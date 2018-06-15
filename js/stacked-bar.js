@@ -75,7 +75,35 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
       .attr("rx", 5)
       .attr("ry", 5)
       .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
-      .attr("height", (y4.bandwidth() - 10));
+      .attr("height", (y4.bandwidth() - 10))
+      .on("mouseover", function(d) {
+        //show circle
+        d3.select(this)
+        .transition()
+        .duration(200)
+        .style("opacity", 0.9)
+        // show tooltip
+        div.transition()
+        .duration(100)
+        .style("opacity", .9);
+        div.html( "<h3 style= color:" + color(this.parentNode.__data__.name) + 
+        ";>" + data[z4] + 
+        "</h3><p>Year: <b>" + data[0].year + 
+        "</b></p><p> Capacity: <b>" + ((d[1]) - (d[0])) + 
+        " MW</b></p>")
+        .style("left", (d3.event.pageX + 20) + "px")
+        .style("top", (d3.event.pageY - 50) + "px");
+        })
+    .on("mouseout", function(d) {
+        d3.select(this)
+        .transition()
+        .duration(200)
+        .style("opacity", 1)
+        // hide tooltip
+        div.transition()
+        .duration(200)
+        .style("opacity", 0);
+    });
 
 //   g.append("g")
 //       .attr("class", "axis axis--x")
