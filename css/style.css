@@ -117,7 +117,50 @@ a {
   background: linear-gradient(to right, #ced1cc, #cc9b7a, #ffc83e, #ff8767, #ea545c, #dd54b6, #a45edb, #4e80e5, #43cfef, #00a98e, #A7B734 );
   margin-bottom: 5px;
   height: 3px;
+  background-size: 250% 100%;
+  /* very slow so that it isn't distracting */
+	-webkit-animation: Gradient 120s ease infinite;
+	-moz-animation: Gradient 120s ease infinite;
+	animation: Gradient 120s ease infinite;
 }
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
 
 .label {
   width: 15%;

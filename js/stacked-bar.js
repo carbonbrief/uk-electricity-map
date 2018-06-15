@@ -15,7 +15,7 @@ console.log(screenWidth);
 
 var responsiveHeight2 = getHeight2();
 
-var margin2 = {top: 35, right: 25, bottom: 30, left: 35},
+var margin2 = {top: 35, right: 25, bottom: 30, left: 45},
     width = parseInt(d3.select("#stacked-bar").style("width")) - margin2.left - margin2.right,
     height2 = responsiveHeight2 - margin2.top - margin2.bottom;
 
@@ -87,7 +87,7 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
         .duration(100)
         .style("opacity", .9);
         div.html( 
-            "<span class='label-title'>Year: </span>" + d.data.year + 
+            "<span class='label-title'>Year: </span>" + getYear[d.data.year] + 
             "</p><p><span class='label-title'>Share: </span>" + ((d[1]) - (d[0])) + 
             " %</p>"
         )
