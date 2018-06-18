@@ -52,7 +52,7 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
 
     console.log(data_nest);
 
-  data = data_nest.filter(function(d){ return d.key == 2017})[0].values;
+  data = data_nest.filter(function(d){ return d.key == 2007})[0].values;
 
   console.log(data);
   
@@ -105,12 +105,6 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
         .style("opacity", 0);
     });
 
-//   g.append("g")
-//       .attr("class", "axis axis--x")
-//       .attr("transform", "translate(0," + height2/2 + ")")
-//       .style("font", "18px sans-serif")
-//       .call(d3.axisLeft(y3));
-
   g.append("g")
       .attr("class", "axis axis--y")
       .attr("transform","translate(0," + height2 + ")")
@@ -161,32 +155,57 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
   
     function changed() {
 
-    var value = this.value;
+        var value = this.value;
 
-    g.selectAll(".serie")
-      .data(stack.keys(cat)(data_nest.filter(function(d){return +d.key == value})[0].values))
-      .selectAll("rect")
-      .data(function(d) { return d; })
-      .transition()
-      .duration(500) 
-      .delay(50)     
-      .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
-      .attr("y", function(d) { return y4(d.data.y); })
-      .attr("x", function(d) { return x4(d[0]); })
+        g.selectAll(".serie")
+        .data(stack.keys(cat)(data_nest.filter(function(d){return +d.key == value})[0].values))
+        .selectAll("rect")
+        .data(function(d) { return d; })
+        .transition()
+        .duration(500) 
+        .delay(50)     
+        .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
+        .attr("y", function(d) { return y4(d.data.y); })
+        .attr("x", function(d) { return x4(d[0]); })
 
-    // update the label
+        // update the label
 
-    var label = g.selectAll(".year-label").selectAll("text");
+        var label = g.selectAll(".year-label").selectAll("text");
 
-    //label.remove();
-
-    // make sure that add class again or update pattern won't work a second time
-    label.data(data)
-    .text(function (d) {
-        return getYear[value];  // references array in script.js to change value for planned
-    });
+        // make sure that add class again or update pattern won't work a second time
+        label.data(data)
+        .text(function (d) {
+            return getYear[value];  // references array in script.js to change value for planned
+        });
 
     
-}
+    }
+
+    function initialTransition() {
+
+        g.selectAll(".serie")
+        .data(stack.keys(cat)(data_nest.filter(function(d){return +d.key == 2017})[0].values))
+        .selectAll("rect")
+        .data(function(d) { return d; })
+        .transition()
+        .ease(d3.easeLinear)
+        .duration(1800) 
+        .delay(50)     
+        .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
+        .attr("y", function(d) { return y4(d.data.y); })
+        .attr("x", function(d) { return x4(d[0]); })
+
+        var label = g.selectAll(".year-label").selectAll("text");
+
+        label.data(data)
+        .text(function (d) {
+            return "2017";
+        });
+
+    }
+
+    setTimeout(function () {
+        initialTransition();
+    }, 1500);
 
 });

@@ -167,6 +167,9 @@ map.on('load', function() {
 
       // update text in the UI
       document.getElementById('active-hour').innerText = getYear[year];
+
+      updateTotal();
+
     });
 
     document.getElementById('selectorType').addEventListener('change', function(e) {
@@ -208,6 +211,8 @@ map.on('load', function() {
         console.log('error');
       };
       map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
+
+      updateTotal();
     });
 
     document.getElementById("selectorStyle").addEventListener("change", function(e){
