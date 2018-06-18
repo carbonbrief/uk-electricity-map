@@ -5,11 +5,10 @@ function getHeight () {
         return 245
     } else if (screenWidth < 1101  && screenWidth > 1000) {
         return 225
-    } else if (screenWidth < 1001  && screenWidth > 900) {
+    } else {
         return 215
     }
 }
-console.log(screenWidth);
 
 var responsiveHeight = getHeight();
 

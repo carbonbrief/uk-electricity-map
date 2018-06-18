@@ -10,7 +10,44 @@ if (!mapboxgl.supported()) {
   });
 }
 
+// variable to use throughout
 var screenWidth = $(window).width();
+
+var boundsMobile = [
+  [ -11, 49],[2, 60]
+]
+
+var boundsLaptop = [
+  [ -20, 49],[4, 60]
+]
+
+var boundsDesktop = [
+  [ -21, 49],[3, 60]
+]
+
+var boundsRetina = [
+  [ -20, 49.5],[3, 59.5]
+]
+
+function getBounds () {
+  // 850 pixels is the screen width below which the charts get hidden
+  if (screenWidth > 1400) {
+      return boundsRetina
+  }
+  else if (screenWidth > 1024 && screenWidth < 1400) {
+      return boundsDesktop
+  } 
+  else if (1024 > screenWidth && screenWidth > 850) {
+      return boundsLaptop
+  } else {
+      return boundsMobile
+  }
+}
+
+var bounds = getBounds();
+
+// resize map for the screen
+map.fitBounds(bounds, {padding: 10});
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());

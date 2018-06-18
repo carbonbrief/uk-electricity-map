@@ -7,7 +7,7 @@
 function getHeight2 () {
     if (screenWidth > 1050) {
         return 90
-    } else if (screenWidth < 1050) {
+    } else if (screenWidth < 1051) {
         return 85
     } 
 }
