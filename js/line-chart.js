@@ -171,7 +171,8 @@ function drawChart(filterData){
             mediumScreen1: [385, 285, 380, 290],
             mediumScreen2: [365, 270, 360, 280],
             smallScreen1: [340, 260, 325, 260],
-            smallScreen2: [320, 230, 305, 235]
+            smallScreen2: [320, 230, 305, 235],
+            smallScreen3: [295, 210, 288, 215]
         }
 
         function getScreensize () {
@@ -183,8 +184,10 @@ function drawChart(filterData){
                 return "mediumScreen2"
             } else if (screenWidth < 1101 && screenWidth > 1024) {
                 return "smallScreen1"
-            } else {
+            } else if (screenWidth < 1025 && screenWidth > 980) {
                 return "smallScreen2"
+            } else {
+                return "smallScreen3"
             }
         }
 
