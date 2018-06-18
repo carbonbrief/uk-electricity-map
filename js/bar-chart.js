@@ -58,12 +58,46 @@ d3.csv("./data/bar.csv", function(error, data) {
       .style("opacity", 0);
 
     svg2.selectAll(".bar")
-      .filter(function(d) { return d.year == 2017 })
+      .filter(function(d) { return d.year == 2007 })
       .transition()
       .duration(800)
       .style("opacity", 1);
 
-//   not adding any axes since just for highlighting
+    // not adding any axes since just for highlighting
+
+    function initialTransition() {
+
+        var i = 1;
+        var year = 2007;
+
+        function myLoop () {
+            setTimeout(function () {
+
+                svg2.selectAll(".bar")
+                    .style("opacity", 0);
+
+                svg2.selectAll(".bar")
+                    .filter(function(d) {
+                        return d.year == year
+                    })
+                    .style("opacity", 1);
+
+                i++;                     //  increment the counter
+                year = 2007 + i;
+                if (i < 11) {            //  if the counter < 11, call the loop function
+                    myLoop();             
+                }                        
+
+            }, 200)
+        }
+
+        myLoop();
+        
+    }
+
+    setTimeout(function () {
+        initialTransition();
+    }, 1480);
 
 
 });
@@ -90,6 +124,5 @@ function highlightYear() {
         }})
         .style("opacity", 1);
 
-
-    //console.log(thisYear);
 }
+
