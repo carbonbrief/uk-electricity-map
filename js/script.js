@@ -3,7 +3,7 @@ if (!mapboxgl.supported()) {
 } else {
   var map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
+      style: 'https://maps.tilehosting.com/c/2d9d361b-377d-4c07-905b-31b81c65d271/styles/fiord-color-gl/style.json?key=8XzerAAi6jkvxtExTVxQ',
       center: [-7, 54],
       zoom: 5,
       maxZoom: 18
@@ -37,7 +37,7 @@ function getBounds () {
   else if (screenWidth > 1024 && screenWidth < 1400) {
       return boundsDesktop
   } 
-  else if (1024 > screenWidth && screenWidth > 850) {
+  else if (1025 > screenWidth && screenWidth > 850) {
       return boundsLaptop
   } else {
       return boundsMobile
@@ -75,10 +75,10 @@ var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 
 var baseLayers = [{
     label: 'Dark',
-    id: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json'
+    id: 'https://maps.tilehosting.com/c/2d9d361b-377d-4c07-905b-31b81c65d271/styles/fiord-color-gl/style.json?key=8XzerAAi6jkvxtExTVxQ'
   }, {
     label: 'Light',
-    id: 'https://openmaptiles.github.io/klokantech-3d-gl-style/style-cdn.json'
+    id: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'
   },{
     label: "Satellite",
     id: {
