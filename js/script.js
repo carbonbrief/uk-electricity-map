@@ -1,6 +1,102 @@
 if (!mapboxgl.supported()) {
-  alert('Your browser does not support Mapbox GL');
+  alert('Your browser does not support Web GL, loading simpler map instead.');
+
+  // simple leaflet version for old browsers
+
+  $('#console').css("display", "none");
+  $("#home-button").css("display", "none");
+
+  var southWest = new L.LatLng(48, -11),
+  northEast = new L.LatLng(59, 2),
+  bounds = new L.LatLngBounds(southWest, northEast);
+
+  var map = L.map('map', {zoomControl: true}).fitBounds(bounds, {padding: [20, 20]});
+
+  var CartoBlue = L.tileLayer('https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png', {
+    attribution: 'midnight_cartodb',
+    maxZoom: 16
+  }).addTo(map);
+
+  map.scrollWheelZoom.disable();
+
+  var group = L.layerGroup();
+
+  function markers (data) {
+    var promise = $.getJSON("data/dummy.geojson");
+    promise.then(function(data) {
+    var markers = L.geoJSON(data, {
+      filter: function (feature, layer) {
+        return(feature.properties["yearEnd"] > "2016");
+      },
+      pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng);
+      },
+      onEachFeature: onEachFeature,
+      style: style
+    });
+    group.addLayer(markers);
+    });
+  }
+
+  // call markers
+
+  markers();
+
+  group.addTo(map);
+
+  // find radius of marker
+
+  function getRadius(d) {
+    return d > 3200  ? 33 :
+            d > 1600  ? 24 :
+            d > 800  ? 17 :
+            d > 400  ? 12 :
+            d > 200 ? 9 :
+            d > 50  ? 6.6 :
+            d > 25  ? 5 :
+            d > 12.5  ? 3.8 :
+                    3;
+  }
+
+  var colors = {
+    "Coal": "#ced1cc",
+    "Gas": "#4e80e5",
+    "Solar": "#ffc83e",
+    "Nuclear": "#dd54b6",
+    "Oil": "#a45edb",
+    "Hydro": "#43cfef",
+    "Wind": "#00a98e",
+    "Biomass": "#A7B734",
+    "Waste": "#ea545c",
+    "Other": "#cc9b7a",
+  }
+
+  // style of markers
+
+  function style(feature) {
+    return {
+        fillColor: colors[feature.properties["type"]],
+        weight: 0.4,
+        opacity: 0.37,
+        color: '#f3f3f3',
+        fillOpacity: 0.73,
+        radius: getRadius(feature.properties["capacity"])
+    };
+  }
+
+  // add pop up
+
+  function onEachFeature(feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties) {
+      layer.bindPopup('<h3 style= color:'+ colors[feature.properties["type"]] +';>'+feature.properties["name"]+'</h1><span class="label-title">Capacity: </span>'+feature.properties["capacity"]+' MW<br /><span class="label-title">Type: </span>'+feature.properties["fuelDetail"]+'<br /><span class="label-title">Region: </span>'+feature.properties["region"], {closeButton: false, offset: L.point(0, -20)});
+          layer.on('mouseover', function() { layer.openPopup(); });
+          layer.on('mouseout', function() { layer.closePopup(); });
+    };
+  }
+
 } else {
+  
   var map = new mapboxgl.Map({
       container: 'map',
       style: 'https://maps.tilehosting.com/c/2d9d361b-377d-4c07-905b-31b81c65d271/styles/fiord-color-gl/style.json?key=8XzerAAi6jkvxtExTVxQ',
@@ -8,6 +104,7 @@ if (!mapboxgl.supported()) {
       zoom: 5,
       maxZoom: 18
   });
+
 }
 
 // variable to use throughout
