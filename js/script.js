@@ -4,13 +4,13 @@ if (!mapboxgl.supported()) {
   // simple leaflet version for old browsers
 
   $('#console').css("display", "none");
-  $("#home-button").css("display", "none");
+  $("#home-button-wrapper").css("display", "none");
 
   var southWest = new L.LatLng(48, -11),
-  northEast = new L.LatLng(59, 2),
+  northEast = new L.LatLng(58, 2),
   bounds = new L.LatLngBounds(southWest, northEast);
 
-  var map = L.map('map', {zoomControl: true}).fitBounds(bounds, {padding: [20, 20]});
+  var map = L.map('map', {zoomControl: true}).fitBounds(bounds, {padding: [5, 5]});
 
   var CartoBlue = L.tileLayer('https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png', {
     attribution: 'midnight_cartodb',
