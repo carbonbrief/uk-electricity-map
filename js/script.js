@@ -1,13 +1,110 @@
 if (!mapboxgl.supported()) {
-  alert('Your browser does not support Mapbox GL');
+  alert('Your browser does not support Web GL, loading simpler map instead.');
+
+  // simple leaflet version for old browsers
+
+  $('#console').css("display", "none");
+  $("#home-button-wrapper").css("display", "none");
+
+  var southWest = new L.LatLng(49.5, -10),
+  northEast = new L.LatLng(59.5, 2),
+  bounds = new L.LatLngBounds(southWest, northEast);
+
+  var map = L.map('map', {zoomControl: true}).fitBounds(bounds, {padding: [5, 5]});
+
+  var CartoBlue = L.tileLayer('https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png', {
+    attribution: 'midnight_cartodb',
+    maxZoom: 16
+  }).addTo(map);
+
+  map.scrollWheelZoom.disable();
+
+  var group = L.layerGroup();
+
+  function markers (data) {
+    var promise = $.getJSON("data/dummy.geojson");
+    promise.then(function(data) {
+    var markers = L.geoJSON(data, {
+      filter: function (feature, layer) {
+        return(feature.properties["yearEnd"] > "2016");
+      },
+      pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng);
+      },
+      onEachFeature: onEachFeature,
+      style: style
+    });
+    group.addLayer(markers);
+    });
+  }
+
+  // call markers
+
+  markers();
+
+  group.addTo(map);
+
+  // find radius of marker
+
+  function getRadius(d) {
+    return d > 3200  ? 33 :
+            d > 1600  ? 24 :
+            d > 800  ? 17 :
+            d > 400  ? 12 :
+            d > 200 ? 9 :
+            d > 50  ? 6.6 :
+            d > 25  ? 5 :
+            d > 12.5  ? 3.8 :
+                    3;
+  }
+
+  var colors = {
+    "Coal": "#ced1cc",
+    "Gas": "#4e80e5",
+    "Solar": "#ffc83e",
+    "Nuclear": "#dd54b6",
+    "Oil": "#a45edb",
+    "Hydro": "#43cfef",
+    "Wind": "#00a98e",
+    "Biomass": "#A7B734",
+    "Waste": "#ea545c",
+    "Other": "#cc9b7a",
+  }
+
+  // style of markers
+
+  function style(feature) {
+    return {
+        fillColor: colors[feature.properties["type"]],
+        weight: 0.4,
+        opacity: 0.37,
+        color: '#f3f3f3',
+        fillOpacity: 0.73,
+        radius: getRadius(feature.properties["capacity"])
+    };
+  }
+
+  // add pop up
+
+  function onEachFeature(feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties) {
+      layer.bindPopup('<h3 style= color:'+ colors[feature.properties["type"]] +';>'+feature.properties["name"]+'</h1><span class="label-title">Capacity: </span>'+feature.properties["capacity"]+' MW<br /><span class="label-title">Type: </span>'+feature.properties["fuelDetail"]+'<br /><span class="label-title">Region: </span>'+feature.properties["region"], {closeButton: false, offset: L.point(0, -20)});
+          layer.on('mouseover', function() { layer.openPopup(); });
+          layer.on('mouseout', function() { layer.closePopup(); });
+    };
+  }
+
 } else {
+  
   var map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
+      style: 'https://maps.tilehosting.com/c/2d9d361b-377d-4c07-905b-31b81c65d271/styles/fiord-color-gl/style.json?key=8XzerAAi6jkvxtExTVxQ',
       center: [-7, 54],
       zoom: 5,
       maxZoom: 18
   });
+
 }
 
 // variable to use throughout
@@ -37,7 +134,7 @@ function getBounds () {
   else if (screenWidth > 1024 && screenWidth < 1400) {
       return boundsDesktop
   } 
-  else if (1024 > screenWidth && screenWidth > 850) {
+  else if (1025 > screenWidth && screenWidth > 850) {
       return boundsLaptop
   } else {
       return boundsMobile
@@ -48,6 +145,14 @@ var bounds = getBounds();
 
 // resize map for the screen
 map.fitBounds(bounds, {padding: 10});
+
+// only include search barf first so appears at top of controls
+
+if (screenWidth > 1200){
+  map.addControl(new MapboxGeocoder({
+      accessToken: config.key1,
+  }));
+}
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
@@ -75,10 +180,10 @@ var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 
 var baseLayers = [{
     label: 'Dark',
-    id: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json'
+    id: 'https://maps.tilehosting.com/c/2d9d361b-377d-4c07-905b-31b81c65d271/styles/fiord-color-gl/style.json?key=8XzerAAi6jkvxtExTVxQ'
   }, {
     label: 'Light',
-    id: 'https://openmaptiles.github.io/klokantech-3d-gl-style/style-cdn.json'
+    id: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'
   },{
     label: "Satellite",
     id: {
@@ -121,16 +226,16 @@ function addDataLayers () {
         type: 'exponential',
         base: 0.8,
         stops: [
-          [{zoom: 1, value: 1}, 1],
-          [{zoom: 1, value: 2500}, 20],
-          [{zoom: 4, value: 1}, 3],
-          [{zoom: 4, value: 2500}, 27],
+          [{zoom: 2, value: 1}, 0.5],
+          [{zoom: 2, value: 2500}, 18],
+          [{zoom: 4.5, value: 1}, 3],
+          [{zoom: 4.5, value: 2500}, 27],
           [{zoom: 8, value: 1}, 4.5],
           [{zoom: 8, value: 2500}, 32],
           [{zoom: 12, value: 1}, 6],
           [{zoom: 12, value: 2500}, 37],
-          [{zoom: 17, value: 1}, 8],
-          [{zoom: 17, value: 2500}, 42]
+          [{zoom: 15, value: 1}, 8],
+          [{zoom: 15, value: 2500}, 42]
         ]
       },
       'circle-color': [

@@ -11,7 +11,6 @@ function getHeight2 () {
         return 85
     } 
 }
-console.log(screenWidth);
 
 var responsiveHeight2 = getHeight2();
 
@@ -50,11 +49,7 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
         })
         .entries(data);
 
-    console.log(data_nest);
-
   data = data_nest.filter(function(d){ return d.key == 2007})[0].values;
-
-  console.log(data);
   
   var cat = ["lowCarbon","highCarbon"];
 
