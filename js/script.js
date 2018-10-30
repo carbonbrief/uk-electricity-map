@@ -146,6 +146,14 @@ var bounds = getBounds();
 // resize map for the screen
 map.fitBounds(bounds, {padding: 10});
 
+// only include search barf first so appears at top of controls
+
+if (screenWidth > 1200){
+  map.addControl(new MapboxGeocoder({
+      accessToken: config.key1,
+  }));
+}
+
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 
@@ -218,16 +226,16 @@ function addDataLayers () {
         type: 'exponential',
         base: 0.8,
         stops: [
-          [{zoom: 1, value: 1}, 1],
-          [{zoom: 1, value: 2500}, 20],
-          [{zoom: 4, value: 1}, 3],
-          [{zoom: 4, value: 2500}, 27],
+          [{zoom: 2, value: 1}, 0.5],
+          [{zoom: 2, value: 2500}, 18],
+          [{zoom: 4.5, value: 1}, 3],
+          [{zoom: 4.5, value: 2500}, 27],
           [{zoom: 8, value: 1}, 4.5],
           [{zoom: 8, value: 2500}, 32],
           [{zoom: 12, value: 1}, 6],
           [{zoom: 12, value: 2500}, 37],
-          [{zoom: 17, value: 1}, 8],
-          [{zoom: 17, value: 2500}, 42]
+          [{zoom: 15, value: 1}, 8],
+          [{zoom: 15, value: 2500}, 42]
         ]
       },
       'circle-color': [
