@@ -6,8 +6,8 @@ if (!mapboxgl.supported()) {
   $('#console').css("display", "none");
   $("#home-button-wrapper").css("display", "none");
 
-  var southWest = new L.LatLng(48, -11),
-  northEast = new L.LatLng(58, 2),
+  var southWest = new L.LatLng(49.5, -10),
+  northEast = new L.LatLng(59.5, 2),
   bounds = new L.LatLngBounds(southWest, northEast);
 
   var map = L.map('map', {zoomControl: true}).fitBounds(bounds, {padding: [5, 5]});
