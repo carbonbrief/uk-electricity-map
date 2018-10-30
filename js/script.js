@@ -458,3 +458,33 @@ $("#home-button").click(function() {
       animate: true
   });
 })
+
+// PROMPT BEHAVIOURS
+
+// select random number between 1 and 3
+var randomWrapper = Math.floor((Math.random() * 3) + 1);
+
+console.log(randomWrapper);
+
+if (screenWidth > 980) {
+    var promptTimeout = setTimeout(function() {
+        // randomly show a different prompt each time
+        $("#prompt-wrapper" + randomWrapper).toggleClass("prompt-in prompt-out");
+    }, 8000);
+}
+
+// clear timeout when the user start interacting with the map, so not distracting
+$(document).one("mousedown", function () {
+    clearTimeout(promptTimeout);
+    console.log("clear timeout");
+})
+
+setTimeout(function() {
+    $(".prompt-wrapper").removeClass("prompt-in");
+    $(".prompt-wrapper").addClass("prompt-fade");
+}, 23000);
+
+$(".prompt-wrapper").mousemove(function() {
+    $(".prompt-wrapper").removeClass("prompt-in");
+    $(".prompt-wrapper").addClass("prompt-out");
+})

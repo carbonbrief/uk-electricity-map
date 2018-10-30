@@ -245,7 +245,7 @@ select {
 
 #home-button-wrapper {
   position: absolute;
-  top: 150px;
+  top: 160px;
   right: 10px;
   height: 18px;
   width: 18px;
@@ -409,4 +409,73 @@ input[type=range]:focus::-ms-fill-upper {
 	font-family: PT Sans, Arial;
   font-size: 13px;
   color: #FFFFFF;
+}
+
+.prompt-wrapper {
+  position: absolute;
+  top: 55px;
+  right: -140px;
+}
+
+.prompt {
+  position: relative;
+  font-size: 13px;
+  color: #c4c4c4;
+  background: #242a3a;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px; 
+  width: 95px; 
+  /* height: 36px; */
+  padding: 8px;
+  opacity: 1;
+  animation: fade 2s ease-in-out infinite;
+}
+
+#prompt-wrapper1 {
+  top: 105px;
+}
+
+#prompt-wrapper2 {
+  top: 145px;
+}
+
+/* add the arrow to the prompt box */
+.prompt:before{
+  content: "";
+  position: absolute;
+  top: 12px;
+  right:-25px;
+  z-index: 1;
+  border: solid 15px transparent;
+  border-left-color: #242a3a;
+}
+
+@keyframes fade {
+  0%,100% { opacity: 0.8 }
+  50% { opacity: 1 }
+}
+
+.prompt-in {
+  opacity: 1;
+  transform: translateX(-200px);
+  -ms-transform: translateX(-200px);
+  -webkit-transform: translateX(-200px);
+  transition: all 1.5s ease;
+}
+
+.prompt-out {
+  opacity: 0;
+  transform: translateX(200px);
+  -ms-transform: translateX(200px);
+  -webkit-transform: translateX(200px);
+  transition: all 2s ease;
+}
+
+.prompt-fade {
+  opacity: 0;
+  transition: 3s;
+  transform: translateX(-200px);
+  -ms-transform: translateX(-200px);
+  -webkit-transform: translateX(-200px);
 }
