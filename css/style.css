@@ -314,6 +314,23 @@ select {
   background-color: #242a3a;
 }
 
+/* improve the styling of the slider in Chrome */
+
+/* input[type=range]{
+  -webkit-appearance: none;
+} */
+
+input[type=range]::-webkit-slider-runnable-track {
+  background: #242a3a;
+  border: none;
+  border-radius: 3px;
+  height: 5px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  margin-top: -5px;
+}
+
 /* improve the styling of the slider in IE and Edge */
 
 input[type=range]::-ms-track {
