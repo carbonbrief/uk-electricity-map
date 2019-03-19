@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>UK electricity map | Carbon Brief</title>
         <meta name="description" content="A map of UK energy sources.">
-        <meta name="author" content="Rosamund Pearce">
+        <meta name="author" content="Simon Evans and Rosamund Pearce">
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -16,6 +16,7 @@
         <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
         integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
         crossorigin=""></script>
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Sans+Narrow:400,700|PT+Serif:400,400i,700" rel="stylesheet">
         <link rel="stylesheet" href="css/charts.css">
         <link rel="stylesheet" href="css/toggle.css">
         <link rel="stylesheet" href="css/style.css">
@@ -23,176 +24,199 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
     <body>
-        <div id='console' class='console-open'>
-            <div id="console-toggle">
-                <a href="#" class="toggle"><span class="arrow-right-hidden">&#10095;</span><span class="arrow-left">&#10094;</span></a>
-            </div>
-            <h1>UK power sources</h1> 
-            <div class='session'>
-                <div class='row colors'>
+        <div class="row" id="intro">
+            <div class="mask">
+                <div id="title">
+                    <h1>How the UK's energy mix has transformed</h1>
+                    <p class="credit">Words by Simon Evans. Interactive by Rosamund Pearce.</p>
                 </div>
             </div>
-            <p class="console-text">Drag the slider to explore how the UK's energy mix has changed.</p>
-            <div class='session' id='sliderbar'>
-                <h2>Year: <label id='active-hour'>2007</label></h2>
-                <input id='slider' autocomplete="off" class='row' type='range' min='2007' max='2018' step='1' value='2007' />
+        </div>
+        <div class="row">
+            <div class="small column" id="text-container">
+                <div class="text">
+                    <p>xxxxx</p>
+                </div>
+                <div class="text">
+                    <p>xxxxx</p>
+                </div>
             </div>
-            <div class='session' id="key-mobile">
-                <ul id="list-group">
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #A7B734;"></div>
-                        Biomass
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #ced1cc;"></div>
-                        Coal
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #4e80e5;"></div>
-                        Gas
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #43cfef;"></div>
-                        Hydro
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #ff8767;"></div>
-                        Interconnectors
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #dd54b6;"></div>
-                        Nuclear
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #a45edb;"></div>
-                        Oil
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #cc9b7a;"></div>
-                        Other
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #ffc83e;"></div>
-                        Solar
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #ea545c;"></div>
-                        Waste
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #00a98e;"></div>
-                        Wind
-                    </li>
-                </ul>
+            <div class="large column" id="map-container">
+                <div id="map" class="sticky"></div>
             </div>
-            <div class='session' id="dropdown">
-                <div id="dropdown-titles">
-                    <div class="title" id="first-title">
-                        <h2>Type: <span id="region">All</span></h2>
-                    </div>
-                    <div class="title">
-                        <h2>Map: <span id="map-type">Dark</span></h2>
+        </div>
+        <div class="row">
+            <!-- <div id='console' class='console-open'>
+                <div id="console-toggle">
+                    <a href="#" class="toggle"><span class="arrow-right-hidden">&#10095;</span><span class="arrow-left">&#10094;</span></a>
+                </div>
+                <h1>UK power sources</h1> 
+                <div class='session'>
+                    <div class='slider colors'>
                     </div>
                 </div>
-                <select id='selectorType' class="selector">
-                    <option value='All' selected='selected'>All types</option>
-                    <option value='LowCarbon' >Low carbon</option>
-                    <option value='HighCarbon' >High carbon</option>
-                    <option value='Biomass' >Biomass</option>
-                    <option value='Coal' >Coal</option>
-                    <option value='Gas' >Gas</option>
-                    <option value='Hydro' >Hydro</option>
-                    <option value='Interconnectors' >Interconnectors</option>
-                    <option value='Nuclear' >Nuclear</option>
-                    <option value='Oil' >Oil</option>
-                    <option value='Other' >Other</option>
-                    <option value='Solar' >Solar</option>
-                    <option value='Waste' >Waste</option>
-                    <option value='Wind' >Wind</option>
-                </select>
-                <select id='selectorStyle' class="selector">
-                    <option value="Dark" selected="selected">Dark</option>
-                    <option value="Light">Light</option>
-                    <option value="Satellite">Satellite</option>
-                </select>  
-                <ul id="list-group">
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #A7B734;"></div>
-                        Biomass
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #ced1cc;"></div>
-                        Coal
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #4e80e5;"></div>
-                        Gas
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #43cfef;"></div>
-                        Hydro
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #ff8767;"></div>
-                        Interconnectors
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #dd54b6;"></div>
-                        Nuclear
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #a45edb;"></div>
-                        Oil
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #cc9b7a;"></div>
-                        Other
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #ffc83e;"></div>
-                        Solar
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #ea545c;"></div>
-                        Waste
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #00a98e;"></div>
-                        Wind
-                    </li>
-                </ul>
-            </div>
-            <div class='session' id="charts">
-                <h2>Total: <span id="total">XXXXX</span> <span style="font-weight: normal; font-size: 9px">MW</span></h2>
-                <div id="line-wrapper">
-                    <div id="bar-chart"></div>
-                    <div id="line-chart-background"></div>
-                    <div id="line-chart"></div>
+                <p class="console-text">Drag the slider to explore how the UK's energy mix has changed.</p>
+                <div class='session' id='sliderbar'>
+                    <h2>Year: <label id='active-hour'>2007</label></h2>
+                    <input id='slider' autocomplete="off" class='slider' type='range' min='2007' max='2018' step='1' value='2007' />
                 </div>
-                <div id="stacked-bar">
-                </div>  
+                <div class='session' id="key-mobile">
+                    <ul id="list-group">
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #A7B734;"></div>
+                            Biomass
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #ced1cc;"></div>
+                            Coal
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #4e80e5;"></div>
+                            Gas
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #43cfef;"></div>
+                            Hydro
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #ff8767;"></div>
+                            Interconnectors
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #dd54b6;"></div>
+                            Nuclear
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #a45edb;"></div>
+                            Oil
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #cc9b7a;"></div>
+                            Other
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #ffc83e;"></div>
+                            Solar
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #ea545c;"></div>
+                            Waste
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #00a98e;"></div>
+                            Wind
+                        </li>
+                    </ul>
+                </div>
+                <div class='session' id="dropdown">
+                    <div id="dropdown-titles">
+                        <div class="title" id="first-title">
+                            <h2>Type: <span id="region">All</span></h2>
+                        </div>
+                        <div class="title">
+                            <h2>Map: <span id="map-type">Dark</span></h2>
+                        </div>
+                    </div>
+                    <select id='selectorType' class="selector">
+                        <option value='All' selected='selected'>All types</option>
+                        <option value='LowCarbon' >Low carbon</option>
+                        <option value='HighCarbon' >High carbon</option>
+                        <option value='Biomass' >Biomass</option>
+                        <option value='Coal' >Coal</option>
+                        <option value='Gas' >Gas</option>
+                        <option value='Hydro' >Hydro</option>
+                        <option value='Interconnectors' >Interconnectors</option>
+                        <option value='Nuclear' >Nuclear</option>
+                        <option value='Oil' >Oil</option>
+                        <option value='Other' >Other</option>
+                        <option value='Solar' >Solar</option>
+                        <option value='Waste' >Waste</option>
+                        <option value='Wind' >Wind</option>
+                    </select>
+                    <select id='selectorStyle' class="selector">
+                        <option value="Dark" selected="selected">Dark</option>
+                        <option value="Light">Light</option>
+                        <option value="Satellite">Satellite</option>
+                    </select>  
+                    <ul id="list-group">
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #A7B734;"></div>
+                            Biomass
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #ced1cc;"></div>
+                            Coal
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #4e80e5;"></div>
+                            Gas
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #43cfef;"></div>
+                            Hydro
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #ff8767;"></div>
+                            Interconnectors
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #dd54b6;"></div>
+                            Nuclear
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #a45edb;"></div>
+                            Oil
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #cc9b7a;"></div>
+                            Other
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #ffc83e;"></div>
+                            Solar
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #ea545c;"></div>
+                            Waste
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #00a98e;"></div>
+                            Wind
+                        </li>
+                    </ul>
+                </div>
+                <div class='session' id="charts">
+                    <h2>Total: <span id="total">XXXXX</span> <span style="font-weight: normal; font-size: 9px">MW</span></h2>
+                    <div id="line-wrapper">
+                        <div id="bar-chart"></div>
+                        <div id="line-chart-background"></div>
+                        <div id="line-chart"></div>
+                    </div>
+                    <div id="stacked-bar">
+                    </div>  
+                </div>
+                <div class="session" id="credit">
+                    <p>Data courtesy of <a href='' target='_blank'>x</a>. Interactive by <a href='https://www.carbonbrief.org/author/rospearce' >Rosamund Pearce</a> with data wrangling by <a href='https://www.carbonbrief.org/author/simonevans' target='_blank'>Simon Evans</a> for <a href='https://www.carbonbrief.org/'>Carbon Brief</a>. Licensed under <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode'>Creative Commons.</a></p>
+                </div>
             </div>
-            <div class="session" id="credit">
-                <p>Data courtesy of <a href='' target='_blank'>x</a>. Interactive by <a href='https://www.carbonbrief.org/author/rospearce' >Rosamund Pearce</a> with data wrangling by <a href='https://www.carbonbrief.org/author/simonevans' target='_blank'>Simon Evans</a> for <a href='https://www.carbonbrief.org/'>Carbon Brief</a>. Licensed under <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode'>Creative Commons.</a></p>
+            <div id='home-button-wrapper'><a href='#' id="home-button"><i class="fas fa-home"></i></a></div>
+            <div id='loading'>
+                <div id="canvas-wrapper">
+                    <canvas id="canvas-id" width="120" height="120"> </canvas>
+                </div>
             </div>
+            <div id='map'>
+                <div id="adb">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i><p>Map tiles failed to load. This might be because:<ul><li>Your adblocker is preventing the map tiles from rendering. Please try whitelisting this site and refreshing the page.</li><li>Your browser does not support WebGL – click <a href='https://get.webgl.org/' target="_blank">here</a> to check. Please upgrade or reopen this link in a <a href='https://www.mapbox.com/help/mapbox-browser-support/' target="_blank">modern web browser</a>, such as Firefox, Chrome or Safari (version 9.0+).</li></ul></p>
+                </div>
+            </div>
+            <div id="prompt-wrapper1" class="prompt-out prompt-wrapper"><p class="prompt">Change the angle of the map</p></div>
+            <div id="prompt-wrapper2" class="prompt-out prompt-wrapper"><p class="prompt">Reset the map view</p></div> -->
         </div>
-        <div id='home-button-wrapper'><a href='#' id="home-button"><i class="fas fa-home"></i></a></div>
-        <div id='loading'>
-            <div id="canvas-wrapper">
-                <canvas id="canvas-id" width="120" height="120"> </canvas>
-            </div>
-        </div>
-        <div id='map'>
-            <div id="adb">
-                <i class="fa fa-info-circle" aria-hidden="true"></i><p>Map tiles failed to load. This might be because:<ul><li>Your adblocker is preventing the map tiles from rendering. Please try whitelisting this site and refreshing the page.</li><li>Your browser does not support WebGL – click <a href='https://get.webgl.org/' target="_blank">here</a> to check. Please upgrade or reopen this link in a <a href='https://www.mapbox.com/help/mapbox-browser-support/' target="_blank">modern web browser</a>, such as Firefox, Chrome or Safari (version 9.0+).</li></ul></p>
-            </div>
-        </div>
-        <div id="prompt-wrapper1" class="prompt-out prompt-wrapper"><p class="prompt">Change the angle of the map</p></div>
-        <div id="prompt-wrapper2" class="prompt-out prompt-wrapper"><p class="prompt">Reset the map view</p></div>
-        <div id="scroll-area"></div>
+        <!-- <div id="scroll-area"></div>
         <div id="logo-mobile"></div>
         <div id="logo-tablet"></div>
-        <div id="logo-laptop"></div>
+        <div id="logo-laptop"></div> -->
         <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js'></script>
         <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
         <script src="js/config.js"></script>
@@ -203,7 +227,5 @@
         <script src="js/line-chart.js"></script>
         <script src="js/stacked-bar.js"></script>
         <script src="js/totals.js"></script>
-        
-         
     </body>
 </html>

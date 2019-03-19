@@ -107,6 +107,8 @@ if (!mapboxgl.supported()) {
 
 }
 
+map.scrollZoom.disable();
+
 // variable to use throughout
 var screenWidth = $(window).width();
 
@@ -148,14 +150,14 @@ map.fitBounds(bounds, {padding: 10});
 
 // only include search barf first so appears at top of controls
 
-if (screenWidth > 1200){
-  map.addControl(new MapboxGeocoder({
-      accessToken: config.key1,
-  }));
-}
+// if (screenWidth > 1200){
+//   map.addControl(new MapboxGeocoder({
+//       accessToken: config.key1,
+//   }));
+// }
 
 // Add zoom and rotation controls to the map.
-map.addControl(new mapboxgl.NavigationControl());
+// map.addControl(new mapboxgl.NavigationControl());
 
 var getYear = {
   2007: "2007",
