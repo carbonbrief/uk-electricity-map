@@ -44,10 +44,6 @@ body {
   margin: 40px;
 }
 
-#text-container h2 {
-  text-align: center;
-}
-
 .padding {
   height: 200px;
 }
@@ -75,7 +71,6 @@ body {
 }
 
 .year-highlight {
-  margin: 10px;
   padding: 5px;
   color: #c6e7fa;
   background-color: #282f42;
@@ -83,6 +78,15 @@ body {
   -moz-box-shadow:    3px 3px 0px 0px #c6e7fa;
   -webkit-box-shadow: 3px 3px 0px 0px #c6e7fa;
   box-shadow:         3px 3px 0px 0px #c6e7fa;
+}
+
+.year-wrapper {
+  height: 54px;
+}
+
+.active {
+  position: fixed;
+  top: 40px;
 }
 
 h1 {
@@ -103,6 +107,11 @@ h2 {
   display: block;
   margin-block-start: 1.33em;
   margin-block-end: 1.33em;
+}
+
+#text-container h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 h4 {

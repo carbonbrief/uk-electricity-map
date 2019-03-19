@@ -6,8 +6,9 @@
         <meta name="description" content="A map of UK energy sources.">
         <meta name="author" content="Simon Evans and Rosamund Pearce">
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
         <script src="//d3js.org/d3.v4.min.js"></script>
         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
@@ -32,10 +33,18 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="main">
             <div class="small column" id="text-container">
-                <div class="year">
-                    <h2><span class="year-highlight">2000</span></h2>
+                <div class="year-wrapper">
+                    <div class="year-first">
+                        <h2><span class="year-highlight">2000</span></h2>
+                    </div>
+                </div>
+                <div class="padding"></div>
+                <div class="year-wrapper">
+                    <div class="year">
+                        <h2><span class="year-highlight">2001</span></h2>
+                    </div>
                 </div>
                 <div class="padding"></div>
                 <div class="text">
@@ -46,8 +55,10 @@
                     <p>Hey, you know how I'm, like, always trying to save the planet? Here's my chance. This thing comes fully loaded. AM/FM radio, reclining bucket seats, and... power windows. Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should.</p>
                 </div>
                 <div class="padding"></div>
-                <div class="year">
-                    <h2><span class="year-highlight">2001</span></h2>
+                <div class="year-wrapper">
+                    <div class="year">
+                        <h2><span class="year-highlight">2002</span></h2>
+                    </div>
                 </div>
                 <div class="padding"></div>
                 <div class="text">
