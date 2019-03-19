@@ -39,6 +39,19 @@ body {
   margin-right: auto;
 }
 
+#text-container {
+  background-color: #282f42;
+  margin: 40px;
+}
+
+#text-container h2 {
+  text-align: center;
+}
+
+.padding {
+  height: 200px;
+}
+
 .credit {
   font-family: "PT Sans", sans-serif;
   font-weight: 400;
@@ -61,6 +74,17 @@ body {
   left: calc(50% - 60px);
 }
 
+.year-highlight {
+  margin: 10px;
+  padding: 5px;
+  color: #c6e7fa;
+  background-color: #282f42;
+  border: 1.5px solid #c6e7fa;
+  -moz-box-shadow:    3px 3px 0px 0px #c6e7fa;
+  -webkit-box-shadow: 3px 3px 0px 0px #c6e7fa;
+  box-shadow:         3px 3px 0px 0px #c6e7fa;
+}
+
 h1 {
   font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
   font-weight: normal;
@@ -71,6 +95,17 @@ h1 {
 }
 
 h2 {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.1;
+  color: #c6e7fa;
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+}
+
+h4 {
   font-size: 15px;
   line-height: 20px;
   margin-bottom: 10px;
@@ -86,8 +121,22 @@ h3 {
 }
 
 p {
-  margin-top: 2px;
-  margin-bottom: 0px;
+  font-family: "PT Serif", serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 36px;
+  font-style: normal;
+  color: #f3f3f3;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.text p {
+  font-size: 16px;
+  line-height: 28px;
 }
 
 .console-text {
@@ -110,11 +159,7 @@ a {
   display: -webkit-flex;     /* NEW - Chrome */
   display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
   height: auto;
-  /* flex-direction: row;
-  flex-wrap: wrap;
-  flex: 1;
-  margin: 0;
-  justify-content: space-evenly; */
+  background-color: #282f42;
 }
 
 .column {
