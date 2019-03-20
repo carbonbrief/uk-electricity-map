@@ -80,12 +80,13 @@ body {
   box-shadow:         3px 3px 0px 0px #c6e7fa;
 }
 
-.year-wrapper {
-  height: 54px;
+.year {
+  height: 800px;
 }
 
-.active {
-  position: fixed;
+.year-sticky {
+  position: sticky;
+  position: -webkit-sticky;
   top: 40px;
 }
 
@@ -179,16 +180,24 @@ a {
 }
 
 .large {
+  -ms-flex: 3 0 0;
+  -webkit-flex: 3 0 0;
+  flex: 3 0 0;
+}
+
+.small {
   -ms-flex: 2 0 0;
   -webkit-flex: 2 0 0;
   flex: 2 0 0;
 }
 
-.small {
+.small2 {
   -ms-flex: 1 0 0;
   -webkit-flex: 1 0 0;
   flex: 1 0 0;
 }
+
+
 
 #console {
   position: absolute;
