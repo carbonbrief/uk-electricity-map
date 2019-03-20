@@ -36,42 +36,42 @@ var x4 = d3.scaleLinear()
     .rangeRound([0, width]);	
 
 var z4 = d3.scaleOrdinal()
-    .range(["#00a98e", "#ced1cc"]);
+    .range(["#A7B734", "#ced1cc", "#4e80e5", "#43cfef", '#ff8767', "#dd54b6", "#a45edb", "#cc9b7a", "#ffc83e", "#ea545c", "#00a98e"]);
 
 var stack = d3.stack();
 
-d3.csv("./data/stacked-bar.csv", function(error, data) {
-  if (error) throw error;
+d3.csv("./data/stacked-bar-2.csv", function(error, data) {
+    if (error) throw error;
 
-  var data_nest = d3.nest()
-        .key(function(d){
-            return d.year
-        })
-        .entries(data);
+    var data_nest = d3.nest()
+            .key(function(d){
+                return d.year
+            })
+            .entries(data);
 
-  data = data_nest.filter(function(d){ return d.key == 2007})[0].values;
-  
-  var cat = ["lowCarbon","highCarbon"];
+    data = data_nest.filter(function(d){ return d.key == 2007})[0].values;
+    
+    var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Other", "Solar", "Waste", "Wind"];
 
-  y4.domain(data.map(function(d) { return d.y; }));
-  x4.domain([0, 100]).nice();
-  z4.domain(cat); 
+    y4.domain(data.map(function(d) { return d.y; }));
+    x4.domain([0, 100]).nice();
+    z4.domain(cat); 
 
-  g.selectAll(".serie")
+    g.selectAll(".serie")
     .data(stack.keys(cat)(data))
     .enter().append("g")
-      .attr("class", "serie")
-      .attr("fill", function(d) {return z4(d.key); })
+    .attr("class", "serie")
+    .attr("fill", function(d) {return z4(d.key); })
     .selectAll("rect")
     .data(function(d) { return d; })
     .enter().append("rect")
-      .attr("y", function(d) { return y4(d.data.y); })
-      .attr("x", function(d) { return x4(d[0]); })
-      .attr("rx", 5)
-      .attr("ry", 5)
-      .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
-      .attr("height", (y4.bandwidth() - 10))
-      .on("mouseover", function(d) {
+    .attr("y", function(d) { return y4(d.data.y); })
+    .attr("x", function(d) { return x4(d[0]); })
+    .attr("rx", 5)
+    .attr("ry", 5)
+    .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
+    .attr("height", (y4.bandwidth() - 10))
+    .on("mouseover", function(d) {
         //show circle
         d3.select(this)
         .transition()
@@ -100,16 +100,16 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
         .style("opacity", 0);
     });
 
-  g.append("g")
-      .attr("class", "axis axis--y")
-      .attr("transform","translate(0," + height2 + ")")
-      .call(d3.axisBottom(x4).ticks(5, "s"))
+    g.append("g")
+    .attr("class", "axis axis--y")
+    .attr("transform","translate(0," + height2 + ")")
+    .call(d3.axisBottom(x4).ticks(5, "s"))
     .append("text")
-      .attr("y", 2)
-      .attr("x", x4(x4.ticks(10).pop()))
-      .attr("dy", "0.35em")
-      .attr("text-anchor", "start")
-      .attr("fill", "#000");
+    .attr("y", 2)
+    .attr("x", x4(x4.ticks(10).pop()))
+    .attr("dy", "0.35em")
+    .attr("text-anchor", "start")
+    .attr("fill", "#000");
 
     g.append("g")
     .attr("class", "bar-labels")

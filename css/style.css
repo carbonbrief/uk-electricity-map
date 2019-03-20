@@ -197,7 +197,9 @@ a {
   flex: 1 0 0;
 }
 
-
+#chart-placeholder {
+  height: 200px;
+}
 
 #console {
   position: absolute;
@@ -517,6 +519,14 @@ input[type=range]:focus::-ms-fill-upper {
   /* border-color: #91785D; */
   max-width: 250px;
   /* box-shadow: 3px 3px 2px #8B5D33; */
+}
+
+.mapboxgl-popup-content p {
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
 }
 
 /* change colour of tip to match popup */

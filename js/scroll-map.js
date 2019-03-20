@@ -176,8 +176,8 @@ var getYear = {
 
 // declare filters
 // set to 2017 initially despite play preview or you get a bug when using the type dropdown
-var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2017];
-var filterEndYear = ['>=', ['number', ['get', 'yearEnd']], 2017];
+var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2000];
+var filterEndYear = ['>=', ['number', ['get', 'yearEnd']], 2000];
 var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 
 var baseLayers = [{
@@ -412,81 +412,81 @@ $("select").each(function () {
 
 // get slider to cycle through options once the page has loaded
 
-setTimeout(function(){
+// setTimeout(function(){
 
-var i = 1;  //  set your counter to 1
-var year = 2007;
+// var i = 1;  //  set your counter to 1
+// var year = 2007;
 
-function myLoop () {           //  create a loop function
-    setTimeout(function () {    //  call a 3s setTimeout when the loop is called
-        // update slider
-        $("#slider").val(year);        
-        // update text in the UI
-        document.getElementById('active-hour').innerText = year;
+// function myLoop () {           //  create a loop function
+//     setTimeout(function () {    //  call a 3s setTimeout when the loop is called
+//         // update slider
+//         $("#slider").val(year);        
+//         // update text in the UI
+//         document.getElementById('active-hour').innerText = year;
 
-        filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
-        filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
-        map.setFilter('powerplants', ['all', filterStartYear, filterEndYear]);
+//         filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+//         filterEndYear = ['>', ['number', ['get', 'yearEnd']], year];
+//         map.setFilter('powerplants', ['all', filterStartYear, filterEndYear]);
 
-        i++;                     //  increment the counter
-        year = 2007 + i;
-        if (i < 11) {            //  if the counter < 11, call the loop function
-        myLoop();             //  ..  again which will trigger another 
-        }                        //  ..  setTimeout()
-    }, 200)
-}
+//         i++;                     //  increment the counter
+//         year = 2007 + i;
+//         if (i < 11) {            //  if the counter < 11, call the loop function
+//         myLoop();             //  ..  again which will trigger another 
+//         }                        //  ..  setTimeout()
+//     }, 200)
+// }
 
-myLoop();   
+// myLoop();   
 
-}, 1500);
+// }, 1500);
 
-// TOGGLE BUTTON
+// // TOGGLE BUTTON
 
-$(".toggle").click(function() {
-$("#console").toggleClass('console-close console-open');
-$('.arrow-right-hidden').toggleClass('arrow-right');
-$('.arrow-left').toggleClass('arrow-left-hidden');
-});
+// $(".toggle").click(function() {
+// $("#console").toggleClass('console-close console-open');
+// $('.arrow-right-hidden').toggleClass('arrow-right');
+// $('.arrow-left').toggleClass('arrow-left-hidden');
+// });
 
-// HOME BUTTON
+// // HOME BUTTON
 
-$("#home-button").click(function() {
-map.flyTo({
-    center: [-7, 54],
-    zoom: 5,
-    bearing: 0,
-    pitch: 0,
-    speed: 1,
-    animate: true
-});
-})
+// $("#home-button").click(function() {
+// map.flyTo({
+//     center: [-7, 54],
+//     zoom: 5,
+//     bearing: 0,
+//     pitch: 0,
+//     speed: 1,
+//     animate: true
+// });
+// })
 
-// PROMPT BEHAVIOURS
+// // PROMPT BEHAVIOURS
 
-// select random number between 1 and 3
-var randomWrapper = Math.floor((Math.random() * 3) + 1);
+// // select random number between 1 and 3
+// var randomWrapper = Math.floor((Math.random() * 3) + 1);
 
-console.log(randomWrapper);
+// console.log(randomWrapper);
 
-if (screenWidth > 980) {
-    var promptTimeout = setTimeout(function() {
-        // randomly show a different prompt each time
-        $("#prompt-wrapper" + randomWrapper).toggleClass("prompt-in prompt-out");
-    }, 8000);
-}
+// if (screenWidth > 980) {
+//     var promptTimeout = setTimeout(function() {
+//         // randomly show a different prompt each time
+//         $("#prompt-wrapper" + randomWrapper).toggleClass("prompt-in prompt-out");
+//     }, 8000);
+// }
 
-// clear timeout when the user start interacting with the map, so not distracting
-$(document).one("mousedown", function () {
-    clearTimeout(promptTimeout);
-    console.log("clear timeout");
-})
+// // clear timeout when the user start interacting with the map, so not distracting
+// $(document).one("mousedown", function () {
+//     clearTimeout(promptTimeout);
+//     console.log("clear timeout");
+// })
 
-setTimeout(function() {
-    $(".prompt-wrapper").removeClass("prompt-in");
-    $(".prompt-wrapper").addClass("prompt-fade");
-}, 23000);
+// setTimeout(function() {
+//     $(".prompt-wrapper").removeClass("prompt-in");
+//     $(".prompt-wrapper").addClass("prompt-fade");
+// }, 23000);
 
-$(".prompt-wrapper").mousemove(function() {
-    $(".prompt-wrapper").removeClass("prompt-in");
-    $(".prompt-wrapper").addClass("prompt-out");
-})
+// $(".prompt-wrapper").mousemove(function() {
+//     $(".prompt-wrapper").removeClass("prompt-in");
+//     $(".prompt-wrapper").addClass("prompt-out");
+// })
