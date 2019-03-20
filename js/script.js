@@ -50,7 +50,9 @@ $(document).ready(function() {
             map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
           }
       },
-      offset: 40
+      offset: function () {
+        return -this.element.clientHeight + 40 + 40;
+      }
     });
 
     // travelling down
