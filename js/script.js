@@ -48,6 +48,8 @@ $(document).ready(function() {
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
             filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
             map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
+            map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
+            map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
           }
       },
       offset: function () {
@@ -64,6 +66,8 @@ $(document).ready(function() {
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
             filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
             map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
+            map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
+            map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
           }
       },
       offset: 40

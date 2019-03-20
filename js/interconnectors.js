@@ -49,45 +49,45 @@ function addInterconnectors () {
 
 map.on('load', function() {
 
-    document.getElementById('slider').addEventListener('input', function(e) {
-        var year = parseInt(e.target.value);
+    // document.getElementById('slider').addEventListener('input', function(e) {
+    //     var year = parseInt(e.target.value);
 
-        filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+    //     filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
 
-        map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
+    //     map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
 
-        map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
+    //     map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
 
-    })
+    // })
 
-    document.getElementById('selectorType').addEventListener('change', function(e) {
+    // document.getElementById('selectorType').addEventListener('change', function(e) {
 
-        var dropdown = e.target.value;
+    //     var dropdown = e.target.value;
 
-        if (dropdown === 'All') {
-            filterLines = ['==', ['string', ['get','type']], 'Interconnector'];
-        } else if (dropdown === 'Interconnectors') {
-            filterLines = ['==', ['string', ['get','type']], 'Interconnector'];
-        } else {
-            filterLines = ['!=', ['string', ['get','type']], 'Interconnector'];
-        };
+    //     if (dropdown === 'All') {
+    //         filterLines = ['==', ['string', ['get','type']], 'Interconnector'];
+    //     } else if (dropdown === 'Interconnectors') {
+    //         filterLines = ['==', ['string', ['get','type']], 'Interconnector'];
+    //     } else {
+    //         filterLines = ['!=', ['string', ['get','type']], 'Interconnector'];
+    //     };
 
-        // set filter for interconnector lines
+    //     // set filter for interconnector lines
 
-        map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
+    //     map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
 
-        if (dropdown === 'All') {
-            filterStations = ['==', ['string', ['get','type']], 'Interconnector'];
-        } else if (dropdown === 'Interconnectors') {
-            filterStations = ['==', ['string', ['get','type']], 'Interconnector'];
-        } else {
-            filterStations = ['!=', ['string', ['get','type']], 'Interconnector'];
-        };
+    //     if (dropdown === 'All') {
+    //         filterStations = ['==', ['string', ['get','type']], 'Interconnector'];
+    //     } else if (dropdown === 'Interconnectors') {
+    //         filterStations = ['==', ['string', ['get','type']], 'Interconnector'];
+    //     } else {
+    //         filterStations = ['!=', ['string', ['get','type']], 'Interconnector'];
+    //     };
 
-        // set filter for interconnector stations
+    //     // set filter for interconnector stations
 
-        map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
-    })
+    //     map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
+    // })
 
     // Create a popup, but don't add it to the map yet.
     var popup = new mapboxgl.Popup({

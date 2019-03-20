@@ -264,81 +264,81 @@ function addDataLayers () {
 
 map.on('load', function() {
 
-    // update hour filter when the slider is dragged
-    document.getElementById('slider').addEventListener('input', function(e) {
-        var year = parseInt(e.target.value);
-        // update the map
-        filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
-        filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
-        map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]); //the filter only applies to the powerplants layer
+    // // update hour filter when the slider is dragged
+    // document.getElementById('slider').addEventListener('input', function(e) {
+    //     var year = parseInt(e.target.value);
+    //     // update the map
+    //     filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+    //     filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
+    //     map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]); //the filter only applies to the powerplants layer
 
-        // update text in the UI
-        document.getElementById('active-hour').innerText = getYear[year];
+    //     // update text in the UI
+    //     document.getElementById('active-hour').innerText = getYear[year];
 
-        updateTotal();
+    //     updateTotal();
 
-    });
+    // });
 
-    document.getElementById('selectorType').addEventListener('change', function(e) {
-        var dropdown = e.target.value;
-        // update the map filter
-        if (dropdown === 'All') {
-            filterType = ['!=', ['string', ['get','type']], 'placeholder'];
-        } else if (dropdown === 'HighCarbon') {
-            filterType = ['match', ['get', 'type'], ['Coal', 'Gas', 'Oil'], true, false];
-        } else if (dropdown === 'LowCarbon') {
-            filterType = ['match', ['get', 'type'], ['Wind', 'Solar', 'Hydro'], true, false];
-        } else if (dropdown === 'Biomass') {
-            filterType = ['==', ['string', ['get','type']], 'Biomass'];
-        } else if (dropdown === 'Coal') {
-            filterType = ['==', ['string', ['get','type']], 'Coal'];
-        } else if (dropdown === 'Gas') {
-            filterType = ['==', ['string', ['get','type']], 'Gas'];
-        } else if (dropdown === 'Geothermal') {
-            filterType = ['==', ['string', ['get','type']], 'Geothermal'];
-        } else if (dropdown === 'Hydro') {
-            filterType = ['match', ['get', 'type'], ['Small Hydro', 'Large Hydro'], true, false];
-        } else if (dropdown === 'Interconnectors') {
-            filterType = ['==', ['string', ['get','type']], 'Interconnector'];
-        } else if (dropdown === 'Nuclear') {
-            filterType = ['==', ['string', ['get','type']], 'Nuclear'];
-        } else if (dropdown === 'Oil') {
-            filterType = ['==', ['string', ['get','type']], 'Oil'];
-        } else if (dropdown === 'Other') {
-            filterType = ['==', ['string', ['get','type']], 'Other'];
-        } else if (dropdown === 'Solar') {
-            filterType = ['==', ['string', ['get','type']], 'Solar'];
-        } else if (dropdown === 'Storage') {
-            filterType = ['==', ['string', ['get','type']], 'Storage'];
-        } else if (dropdown === 'Waste') {
-            filterType = ['==', ['string', ['get','type']], 'Waste'];
-        } else if (dropdown === 'Wind') {
-            filterType = ['==', ['string', ['get','type']], 'Wind'];
-        } else {
-            console.log('error');
-        };
-        map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
+    // document.getElementById('selectorType').addEventListener('change', function(e) {
+    //     var dropdown = e.target.value;
+    //     // update the map filter
+    //     if (dropdown === 'All') {
+    //         filterType = ['!=', ['string', ['get','type']], 'placeholder'];
+    //     } else if (dropdown === 'HighCarbon') {
+    //         filterType = ['match', ['get', 'type'], ['Coal', 'Gas', 'Oil'], true, false];
+    //     } else if (dropdown === 'LowCarbon') {
+    //         filterType = ['match', ['get', 'type'], ['Wind', 'Solar', 'Hydro'], true, false];
+    //     } else if (dropdown === 'Biomass') {
+    //         filterType = ['==', ['string', ['get','type']], 'Biomass'];
+    //     } else if (dropdown === 'Coal') {
+    //         filterType = ['==', ['string', ['get','type']], 'Coal'];
+    //     } else if (dropdown === 'Gas') {
+    //         filterType = ['==', ['string', ['get','type']], 'Gas'];
+    //     } else if (dropdown === 'Geothermal') {
+    //         filterType = ['==', ['string', ['get','type']], 'Geothermal'];
+    //     } else if (dropdown === 'Hydro') {
+    //         filterType = ['match', ['get', 'type'], ['Small Hydro', 'Large Hydro'], true, false];
+    //     } else if (dropdown === 'Interconnectors') {
+    //         filterType = ['==', ['string', ['get','type']], 'Interconnector'];
+    //     } else if (dropdown === 'Nuclear') {
+    //         filterType = ['==', ['string', ['get','type']], 'Nuclear'];
+    //     } else if (dropdown === 'Oil') {
+    //         filterType = ['==', ['string', ['get','type']], 'Oil'];
+    //     } else if (dropdown === 'Other') {
+    //         filterType = ['==', ['string', ['get','type']], 'Other'];
+    //     } else if (dropdown === 'Solar') {
+    //         filterType = ['==', ['string', ['get','type']], 'Solar'];
+    //     } else if (dropdown === 'Storage') {
+    //         filterType = ['==', ['string', ['get','type']], 'Storage'];
+    //     } else if (dropdown === 'Waste') {
+    //         filterType = ['==', ['string', ['get','type']], 'Waste'];
+    //     } else if (dropdown === 'Wind') {
+    //         filterType = ['==', ['string', ['get','type']], 'Wind'];
+    //     } else {
+    //         console.log('error');
+    //     };
+    //     map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
 
-        updateTotal();
-    });
+    //     updateTotal();
+    // });
 
-    document.getElementById("selectorStyle").addEventListener("change", function(e){
-        // update variables
-        dropdown = e.target.value;
+    // document.getElementById("selectorStyle").addEventListener("change", function(e){
+    //     // update variables
+    //     dropdown = e.target.value;
 
-        // get id from array using the dropdown variable
-        var basemap = baseLayers.find(function(x) {
-            return x.label === dropdown;
-        }).id;
+    //     // get id from array using the dropdown variable
+    //     var basemap = baseLayers.find(function(x) {
+    //         return x.label === dropdown;
+    //     }).id;
 
-        // console.log(basemap);
+    //     // console.log(basemap);
 
-        map.setStyle(basemap);
+    //     map.setStyle(basemap);
 
-        // update text in the UI
-        document.getElementById('map-type').innerText = [dropdown];
+    //     // update text in the UI
+    //     document.getElementById('map-type').innerText = [dropdown];
 
-    })
+    // })
 
     // Create a popup, but don't add it to the map yet.
     var popup = new mapboxgl.Popup({
