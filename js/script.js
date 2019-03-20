@@ -31,70 +31,43 @@ $(document).ready(function() {
       setHeights();
   }, true);
 
-  // $year.each(function(){
+  $year.each(function(){
 
-  //   let _this = this;
+    let _this = this;
 
-  //   // travelling up
-  //   new Waypoint({
-  //     element: _this,
-  //     handler: function (direction) {
-  //         if (direction == 'up') {
-  //           console.log("up");
-  //           $year.animate().removeClass("active");
-  //           $(this.element).addClass("active");
-  //         }
-  //     },
-  //     offset: 45
-  //   });
+    // grab year of element
+    let year = $(this).children("h2").text();
+    year = parseInt(year);
 
-  //   // travelling down
-  //   new Waypoint({
-  //     element: _this,
-  //     handler: function (direction) {
-  //         if (direction == 'down') {
-  //           console.log("down");
-  //           $year.removeClass("active");
-  //           $(this.element).addClass("active");
-  //         }
-  //     },
-  //     offset: 45
-  //     // offset: function() {
-  //     //   return (this.element.clientHeight + 40)
-  //     // }
-  //   });
+    // travelling up
+    new Waypoint({
+      element: _this,
+      handler: function (direction) {
+          if (direction == 'up') {
+            console.log(year);
+            filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+            filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
+            map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
+          }
+      },
+      offset: 40
+    });
 
-  // });
+    // travelling down
+    new Waypoint({
+      element: _this,
+      handler: function (direction) {
+          if (direction == 'down') {
+            console.log(year);
+            filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+            filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
+            map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
+          }
+      },
+      offset: 40
+    });
 
-  // // different code for the first year
-  // new Waypoint({
-  //   element: $(".year-first"),
-  //   handler: function (direction) {
-  //       if (direction == 'down') {
-  //         console.log("first down");
-  //         $year.removeClass("active");
-  //         $(this.element).addClass("active");
-  //       }
-  //   },
-  //   offset: function() {
-  //     return 40
-  //   }
-  // });
-
-  // //different code for the first year to avoid the jump
-  // new Waypoint({
-  //   element: $(".year-first"),
-  //   handler: function (direction) {
-  //       if (direction == 'up') {
-  //         console.log("first up");
-  //         $year.removeClass("active");
-  //         $(this.element).removeClass("active");
-  //       }
-  //   },
-  //   offset: function() {
-  //     return 40
-  //   }
-  // });
+  });
 
 });
 
