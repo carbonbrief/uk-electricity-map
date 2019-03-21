@@ -67,8 +67,8 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     .enter().append("rect")
     .attr("y", function(d) { return y4(d.data.y); })
     .attr("x", function(d) { return x4(d[0]); })
-    .attr("rx", 5)
-    .attr("ry", 5)
+    .attr("rx", 4)
+    .attr("ry", 4)
     .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
     .attr("height", (y4.bandwidth() - 10))
     .on("mouseover", function(d) {
@@ -143,11 +143,11 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
         return d.year;
     });
 
-  d3.selectAll(".row")
+    d3.selectAll(".row")
     .on("input", highlightYear) // function in barchart.js
     .on("change", changed); // previously on change..mouseup a bit smoother since transition doesn't happen up slide finished
 
-  
+
     function changed() {
 
         var value = this.value;
