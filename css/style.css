@@ -98,7 +98,7 @@ body {
 #stacked-bar {
   position: sticky;
   position: -webkit-sticky;
-  top: 0px;
+  top: 40px;
 }
 
 h1 {
