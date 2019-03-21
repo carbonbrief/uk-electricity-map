@@ -2,6 +2,9 @@ const $text= $('.text');
 const $padding = $('.padding');
 const $map = $('#map');
 const $year = $('.year');
+const $yearCont = $('#year-container');
+const $barCont = $('#bar-container');
+const $bar = $('#stacked-bar');
 
 let $height = $(window).height();
 let $width = $(window).width();
@@ -20,6 +23,12 @@ function setHeights () {
     // further apart since now covering the map
     $padding.css("height", $height*0.9);
   }
+
+  $yearCont.css("left", function () {
+    return 40 + $barCont.width();
+  });
+
+  $bar.css("height", ($height - 80));
 
 }
 

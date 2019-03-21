@@ -70,6 +70,11 @@ body {
   left: calc(50% - 60px);
 }
 
+#year-container {
+  position: absolute;
+  left: 100px;
+}
+
 .year-highlight {
   padding: 5px;
   color: #c6e7fa;
@@ -88,6 +93,12 @@ body {
   position: sticky;
   position: -webkit-sticky;
   top: 40px;
+}
+
+#stacked-bar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
 }
 
 h1 {

@@ -4,7 +4,7 @@
 
 // width same as line chart, margins and height different
 
-function getHeight2 () {
+function getHeight () {
     if (screenWidth > 1050) {
         return 90
     } else if (screenWidth < 1051) {
@@ -12,30 +12,36 @@ function getHeight2 () {
     } 
 }
 
-var responsiveHeight2 = getHeight2();
+var responsiveHeight = getHeight();
 
-var margin2 = {top: 35, right: 25, bottom: 30, left: 45},
-    width = parseInt(d3.select("#stacked-bar").style("width")) - margin2.left - margin2.right,
-    height2 = responsiveHeight2 - margin2.top - margin2.bottom;
+var margin = {top: 35, right: 25, bottom: 30, left: 45},
+    width = parseInt(d3.select("#stacked-bar").style("width")) - margin.left - margin.right,
+    height = responsiveHeight - margin.top - margin.bottom;
 
-var svg4 = d3.select('#stacked-bar').append("svg")
-    .attr("width", width + margin2.left + margin2.right)
-    .attr("height", height2 + margin2.top + margin2.bottom);
+var svg = d3.select('#stacked-bar').append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom);
 
-g = svg4.append("g")
-    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
-// have to create different names as using other similar variables in the same document
+var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var y4 = d3.scaleBand()			
-    .rangeRound([0, height2])	
+var yearFormat = d3.timeFormat("%Y");
+
+var decimalFormat = d3.format(".1f");
+
+var y = d3.scaleBand()			
+    .rangeRound([0, height])	
     .paddingInner(0.05)
     .align(0.1);
 
-var x4 = d3.scaleLinear()		
+var x = d3.scaleLinear()		
     .rangeRound([0, width]);	
 
-var z4 = d3.scaleOrdinal()
+var z = d3.scaleOrdinal()
     .range(["#A7B734", "#ced1cc", "#4e80e5", "#43cfef", '#ff8767', "#dd54b6", "#a45edb", "#cc9b7a", "#ffc83e", "#ea545c", "#00a98e"]);
 
 var stack = d3.stack();
@@ -53,24 +59,24 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     
     var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Other", "Solar", "Waste", "Wind"];
 
-    y4.domain(data.map(function(d) { return d.y; }));
-    x4.domain([0, 100]).nice();
-    z4.domain(cat); 
+    y.domain(data.map(function(d) { return d.y; }));
+    x.domain([0, 100]).nice();
+    z.domain(cat); 
 
     g.selectAll(".serie")
     .data(stack.keys(cat)(data))
     .enter().append("g")
     .attr("class", "serie")
-    .attr("fill", function(d) {return z4(d.key); })
+    .attr("fill", function(d) {return z(d.key); })
     .selectAll("rect")
     .data(function(d) { return d; })
     .enter().append("rect")
-    .attr("y", function(d) { return y4(d.data.y); })
-    .attr("x", function(d) { return x4(d[0]); })
+    .attr("y", function(d) { return y(d.data.y); })
+    .attr("x", function(d) { return x(d[0]); })
     .attr("rx", 4)
     .attr("ry", 4)
-    .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
-    .attr("height", (y4.bandwidth() - 10))
+    .attr("width", function(d) { return x(d[1]) - x(d[0]); })
+    .attr("height", (y.bandwidth() - 10))
     .on("mouseover", function(d) {
         //show circle
         d3.select(this)
@@ -102,11 +108,11 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
 
     g.append("g")
     .attr("class", "axis axis--y")
-    .attr("transform","translate(0," + height2 + ")")
-    .call(d3.axisBottom(x4).ticks(5, "s"))
+    .attr("transform","translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(5, "s"))
     .append("text")
     .attr("y", 2)
-    .attr("x", x4(x4.ticks(10).pop()))
+    .attr("x", x(x.ticks(10).pop()))
     .attr("dy", "0.35em")
     .attr("text-anchor", "start")
     .attr("fill", "#000");
@@ -143,9 +149,9 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
         return d.year;
     });
 
-    d3.selectAll(".row")
-    .on("input", highlightYear) // function in barchart.js
-    .on("change", changed); // previously on change..mouseup a bit smoother since transition doesn't happen up slide finished
+    // d3.selectAll(".row")
+    // .on("input", highlightYear) // function in barchart.js
+    // .on("change", changed); // previously on change..mouseup a bit smoother since transition doesn't happen up slide finished
 
 
     function changed() {
@@ -159,9 +165,9 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
         .transition()
         .duration(500) 
         .delay(50)     
-        .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
-        .attr("y", function(d) { return y4(d.data.y); })
-        .attr("x", function(d) { return x4(d[0]); })
+        .attr("width", function(d) { return x(d[1]) - x(d[0]); })
+        .attr("y", function(d) { return y(d.data.y); })
+        .attr("x", function(d) { return x(d[0]); })
 
         // update the label
 
@@ -186,9 +192,9 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
         .ease(d3.easeLinear)
         .duration(1800) 
         .delay(50)     
-        .attr("width", function(d) { return x4(d[1]) - x4(d[0]); })
-        .attr("y", function(d) { return y4(d.data.y); })
-        .attr("x", function(d) { return x4(d[0]); })
+        .attr("width", function(d) { return x(d[1]) - x(d[0]); })
+        .attr("y", function(d) { return y(d.data.y); })
+        .attr("x", function(d) { return x(d[0]); })
 
         var label = g.selectAll(".year-label").selectAll("text");
 
