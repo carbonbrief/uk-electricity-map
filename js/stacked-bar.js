@@ -5,7 +5,7 @@
 // width same as line chart, margins and height different
 
 
-var margin = {top: 5, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - 30), bottom: 5, left: 35},
+var margin = {top: 5, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - 30), bottom: 5, left: 45},
     width = 30,
     height = parseInt(d3.select("#stacked-bar").style("height")) - margin.top - margin.bottom;
 
@@ -111,8 +111,10 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
 
     g.append("g")
     .attr("class", "axis axis--y")
-    .attr("transform","translate(-10,0)")
-    .call(d3.axisLeft(y).ticks(5, "s"))
+    .attr("transform","translate(-8,0)")
+    .call(d3.axisLeft(y).ticks(5).tickFormat(function (d) {
+        return d3.format("")(d) + "%"
+    }))
     .append("text")
     .attr("x", -2)
     .attr("y", y(y.ticks(10).pop()))
