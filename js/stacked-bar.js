@@ -5,8 +5,8 @@
 // width same as line chart, margins and height different
 
 
-var margin = {top: 5, right: 60, bottom: 5, left: 35},
-    width = parseInt(d3.select("#stacked-bar").style("width")) - margin.left - margin.right,
+var margin = {top: 5, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - 30), bottom: 5, left: 35},
+    width = 30,
     height = parseInt(d3.select("#stacked-bar").style("height")) - margin.top - margin.bottom;
 
 var svg = d3.select('#stacked-bar').append("svg")
@@ -147,10 +147,10 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
 
     function changed() {
 
-        var value = this.value;
+        // var value = this.value;
 
         g.selectAll(".serie")
-        .data(stack.keys(cat)(data_nest.filter(function(d){return +d.key == value})[0].values))
+        .data(stack.keys(cat)(data_nest.filter(function(d){return +d.key == year})[0].values))
         .selectAll("rect")
         .data(function(d) { return d; })
         .transition()
@@ -162,13 +162,13 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
 
         // update the label
 
-        var label = g.selectAll(".year-label").selectAll("text");
+        // var label = g.selectAll(".year-label").selectAll("text");
 
-        // make sure that add class again or update pattern won't work a second time
-        label.data(data)
-        .text(function (d) {
-            return getYear[value];  // references array in script.js to change value for planned
-        });
+        // // make sure that add class again or update pattern won't work a second time
+        // label.data(data)
+        // .text(function (d) {
+        //     return getYear[value];  // references array in script.js to change value for planned
+        // });
 
     
     }
@@ -201,3 +201,36 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     // }, 1500);
 
 });
+
+function updateStackedBar () {
+
+    d3.csv("./data/stacked-bar-2.csv", function(error, data) {
+        if (error) throw error;
+    
+        var data_nest = d3.nest()
+                .key(function(d){
+                    return d.year
+                })
+                .entries(data);
+    
+        data = data_nest.filter(function(d){ return d.key == 2007})[0].values;
+        
+        var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Other", "Solar", "Waste", "Wind"];
+
+        x.domain(data.map(function(d) { return d.y; }));
+        y.domain([0, 100]).nice();
+        z.domain(cat);
+        
+        g.selectAll(".serie")
+        .data(stack.keys(cat)(data_nest.filter(function(d){return +d.key == year})[0].values))
+        .selectAll("rect")
+        .data(function(d) { return d; })
+        .transition()
+        .duration(500) 
+        .delay(50)     
+        .attr("height", function(d) { return y(d[1]) - y(d[0]); })
+        .attr("x", function(d) { return x(d.data.y); })
+        .attr("y", function(d) { return y(d[0]); })
+    });
+
+}
