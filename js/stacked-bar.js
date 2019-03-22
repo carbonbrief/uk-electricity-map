@@ -133,11 +133,11 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     .enter().append('text')
     // .attr("x", 0)
     // .attr("y", 0)
-    .attr("x", function(d) { return x(d.data.y) + 25; })
-    .attr("y", function(d) { return y(d[0]) + (y(d[1]) - y(d[0]))/2 + 5; })
-    // .attr("transform", function (d) {
-    //     return "translate(" + x(d.data.y) + 25 + ","+ y(d[0]) + (y(d[1]) - y(d[0]))/2 + 5 +"),"+ "rotate(30)";
-    // })
+    // .attr("x", function(d) { return x(d.data.y) + 25; })
+    // .attr("y", function(d) { return y(d[0]) + (y(d[1]) - y(d[0]))/2 + 5; })
+    .attr("transform", function (d) {
+        return "translate(" + (x(d.data.y) + 24) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
+    })
     .text(function () {
         let color = d3.select(this).style('fill');
         console.log(color);
@@ -275,8 +275,9 @@ function updateStackedBar () {
         .transition()
         .duration(500) 
         .delay(50)
-        .attr("x", function(d) { return x(d.data.y) + 25; })
-        .attr("y", function(d) { return y(d[0]) + (y(d[1]) - y(d[0]))/2 + 5; });
+        .attr("transform", function (d) {
+            return "translate(" + (x(d.data.y) + 24) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
+        });
 
     });
 
