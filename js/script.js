@@ -10,6 +10,8 @@ const $bar = $('#stacked-bar');
 let $height = $(window).height();
 let $width = $(window).width();
 
+let year;
+
 function setHeights () {
 
   // get new height and width in case different
@@ -40,7 +42,6 @@ function setHeights () {
     $(".text-index" + i).each(function() {
       outerHeight += $(this).outerHeight();
     });
-    console.log(outerHeight);
     $(this).css("height", outerHeight + "px");
   });
 
@@ -60,15 +61,19 @@ $(document).ready(function() {
 
     let _this = this;
 
-    // grab year of element
-    let year = $(this).children("h2").text();
-    year = parseInt(year);
+    // // grab year of element
+    // year = $(this).children("h2").text();
+    // year = parseInt(year);
+    // console.log(year);
 
     // travelling up
     new Waypoint({
       element: _this,
       handler: function (direction) {
           if (direction == 'up') {
+            // grab year of element
+            year = $(_this).children("h2").text();
+            year = parseInt(year);
             console.log(year);
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
             filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
@@ -87,7 +92,11 @@ $(document).ready(function() {
     new Waypoint({
       element: _this,
       handler: function (direction) {
+          console.log(year);
           if (direction == 'down') {
+            // grab year of element
+            year = $(_this).children("h2").text();
+            year = parseInt(year);
             console.log(year);
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
             filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];

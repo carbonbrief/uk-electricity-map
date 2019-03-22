@@ -204,6 +204,9 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
 
 function updateStackedBar () {
 
+    console.log("update stacked bar");
+    console.log(year);
+
     d3.csv("./data/stacked-bar-2.csv", function(error, data) {
         if (error) throw error;
     
@@ -213,7 +216,7 @@ function updateStackedBar () {
                 })
                 .entries(data);
     
-        data = data_nest.filter(function(d){ return d.key == 2007})[0].values;
+        //data = data_nest.filter(function(d){ return d.key == year})[0].values;
         
         var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Other", "Solar", "Waste", "Wind"];
 
