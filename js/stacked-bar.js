@@ -37,6 +37,20 @@ var z = d3.scaleOrdinal()
 
 var stack = d3.stack();
 
+var labels = {
+    "rgb(167, 183, 52)": "Biomass",
+    "rgb(206, 209, 204)": "Coal",
+    "rgb(78, 128, 229)": "Gas",
+    "rgb(67, 207, 239)": "Hydro",
+    "rgb(255, 135, 103)": "Interconnectors",
+    "rgb(221, 84, 182)": "Nuclear",
+    "rgb(164, 94, 219)": "Oil",
+    "rgb(204, 155, 122)": "Other",
+    "rgb(255, 200, 62)": "Solar",
+    "rgb(234, 84, 92)": "Waste",
+    "rgb(0, 169, 142)": "Wind"
+}
+
 d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     if (error) throw error;
 
@@ -108,20 +122,27 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     .attr("text-anchor", "start")
     .attr("fill", "#000");
 
-      // add some labels for percentages
+    // add some labels for energy types
     g.selectAll('.chart-label')
     .data(stack.keys(cat)(data))
     .enter().append('g')
     .attr('class', 'chart-label')
-    // .data(function(d) { return d; })
+    .attr('fill', function(d) { return z(d.key);})
     .selectAll("text")
     .data(function(d) { return d; })
     .enter().append('text')
-    // .data(function(d) { return d; })
-    .attr('alignment-baseline', 'central')
-    .attr("x", function(d) { return x(d.data.y) + 30; })
-    .attr("y", function(d) { return y(d[0]) + (y(d[1]) - y(d[0]))/2; })
-    .text('z', function(d) { return z(d[0]); });
+    // .attr("x", 0)
+    // .attr("y", 0)
+    .attr("x", function(d) { return x(d.data.y) + 25; })
+    .attr("y", function(d) { return y(d[0]) + (y(d[1]) - y(d[0]))/2 + 5; })
+    // .attr("transform", function (d) {
+    //     return "translate(" + x(d.data.y) + 25 + ","+ y(d[0]) + (y(d[1]) - y(d[0]))/2 + 5 +"),"+ "rotate(30)";
+    // })
+    .text(function () {
+        let color = d3.select(this).style('fill');
+        console.log(color);
+        return labels[color];
+    });
 
     // g.append("g")
     // .attr("class", "bar-labels")
@@ -245,7 +266,18 @@ function updateStackedBar () {
         .delay(50)     
         .attr("height", function(d) { return y(d[1]) - y(d[0]); })
         .attr("x", function(d) { return x(d.data.y); })
-        .attr("y", function(d) { return y(d[0]); })
+        .attr("y", function(d) { return y(d[0]); });
+
+        g.selectAll('.chart-label')
+        .data(stack.keys(cat)(data_nest.filter(function(d){return +d.key == year})[0].values))
+        .selectAll("text")
+        .data(function(d) { return d; })
+        .transition()
+        .duration(500) 
+        .delay(50)
+        .attr("x", function(d) { return x(d.data.y) + 25; })
+        .attr("y", function(d) { return y(d[0]) + (y(d[1]) - y(d[0]))/2 + 5; });
+
     });
 
 }

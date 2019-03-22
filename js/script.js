@@ -27,7 +27,7 @@ function setHeights () {
     $paddingBelow.css("height", $height*0.9);
   }
 
-  $paddingAbove.css("height", ($(".year-sticky").height()* 3));
+  $paddingAbove.css("height", ($(".year-sticky").height()* 5));
 
   $yearCont.css("left", function () {
     return 40 + $barCont.width();

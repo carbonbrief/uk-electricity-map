@@ -27,6 +27,10 @@
   opacity: 0.75;
 }
 
+.chart-label {
+  font-size: 12px;
+}
+
 .axis.label {
   fill: #8f8f8f;
   font-size: 11.5px;

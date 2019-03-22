@@ -105,6 +105,10 @@ body {
   top: 40px;
 }
 
+.chart-label text {
+  font-size: 12px;
+}
+
 h1 {
   font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
   font-weight: normal;
