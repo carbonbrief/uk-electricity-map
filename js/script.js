@@ -61,26 +61,23 @@ $(document).ready(function() {
 
     let _this = this;
 
-    // // grab year of element
-    // year = $(this).children("h2").text();
-    // year = parseInt(year);
-    // console.log(year);
-
     // travelling up
     new Waypoint({
       element: _this,
       handler: function (direction) {
           if (direction == 'up') {
+
             // grab year of element
             year = $(_this).children("h2").text();
             year = parseInt(year);
-            console.log(year);
+
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
             filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
             map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
             map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
             map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
             updateStackedBar(year);
+            
           }
       },
       offset: function () {
@@ -94,16 +91,18 @@ $(document).ready(function() {
       handler: function (direction) {
           console.log(year);
           if (direction == 'down') {
+
             // grab year of element
             year = $(_this).children("h2").text();
             year = parseInt(year);
-            console.log(year);
+
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
             filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
             map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
             map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
             map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
             updateStackedBar(year);
+
           }
       },
       offset: 40

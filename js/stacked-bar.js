@@ -204,9 +204,6 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
 
 function updateStackedBar () {
 
-    console.log("update stacked bar");
-    console.log(year);
-
     d3.csv("./data/stacked-bar-2.csv", function(error, data) {
         if (error) throw error;
     
