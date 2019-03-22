@@ -28,7 +28,7 @@
 }
 
 .chart-label {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .axis.label {
@@ -74,8 +74,11 @@ div.tooltip {
 }
 
 div.tooltip p {
-  margin-top: 3px;
-  margin-bottom: 0px;
+  font-family: "PT Sans", sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 div.tooltip h3 {

@@ -93,12 +93,10 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
         .duration(100)
         .style("opacity", .9);
         div.html( 
-            "<span class='label-title'>Year: </span>" + getYear[d.data.year] + 
-            "</p><p><span class='label-title'>Share: </span>" + ((d[1]) - (d[0])) + 
-            " %</p>"
+            "<p>" + ((d[1]) - (d[0])) + "%</p>"
         )
-        .style("left", (d3.event.pageX + 20) + "px")
-        .style("top", (d3.event.pageY - 50) + "px");
+        .style("left", (d3.event.pageX + 10) + "px")
+        .style("top", (d3.event.pageY - 20) + "px");
         })
     .on("mouseout", function(d) {
         d3.select(this)
@@ -131,10 +129,6 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     .selectAll("text")
     .data(function(d) { return d; })
     .enter().append('text')
-    // .attr("x", 0)
-    // .attr("y", 0)
-    // .attr("x", function(d) { return x(d.data.y) + 25; })
-    // .attr("y", function(d) { return y(d[0]) + (y(d[1]) - y(d[0]))/2 + 5; })
     .attr("transform", function (d) {
         return "translate(" + (x(d.data.y) + 24) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
     })
@@ -143,98 +137,6 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
         console.log(color);
         return labels[color];
     });
-
-    // g.append("g")
-    // .attr("class", "bar-labels")
-    // .append("text")
-    // .attr("y", -25)
-    // .attr("x", 0)
-    // .attr("dy", "1em")
-    // .attr("fill", "#00a98e")
-    // .text("Low carbon %");
-
-    // g.append("g")
-    // .attr("class", "bar-labels")
-    // .append("text")
-    // .attr("y", -25)
-    // .attr("x", width)
-    // .attr("dy", "1em")
-    // .attr("fill", "#ced1cc")
-    // .attr("text-anchor", "end")
-    // .text("High carbon %");
-
-    // g.append("g")
-    // .attr("class", "year-label")
-    // .data(data)
-    // .append("text")
-    // .attr("y", 0)
-    // .attr("x", -5)
-    // .attr("text-anchor", "end")
-    // .attr("dy", "1em")
-    // .attr("fill", "#e9e9e9")
-    // .text(function (d) {
-    //     return d.year;
-    // });
-
-    // d3.selectAll(".row")
-    // .on("input", highlightYear) // function in barchart.js
-    // .on("change", changed); // previously on change..mouseup a bit smoother since transition doesn't happen up slide finished
-
-
-    function changed() {
-
-        // var value = this.value;
-
-        g.selectAll(".serie")
-        .data(stack.keys(cat)(data_nest.filter(function(d){return +d.key == year})[0].values))
-        .selectAll("rect")
-        .data(function(d) { return d; })
-        .transition()
-        .duration(500) 
-        .delay(50)     
-        .attr("height", function(d) { return y(d[1]) - y(d[0]); })
-        .attr("x", function(d) { return x(d.data.y); })
-        .attr("y", function(d) { return y(d[0]); })
-
-        // update the label
-
-        // var label = g.selectAll(".year-label").selectAll("text");
-
-        // // make sure that add class again or update pattern won't work a second time
-        // label.data(data)
-        // .text(function (d) {
-        //     return getYear[value];  // references array in script.js to change value for planned
-        // });
-
-    
-    }
-
-    // function initialTransition() {
-
-    //     g.selectAll(".serie")
-    //     .data(stack.keys(cat)(data_nest.filter(function(d){return +d.key == 2017})[0].values))
-    //     .selectAll("rect")
-    //     .data(function(d) { return d; })
-    //     .transition()
-    //     .ease(d3.easeLinear)
-    //     .duration(1800) 
-    //     .delay(50)     
-    //     .attr("width", function(d) { return x(d[1]) - x(d[0]); })
-    //     .attr("y", function(d) { return y(d.data.y); })
-    //     .attr("x", function(d) { return x(d[0]); })
-
-    //     var label = g.selectAll(".year-label").selectAll("text");
-
-    //     label.data(data)
-    //     .text(function (d) {
-    //         return "2017";
-    //     });
-
-    // }
-
-    // setTimeout(function () {
-    //     initialTransition();
-    // }, 1500);
 
 });
 
@@ -262,8 +164,7 @@ function updateStackedBar () {
         .selectAll("rect")
         .data(function(d) { return d; })
         .transition()
-        .duration(500) 
-        .delay(50)     
+        .duration(500)     
         .attr("height", function(d) { return y(d[1]) - y(d[0]); })
         .attr("x", function(d) { return x(d.data.y); })
         .attr("y", function(d) { return y(d[0]); });
@@ -274,7 +175,6 @@ function updateStackedBar () {
         .data(function(d) { return d; })
         .transition()
         .duration(500) 
-        .delay(50)
         .attr("transform", function (d) {
             return "translate(" + (x(d.data.y) + 24) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
         });
