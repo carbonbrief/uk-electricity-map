@@ -108,6 +108,21 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     .attr("text-anchor", "start")
     .attr("fill", "#000");
 
+      // add some labels for percentages
+    g.selectAll('.chart-label')
+    .data(stack.keys(cat)(data))
+    .enter().append('g')
+    .attr('class', 'chart-label')
+    // .data(function(d) { return d; })
+    .selectAll("text")
+    .data(function(d) { return d; })
+    .enter().append('text')
+    // .data(function(d) { return d; })
+    .attr('alignment-baseline', 'central')
+    .attr("x", function(d) { return x(d.data.y) + 30; })
+    .attr("y", function(d) { return y(d[0]) + (y(d[1]) - y(d[0]))/2; })
+    .text('z', function(d) { return z(d[0]); });
+
     // g.append("g")
     // .attr("class", "bar-labels")
     // .append("text")
