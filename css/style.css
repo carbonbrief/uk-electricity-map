@@ -44,7 +44,11 @@ body {
   margin: 40px;
 }
 
-.padding {
+.padding-above {
+  height: 50px;
+}
+
+.padding-below {
   height: 200px;
 }
 
