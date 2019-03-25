@@ -1,4 +1,4 @@
-const $text= $('.text');
+const $text= $('.scrolltext');
 const $paddingBelow = $('.padding-below');
 const $paddingAbove= $('.padding-above');
 const $map = $('#map');
@@ -39,7 +39,7 @@ function setHeights () {
   // set height of year container to be equal to this
   $year.each(function(i, obj) {
     let outerHeight = 0;
-    $(".text-index" + i).each(function() {
+    $(".index" + i).each(function() {
       outerHeight += $(this).outerHeight();
     });
     $(this).css("height", outerHeight + "px");
