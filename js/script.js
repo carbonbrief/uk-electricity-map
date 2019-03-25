@@ -128,6 +128,17 @@ $(document).ready(function() {
       offset: '85%'
     });
 
+    // ensure text coming on to the screen is faded
+    new Waypoint({
+      element: _this,
+      handler: function (direction) {
+        if (direction == 'down'){
+            $(this.element).css({'opacity': 0.15});
+        }
+      },
+      offset: '110%'
+    });
+
     new Waypoint({
       element: _this,
       handler: function (direction) {
