@@ -101,8 +101,10 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
 
     function mousemove (d) {
 
-        div.html( 
-            "<p>" + ((d[1]) - (d[0])) + "%</p>"
+        let color = d3.select(this).style('fill');
+
+        div.html(
+            "<div class='tooltip-key' style='background-color: " + color  + ";'></div><p>" + ((d[1]) - (d[0])) + "%</p>"
         )
         .style("left", (d3.event.pageX + 10) + "px")
         .style("top", (d3.event.pageY - 20) + "px");

@@ -186,6 +186,7 @@ a {
 
 a:hover {
   color: #FFC83E;
+  text-decoration: none;
 }
 
 .row {
