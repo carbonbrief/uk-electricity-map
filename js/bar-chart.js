@@ -106,7 +106,7 @@ d3.csv("./data/bar.csv", function(error, data) {
 // link behaviour to slider
 // will just be changing opacity, so can avoid filtering data I think
 
-d3.selectAll(".row").on("input", highlightYear);
+d3.selectAll(".slider").on("input", highlightYear);
 
 function highlightYear() {
 
@@ -116,9 +116,9 @@ function highlightYear() {
         .style("opacity", 0);
 
     svg2.selectAll(".bar")
-        .filter(function(d) { if (thisYear == 2018) {
+        .filter(function(d) { if (thisYear == 2019) {
             // highlight jumps two spaces ahead for planned plants
-            return d.year == 2019
+            return d.year == 2020
         } else {
             return d.year == thisYear
         }})

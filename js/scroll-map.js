@@ -171,7 +171,8 @@ var getYear = {
 2015: "2015",
 2016: "2016",
 2017: "2017",
-2018: "Planned"
+2018: "2018",
+2019: "Planned"
 }
 
 // declare filters
@@ -264,20 +265,20 @@ function addDataLayers () {
 
 map.on('load', function() {
 
-    // // update hour filter when the slider is dragged
-    // document.getElementById('slider').addEventListener('input', function(e) {
-    //     var year = parseInt(e.target.value);
-    //     // update the map
-    //     filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
-    //     filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
-    //     map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]); //the filter only applies to the powerplants layer
+    // update hour filter when the slider is dragged
+    document.getElementById('slider').addEventListener('input', function(e) {
+        var year = parseInt(e.target.value);
+        // update the map
+        filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+        filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
+        map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]); //the filter only applies to the powerplants layer
 
-    //     // update text in the UI
-    //     document.getElementById('active-hour').innerText = getYear[year];
+        // update text in the UI
+        document.getElementById('active-hour').innerText = getYear[year];
 
-    //     updateTotal();
+        // updateTotal();
 
-    // });
+    });
 
     // document.getElementById('selectorType').addEventListener('change', function(e) {
     //     var dropdown = e.target.value;

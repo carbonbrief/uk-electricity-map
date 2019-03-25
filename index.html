@@ -25,9 +25,9 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
     <body>
-        <div class="row" id="intro">
+        <div class="row map-background" id="intro">
             <div class="mask">
-                <div id="title">
+                <div id="title" class="central">
                     <h1>How the UK's energy mix has transformed</h1>
                     <p class="credit">Words by Simon Evans. Interactive by Rosamund Pearce.</p>
                 </div>
@@ -74,16 +74,27 @@
                 </div>
                 <div class="row" id="end-container">
                     <h2>Total: <span id="total">XXXXX</span> <span style="font-weight: normal; font-size: 9px">MW</span></h2>
-                    <div id="line-wrapper">
-                        <div id="bar-chart"></div>
-                        <div id="line-chart-background"></div>
-                        <div id="line-chart"></div>
+                    <div class="column">
+                        <div class='session row' id='sliderbar'>
+                            <h4>Year: <label id='active-hour'>2007</label></h4>
+                            <input id='slider' autocomplete="off" class='slider' type='range' min='2007' max='2019' step='1' value='2007' />
+                        </div>
+                        <div id="line-wrapper" class='session row'>
+                            <div id="bar-chart"></div>
+                            <div id="line-chart-background"></div>
+                            <div id="line-chart"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="large column" id="map-container">
                 <div id="map" class="sticky">
                 </div>
+            </div>
+        </div>
+        <div class="row map-background">
+            <div class="mask">
+                <div class="central"><h5>Explore the map yourself</h5></div>
             </div>
         </div>
         <div class="row">
