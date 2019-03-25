@@ -80,7 +80,7 @@ function drawChart(filterData){
 
         x3.domain([
 
-            parseDate2(20060701), parseDate2(20170701)
+            parseDate2(20060701), parseDate2(20180701)
 
         ]);
 
@@ -229,7 +229,8 @@ function drawChart(filterData){
             2015: "2015",
             2016: "2016",
             2017: "2017",
-            2019: "Planned"
+            2018: "2018",
+            2020: "Planned"
         }
 
         plant.selectAll("circle")
@@ -344,7 +345,7 @@ function drawBackground () {
 
         x3.domain([
 
-            parseDate2(20060701), parseDate2(20170701)
+            parseDate2(20060701), parseDate2(20180701)
 
         ]);
 
@@ -355,24 +356,24 @@ function drawBackground () {
 
         ]);
 
-        svg3.selectAll("*").remove();
+        svg4.selectAll("*").remove();
 
         var boo2 =powerplants2.filter(function(d){return allData[d.name]==true;});
         // console.log("filter");
         // console.log(boo2);
     
-        var plant2 = svg3.selectAll(".plant-background")
+        var plant2 = svg4.selectAll(".plant-background")
         .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
         .enter().append("g");
         
         // console.log(plant2);
 
-        svg3.selectAll(".plant-background")
+        svg4.selectAll(".plant-background")
         .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
         .append("g")
         .attr("class", "plant-background");
         
-        svg3.selectAll(".plant-background")
+        svg4.selectAll(".plant-background")
         .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
         .exit()
         .remove();
