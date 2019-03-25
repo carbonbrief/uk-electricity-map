@@ -82,32 +82,43 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     .attr("ry", 4)
     .attr("height", function(d) { return y(d[1]) - y(d[0]); })
     .attr("width", (x.bandwidth() - 10))
-    .on("mouseover", function(d) {
-        //show circle
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseout", mouseout);
+
+    function mouseover () {
+
         d3.select(this)
         .transition()
         .duration(200)
-        .style("opacity", 0.9)
+        .style("opacity", 0.8)
         // show tooltip
         div.transition()
         .duration(100)
         .style("opacity", .9);
+
+    }
+
+    function mousemove (d) {
+
         div.html( 
             "<p>" + ((d[1]) - (d[0])) + "%</p>"
         )
         .style("left", (d3.event.pageX + 10) + "px")
         .style("top", (d3.event.pageY - 20) + "px");
-        })
-    .on("mouseout", function(d) {
+
+    }
+    
+    function mouseout (d) {
         d3.select(this)
         .transition()
         .duration(200)
         .style("opacity", 1)
         // hide tooltip
         div.transition()
-        .duration(200)
+        .duration(100)
         .style("opacity", 0);
-    });
+    }    
 
     g.append("g")
     .attr("class", "axis axis--y")
