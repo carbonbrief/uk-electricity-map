@@ -89,7 +89,6 @@ $(document).ready(function() {
     new Waypoint({
       element: _this,
       handler: function (direction) {
-          console.log(year);
           if (direction == 'down') {
 
             // grab year of element

@@ -44,6 +44,10 @@ body {
   margin: 40px;
 }
 
+#end-container {
+  margin-top: 40px;
+}
+
 .padding-above {
   height: 50px;
 }

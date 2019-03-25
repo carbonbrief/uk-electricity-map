@@ -79,6 +79,9 @@ div.tooltip p {
   line-height: 20px;
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+.inline {
   display: inline;
 }
 

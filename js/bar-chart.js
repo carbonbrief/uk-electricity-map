@@ -12,26 +12,26 @@ function getHeight () {
 
 var responsiveHeight = getHeight();
 
-// set the dimensions and margins of the graph
-var margin = {top: 10, right: 10, bottom: 30, left: 35},
-    width = parseInt(d3.select("#line-wrapper").style("width")) - margin.left - margin.right,
-    height = responsiveHeight - margin.top - margin.bottom;
+// set the dimensions and margin2s of the graph
+var margin2 = {top: 10, right: 10, bottom: 30, left: 35},
+    width2 = parseInt(d3.select("#line-wrapper").style("width")) - margin2.left - margin2.right,
+    height2 = responsiveHeight - margin2.top - margin2.bottom;
 
 var x2 = d3.scaleBand()
-    .range([0, width])
+    .range([0, width2])
     .padding(0.01);
 
 var y2 = d3.scaleLinear()
-    .range([height, 0]);
+    .range([height2, 0]);
           
 // append the svg object to the body of the page. need to do it only once for the line and bar background
 
 var svg2 = d3.select("#bar-chart").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width2 + margin2.left + margin2.right)
+    .attr("height", height2 + margin2.top + margin2.bottom)
     .append("g")
     .attr("transform", 
-          "translate(" + margin.left + "," + margin.top + ")");
+          "translate(" + margin2.left + "," + margin2.top + ")");
 
 // get the data
 d3.csv("./data/bar.csv", function(error, data) {
@@ -52,9 +52,9 @@ d3.csv("./data/bar.csv", function(error, data) {
     .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d) { return x2(d.year); })
-      .attr("width", x2.bandwidth())
+      .attr("width22", x2.bandwidth())
       .attr("y", function(d) { return y2(d.value); })
-      .attr("height", function(d) { return height - y2(d.value); })
+      .attr("height", function(d) { return height2 - y2(d.value); })
       .style("opacity", 0);
 
     svg2.selectAll(".bar")
@@ -65,39 +65,39 @@ d3.csv("./data/bar.csv", function(error, data) {
 
     // not adding any axes since just for highlighting
 
-    function initialTransition() {
+    // function initialTransition() {
 
-        var i = 1;
-        var year = 2007;
+    //     var i = 1;
+    //     var year = 2007;
 
-        function myLoop () {
-            setTimeout(function () {
+    //     function myLoop () {
+    //         setTimeout(function () {
 
-                svg2.selectAll(".bar")
-                    .style("opacity", 0);
+    //             svg2.selectAll(".bar")
+    //                 .style("opacity", 0);
 
-                svg2.selectAll(".bar")
-                    .filter(function(d) {
-                        return d.year == year
-                    })
-                    .style("opacity", 1);
+    //             svg2.selectAll(".bar")
+    //                 .filter(function(d) {
+    //                     return d.year == year
+    //                 })
+    //                 .style("opacity", 1);
 
-                i++;                     //  increment the counter
-                year = 2007 + i;
-                if (i < 11) {            //  if the counter < 11, call the loop function
-                    myLoop();             
-                }                        
+    //             i++;                     //  increment the counter
+    //             year = 2007 + i;
+    //             if (i < 11) {            //  if the counter < 11, call the loop function
+    //                 myLoop();             
+    //             }                        
 
-            }, 200)
-        }
+    //         }, 200)
+    //     }
 
-        myLoop();
+    //     myLoop();
         
-    }
+    // }
 
-    setTimeout(function () {
-        initialTransition();
-    }, 1480);
+    // setTimeout(function () {
+    //     initialTransition();
+    // }, 1480);
 
 
 });
@@ -106,23 +106,23 @@ d3.csv("./data/bar.csv", function(error, data) {
 // link behaviour to slider
 // will just be changing opacity, so can avoid filtering data I think
 
-d3.selectAll(".row").on("input", highlightYear);
+// d3.selectAll(".row").on("input", highlightYear);
 
-function highlightYear() {
+// function highlightYear() {
 
-    var thisYear = this.value;
+//     var thisYear = this.value;
 
-    svg2.selectAll(".bar")
-        .style("opacity", 0);
+//     svg2.selectAll(".bar")
+//         .style("opacity", 0);
 
-    svg2.selectAll(".bar")
-        .filter(function(d) { if (thisYear == 2018) {
-            // highlight jumps two spaces ahead for planned plants
-            return d.year == 2019
-        } else {
-            return d.year == thisYear
-        }})
-        .style("opacity", 1);
+//     svg2.selectAll(".bar")
+//         .filter(function(d) { if (thisYear == 2018) {
+//             // highlight jumps two spaces ahead for planned plants
+//             return d.year == 2019
+//         } else {
+//             return d.year == thisYear
+//         }})
+//         .style("opacity", 1);
 
-}
+// }
 

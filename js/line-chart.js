@@ -1,52 +1,52 @@
-var margin = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width"))/ 6.1), bottom: 30, left: 35},
-    width = parseInt(d3.select("#line-wrapper").style("width")) - margin.left - margin.right,
-    height = responsiveHeight - margin.top - margin.bottom;
+var margin3 = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width"))/ 6.1), bottom: 30, left: 35},
+    width3 = parseInt(d3.select("#line-wrapper").style("width")) - margin3.left - margin3.right,
+    height3 = responsiveHeight - margin3.top - margin3.bottom;
 
 // console.log(margin.right);
 
 var parseDate = d3.timeParse("%Y");
 var parseDate2 = d3.timeParse("%Y%m%d");
 
-var x = d3.scaleTime()
-    .range([0, width]);
+var x3 = d3.scaleTime()
+    .range([0, width3]);
 
-var y = d3.scaleLinear()
-    .range([height, 0]);
+var y3 = d3.scaleLinear()
+    .range([height3, 0]);
 
 var color = d3.scaleOrdinal()
     // note that the order needs to be the same as the column headers in the CSV or the colours mess up
     .domain(["Coal", "Nuclear", "Gas", "Other", "Hydro", "Biomass",  "Waste", "Wind", "Solar" ])
     .range(["#ced1cc", "#dd54b6", "#4e80e5", "#cc9b7a", "#43cfef", "#A7B734", "#ea545c", "#00a98e", "#ffc83e"]);
 
-var xAxis = d3.axisBottom(x);
+var xAxis = d3.axisBottom(x3);
 
-var yAxis = d3.axisLeft(y);
+var yAxis = d3.axisLeft(y3);
 
 var line = d3.line()
     .curve(d3.curveLinear) // see http://bl.ocks.org/emmasaunders/c25a147970def2b02d8c7c2719dc7502 for more details
-    .x(function(d) { return x(d.year); })
-    .y(function(d) { return y(d.capacity); });
+    .x(function(d) { return x3(d.year); })
+    .y(function(d) { return y3(d.capacity); });
 
-var svg = d3.select("#line-chart").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+var svg3 = d3.select("#line-chart").append("svg")
+    .attr("width", width3 + margin3.left + margin3.right)
+    .attr("height", height3 + margin3.top + margin3.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin3.left + "," + margin3.top + ")");
 
-var svg3 = d3.select("#line-chart-background").append("svg")
+var svg4 = d3.select("#line-chart-background").append("svg")
     .attr("id", "svg-3")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width3 + margin3.left + margin3.right)
+    .attr("height", height3 + margin3.top + margin3.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin3.left + "," + margin3.top + ")");
 
-var div = d3.select("body").append("div")
+var div2 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-var yearFormat = d3.timeFormat("%Y");
+// var yearFormat = d3.timeFormat("%Y");
 
-var decimalFormat = d3.format(".1f");
+// var decimalFormat = d3.format(".1f");
 
 // array for background
 var allData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Biomass":true, "Solar": true,  "Wind":true, "Waste":true };
@@ -78,20 +78,20 @@ function drawChart(filterData){
     
         // extend x domain of line chart so that bars align
 
-        x.domain([
+        x3.domain([
 
             parseDate2(20060701), parseDate2(20170701)
 
         ]);
 
-        y.domain([
+        y3.domain([
 
             d3.min(powerplants, function(c) { return d3.min(c.values, function(v) { return v.capacity; }); }),
             d3.max(powerplants, function(c) { return d3.max(c.values, function(v) { return v.capacity; }); })
 
         ]);
 
-        svg.selectAll("*").remove();
+        svg3.selectAll("*").remove();
 
 
 
@@ -110,9 +110,9 @@ function drawChart(filterData){
 
         // ADD AXES
             
-        svg.append("g")
+        svg3.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(0," + height3 + ")")
             .call(xAxis)
             .selectAll("text")
             .attr("transform", "rotate(-45)")
@@ -120,13 +120,13 @@ function drawChart(filterData){
             .attr("dx", "-.8em")
             .attr("dy", ".15em");
 
-        svg.append("g")
+        svg3.append("g")
             .attr("class", "y axis")
             .call(yAxis);
 
         // ADD AXIS LABEL
 
-        svg.append("text")
+        svg3.append("text")
             .attr("class", "axis label")
             .attr("transform", "rotate(-90)")
             .attr("y", 8)
@@ -136,13 +136,13 @@ function drawChart(filterData){
 
         // ADD UNDERLAY TO TRACK MOUSE MOVEMENTS FOR CROSSHAIR
 
-        svg.append('rect')
+        svg3.append('rect')
         .attr("class", "overlay")
-        .attr("width", width)
-        .attr("height", height)
+        .attr("width", width3)
+        .attr("height", height3)
         .on("mouseover", mouseover)
         .on("mouseout", mouseout)
-        .on("mousemove", mousemove)
+        .on("mousemove", mousemove);
 
         // ADD LINES
     
@@ -150,18 +150,18 @@ function drawChart(filterData){
         // console.log("filter");
         // console.log(boo);
     
-        var plant = svg.selectAll(".plant")
+        var plant = svg3.selectAll(".plant")
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
         .enter().append("g");
         
         // console.log(plant);
 
-        svg.selectAll(".plant")
+        svg3.selectAll(".plant")
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
         .append("g")
         .attr("class", "plant");
         
-        svg.selectAll(".plant")
+        svg3.selectAll(".plant")
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
         .exit()
         .remove();
@@ -237,8 +237,8 @@ function drawChart(filterData){
         .enter()
         .append("circle")
         .attr("r", 6)
-        .attr("cx", function(d) { return x(d.year); })
-        .attr("cy", function(d) { return y(d.capacity); })
+        .attr("cx", function(d) { return x3(d.year); })
+        .attr("cy", function(d) { return y3(d.capacity); })
         // in order to have a the circle to be the same color as the line, you need to access the data of the parentNode
         .attr("fill", function(d){return color(this.parentNode.__data__.name)})
         .attr("opacity", 0)
@@ -250,10 +250,10 @@ function drawChart(filterData){
             .style("opacity", 0.5)
             .attr("r", 5);
             // show tooltip
-            div.transition()
+            div2.transition()
             .duration(100)
             .style("opacity", .9);
-            div.html( "<h3 style= color:" + color(this.parentNode.__data__.name) + 
+            div2.html( "<h3 style= color:" + color(this.parentNode.__data__.name) + 
             ";>" + this.parentNode.__data__.name + 
             "</h3><p><span class='label-title'>Year: </span>" + getYear[yearFormat(d.year)] + 
             "</p><p><span class='label-title'>Capacity: </span>" + decimalFormat(d.capacity) + 
@@ -268,14 +268,14 @@ function drawChart(filterData){
             .style("opacity", 0)
             .attr("r", 4);
             // hide tooltip
-            div.transition()
+            div2.transition()
             .duration(200)
             .style("opacity", 0);
         });
 
         // ADD CROSSHAIR
 
-        var focus = svg.append('g')
+        var focus = svg3.append('g')
         .attr('class', 'focus')
         .style('display', 'none');
 
@@ -286,7 +286,7 @@ function drawChart(filterData){
         focus.append('line')
         .attr('class', 'x-hover-line hover-line')
         .attr('y1' , 0)
-        .attr('y2', height);
+        .attr('y2', height3);
 
         function mouseover() {
             focus.style("display", null);
@@ -298,7 +298,7 @@ function drawChart(filterData){
             tooltip.style("display", "none");
         }
 
-        var timeScales = data.map(function(d) { return x(d.year); });
+        var timeScales = data.map(function(d) { return x3(d.year); });
 
         function mousemove(d) {
 
@@ -308,7 +308,7 @@ function drawChart(filterData){
                 d0 = data[i-1],
                 d1 = data[i];
 
-            focus.attr("transform", "translate(" + x(d0.year) + ",0)"); 
+            focus.attr("transform", "translate(" + x3(d0.year) + ",0)"); 
 
         }
 
@@ -342,13 +342,13 @@ function drawBackground () {
     
         // extend x domain of line chart so that bars align
 
-        x.domain([
+        x3.domain([
 
             parseDate2(20060701), parseDate2(20170701)
 
         ]);
 
-        y.domain([
+        y3.domain([
 
             d3.min(powerplants2, function(c) { return d3.min(c.values, function(v) { return v.capacity; }); }),
             d3.max(powerplants2, function(c) { return d3.max(c.values, function(v) { return v.capacity; }); })
