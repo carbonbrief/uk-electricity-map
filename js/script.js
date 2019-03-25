@@ -110,6 +110,38 @@ $(document).ready(function() {
 
   });
 
+  $text.each(function () {
+
+    // fade text on and off screen
+
+    let _this = this;
+
+    new Waypoint({
+      element: _this,
+      handler: function (direction) {
+        if (direction == 'down'){
+            $(this.element).animate({'opacity': 1});
+        } else {
+          $(this.element).animate({'opacity': 0.15});
+        }
+      },
+      offset: '85%'
+    });
+
+    new Waypoint({
+      element: _this,
+      handler: function (direction) {
+        if (direction == 'down'){
+            $(this.element).animate({'opacity': 0.15});
+        } else {
+          $(this.element).animate({'opacity': 1});
+        }
+      },
+      offset: '10%'
+    });
+
+  });
+
 });
 
 $(window).on('scroll', function () {
