@@ -5,7 +5,7 @@
 // width same as line chart, margins and height different
 
 
-var margin = {top: 5, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - 30), bottom: 5, left: 45},
+var margin = {top: 5, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - 30), bottom: 10, left: 45},
     width = 30,
     height = parseInt(d3.select("#stacked-bar").style("height")) - margin.top - margin.bottom;
 
@@ -136,7 +136,7 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
     })
     .text(function () {
         let color = d3.select(this).style('fill');
-        console.log(color);
+        // slightly hacky solution
         return labels[color];
     });
 
