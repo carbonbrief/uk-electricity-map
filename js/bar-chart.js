@@ -52,7 +52,7 @@ d3.csv("./data/bar.csv", function(error, data) {
     .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d) { return x2(d.year); })
-      .attr("width22", x2.bandwidth())
+      .attr("width", x2.bandwidth())
       .attr("y", function(d) { return y2(d.value); })
       .attr("height", function(d) { return height2 - y2(d.value); })
       .style("opacity", 0);
@@ -106,23 +106,23 @@ d3.csv("./data/bar.csv", function(error, data) {
 // link behaviour to slider
 // will just be changing opacity, so can avoid filtering data I think
 
-// d3.selectAll(".row").on("input", highlightYear);
+d3.selectAll(".row").on("input", highlightYear);
 
-// function highlightYear() {
+function highlightYear() {
 
-//     var thisYear = this.value;
+    var thisYear = this.value;
 
-//     svg2.selectAll(".bar")
-//         .style("opacity", 0);
+    svg2.selectAll(".bar")
+        .style("opacity", 0);
 
-//     svg2.selectAll(".bar")
-//         .filter(function(d) { if (thisYear == 2018) {
-//             // highlight jumps two spaces ahead for planned plants
-//             return d.year == 2019
-//         } else {
-//             return d.year == thisYear
-//         }})
-//         .style("opacity", 1);
+    svg2.selectAll(".bar")
+        .filter(function(d) { if (thisYear == 2018) {
+            // highlight jumps two spaces ahead for planned plants
+            return d.year == 2019
+        } else {
+            return d.year == thisYear
+        }})
+        .style("opacity", 1);
 
-// }
+}
 
