@@ -265,6 +265,8 @@ li {
 
 #console {
   position: absolute;
+  top: 20px;
+  left: 20px;
   width: 450px;
   margin: 10px;
   padding: 10px 25px;
