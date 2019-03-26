@@ -3,3 +3,6 @@ config.js
 .jpg
 
 .DS_Store
+
+# exclude third party libraries
+vendor/*
