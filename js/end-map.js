@@ -10,8 +10,41 @@ var map2 = new mapboxgl.Map({
 
 map2.scrollZoom.disable();
 
+var boundsMobile2 = [
+    [ -9, 49],[2, 60]
+    ]
+    
+var boundsLaptop2 = [
+[ -11, 49],[2, 60]
+]
+
+var boundsDesktop2 = [
+[ -13, 49],[2, 60]
+]
+
+var boundsRetina2 = [
+[ -14, 49.5],[3, 59.5]
+]
+
+function getBounds2 () {
+    // 850 pixels is the screen width below which the charts get hidden
+    if (screenWidth > 1400) {
+        return boundsRetina2
+    }
+    else if (screenWidth > 1024 && screenWidth < 1400) {
+        return boundsDesktop2
+    } 
+    else if (1025 > screenWidth && screenWidth > 850) {
+        return boundsLaptop2
+    } else {
+        return boundsMobile2
+    }
+}
+
+var bounds2 = getBounds2();
+
 // resize map for the screen
-map2.fitBounds(bounds, {padding: 10});
+map2.fitBounds(bounds2, {padding: 10});
 
 // include search bar first so appears at top of controls
 
