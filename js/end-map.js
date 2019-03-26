@@ -16,9 +16,9 @@ map2.fitBounds(bounds, {padding: 10});
 // include search bar first so appears at top of controls
 
 if (screenWidth > 1200){
-  map2.addControl(new MapboxGeocoder({
-      accessToken: config.key1,
-  }));
+    map2.addControl(new MapboxGeocoder({
+        accessToken: config.key1,
+    }));
 }
 
 //Add zoom and rotation controls to the map.
@@ -57,9 +57,9 @@ var baseLayers = [{
     }
 }];
 
-function addDataLayers2 () {
+function addDataLayers () {
 
-    map.addLayer({
+    map2.addLayer({
         id: 'powerplants2',
         type: 'circle',
         source: {
@@ -240,7 +240,7 @@ map2.on('load', function() {
 
 map2.on('style.load', function () {
     // Triggered when `setStyle` is called.
-    addDataLayers2();
+    addDataLayers();
     // addInterconnectors();
 });
 

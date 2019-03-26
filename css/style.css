@@ -135,10 +135,11 @@ body {
 h1 {
   font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
   font-weight: normal;
-  font-size: 28px;
+  font-size: 34px;
   line-height: 30px;
   color: #ffffff;
-  margin-top: 12px;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
 }
 
 h2 {
@@ -158,6 +159,7 @@ h2 {
 }
 
 h4 {
+  font-family: "PT Sans", sans-serif;
   font-size: 15px;
   line-height: 20px;
   margin-bottom: 10px;
@@ -214,6 +216,10 @@ a {
 a:hover {
   color: #FFC83E;
   text-decoration: none;
+}
+
+li {
+  font-family: "PT Sans", sans-serif;
 }
 
 .row {
@@ -460,41 +466,39 @@ select {
   color: #333333;
 }
 
-#logo-mobile {
-  position: absolute;
-  top: 618px;
-  right: 9px;
-  z-index: 9000;
-  height: 25px;
-  width: 25px;
-  background-image:url(../img/logo-mobile.svg);
-  background-repeat: no-repeat;
-  visibility: hidden;
-}
-
-#logo-tablet {
-  position: absolute;
-  top: 600px;
-  right: 7px;
-  z-index: 9000;
-  height: 30px;
-  width: 30px;
-  background-image:url(../img/logo-mobile.svg);
-  background-repeat: no-repeat;
-  visibility: hidden;
-}
-
-#logo-laptop {
-  position: absolute;
-  top: 737px;
-  right: 0px;
+#logo {
+  position: fixed;
+  top: 5px;
+  left: 5px;
   z-index: 9000;
   height: 45px;
-  width: 110px;
+  width: 140px;
   background-image:url(../img/logo-laptop.svg);
-  background-size: contain;
   background-repeat: no-repeat;
-  visibility: visible;
+  opacity: 0.2;
+}
+
+#logo:hover {
+  opacity: 1;
+}
+
+.share-icons {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9000;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 5px;
+  padding-top: 0px;
+}
+
+.share-icons .fa-stack {
+  opacity: 0.4;
+}
+
+.share-icons .fa-stack:hover {
+  opacity: 1;
 }
 
  /* nb tried getting rid of bright blue highlight but seems to be impossible without using something other than <select> or a  plugin */

@@ -2,6 +2,7 @@ const $text= $('.scrolltext');
 const $paddingBelow = $('.padding-below');
 const $paddingAbove= $('.padding-above');
 const $map = $('#map');
+const $endMap = $('#end-map');
 const $year = $('.year');
 const $yearCont = $('#year-container');
 const $barCont = $('#bar-container');
@@ -19,6 +20,7 @@ function setHeights () {
   $width = $(window).width();
 
   $map.css("height", $height);
+  $endMap.css("height", $height);
 
   if ($width > 979) {
     $paddingBelow.css("height", $height*0.7);
@@ -172,4 +174,9 @@ $(window).on('scroll', function () {
   // };
 
 });
+
+// scroll to top on window reload
+window.onbeforeunload = function () {
+  window.scrollTo(0,0);
+};
 
