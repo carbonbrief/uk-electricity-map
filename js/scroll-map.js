@@ -273,6 +273,12 @@ map.on('load', function() {
 
 });
 
+// function to change map properties
+
+function updateMap (sectionName) {
+    
+}
+
 // reset dropdown on window reload
 
 $(document).ready(function () {
