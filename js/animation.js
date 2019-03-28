@@ -35,7 +35,7 @@ function animate () {
     anime({
         targets: '.morph-path',
         points: [
-            shapes[index]
+            shapes[index].value
         ],
         duration: 1000,
         autoplay: true,
@@ -43,27 +43,15 @@ function animate () {
         elasticity: 100
     });
 
-    if (index < 2) {
+    if (index < 1) {
         index++;
     } else {
         index = 0;
     }
 
-}
+    // console.log(index);
 
-// var morph = anime({
-//     targets: '.morph-path',
-//     points: [
-//         shapes[index]
-//     ],
-//     duration: 1000,
-//     direction: 'alternate',
-//     autoplay: true,
-//     easing: 'linear',
-//     elasticity: 100,
-//     delay: 1000,
-//     loop: true
-// });
+}
 
 function schedule() {
     setTimeout(() => {
