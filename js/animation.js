@@ -39,7 +39,7 @@ function animate () {
         ],
         duration: 1000,
         autoplay: true,
-        easing: 'linear',
+        // easing: 'linear',
         elasticity: 100
     });
 
