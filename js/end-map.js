@@ -97,7 +97,7 @@ function addDataLayers () {
         type: 'circle',
         source: {
         type: 'geojson',
-        data: './data/dummy.geojson'
+        data: './data/power_stations.json'
         },
         paint: {
         'circle-radius': {
