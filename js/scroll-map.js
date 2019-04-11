@@ -22,7 +22,7 @@ if (!mapboxgl.supported()) {
     var group = L.layerGroup();
 
     function markers (data) {
-        var promise = $.getJSON("data/dummy.geojson");
+        var promise = $.getJSON("data/power_stations.json");
         promise.then(function(data) {
         var markers = L.geoJSON(data, {
         filter: function (feature, layer) {
@@ -177,7 +177,7 @@ map.on('load', function() {
         type: 'circle',
         source: {
         type: 'geojson',
-        data: './data/dummy.geojson'
+        data: './data/power_stations.json'
         },
         paint: {
         'circle-radius': {

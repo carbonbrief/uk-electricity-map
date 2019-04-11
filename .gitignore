@@ -6,3 +6,5 @@ config.js
 
 # exclude third party libraries
 vendor/*
+
+uk-map.csv
