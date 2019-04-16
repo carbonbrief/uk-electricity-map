@@ -177,8 +177,9 @@ h4 {
 h3 {
   font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 0px;
+  padding-bottom: 0.5em;
 }
 
 h5 {
@@ -296,7 +297,7 @@ li {
 }
 
 .label-title {
-  color: #bfc2bd;
+  color: hsla(96, 4%, 75%, 0.83);
   font-weight: bold;
 }
 
@@ -509,6 +510,10 @@ select {
 
 .share-icons .fa-stack:hover {
   opacity: 1;
+}
+
+.units {
+  font-size: 0.7em;
 }
 
  /* nb tried getting rid of bright blue highlight but seems to be impossible without using something other than <select> or a  plugin */

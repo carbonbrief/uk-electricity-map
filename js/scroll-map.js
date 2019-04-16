@@ -275,9 +275,9 @@ map.on('load', function() {
         // Populate the popup and set its coordinates
         // based on the feature found.
         popup.setLngLat(coordinates)
-            .setHTML('<h3 style = "color: ' + plantColor + ';">' + name + 
+            .setHTML('<h3 style = "color: ' + plantColor + '; border-bottom: 1px solid ' + plantColor + ';">' + name + 
             '</h3><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
-            ' MW</p><p><span class="label-title">Type: </span>' + getFuel() + 
+            ' <span class="units">MW</span></p><p><span class="label-title">Type: </span>' + getFuel() + 
             '</p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
             '</p><p><span class="label-title">Operator: </span>' + operator + 
             '</p>')
