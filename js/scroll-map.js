@@ -228,21 +228,22 @@ map.on('load', function() {
         map.getCanvas().style.cursor = 'pointer';
 
         var colorsArray = {
-        "Coal": "#ced1cc",
-        "Gas": "#4e80e5",
-        "Solar": "#ffc83e",
-        "Nuclear": "#dd54b6",
-        "Oil": "#a45edb",
-        "Hydro": "#43cfef",
-        "Wind": "#00a98e",
-        "Biomass": "#A7B734",
-        "Waste": "#ea545c",
-        "Other": "#cc9b7a"
+            "Coal": "#ced1cc",
+            "Gas": "#4e80e5",
+            "Solar": "#ffc83e",
+            "Nuclear": "#dd54b6",
+            "Oil": "#a45edb",
+            "Hydro": "#43cfef",
+            "Wind": "#00a98e",
+            "Biomass": "#A7B734",
+            "Waste": "#ea545c",
+            "Other": "#cc9b7a"
         }
 
         var coordinates = e.features[0].geometry.coordinates.slice();
         var name = e.features[0].properties.site;
         var capacity = e.features[0].properties.capacity;
+        var type = e.features[0].properties.type;
         var fuelDetail = e.features[0].properties.fuelDetail;
         // match plant type to the color in colorsArray, so that the title of the tooltip changes color
         var plantColor = colorsArray[e.features[0].properties.type]; 
@@ -254,12 +255,22 @@ map.on('load', function() {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
+        function getFuel () {
+            if (fuelDetail == "-") {
+                return type
+            } else if (type == "Wind") {
+                return fuelDetail
+            } else {
+                return type + ", " + fuelDetail
+            }
+        }
+
         // Populate the popup and set its coordinates
         // based on the feature found.
         popup.setLngLat(coordinates)
             .setHTML('<h3 style = "color: ' + plantColor + ';">' + name + 
             '</h3><p><span class="label-title">Capacity: </span>' + capacity + 
-            ' MW</p><p><span class="label-title">Type: </span>' + fuelDetail + 
+            ' MW</p><p><span class="label-title">Type: </span>' + getFuel() + 
             '</p>')
             .addTo(map);
     });
