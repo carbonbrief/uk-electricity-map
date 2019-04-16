@@ -218,11 +218,11 @@ p {
 a {
   text-decoration: none;
   color: #f3f3f3;
-  border-bottom: 1px solid #FFC83E;
+  border-bottom: 1px solid #c6e7fa;
 }
 
 a:hover {
-  color: #FFC83E;
+  color: #c6e7fa;
   text-decoration: none;
 }
 
