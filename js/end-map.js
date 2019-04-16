@@ -121,7 +121,7 @@ function addDataLayers () {
             'match',
             ['get', 'type'],
             "Coal", "#ced1cc",
-            "Gas", "#4e80e5",
+            "Storage", "#4e80e5",
             "Solar", "#ffc83e",
             "Nuclear", "#dd54b6",
             "Oil", "#a45edb",
@@ -129,7 +129,7 @@ function addDataLayers () {
             "Wind", "#00a98e",
             "Biomass", "#A7B734",
             "Waste", "#ea545c",
-            "Other", "#cc9b7a",
+            "Gas", "#cc9b7a",
             /* other */ '#ccc'
         ],
         'circle-opacity': 0.77
@@ -228,22 +228,28 @@ map2.on('load', function() {
         map2.getCanvas().style.cursor = 'pointer';
 
         var colorsArray = {
-        "Coal": "#ced1cc",
-        "Gas": "#4e80e5",
-        "Solar": "#ffc83e",
-        "Nuclear": "#dd54b6",
-        "Oil": "#a45edb",
-        "Hydro": "#43cfef",
-        "Wind": "#00a98e",
-        "Biomass": "#A7B734",
-        "Waste": "#ea545c",
-        "Other": "#cc9b7a"
+            "Coal": "#ced1cc",
+            "Storage": "#4e80e5",
+            "Solar": "#ffc83e",
+            "Nuclear": "#dd54b6",
+            "Oil": "#a45edb",
+            "Hydro": "#43cfef",
+            "Wave & Tidal": "#43cfef",
+            "Wind": "#00a98e",
+            "Biomass": "#A7B734",
+            "Waste": "#ea545c",
+            "Gas": "#cc9b7a"
         }
 
         var coordinates = e.features[0].geometry.coordinates.slice();
         var name = e.features[0].properties.site;
         var capacity = e.features[0].properties.capacity;
+        var type = e.features[0].properties.type;
         var fuelDetail = e.features[0].properties.fuelDetail;
+        var lowCarbon = e.features[0].properties.lowCarbon;
+        var operator = e.features[0].properties.operator;
+        var chp = e.features[0].properties.chp;
+        var open = e.features[0].properties.yearOpen;
         // match plant type to the color in colorsArray, so that the title of the tooltip changes color
         var plantColor = colorsArray[e.features[0].properties.type]; 
 
@@ -254,12 +260,40 @@ map2.on('load', function() {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
+        function getFuel () {
+            if (fuelDetail == "-") {
+                return type
+            } else if (type == "Wind" || type =="Hydro") {
+                return fuelDetail
+            } else {
+                return type + ", " + fuelDetail
+            }
+        }
+
+        // selectively include CHP in tooltip
+        function getCHP () {
+            if (chp == "-") {
+                return " ";
+            } else {
+                return '</p><p><span class="label-title">Combined heat and power? </span>' + chp;
+            }
+        }
+
+        // ensures that numbers with decimals places are rounded to 1fp but numbers without aren't given one
+        function roundToOne(num) {    
+            return +(Math.round(num + "e+1")  + "e-1");
+        }
+
         // Populate the popup and set its coordinates
         // based on the feature found.
         popup.setLngLat(coordinates)
-            .setHTML('<h3 style = "color: ' + plantColor + ';">' + name + 
-            '</h3><p><span class="label-title">Capacity: </span>' + capacity + 
-            ' MW</p><p><span class="label-title">Type: </span>' + fuelDetail + 
+            .setHTML('<h3 style = "color: ' + plantColor + '; border-bottom: 1px solid ' + plantColor + ';">' + name + 
+            '</h3><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
+            ' <span class="units">MW</span></p><p><span class="label-title">Type: </span>' + getFuel() + 
+            '</p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
+            getCHP() +
+            '</p><p><span class="label-title">Operator: </span>' + operator + 
+            '</p><p><span class="label-title">Year opened: </span>' + open + 
             '</p>')
             .addTo(map2);
     });
