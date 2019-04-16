@@ -250,6 +250,7 @@ map.on('load', function() {
         var fuelDetail = e.features[0].properties.fuelDetail;
         var lowCarbon = e.features[0].properties.lowCarbon;
         var operator = e.features[0].properties.operator;
+        var chp = e.features[0].properties.chp;
         // match plant type to the color in colorsArray, so that the title of the tooltip changes color
         var plantColor = colorsArray[e.features[0].properties.type]; 
 
@@ -270,6 +271,14 @@ map.on('load', function() {
             }
         }
 
+        function getCHP () {
+            if (chp == "-") {
+                return " ";
+            } else {
+                return '</p><p><span class="label-title">Combined heat and power? </span>' + chp;
+            }
+        }
+
         // ensures that numbers with decimals places are rounded to 1fp but numbers without aren't given one
         function roundToOne(num) {    
             return +(Math.round(num + "e+1")  + "e-1");
@@ -282,6 +291,7 @@ map.on('load', function() {
             '</h3><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
             ' <span class="units">MW</span></p><p><span class="label-title">Type: </span>' + getFuel() + 
             '</p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
+            getCHP() +
             '</p><p><span class="label-title">Operator: </span>' + operator + 
             '</p>')
             .addTo(map);
