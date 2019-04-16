@@ -187,9 +187,9 @@ map.on('load', function() {
             stops: [
             [{zoom: 2, value: 1}, 0.5],
             [{zoom: 2, value: 2500}, 18],
-            [{zoom: 4.5, value: 1}, 3],
+            [{zoom: 4.5, value: 1}, 2.5],
             [{zoom: 4.5, value: 2500}, 27],
-            [{zoom: 8, value: 1}, 4.5],
+            [{zoom: 8, value: 1}, 4],
             [{zoom: 8, value: 2500}, 32],
             [{zoom: 12, value: 1}, 6],
             [{zoom: 12, value: 2500}, 37],
@@ -241,7 +241,7 @@ map.on('load', function() {
         }
 
         var coordinates = e.features[0].geometry.coordinates.slice();
-        var name = e.features[0].properties.name;
+        var name = e.features[0].properties.site;
         var capacity = e.features[0].properties.capacity;
         var fuelDetail = e.features[0].properties.fuelDetail;
         // match plant type to the color in colorsArray, so that the title of the tooltip changes color
