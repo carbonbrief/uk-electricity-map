@@ -179,7 +179,8 @@ h3 {
   font-weight: bold;
   font-size: 20px;
   margin-top: 0px;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.4em;
+  margin-bottom: 0.7em;
 }
 
 h5 {
@@ -590,9 +591,8 @@ input[type=range]:focus::-ms-fill-upper {
 .mapboxgl-popup-content {
   color: #F3F3DD;
   background-color: #242a3a;
-  /* border-color: #91785D; */
   max-width: 250px;
-  /* box-shadow: 3px 3px 2px #8B5D33; */
+  padding: 12px;
 }
 
 .mapboxgl-popup-content p {
