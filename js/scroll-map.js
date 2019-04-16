@@ -90,7 +90,7 @@ if (!mapboxgl.supported()) {
     function onEachFeature(feature, layer) {
         // does this feature have a property named popupContent?
         if (feature.properties) {
-        layer.bindPopup('<h3 style= color:'+ colors[feature.properties["type"]] +';>'+feature.properties["name"]+'</h1><span class="label-title">Capacity: </span>'+feature.properties["capacity"]+' MW<br /><span class="label-title">Type: </span>'+feature.properties["fuelDetail"]+'<br /><span class="label-title">Region: </span>'+feature.properties["region"], {closeButton: false, offset: L.point(0, -20)});
+        layer.bindPopup('<p style= color:'+ colors[feature.properties["type"]] +';>'+feature.properties["name"]+'</h1><span class="label-title">Capacity: </span>'+feature.properties["capacity"]+' MW<br /><span class="label-title">Type: </span>'+feature.properties["fuelDetail"]+'<br /><span class="label-title">Region: </span>'+feature.properties["region"], {closeButton: false, offset: L.point(0, -20)});
             layer.on('mouseover', function() { layer.openPopup(); });
             layer.on('mouseout', function() { layer.closePopup(); });
         };
@@ -290,9 +290,9 @@ map.on('load', function() {
         // based on the feature found.
         popup.setLngLat(coordinates)
             .setHTML('<h3 style = "color: ' + plantColor + '; border-bottom: 1px solid ' + plantColor + ';">' + name + 
-            '</h3><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
-            ' <span class="units">MW</span></p><p><span class="label-title">Type: </span>' + getFuel() + 
-            '</p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
+            '</h3><div class="colour-key" style="background-color: ' + plantColor + '; margin-right: 5px;"></div><p class="inline">' + getFuel() + 
+            '</p><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
+            ' <span class="units">MW</span></p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
             getCHP() +
             '</p><p><span class="label-title">Operator: </span>' + operator + 
             '</p><p><span class="label-title">Year opened: </span>' + open + 

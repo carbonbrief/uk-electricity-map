@@ -314,6 +314,10 @@ li {
   display: inline-block;
 }
 
+.inline {
+  display: inline;
+}
+
 #first-title {
   width: 200px;
 }
