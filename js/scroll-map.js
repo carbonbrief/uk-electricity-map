@@ -251,6 +251,7 @@ map.on('load', function() {
         var lowCarbon = e.features[0].properties.lowCarbon;
         var operator = e.features[0].properties.operator;
         var chp = e.features[0].properties.chp;
+        var open = e.features[0].properties.yearOpen;
         // match plant type to the color in colorsArray, so that the title of the tooltip changes color
         var plantColor = colorsArray[e.features[0].properties.type]; 
 
@@ -271,6 +272,7 @@ map.on('load', function() {
             }
         }
 
+        // selectively include CHP in tooltip
         function getCHP () {
             if (chp == "-") {
                 return " ";
@@ -293,6 +295,7 @@ map.on('load', function() {
             '</p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
             getCHP() +
             '</p><p><span class="label-title">Operator: </span>' + operator + 
+            '</p><p><span class="label-title">Year opened: </span>' + open + 
             '</p>')
             .addTo(map);
     });
