@@ -245,6 +245,8 @@ map.on('load', function() {
         var capacity = e.features[0].properties.capacity;
         var type = e.features[0].properties.type;
         var fuelDetail = e.features[0].properties.fuelDetail;
+        var lowCarbon = e.features[0].properties.lowCarbon;
+        var operator = e.features[0].properties.operator;
         // match plant type to the color in colorsArray, so that the title of the tooltip changes color
         var plantColor = colorsArray[e.features[0].properties.type]; 
 
@@ -265,12 +267,19 @@ map.on('load', function() {
             }
         }
 
+        // ensures that numbers with decimals places are rounded to 1fp but numbers without aren't given one
+        function roundToOne(num) {    
+            return +(Math.round(num + "e+1")  + "e-1");
+        }
+
         // Populate the popup and set its coordinates
         // based on the feature found.
         popup.setLngLat(coordinates)
             .setHTML('<h3 style = "color: ' + plantColor + ';">' + name + 
-            '</h3><p><span class="label-title">Capacity: </span>' + capacity + 
+            '</h3><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
             ' MW</p><p><span class="label-title">Type: </span>' + getFuel() + 
+            '</p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
+            '</p><p><span class="label-title">Operator: </span>' + operator + 
             '</p>')
             .addTo(map);
     });
