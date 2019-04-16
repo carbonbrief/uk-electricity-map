@@ -60,15 +60,16 @@ if (!mapboxgl.supported()) {
 
     var colors = {
         "Coal": "#ced1cc",
-        "Gas": "#4e80e5",
+        "Storage": "#4e80e5",
         "Solar": "#ffc83e",
         "Nuclear": "#dd54b6",
         "Oil": "#a45edb",
         "Hydro": "#43cfef",
+        "Wave & Tidal": "#43cfef",
         "Wind": "#00a98e",
         "Biomass": "#A7B734",
         "Waste": "#ea545c",
-        "Other": "#cc9b7a",
+        "Gas": "#cc9b7a",
     }
 
     // style of markers
@@ -201,15 +202,16 @@ map.on('load', function() {
             'match',
             ['get', 'type'],
             "Coal", "#ced1cc",
-            "Gas", "#4e80e5",
+            "Storage", "#4e80e5",
             "Solar", "#ffc83e",
             "Nuclear", "#dd54b6",
             "Oil", "#a45edb",
             "Hydro", "#43cfef",
+            "Wave & Tidal", "#43cfef",
             "Wind", "#00a98e",
             "Biomass", "#A7B734",
             "Waste", "#ea545c",
-            "Other", "#cc9b7a",
+            "Gas", "#cc9b7a",
             /* other */ '#ccc'
         ],
         'circle-opacity': 0.77
@@ -229,15 +231,16 @@ map.on('load', function() {
 
         var colorsArray = {
             "Coal": "#ced1cc",
-            "Gas": "#4e80e5",
+            "Storage": "#4e80e5",
             "Solar": "#ffc83e",
             "Nuclear": "#dd54b6",
             "Oil": "#a45edb",
             "Hydro": "#43cfef",
+            "Wave & Tidal": "#43cfef",
             "Wind": "#00a98e",
             "Biomass": "#A7B734",
             "Waste": "#ea545c",
-            "Other": "#cc9b7a"
+            "Gas": "#cc9b7a"
         }
 
         var coordinates = e.features[0].geometry.coordinates.slice();
@@ -260,7 +263,7 @@ map.on('load', function() {
         function getFuel () {
             if (fuelDetail == "-") {
                 return type
-            } else if (type == "Wind") {
+            } else if (type == "Wind" || type =="Hydro") {
                 return fuelDetail
             } else {
                 return type + ", " + fuelDetail

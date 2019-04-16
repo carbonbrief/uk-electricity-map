@@ -33,25 +33,25 @@ var y = d3.scaleLinear()
     .rangeRound([0, height]);	
 
 var z = d3.scaleOrdinal()
-    .range(["#A7B734", "#ced1cc", "#4e80e5", "#43cfef", '#ff8767', "#dd54b6", "#a45edb", "#cc9b7a", "#ffc83e", "#ea545c", "#00a98e"]);
+    .range(["#A7B734", "#ced1cc", "#cc9b7a", "#43cfef", '#ff8767', "#dd54b6", "#a45edb", "#4e80e5", "#ffc83e", "#ea545c", "#00a98e"]);
 
 var stack = d3.stack();
 
 var labels = {
     "rgb(167, 183, 52)": "Biomass",
     "rgb(206, 209, 204)": "Coal",
-    "rgb(78, 128, 229)": "Gas",
+    "rgb(78, 128, 229)": "Storage",
     "rgb(67, 207, 239)": "Hydro",
     "rgb(255, 135, 103)": "Interconnectors",
     "rgb(221, 84, 182)": "Nuclear",
     "rgb(164, 94, 219)": "Oil",
-    "rgb(204, 155, 122)": "Other",
+    "rgb(204, 155, 122)": "Gas",
     "rgb(255, 200, 62)": "Solar",
     "rgb(234, 84, 92)": "Waste",
     "rgb(0, 169, 142)": "Wind"
 }
 
-d3.csv("./data/stacked-bar-2.csv", function(error, data) {
+d3.csv("./data/stacked-bar.csv", function(error, data) {
     if (error) throw error;
 
     var data_nest = d3.nest()
@@ -62,7 +62,7 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
 
     data = data_nest.filter(function(d){ return d.key == 2007})[0].values;
     
-    var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Other", "Solar", "Waste", "Wind"];
+    var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Solar", "Storage", "Waste", "Wind"];
 
     x.domain(data.map(function(d) { return d.y; }));
     y.domain([0, 100]).nice();
@@ -157,7 +157,7 @@ d3.csv("./data/stacked-bar-2.csv", function(error, data) {
 
 function updateStackedBar () {
 
-    d3.csv("./data/stacked-bar-2.csv", function(error, data) {
+    d3.csv("./data/stacked-bar.csv", function(error, data) {
         if (error) throw error;
     
         var data_nest = d3.nest()
@@ -168,7 +168,7 @@ function updateStackedBar () {
     
         //data = data_nest.filter(function(d){ return d.key == year})[0].values;
         
-        var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Other", "Solar", "Waste", "Wind"];
+        var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Solar", "Storage", "Waste", "Wind"];
 
         x.domain(data.map(function(d) { return d.y; }));
         y.domain([0, 100]).nice();
