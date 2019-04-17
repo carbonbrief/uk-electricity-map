@@ -131,6 +131,7 @@ function addDataLayers () {
             "Nuclear", "#dd54b6",
             "Oil", "#a45edb",
             "Hydro", "#43cfef",
+            "Wave & Tidal", "#43cfef",
             "Wind", "#00a98e",
             "Biomass", "#A7B734",
             "Waste", "#ea545c",
