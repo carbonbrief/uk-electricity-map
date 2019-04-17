@@ -48,8 +48,8 @@ body {
   padding-right: 15px;
   vertical-align: center;
   text-align: center;
-  /* margin-top: 15%;
-  margin-bottom: 15%; */
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 #animation {
@@ -86,6 +86,13 @@ body {
   color: #f3f3f3;
   font-size: 14px;
   margin-top: 0em;
+}
+
+.footer {
+  font-size: 17px;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #loading {
