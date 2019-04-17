@@ -10,9 +10,10 @@
     "properties": {
     "country":"France",
     "site":"Les Mandarins converter station",
-    "interconnector":"French interconnector (HVDC Cross-channel)",
-    "type": "Interconnector",
-    "yearStart": 1986
+    "interconnector":"IFA",
+    "type":"Interconnector",
+    "yearOpen":1986,
+    "yearStart":1986
     }
   },
   {
@@ -24,9 +25,10 @@
     "properties": {
     "country":"England",
     "site":"Sellindge converter station",
-    "interconnector":"French interconnector (HVDC Cross-channel)",
-    "type": "Interconnector",
-    "yearStart": 1986
+    "interconnector":"IFA",
+    "type":"Interconnector",
+    "yearOpen":1986,
+    "yearStart":1986
     }
   },
   {
@@ -38,9 +40,10 @@
     "properties": {
     "country":"Holland",
     "site":"Maasvlakte Static Inverter Plant",
-    "interconnector":"BritNed interconnector",
-    "type": "Interconnector",
-    "yearStart": 2011
+    "interconnector":"BritNed",
+    "type":"Interconnector",
+    "yearOpen":2011,
+    "yearStart":2011
     }
   },
   {
@@ -52,9 +55,10 @@
     "properties": {
     "country":"England",
     "site":"Grain Static Inverter Plant",
-    "interconnector":"BritNed interconnector",
-    "type": "Interconnector",
-    "yearStart": 2011
+    "interconnector":"BritNed",
+    "type":"Interconnector",
+    "yearOpen":2011,
+    "yearStart":2011
     }
   },
   {
@@ -66,9 +70,10 @@
     "properties": {
     "country":"Northern Ireland",
     "site":"Ballycronan More Static Inverter Plant",
-    "interconnector":"Moyle interconnector",
-    "type": "Interconnector",
-    "yearStart": 2001
+    "interconnector":"Moyle",
+    "type":"Interconnector",
+    "yearOpen":2002,
+    "yearStart":2002
     }
   },
   {
@@ -80,9 +85,10 @@
     "properties": {
     "country":"Scotland",
     "site":"Auchencrosh Static Inverter Plant",
-    "interconnector":"Moyle interconnector",
-    "type": "Interconnector",
-    "yearStart": 2001
+    "interconnector":"Moyle",
+    "type":"Interconnector",
+    "yearOpen":2002,
+    "yearStart":2002
     }
   },
   {
@@ -94,9 +100,10 @@
     "properties": {
     "country":"Republic of Ireland",
     "site":"Woodland HVDC Static Inverter",
-    "interconnector":"East-West interconnector",
-    "type": "Interconnector",
-    "yearStart": 2012
+    "interconnector":"EWIC",
+    "type":"Interconnector",
+    "yearOpen":2012,
+    "yearStart":2012
     }
   },
   {
@@ -108,9 +115,340 @@
     "properties": {
     "country":"Wales",
     "site":"Shotton Static Inverter Plant",
-    "interconnector":"East-West interconnector",
-    "type": "Interconnector",
-    "yearStart": 2012
+    "interconnector":"EWIC",
+    "type":"Interconnector",
+    "yearOpen":2012,
+    "yearStart":2012
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 1.194515,51.082828 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Sellindge converter station",
+    "interconnector":"ElecLink",
+    "type":"Interconnector",
+    "yearOpen":2020,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 1.783902,50.903302 ]
+    },
+    "properties": {
+    "country":"France",
+    "site":"Les Mandarins converter station",
+    "interconnector":"ElecLink",
+    "type":"Interconnector",
+    "yearOpen":2020,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 1.346192,51.309475 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Richborough converter station",
+    "interconnector":"NEMO",
+    "type":"Interconnector",
+    "yearOpen":2019,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 3.203052,51.335285 ]
+    },
+    "properties": {
+    "country":"Belgium",
+    "site":"Herdersbrug converter station",
+    "interconnector":"NEMO",
+    "type":"Interconnector",
+    "yearOpen":2019,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -1.523639,55.15951 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Blyth converter station",
+    "interconnector":"NSL",
+    "type":"Interconnector",
+    "yearOpen":2021,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 6.5937,59.560288 ]
+    },
+    "properties": {
+    "country":"Norway",
+    "site":"Kvilldal converter station",
+    "interconnector":"NSL",
+    "type":"Interconnector",
+    "yearOpen":2021,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.425739,50.737818 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Exeter converter station",
+    "interconnector":"FAB Link",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -1.599471,49.594585 ]
+    },
+    "properties": {
+    "country":"France",
+    "site":"Cotentin converter station",
+    "interconnector":"FAB Link",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -1.201307,50.815046 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Daedalus converter station",
+    "interconnector":"IFA2",
+    "type":"Interconnector",
+    "yearOpen":2020,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -0.175095,49.285287 ]
+    },
+    "properties": {
+    "country":"France",
+    "site":"Tourbe converter station",
+    "interconnector":"IFA2",
+    "type":"Interconnector",
+    "yearOpen":2020,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 0.305734,53.289702 ]
+    },
+    "properties": {
+    "country":"England ",
+    "site":"Donington converter station",
+    "interconnector":"Viking Link",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 9.165044,55.504349 ]
+    },
+    "properties": {
+    "country":"Denmark",
+    "site":"Revsing converter station",
+    "interconnector":"Viking Link",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -6.834933,52.289474 ]
+    },
+    "properties": {
+    "country":"Ireland",
+    "site":"Great Island converter station",
+    "interconnector":"Greenlink",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.991155,51.684317 ]
+    },
+    "properties": {
+    "country":"Wales",
+    "site":"Pembroke converter station",
+    "interconnector":"Greenlink",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 0.597721,51.418416 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Kingsnorth substation",
+    "interconnector":"Gridlink",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 2.161032,50.949054 ]
+    },
+    "properties": {
+    "country":"France",
+    "site":"Dunkerque converter station",
+    "interconnector":"Gridlink",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 0.71312,51.456589 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Greystones substation",
+    "interconnector":"Neuconnect",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 8.05308,53.333361 ]
+    },
+    "properties": {
+    "country":"Germany",
+    "site":"Conneforde substation",
+    "interconnector":"Neuconnect",
+    "type":"Interconnector",
+    "yearOpen":2023,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -1.798824,57.448993 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Fourfields converter station",
+    "interconnector":"NorthConnect",
+    "type":"Interconnector",
+    "yearOpen":2022,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 7.14464,60.498972 ]
+    },
+    "properties": {
+    "country":"Norway",
+    "site":"Simadalen converter station",
+    "interconnector":"NorthConnect",
+    "type":"Interconnector",
+    "yearOpen":2022,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -1.040498,50.917122 ]
+    },
+    "properties": {
+    "country":"England",
+    "site":"Lovedean substation",
+    "interconnector":"Aquind",
+    "type":"Interconnector",
+    "yearOpen":2022,
+    "yearStart":2019
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 1.012576,49.657456 ]
+    },
+    "properties": {
+    "country":"France",
+    "site":"Barnabos substation",
+    "interconnector":"Aquind",
+    "type":"Interconnector",
+    "yearOpen":2022,
+    "yearStart":2019
     }
   }
 ]
