@@ -100,7 +100,7 @@ if (!mapboxgl.supported()) {
 
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'https://maps.tilehosting.com/c/2d9d361b-377d-4c07-905b-31b81c65d271/styles/fiord-color-gl/style.json?key=' + config.key4,
+        style: 'https://api.maptiler.com/maps/e7270a26-c7e8-420d-bb9c-dee843aa7bfe/style.json?key=' + config.key3,
         center: [-7, 54],
         zoom: 5,
         maxZoom: 18
