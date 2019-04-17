@@ -60,17 +60,29 @@ map.on('load', function() {
         closeOnClick: false
     });
 
+    let name;
+    let operator;
+    let connecting;
+    let yearOpen;
+
     map.on('mouseenter', 'interconnectors', function(e) {
 
         map.getCanvas().style.cursor = 'pointer';
 
-        var name = e.features[0].properties.name;
+        name = e.features[0].properties.name;
+        operator = e.features[0].properties.operator;
+        connecting = e.features[0].properties.connecting;
+        yearOpen = e.features[0].properties.yearOpen;
 
         // Populate the popup and set its coordinates
         // different strategy to the popup in the script.js since it's a line
 
         popup.setLngLat(e.lngLat)
-        .setHTML('<h3 style="color: #ff8767;">' + name + '</h3>')
+        .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + name + 
+        '</h3><p><span class="label-title">Operator: </span>' + operator +
+        '</p><p><span class="label-title">Connecting: </span>' + connecting +
+        '</p><p><span class="label-title">Year opened: </span>' + yearOpen +
+        '</p>')
         .addTo(map);
 
         //console.log(name);
@@ -160,17 +172,34 @@ map2.on('load', function() {
         closeOnClick: false
     });
 
+    let name;
+    let operator;
+    let connecting;
+    let yearOpen;
+
+    function getOpen () {
+        if (yearOpen < 2019 ) {
+            return '<span class="label-title">Year opened: </span>' + yearOpen;
+        } else {
+            return '<span class="label-title">Planned for: </span>' + yearOpen;
+        }
+    }
+
     map2.on('mouseenter', 'interconnectors', function(e) {
 
         map2.getCanvas().style.cursor = 'pointer';
 
-        var name = e.features[0].properties.name;
-
-        // Populate the popup and set its coordinates
-        // different strategy to the popup in the script.js since it's a line
+        name = e.features[0].properties.name;
+        operator = e.features[0].properties.operator;
+        connecting = e.features[0].properties.connecting;
+        yearOpen = e.features[0].properties.yearOpen;
 
         popup.setLngLat(e.lngLat)
-        .setHTML('<h3 style="color: #ff8767;">' + name + '</h3>')
+        .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + name + 
+        '</h3><p><span class="label-title">Operator: </span>' + operator +
+        '</p><p><span class="label-title">Connecting: </span>' + connecting +
+        '</p><p>' + getOpen() +
+        '</p>')
         .addTo(map2);
 
         //console.log(name);
