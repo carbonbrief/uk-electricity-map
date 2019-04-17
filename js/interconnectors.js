@@ -106,52 +106,153 @@ map.on('load', function() {
     });
 
 
-})
+});
+
+// add interconnectors to second map
+
+map2.on('load', function() {
+
+    document.getElementById('slider').addEventListener('input', function(e) {
+        var year = parseInt(e.target.value);
+
+        filterStartYear2 = ['<=', ['number', ['get', 'yearStart']], year];
+
+        map2.setFilter('interconnectors', ['all', filterStartYear2, filterLines]);
+
+        map2.setFilter('interconnector-stations', ['all', filterStartYear2, filterStations]);
+
+    })
+
+    document.getElementById('selectorType').addEventListener('change', function(e) {
+
+        var dropdown = e.target.value;
+
+        if (dropdown === 'All') {
+            filterLines = ['==', ['string', ['get','type']], 'Interconnector'];
+        } else if (dropdown === 'Interconnectors') {
+            filterLines = ['==', ['string', ['get','type']], 'Interconnector'];
+        } else {
+            filterLines = ['!=', ['string', ['get','type']], 'Interconnector'];
+        };
+
+        // set filter for interconnector lines
+
+        map2.setFilter('interconnectors', ['all', filterStartYear2, filterLines]);
+
+        if (dropdown === 'All') {
+            filterStations = ['==', ['string', ['get','type']], 'Interconnector'];
+        } else if (dropdown === 'Interconnectors') {
+            filterStations = ['==', ['string', ['get','type']], 'Interconnector'];
+        } else {
+            filterStations = ['!=', ['string', ['get','type']], 'Interconnector'];
+        };
+
+        // set filter for interconnector stations
+
+        map2.setFilter('interconnector-stations', ['all', filterStartYear2, filterStations]);
+    })
+
+    
+
+    // Create a popup, but don't add it to the map yet.
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+
+    map2.on('mouseenter', 'interconnectors', function(e) {
+
+        map2.getCanvas().style.cursor = 'pointer';
+
+        var name = e.features[0].properties.name;
+
+        // Populate the popup and set its coordinates
+        // different strategy to the popup in the script.js since it's a line
+
+        popup.setLngLat(e.lngLat)
+        .setHTML('<h3 style="color: #ff8767;">' + name + '</h3>')
+        .addTo(map2);
+
+        //console.log(name);
+
+    })
+
+    map2.on('mouseleave', 'interconnectors', function() {
+        map2.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+
+    map2.on('mouseenter', 'interconnector-stations', function(e) {
+
+        map2.getCanvas().style.cursor = 'pointer';
+
+        var name = e.features[0].properties.site;
+        var interconnector = e.features[0].properties.interconnector;
+
+        // Populate the popup and set its coordinates
+        // different strategy to the popup in the script.js since it's a line
+
+        popup.setLngLat(e.lngLat)
+        .setHTML('<h3 style="color: #ff8767;">' + name + '</h3><p>' + interconnector + '</p>')
+        .addTo(map2);
+
+        //console.log(name);
+
+    })
+
+    map2.on('mouseleave', 'interconnector-stations', function() {
+        map2.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+
+
+});
 
 // use for second map
 
-// function addInterconnectors () {
+function addInterconnectors () {
 
-// document.getElementById('slider').addEventListener('input', function(e) {
-    //     var year = parseInt(e.target.value);
+    // add data layers when set style is called
 
-    //     filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
+    map2.addLayer({
+        id: 'interconnectors',
+        type: 'line',
+        source: {
+            type: 'geojson',
+            data: './data/interconnector-lines.geojson'
+        },
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#ff8767",
+            "line-width": {
+                'stops': [[3, 3], [20, 8]]
+            },
+            "line-opacity": 0.8
+        }
+    }, "powerplants2"); // to ensure that it is drawn below the powerplants2 layer
 
-    //     map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
+    map2.addLayer({
+        id: 'interconnector-stations',
+        type: 'circle',
+        source: {
+            type: 'geojson',
+            data: './data/interconnector-stations.geojson'
+        },
+        "paint": {
+            "circle-color": "#ff8767",
+            // make circles larger as the user zooms
+            'circle-radius': {
+                'stops': [[3, 4], [20, 15]]
+            },
+            "circle-opacity": 0.8
+        }
+    }, "powerplants2"); // to ensure that it is drawn below the powerplants2 layer
 
-    //     map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
-
-    // })
-
-    // document.getElementById('selectorType').addEventListener('change', function(e) {
-
-    //     var dropdown = e.target.value;
-
-    //     if (dropdown === 'All') {
-    //         filterLines = ['==', ['string', ['get','type']], 'Interconnector'];
-    //     } else if (dropdown === 'Interconnectors') {
-    //         filterLines = ['==', ['string', ['get','type']], 'Interconnector'];
-    //     } else {
-    //         filterLines = ['!=', ['string', ['get','type']], 'Interconnector'];
-    //     };
-
-    //     // set filter for interconnector lines
-
-    //     map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
-
-    //     if (dropdown === 'All') {
-    //         filterStations = ['==', ['string', ['get','type']], 'Interconnector'];
-    //     } else if (dropdown === 'Interconnectors') {
-    //         filterStations = ['==', ['string', ['get','type']], 'Interconnector'];
-    //     } else {
-    //         filterStations = ['!=', ['string', ['get','type']], 'Interconnector'];
-    //     };
-
-    //     // set filter for interconnector stations
-
-    //     map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
-    // })
+    map2.setFilter('interconnector-stations', ['all', filterStartYear2, filterStations]);
+    map2.setFilter('interconnectors', ['all', filterStartYear2, filterLines]);
 
 
-
-// }
+}

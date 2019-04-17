@@ -235,6 +235,7 @@ map2.on('load', function() {
             "Storage": "#4e80e5",
             "Solar": "#ffc83e",
             "Nuclear": "#dd54b6",
+            "Geothermal": "#ffb3d9",
             "Oil": "#a45edb",
             "Hydro": "#43cfef",
             "Wave & Tidal": "#43cfef",
@@ -311,7 +312,7 @@ map2.on('load', function() {
 map2.on('style.load', function () {
     // Triggered when `setStyle` is called.
     addDataLayers();
-    // addInterconnectors();
+    addInterconnectors();
 });
 
 // reset dropdown on window reload
