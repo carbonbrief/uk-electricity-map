@@ -132,7 +132,7 @@ function drawChart(filterData){
             .attr("y", 8)
             .attr("dy", ".5em")
             .style("text-anchor", "end")
-            .text("Capacity (MW)");
+            .text("Generation (MW)");
 
         // ADD UNDERLAY TO TRACK MOUSE MOVEMENTS FOR CROSSHAIR
 
