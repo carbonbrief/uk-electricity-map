@@ -288,8 +288,8 @@ map2.on('load', function() {
         // based on the feature found.
         popup.setLngLat(coordinates)
             .setHTML('<h3 style = "color: ' + plantColor + '; border-bottom: 1px solid ' + plantColor + ';">' + name + 
-            '</h3><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
-            ' <span class="units">MW</span></p><p><span class="label-title">Type: </span>' + getFuel() + 
+            '</h3><div class="colour-key" style="background-color: ' + plantColor + '; margin-right: 5px;"></div><p class="inline">' + getFuel() + 
+            '</p><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
             '</p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
             getCHP() +
             '</p><p><span class="label-title">Operator: </span>' + operator + 
