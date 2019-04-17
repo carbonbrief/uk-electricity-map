@@ -13,6 +13,7 @@
     color: #999999;
     text-decoration: none;
     text-align: right;
+    border-bottom: none;
 }
   
 .toggle:hover {
