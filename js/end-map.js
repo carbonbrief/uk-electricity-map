@@ -46,6 +46,11 @@ var bounds2 = getBounds2();
 // resize map for the screen
 map2.fitBounds(bounds2, {padding: 10});
 
+// different filters to avoid interference
+var filterStartYear2 = ['<=', ['number', ['get', 'yearStart']], 2018];
+var filterEndYear2 = ['>=', ['number', ['get', 'yearEnd']], 2018];
+var filterType2 = ['!=', ['string', ['get','type']], 'placeholder'];
+
 // include search bar first so appears at top of controls
 
 if (screenWidth > 1200){
@@ -134,7 +139,7 @@ function addDataLayers () {
         ],
         'circle-opacity': 0.77
         },
-        'filter': ['all', filterStartYear, filterEndYear, filterType]
+        'filter': ['all', filterStartYear2, filterEndYear2, filterType2]
     });
 
 }
@@ -145,9 +150,9 @@ map2.on('load', function() {
     document.getElementById('slider').addEventListener('input', function(e) {
         var year = parseInt(e.target.value);
         // update the map
-        filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
-        filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
-        map2.setFilter('powerplants2', ['all', filterStartYear, filterEndYear, filterType]); //the filter only applies to the powerplants layer
+        filterStartYear2 = ['<=', ['number', ['get', 'yearStart']], year];
+        filterEndYear2 = ['>=', ['number', ['get', 'yearEnd']], year];
+        map2.setFilter('powerplants2', ['all', filterStartYear2, filterEndYear2, filterType2]); //the filter only applies to the powerplants layer
 
         // update text in the UI
         document.getElementById('active-hour').innerText = getYear[year];
@@ -160,41 +165,41 @@ map2.on('load', function() {
         var dropdown = e.target.value;
         // update the map filter
         if (dropdown === 'All') {
-            filterType = ['!=', ['string', ['get','type']], 'placeholder'];
+            filterType2 = ['!=', ['string', ['get','type']], 'placeholder'];
         } else if (dropdown === 'HighCarbon') {
-            filterType = ['match', ['get', 'type'], ['Coal', 'Gas', 'Oil'], true, false];
+            filterType2 = ['match', ['get', 'type'], ['Coal', 'Gas', 'Oil'], true, false];
         } else if (dropdown === 'LowCarbon') {
-            filterType = ['match', ['get', 'type'], ['Wind', 'Solar', 'Hydro'], true, false];
+            filterType2 = ['match', ['get', 'type'], ['Wind', 'Solar', 'Hydro'], true, false];
         } else if (dropdown === 'Biomass') {
-            filterType = ['==', ['string', ['get','type']], 'Biomass'];
+            filterType2 = ['==', ['string', ['get','type']], 'Biomass'];
         } else if (dropdown === 'Coal') {
-            filterType = ['==', ['string', ['get','type']], 'Coal'];
+            filterType2 = ['==', ['string', ['get','type']], 'Coal'];
         } else if (dropdown === 'Gas') {
-            filterType = ['==', ['string', ['get','type']], 'Gas'];
+            filterType2 = ['==', ['string', ['get','type']], 'Gas'];
         } else if (dropdown === 'Geothermal') {
-            filterType = ['==', ['string', ['get','type']], 'Geothermal'];
+            filterType2 = ['==', ['string', ['get','type']], 'Geothermal'];
         } else if (dropdown === 'Hydro') {
-            filterType = ['match', ['get', 'type'], ['Small Hydro', 'Large Hydro'], true, false];
+            filterType2 = ['match', ['get', 'type'], ['Small Hydro', 'Large Hydro'], true, false];
         } else if (dropdown === 'Interconnectors') {
-            filterType = ['==', ['string', ['get','type']], 'Interconnector'];
+            filterType2 = ['==', ['string', ['get','type']], 'Interconnector'];
         } else if (dropdown === 'Nuclear') {
-            filterType = ['==', ['string', ['get','type']], 'Nuclear'];
+            filterType2 = ['==', ['string', ['get','type']], 'Nuclear'];
         } else if (dropdown === 'Oil') {
-            filterType = ['==', ['string', ['get','type']], 'Oil'];
+            filterType2 = ['==', ['string', ['get','type']], 'Oil'];
         } else if (dropdown === 'Other') {
-            filterType = ['==', ['string', ['get','type']], 'Other'];
+            filterType2 = ['==', ['string', ['get','type']], 'Other'];
         } else if (dropdown === 'Solar') {
-            filterType = ['==', ['string', ['get','type']], 'Solar'];
+            filterType2 = ['==', ['string', ['get','type']], 'Solar'];
         } else if (dropdown === 'Storage') {
-            filterType = ['==', ['string', ['get','type']], 'Storage'];
+            filterType2 = ['==', ['string', ['get','type']], 'Storage'];
         } else if (dropdown === 'Waste') {
-            filterType = ['==', ['string', ['get','type']], 'Waste'];
+            filterType2 = ['==', ['string', ['get','type']], 'Waste'];
         } else if (dropdown === 'Wind') {
-            filterType = ['==', ['string', ['get','type']], 'Wind'];
+            filterType2 = ['==', ['string', ['get','type']], 'Wind'];
         } else {
             console.log('error');
         };
-        map2.setFilter('powerplants2', ['all', filterStartYear, filterEndYear, filterType]);
+        map2.setFilter('powerplants2', ['all', filterStartYear2, filterEndYear2, filterType2]);
 
         updateTotal();
     });
