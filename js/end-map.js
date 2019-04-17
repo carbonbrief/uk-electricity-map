@@ -169,7 +169,7 @@ map2.on('load', function() {
         } else if (dropdown === 'HighCarbon') {
             filterType2 = ['match', ['get', 'type'], ['Coal', 'Gas', 'Oil'], true, false];
         } else if (dropdown === 'LowCarbon') {
-            filterType2 = ['match', ['get', 'type'], ['Wind', 'Solar', 'Hydro'], true, false];
+            filterType2 = ['match', ['get', 'type'], ['Wind', 'Solar', 'Hydro', 'Nuclear', 'Storage', 'Geothermal', 'Waste', 'Biomass'], true, false];
         } else if (dropdown === 'Biomass') {
             filterType2 = ['==', ['string', ['get','type']], 'Biomass'];
         } else if (dropdown === 'Coal') {
@@ -179,15 +179,13 @@ map2.on('load', function() {
         } else if (dropdown === 'Geothermal') {
             filterType2 = ['==', ['string', ['get','type']], 'Geothermal'];
         } else if (dropdown === 'Hydro') {
-            filterType2 = ['match', ['get', 'type'], ['Small Hydro', 'Large Hydro'], true, false];
+            filterType2 = ['==', ['string', ['get','type']], 'Hydro'];
         } else if (dropdown === 'Interconnectors') {
             filterType2 = ['==', ['string', ['get','type']], 'Interconnector'];
         } else if (dropdown === 'Nuclear') {
             filterType2 = ['==', ['string', ['get','type']], 'Nuclear'];
         } else if (dropdown === 'Oil') {
             filterType2 = ['==', ['string', ['get','type']], 'Oil'];
-        } else if (dropdown === 'Other') {
-            filterType2 = ['==', ['string', ['get','type']], 'Other'];
         } else if (dropdown === 'Solar') {
             filterType2 = ['==', ['string', ['get','type']], 'Solar'];
         } else if (dropdown === 'Storage') {
