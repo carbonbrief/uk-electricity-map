@@ -2,7 +2,7 @@
 
 var map2 = new mapboxgl.Map({
     container: 'end-map',
-    style: 'https://maps.tilehosting.com/c/2d9d361b-377d-4c07-905b-31b81c65d271/styles/fiord-color-gl/style.json?key=8XzerAAi6jkvxtExTVxQ',
+    style: 'https://api.maptiler.com/maps/e7270a26-c7e8-420d-bb9c-dee843aa7bfe/style.json?key=' + config.key3,
     center: [-7, 55],
     zoom: 5,
     maxZoom: 18
@@ -59,7 +59,7 @@ map2.addControl(new mapboxgl.NavigationControl());
 
 var baseLayers = [{
     label: 'Dark',
-    id: 'https://maps.tilehosting.com/c/2d9d361b-377d-4c07-905b-31b81c65d271/styles/fiord-color-gl/style.json?key=8XzerAAi6jkvxtExTVxQ'
+    id: 'https://api.maptiler.com/maps/e7270a26-c7e8-420d-bb9c-dee843aa7bfe/style.json?key=' + config.key3
 }, {
     label: 'Light',
     id: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'
