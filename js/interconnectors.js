@@ -65,6 +65,10 @@ map.on('load', function() {
     let connecting;
     let yearOpen;
 
+    let converter;
+    let interconnector;
+    let country;
+
     map.on('mouseenter', 'interconnectors', function(e) {
 
         map.getCanvas().style.cursor = 'pointer';
@@ -114,19 +118,18 @@ map.on('load', function() {
 
         map.getCanvas().style.cursor = 'pointer';
 
-        var name = e.features[0].properties.site;
-        var interconnector = e.features[0].properties.interconnector;
-
-        // Populate the popup and set its coordinates
-        // different strategy to the popup in the script.js since it's a line
+        converter = e.features[0].properties.site;
+        interconnector = e.features[0].properties.interconnector;
+        country = e.features[0].properties.country;
 
         popup.setLngLat(e.lngLat)
-        .setHTML('<h3 style="color: #ff8767;">' + name + '</h3><p>' + interconnector + '</p>')
+        .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + converter + 
+        '</h3><p><span class="label-title">Interconnector: </span>' + interconnector + 
+        '</p><p><span class="label-title">Country: </span>' + country +
+        '</p>')
         .addTo(map);
 
-        //console.log(name);
-
-    })
+    });
 
     map.on('mouseleave', 'interconnector-stations', function() {
         map.getCanvas().style.cursor = '';
@@ -193,6 +196,10 @@ map2.on('load', function() {
     let connecting;
     let yearOpen;
 
+    let converter;
+    let interconnector;
+    let country;
+
     function getOpen () {
         if (yearOpen < 2019 ) {
             return '<span class="label-title">Year opened: </span>' + yearOpen;
@@ -247,17 +254,16 @@ map2.on('load', function() {
 
         map2.getCanvas().style.cursor = 'pointer';
 
-        var name = e.features[0].properties.site;
-        var interconnector = e.features[0].properties.interconnector;
-
-        // Populate the popup and set its coordinates
-        // different strategy to the popup in the script.js since it's a line
+        converter = e.features[0].properties.site;
+        interconnector = e.features[0].properties.interconnector;
+        country = e.features[0].properties.country;
 
         popup.setLngLat(e.lngLat)
-        .setHTML('<h3 style="color: #ff8767;">' + name + '</h3><p>' + interconnector + '</p>')
+        .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + converter + 
+        '</h3><p><span class="label-title">Interconnector: </span>' + interconnector + 
+        '</p><p><span class="label-title">Country: </span>' + country +
+        '</p>')
         .addTo(map2);
-
-        //console.log(name);
 
     })
 
