@@ -86,9 +86,24 @@ map.on('load', function() {
         '</p>')
         .addTo(map);
 
-        //console.log(name);
+    });
 
-    })
+    map.on('mousemove', 'interconnectors', function(e) {
+
+        name = e.features[0].properties.name;
+        operator = e.features[0].properties.operator;
+        connecting = e.features[0].properties.connecting;
+        yearOpen = e.features[0].properties.yearOpen;
+
+        popup.setLngLat(e.lngLat)
+        .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + name + 
+        '</h3><div class="colour-key" style="background-color: #ff8767; margin-right: 5px;"></div><p class="inline">Interconnector' +
+        '</p><p><span class="label-title">Operator: </span>' + operator +
+        '</p><p><span class="label-title">Connecting: </span>' + connecting +
+        '</p><p><span class="label-title">Year opened: </span>' + yearOpen +
+        '</p>');
+
+    });
 
     map.on('mouseleave', 'interconnectors', function() {
         map.getCanvas().style.cursor = '';
@@ -204,9 +219,24 @@ map2.on('load', function() {
         '</p>')
         .addTo(map2);
 
-        //console.log(name);
+    });
 
-    })
+    map2.on('mousemove', 'interconnectors', function(e) {
+
+        name = e.features[0].properties.name;
+        operator = e.features[0].properties.operator;
+        connecting = e.features[0].properties.connecting;
+        yearOpen = e.features[0].properties.yearOpen;
+
+        popup.setLngLat(e.lngLat)
+        .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + name + 
+        '</h3><div class="colour-key" style="background-color: #ff8767; margin-right: 5px;"></div><p class="inline">Interconnector' +
+        '</p><p><span class="label-title">Operator: </span>' + operator +
+        '</p><p><span class="label-title">Connecting: </span>' + connecting +
+        '</p><p>' + getOpen() +
+        '</p>');
+
+    });
 
     map2.on('mouseleave', 'interconnectors', function() {
         map2.getCanvas().style.cursor = '';
