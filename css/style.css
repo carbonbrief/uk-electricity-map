@@ -340,55 +340,6 @@ li {
   margin-left:0px;
 }
 
-.colors {
-  background: linear-gradient(to right, #ced1cc, #cc9b7a, #ffc83e, #ff8767, #ea545c, #dd54b6, #a45edb, #4e80e5, #43cfef, #00a98e, #A7B734 );
-  margin-bottom: 5px;
-  height: 3px;
-  background-size: 160% 100%;
-  /* very slow so that it isn't distracting */
-	-webkit-animation: Gradient 100s ease infinite;
-	-moz-animation: Gradient 100s ease infinite;
-	animation: Gradient 100s ease infinite;
-}
-
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-
-
 .label {
   width: 15%;
   display: inline-block;
@@ -418,26 +369,6 @@ li {
   width: 100%;
 }
 
-#adb {
-  position: fixed;
-  visibility: visible;
-  color: #333333;
-  z-index: -999999;
-  /* height: 100px; */
-  width: 30%;
-  margin-left: 45%;
-  margin-top: 140px;
-}
-
-#adb i {
-  font-size: 18px;
-}
-
-#adb li {
-  color: #333333;
-  list-style-type: circle;
-}
-
 #credit {
   border-top: 1px solid #949494;
   margin-top: 15px;
@@ -454,7 +385,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 96% / 15% no-repeat #2e364b;
+  background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 96% / 15% no-repeat #282f42;
   background-size: 20px 13px;
   border:2px;
   padding: 4px;
@@ -463,7 +394,8 @@ select {
 }
 
 .selector {
-  width: 200px;
+  width: 190px;
+  margin-right: 10px;
 }
 
 #home-button-wrapper {
@@ -536,7 +468,7 @@ select {
  /* nb tried getting rid of bright blue highlight but seems to be impossible without using something other than <select> or a  plugin */
 
 #selectorType:hover {
-  background-color: #242a3a;
+  background-color: #282f42;
 }
 
 /* improve the styling of the slider in Chrome */
@@ -546,7 +478,7 @@ select {
 } */
 
 input[type=range]::-webkit-slider-runnable-track {
-  background: #242a3a;
+  background: #282f42;
   border: none;
   border-radius: 3px;
   height: 5px;
