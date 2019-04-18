@@ -163,7 +163,7 @@ h2 {
   font-family: "PT Sans Narrow", sans-serif;
   font-weight: 700;
   font-size: 30px;
-  line-height: 1.1;
+  line-height: 1.1em;
   color: #c6e7fa;
   display: block;
   margin-block-start: 1.33em;
@@ -204,7 +204,7 @@ p {
   font-family: "PT Serif", serif;
   font-size: 20px;
   font-weight: 400;
-  line-height: 36px;
+  line-height: 1.8em;
   font-style: normal;
   color: #f3f3f3;
   display: block;
