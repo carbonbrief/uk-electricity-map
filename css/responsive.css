@@ -13,6 +13,24 @@
         font-size: 34px;
     }
 
+    .large {
+        -ms-flex: 1 0 0;
+        -webkit-flex: 1 0 0;
+        flex: 1 0 0;
+    }
+    
+    .small {
+        -ms-flex: 1 0 0;
+        -webkit-flex: 1 0 0;
+        flex: 1 0 0;
+    }
+
+    .large2 {
+        -ms-flex: 2 0 0;
+        -webkit-flex: 2 0 0;
+        flex: 2 0 0;
+    }
+
 }
 
 @media all and (max-width: 980px) {
@@ -27,6 +45,10 @@
 
     h1 {
         font-size: 29px;
+    }
+
+    #bar-container {
+        display: none;
     }
 
 }

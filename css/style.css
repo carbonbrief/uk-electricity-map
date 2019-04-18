@@ -269,6 +269,12 @@ li {
   flex: 2 0 0;
 }
 
+.large2 {
+  -ms-flex: 3 0 0;
+  -webkit-flex: 3 0 0;
+  flex: 3 0 0;
+}
+
 .small2 {
   -ms-flex: 1 0 0;
   -webkit-flex: 1 0 0;
