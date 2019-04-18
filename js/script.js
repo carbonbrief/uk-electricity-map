@@ -2,6 +2,8 @@ const $text= $('.scrolltext');
 const $paddingBelow = $('.padding-below');
 const $paddingAbove= $('.padding-above');
 const $map = $('#map');
+const $mapCont = $('#map-container');
+const $textCont = $('#text-container');
 const $endMap = $('#end-map');
 const $year = $('.year');
 const $yearCont = $('#year-container');
@@ -56,6 +58,11 @@ function setHeights () {
     });
     $(this).css("height", outerHeight + "px");
   });
+
+  // set map container height to ensure same when position becomes absolute on small screen
+  // after have set other things like padding
+
+  $mapCont.css("height", $textCont.height() + 80);
 
 
 

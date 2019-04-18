@@ -65,6 +65,14 @@
         font-size: 24px;
     }
 
+    h5 {
+        font-size: 20px;
+    }
+
+    .footer {
+        font-size: 16px;
+    }
+
     #bar-container {
         display: none;
     }
@@ -91,6 +99,27 @@
         display: none;
     }
 
+    #console {
+        width: 380px;
+    }
+
+    .selector {
+        width: 170px;
+        margin-right: 10px;
+    }
+
+    #first-title {
+        width: 180px;
+    }
+
+    #charts {
+        display: none;
+    }
+
+    .console-text {
+        display: none;
+    }
+
     h1 {
         font-size: 27px;
         margin-block-start: 1em;
@@ -98,6 +127,14 @@
 
     h2 {
         font-size: 22px;
+    }
+
+    h5 {
+        font-size: 18px;
+    }
+
+    .footer {
+        font-size: 15px;
     }
 
     .scrolltext p {
@@ -130,6 +167,10 @@
 
     .credit {
         font-size: 12px;
+    }
+
+    .footer {
+        font-size: 13px;
     }
 
 }
