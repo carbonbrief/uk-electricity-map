@@ -1,12 +1,12 @@
 function getHeight () {
     if (screenWidth > 1200) {
-        return 265
+        return 265;
     } else if (screenWidth < 1201  && screenWidth > 1100) {
-        return 245
+        return 245;
     } else if (screenWidth < 1101  && screenWidth > 1000) {
-        return 225
+        return 225;
     } else {
-        return 215
+        return 215;
     }
 }
 
@@ -23,7 +23,7 @@ var x2 = d3.scaleBand()
 
 var y2 = d3.scaleLinear()
     .range([height2, 0]);
-          
+
 // append the svg object to the body of the page. need to do it only once for the line and bar background
 
 var svg2 = d3.select("#bar-chart").append("svg")
@@ -31,73 +31,37 @@ var svg2 = d3.select("#bar-chart").append("svg")
     .attr("height", height2 + margin2.top + margin2.bottom)
     .append("g")
     .attr("transform", 
-          "translate(" + margin2.left + "," + margin2.top + ")");
+        "translate(" + margin2.left + "," + margin2.top + ")");
 
 // get the data
 d3.csv("./data/bar.csv", function(error, data) {
-  if (error) throw error;
+    if (error) throw error;
 
-  // format the data
-  data.forEach(function(d) {
-    d.value = +d.value;
-  });
+    // format the data
+    data.forEach(function(d) {
+        d.value = +d.value;
+    });
 
-  // Scale the range of the data in the domains
-  x2.domain(data.map(function(d) { return d.year; }));
-  y2.domain([0, d3.max(data, function(d) { return d.value; })]);
+    // Scale the range of the data in the domains
+    x2.domain(data.map(function(d) { return d.year; }));
+    y2.domain([0, d3.max(data, function(d) { return d.value; })]);
 
-  // append the rectangles for the bar chart
-  svg2.selectAll(".bar")
-      .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x2(d.year); })
-      .attr("width", x2.bandwidth())
-      .attr("y", function(d) { return y2(d.value); })
-      .attr("height", function(d) { return height2 - y2(d.value); })
-      .style("opacity", 0);
+    // append the rectangles for the bar chart
+    svg2.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x2(d.year); })
+        .attr("width", x2.bandwidth())
+        .attr("y", function(d) { return y2(d.value); })
+        .attr("height", function(d) { return height2 - y2(d.value); })
+        .style("opacity", 0);
 
     svg2.selectAll(".bar")
-      .filter(function(d) { return d.year == 2007 })
-      .transition()
-      .duration(800)
-      .style("opacity", 1);
-
-    // not adding any axes since just for highlighting
-
-    // function initialTransition() {
-
-    //     var i = 1;
-    //     var year = 2007;
-
-    //     function myLoop () {
-    //         setTimeout(function () {
-
-    //             svg2.selectAll(".bar")
-    //                 .style("opacity", 0);
-
-    //             svg2.selectAll(".bar")
-    //                 .filter(function(d) {
-    //                     return d.year == year
-    //                 })
-    //                 .style("opacity", 1);
-
-    //             i++;                     //  increment the counter
-    //             year = 2007 + i;
-    //             if (i < 11) {            //  if the counter < 11, call the loop function
-    //                 myLoop();             
-    //             }                        
-
-    //         }, 200)
-    //     }
-
-    //     myLoop();
-        
-    // }
-
-    // setTimeout(function () {
-    //     initialTransition();
-    // }, 1480);
+        .filter(function(d) { return d.year == 2018 })
+        .transition()
+        .duration(800)
+        .style("opacity", 1);
 
 
 });
