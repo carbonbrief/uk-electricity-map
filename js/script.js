@@ -31,18 +31,18 @@ function setHeights () {
 
   $paddingAbove.css("height", ($(".year-sticky").height()* 5));
 
-  // function getYearPadding () {
-  //   if ($width > 736 && $width < 1281) {
-  //     return 30;
-  //   } else if ($width < 737) {
-  //     return 0;
-  //   } else {
-  //     return 40;
-  //   }
-  // };
+  function getYearPadding () {
+    if ($width > 736 && $width < 1281) {
+      return 30;
+    } else if ($width < 737) {
+      return 0;
+    } else {
+      return 40;
+    }
+  };
 
   $yearCont.css("left", function () {
-    return 40 + $barCont.width();
+    return getYearPadding() + $barCont.width();
   });
 
   $bar.css("height", ($height - 80));
