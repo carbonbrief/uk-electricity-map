@@ -175,7 +175,7 @@ $(window).on('scroll', function () {
 
 });
 
-// scroll to top on window reload
+// SCROLL TOP ON WINDOW RELOAD
 window.onbeforeunload = function () {
   window.scrollTo(0,0);
 };
@@ -191,5 +191,5 @@ $(".toggle").click(function(e) {
   $("#console").toggleClass('console-close console-open');
   $('.arrow-right-hidden').toggleClass('arrow-right');
   $('.arrow-left').toggleClass('arrow-left-hidden');
-  
+
 });

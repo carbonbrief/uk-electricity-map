@@ -42,6 +42,7 @@ body {
 
 .central {
   width: 800px;
+  max-width: calc(100% - 30px);
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
@@ -86,6 +87,7 @@ body {
   color: #f3f3f3;
   font-size: 14px;
   margin-top: 0em;
+  line-height: 1.6em;
 }
 
 .footer {
@@ -150,8 +152,8 @@ body {
 h1 {
   font-family: 'PT Sans Narrow', Helvetica, Arial, Sans-serif;
   font-weight: normal;
-  font-size: 34px;
-  line-height: 30px;
+  font-size: 38px;
+  line-height: 0.95em;
   color: #ffffff;
   margin-block-start: 1.33em;
   margin-block-end: 1.33em;

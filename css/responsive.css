@@ -9,6 +9,10 @@
         font-size: 10px;
     }
 
+    h1 {
+        font-size: 34px;
+    }
+
 }
 
 @media all and (max-width: 980px) {
@@ -21,6 +25,10 @@
         background-image:url(../img/logo-mobile.svg);
     }
 
+    h1 {
+        font-size: 29px;
+    }
+
 }
 
 @media all and (max-width: 736px) {
@@ -29,8 +37,37 @@
         display: none;
     }
 
+    h1 {
+        font-size: 27px;
+        margin-block-start: 1em;
+    }
+
+    #animation {
+        width: 300px;
+        height: 300px;
+    }
+
+    .credit {
+        font-size: 13px;
+    }
+
 }
 
 @media all and (max-width: 480px) {
+
+    #animation {
+        width: 240px;
+        height: 240px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-block-start: 0.5em;
+        line-height: 1.2em;
+    }
+
+    .credit {
+        font-size: 12px;
+    }
 
 }
