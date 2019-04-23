@@ -4,8 +4,9 @@
   
 .line {
   fill: none;
-  stroke: steelblue;
   stroke-width: 1.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 
 .bar {
@@ -40,6 +41,8 @@
 
 .axis line{
   stroke: #afafaf;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 
 .axis path{
@@ -59,7 +62,6 @@
 .hover-line {
   stroke: #c5c5c5;
   stroke-width: 1px;
-  /* stroke-dasharray: 4,4; */
   opacity: 0.3;
 }
 
