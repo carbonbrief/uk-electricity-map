@@ -28,7 +28,19 @@ map.on('load', function() {
         "paint": {
             "line-color": "#ff8767",
             "line-width": {
-                'stops': [[3, 3], [20, 8]]
+                'property': 'capacity',
+                type: 'exponential',
+                base: 0.8,
+                'stops': [
+                    [{zoom: 2, value: 100}, 1],
+                    [{zoom: 2, value: 2000}, 5],
+                    [{zoom: 8, value: 100}, 2],
+                    [{zoom: 8, value: 2000}, 6],
+                    [{zoom: 14, value: 100}, 3],
+                    [{zoom: 14, value: 2000}, 7],
+                    [{zoom: 20, value: 100}, 4],
+                    [{zoom: 20, value: 2000}, 8]
+                ]
             },
             "line-opacity": 0.8
         }
@@ -305,7 +317,19 @@ function addInterconnectors () {
         "paint": {
             "line-color": "#ff8767",
             "line-width": {
-                'stops': [[3, 3], [20, 8]]
+                'property': 'capacity',
+                type: 'exponential',
+                base: 0.8,
+                'stops': [
+                    [{zoom: 2, value: 100}, 1],
+                    [{zoom: 2, value: 2000}, 5],
+                    [{zoom: 8, value: 100}, 2],
+                    [{zoom: 8, value: 2000}, 6],
+                    [{zoom: 14, value: 100}, 3],
+                    [{zoom: 14, value: 2000}, 7],
+                    [{zoom: 20, value: 100}, 4],
+                    [{zoom: 20, value: 2000}, 8]
+                ]
             },
             "line-opacity": 0.8
         }
