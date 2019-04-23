@@ -132,17 +132,17 @@ function drawChart(filterData){
             .attr("y", 8)
             .attr("dy", ".5em")
             .style("text-anchor", "end")
-            .text("Generation (MW)");
+            .text("Generation (Twh)");
 
         // ADD UNDERLAY TO TRACK MOUSE MOVEMENTS FOR CROSSHAIR
 
         svg3.append('rect')
-        .attr("class", "overlay")
-        .attr("width", width3)
-        .attr("height", height3)
-        .on("mouseover", mouseover)
-        .on("mouseout", mouseout)
-        .on("mousemove", mousemove);
+            .attr("class", "overlay")
+            .attr("width", width3)
+            .attr("height", height3)
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout)
+            .on("mousemove", mousemove);
 
         // ADD LINES
     
