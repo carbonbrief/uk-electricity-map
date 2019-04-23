@@ -73,20 +73,15 @@ function drawChart(filterData){
         // extend x domain of line chart so that bars align
 
         x3.domain([
-
             parseDate2(20070701), parseDate2(20180701)
-
         ]);
 
         y3.domain([
-
             d3.min(powerplants, function(c) { return d3.min(c.values, function(v) { return v.capacity; }); }),
             d3.max(powerplants, function(c) { return d3.max(c.values, function(v) { return v.capacity; }); })
-
         ]);
 
         svg3.selectAll("*").remove();
-
 
 
         // LINK BEHAVIOUR TO DROPDOWN
@@ -98,9 +93,7 @@ function drawChart(filterData){
 
             reDraw(type);
 
-            // console.log(type);
         }
-
 
         // ADD AXES
             
@@ -141,14 +134,10 @@ function drawChart(filterData){
         // ADD LINES
     
         var boo=powerplants.filter(function(d){return filterData[d.name]==true;});
-        // console.log("filter");
-        // console.log(boo);
     
         var plant = svg3.selectAll(".plant")
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
         .enter().append("g");
-        
-        // console.log(plant);
 
         svg3.selectAll(".plant")
         .data(powerplants.filter(function(d){return filterData[d.name]==true;}))
@@ -160,49 +149,22 @@ function drawChart(filterData){
         .exit()
         .remove();
 
-        var screenWidths = {
-            largeScreen: [415, 310, 405, 315],
-            mediumScreen1: [385, 285, 380, 290],
-            mediumScreen2: [365, 270, 360, 280],
-            smallScreen1: [340, 260, 325, 260],
-            smallScreen2: [320, 230, 305, 235],
-            smallScreen3: [295, 210, 288, 215]
-        }
-
-        function getScreensize () {
-            if (screenWidth >1300) {
-                return "largeScreen"
-            } else if (screenWidth < 1301 && screenWidth > 1200) {
-                return "mediumScreen1"
-            } else if (screenWidth < 1201 && screenWidth > 1100) {
-                return "mediumScreen2"
-            } else if (screenWidth < 1101 && screenWidth > 1024) {
-                return "smallScreen1"
-            } else if (screenWidth < 1025 && screenWidth > 980) {
-                return "smallScreen2"
-            } else {
-                return "smallScreen3"
-            }
-        }
-
         plant.append("path")
         .attr("class", "line")
         .attr("d", function(d) { return line(d.values); })
         .style("stroke", function(d) { return color(d.name); })
         .style("stroke-dasharray", function (d) {
-            // quite a hacky way of getting the planned section of the chart to be dashed without having to filter data or add new lines
+            // hacky way of getting the planned section of the chart to be dashed without having to filter data or add new lines
             // split into if/else statement because the lines are different lengths
-                
-                var screenSize = getScreensize();
 
                 if (d.name == "Coal") {
-                    return screenWidths[screenSize][0] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                    return 354 + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
                 } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
-                    return screenWidths[screenSize][1] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                    return 280 + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
                 } else if (d.name == "Gas") {
-                    return screenWidths[screenSize][2] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                    return 352 + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
                 } else {
-                    return screenWidths[screenSize][3] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                    return 282 + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
                 }
 
         });
