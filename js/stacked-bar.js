@@ -60,7 +60,7 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
             })
             .entries(data);
 
-    data = data_nest.filter(function(d){ return d.key == 2007})[0].values;
+    data = data_nest.filter(function(d){ return d.key == 2008})[0].values;
     
     var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Solar", "Storage", "Waste", "Wind"];
 

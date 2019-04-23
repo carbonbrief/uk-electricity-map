@@ -88,6 +88,9 @@ $(document).ready(function() {
 
             // grab year of element
             year = $(_this).children("h2").text();
+            if (year == "Future") {
+              year = "2019";
+            }
             year = parseInt(year);
 
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
@@ -114,6 +117,9 @@ $(document).ready(function() {
 
             // grab year of element
             year = $(_this).children("h2").text();
+            if (year == "Future") {
+              year = 2019;
+            }
             year = parseInt(year);
 
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
