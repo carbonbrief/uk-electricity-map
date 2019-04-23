@@ -2,8 +2,6 @@ var margin3 = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width
     width3 = parseInt(d3.select("#line-wrapper").style("width")) - margin3.left - margin3.right,
     height3 = responsiveHeight - margin3.top - margin3.bottom;
 
-// console.log(margin.right);
-
 var parseDate = d3.timeParse("%Y");
 var parseDate2 = d3.timeParse("%Y%m%d");
 
@@ -43,10 +41,6 @@ var svg4 = d3.select("#line-chart-background").append("svg")
 var div2 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
-
-// var yearFormat = d3.timeFormat("%Y");
-
-// var decimalFormat = d3.format(".1f");
 
 // array for background
 var allData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Biomass":true, "Solar": true,  "Wind":true, "Waste":true };
