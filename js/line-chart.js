@@ -1,4 +1,4 @@
-var margin3 = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width"))/ 6.5), bottom: 30, left: 35},
+var margin3 = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width"))/ 6.1), bottom: 30, left: 35},
     width3 = parseInt(d3.select("#line-wrapper").style("width")) - margin3.left - margin3.right,
     height3 = responsiveHeight - margin3.top - margin3.bottom;
 
@@ -80,7 +80,7 @@ function drawChart(filterData){
 
         x3.domain([
 
-            parseDate2(20060701), parseDate2(20180701)
+            parseDate2(20070701), parseDate2(20180701)
 
         ]);
 
@@ -345,7 +345,7 @@ function drawBackground () {
 
         x3.domain([
 
-            parseDate2(20060701), parseDate2(20180701)
+            parseDate2(20070701), parseDate2(20180701)
 
         ]);
 
