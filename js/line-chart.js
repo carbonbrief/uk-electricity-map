@@ -1,4 +1,4 @@
-var margin3 = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width"))/ 6.1), bottom: 30, left: 35},
+var margin3 = {top: 10, right: (parseInt(d3.select("#line-wrapper").style("width"))/ 6.5), bottom: 30, left: 35},
     width3 = parseInt(d3.select("#line-wrapper").style("width")) - margin3.left - margin3.right,
     height3 = responsiveHeight - margin3.top - margin3.bottom;
 

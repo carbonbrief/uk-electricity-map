@@ -62,7 +62,7 @@ function setHeights () {
   // set map container height to ensure same when position becomes absolute on small screen
   // after have set other things like padding
 
-  $mapCont.css("height", $textCont.height() + 80);
+  $mapCont.css("height", $textCont.height() + 240);
 
 
 
