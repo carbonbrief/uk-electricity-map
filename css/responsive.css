@@ -21,6 +21,10 @@
         font-size: 15px;
     }
 
+    p {
+        font-size: 19px;
+    }
+
     .large {
         -ms-flex: 1 0 0;
         -webkit-flex: 1 0 0;
@@ -67,6 +71,10 @@
 
     h5 {
         font-size: 20px;
+    }
+
+    p {
+        font-size: 18px;
     }
 
     .footer {
@@ -132,6 +140,10 @@
         font-size: 18px;
     }
 
+    p {
+        font-size: 16px;
+    }
+
     .footer {
         font-size: 15px;
     }
@@ -166,6 +178,10 @@
 
     .credit {
         font-size: 12px;
+    }
+
+    p {
+        font-size: 14px;
     }
 
     .footer {
