@@ -19,7 +19,7 @@ map.on('load', function() {
         type: 'line',
         source: {
             type: 'geojson',
-            data: './data/interconnector-lines.geojson'
+            data: './data/interconnector-lines.json'
         },
         "layout": {
             "line-join": "round",
@@ -51,7 +51,7 @@ map.on('load', function() {
         type: 'circle',
         source: {
             type: 'geojson',
-            data: './data/interconnector-stations.geojson'
+            data: './data/interconnector-stations.json'
         },
         "paint": {
             "circle-color": "#ff8767",
@@ -308,7 +308,7 @@ function addInterconnectors () {
         type: 'line',
         source: {
             type: 'geojson',
-            data: './data/interconnector-lines.geojson'
+            data: './data/interconnector-lines.json'
         },
         "layout": {
             "line-join": "round",
@@ -340,7 +340,7 @@ function addInterconnectors () {
         type: 'circle',
         source: {
             type: 'geojson',
-            data: './data/interconnector-stations.geojson'
+            data: './data/interconnector-stations.json'
         },
         "paint": {
             "circle-color": "#ff8767",

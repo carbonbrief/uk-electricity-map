@@ -192,7 +192,7 @@ $(document).ready(function() {
         $share.css("visibility", "visible");
       }
     },
-    offset: 30
+    offset: 35
   });
 
 });
