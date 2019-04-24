@@ -121,16 +121,6 @@ function drawChart(filterData){
             .style("text-anchor", "end")
             .text("Generation (Twh)");
 
-        // ADD UNDERLAY TO TRACK MOUSE MOVEMENTS FOR CROSSHAIR
-
-        svg3.append('rect')
-            .attr("class", "overlay")
-            .attr("width", width3)
-            .attr("height", height3)
-            .on("mouseover", mouseover)
-            .on("mouseout", mouseout)
-            .on("mousemove", mousemove);
-
         // ADD LINES
     
         var boo=powerplants.filter(function(d){return filterData[d.name]==true;});
@@ -230,45 +220,6 @@ function drawChart(filterData){
             .style("opacity", 0);
         });
 
-        // ADD CROSSHAIR
-
-        var focus = svg3.append('g')
-        .attr('class', 'focus')
-        .style('display', 'none');
-
-        var tooltip = d3.select('#tooltip');
-
-        // append x position tracking line, originally positioned at 0
-
-        focus.append('line')
-        .attr('class', 'x-hover-line hover-line')
-        .attr('y1' , 0)
-        .attr('y2', height3);
-
-        function mouseover() {
-            focus.style("display", null);
-            tooltip.style("display", "block");
-        }
-
-        function mouseout() {
-            focus.style("display", "none");
-            tooltip.style("display", "none");
-        }
-
-        var timeScales = data.map(function(d) { return x3(d.year); });
-
-        function mousemove(d) {
-
-            // gets line to follow mouse along discreeet data lines, deleted tooltip as this stopped the line appearing for 2017
-
-            var i = d3.bisect(timeScales, d3.mouse(this)[0], 1),
-                d0 = data[i-1],
-                d1 = data[i];
-
-            focus.attr("transform", "translate(" + x3(d0.year) + ",0)"); 
-
-        }
-
     });
 
 
@@ -315,14 +266,10 @@ function drawBackground () {
         svg4.selectAll("*").remove();
 
         var boo2 =powerplants2.filter(function(d){return allData[d.name]==true;});
-        // console.log("filter");
-        // console.log(boo2);
     
         var plant2 = svg4.selectAll(".plant-background")
         .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
         .enter().append("g");
-        
-        // console.log(plant2);
 
         svg4.selectAll(".plant-background")
         .data(powerplants2.filter(function(d){return allData[d.name]==true;}))
@@ -341,8 +288,6 @@ function drawBackground () {
     })
 
 }
-
-// console.log(filterData);
 
 drawBackground(allData);
 
@@ -386,7 +331,5 @@ function reDraw(type){
         // do nothing
         console.log("error");
     }
-	// console.log("redraw :");
-	// console.log(filterData);
 	drawChart(filterData);
 }

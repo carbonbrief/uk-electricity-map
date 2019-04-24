@@ -197,21 +197,6 @@ $(document).ready(function() {
 
 });
 
-$(window).on('scroll', function () {
-
-  // let scrollTop = $(this).scrollTop();
-  // let mapTop = $('#main').offset().top;
-
-  // console.log(scrollTop);
-  // console.log(mapTop);
-
-  // if (mapTop < scrollTop) {
-  //   console.log("map below");
-  //   $year.removeClass("active");
-  // };
-
-});
-
 // SCROLL TOP ON WINDOW RELOAD
 window.onbeforeunload = function () {
   window.scrollTo(0,0);
