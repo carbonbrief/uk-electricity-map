@@ -73,6 +73,10 @@
         font-size: 20px;
     }
 
+    #charts {
+        display: none;
+    }
+
     p {
         font-size: 18px;
     }
@@ -109,22 +113,25 @@
 
     #console {
         width: 380px;
+        margin: 5px;
+        padding: 5px 15px;
+        padding-right: 25px;
     }
 
     .selector {
         width: 170px;
     }
 
+    #list-group {
+        display: none;
+    }
+
+    #dropdown {
+        height: 80px;
+    }
+
     #first-title {
         width: 180px;
-    }
-
-    #charts {
-        display: none;
-    }
-
-    .console-text {
-        display: none;
     }
 
     h1 {
@@ -186,6 +193,18 @@
 
     .footer {
         font-size: 13px;
+    }
+
+    #console {
+        width: 320px;
+    }
+
+    .selector {
+        width: 140px;
+    }
+
+    #first-title {
+        width: 150px;
     }
 
 }

@@ -16,31 +16,31 @@
     border-bottom: none;
     font-size: 16px;
 }
-  
+
 .toggle:hover {
     color: #c6e7fa;
 }
-  
+
 .arrow-right-hidden {
     display: none;
 }
-  
+
 .arrow-left {
     display: inline;
 }
-  
+
 .arrow-left-hidden {
     display: none;
 }
-  
+
 .arrow-right {
     display: inline;
 }
 
 .console-close {
-    transform: translateX(calc(-100% + 25px));
-    -ms-transform: translateX(calc(-100% + 25px));
-    -webkit-transform: translateX(calc(-100% + 25px));
+    transform: translateX(calc(-100% + 15px));
+    -ms-transform: translateX(calc(-100% + 15px));
+    -webkit-transform: translateX(calc(-100% + 15px));
     transition-duration: 0.4s;
     -webkit-transition-duration: 0.4s;
     transition-property: transform;

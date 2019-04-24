@@ -11,19 +11,19 @@ var map2 = new mapboxgl.Map({
 map2.scrollZoom.disable();
 
 var boundsMobile2 = [
-    [ -9, 49],[2, 60]
+    [ -9, 49],[2.5, 60]
     ]
     
 var boundsLaptop2 = [
-[ -11, 49],[2, 60]
+[ -10, 49],[2.5, 60]
 ]
 
 var boundsDesktop2 = [
-[ -13, 49],[2, 60]
+[ -17, 49],[2, 60]
 ]
 
 var boundsRetina2 = [
-[ -14, 49.5],[3, 59.5]
+[ -18, 49.5],[3, 59.5]
 ]
 
 function getBounds2 () {
