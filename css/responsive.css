@@ -25,6 +25,14 @@
         font-size: 19px;
     }
 
+    h3 {
+        font-size: 19px;
+    }
+
+    .mapboxgl-popup-content p {
+        font-size: 13.5px;
+    }
+
     .large {
         -ms-flex: 1 0 0;
         -webkit-flex: 1 0 0;
@@ -79,6 +87,14 @@
 
     p {
         font-size: 18px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .mapboxgl-popup-content p {
+        font-size: 13px;
     }
 
     .footer {
@@ -166,6 +182,10 @@
 
     .credit {
         font-size: 13px;
+    }
+
+    .mapboxgl-popup-content {
+        max-width: 200px;
     }
 
 }
