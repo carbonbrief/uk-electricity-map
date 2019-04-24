@@ -181,6 +181,20 @@ $(document).ready(function() {
 
   });
 
+  let $share = $(".share-icons");
+
+  new Waypoint({
+    element: document.getElementById('end-map'),
+    handler: function(direction) {
+      if (direction == 'down'){
+        $share.css("visibility", "hidden");
+      } else {
+        $share.css("visibility", "visible");
+      }
+    },
+    offset: 30
+  });
+
 });
 
 $(window).on('scroll', function () {
