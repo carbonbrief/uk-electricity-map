@@ -204,7 +204,7 @@ function drawChart(filterData){
             ";>" + this.parentNode.__data__.name + 
             "</h3><p><span class='label-title'>Year: </span>" + getYear[yearFormat(d.year)] + 
             "</p><p><span class='label-title'>Capacity: </span>" + decimalFormat(d.capacity) + 
-            " MW</p>")
+            " <span class='units'>Twh</span></p>")
             .style("left", (d3.event.pageX + 20) + "px")
             .style("top", (d3.event.pageY - 50) + "px");
             })
