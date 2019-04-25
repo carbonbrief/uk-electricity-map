@@ -89,6 +89,7 @@ var getYear = {
 var filterStartYear = ['<=', ['number', ['get', 'yearStart']], 2008];
 var filterEndYear = ['>=', ['number', ['get', 'yearEnd']], 2008];
 var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
+var filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
 
 map.on('load', function() {
 
@@ -258,6 +259,16 @@ map.on('load', function() {
 // function to change map properties
 
 function updateMap (sectionName) {
+
+    if (sectionName == "section2") {
+        filterOperator = ['==', ['string', ['get','operator']], 'Drax Power Ltd'];
+    } else {
+        filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
+    }
+
+    map.setFilter('powerplants', ['all', filterOperator, filterType, filterStartYear, filterEndYear]);
+
+    console.log(sectionName);
     
 }
 

@@ -26,12 +26,14 @@ function setHeights () {
 
   if ($width > 979) {
     $paddingBelow.css("height", $height*0.7);
+    $paddingAbove.css("height", $height*0.7);
   } else {
     // further apart since now covering the map
     $paddingBelow.css("height", $height*0.9);
+    $paddingAbove.css("height", $height*0.9);
   }
 
-  $paddingAbove.css("height", ($(".year-sticky").height()* 5));
+  //$paddingAbove.css("height", ($(".year-sticky").height()* 5));
 
   function getYearPadding () {
     if ($width > 736 && $width < 1281) {
@@ -64,8 +66,6 @@ function setHeights () {
 
   $mapCont.css("height", $textCont.height() + 240);
 
-
-
 }
 
 setHeights();
@@ -95,8 +95,10 @@ $(document).ready(function() {
 
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
             filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
+            filterType = ['!=', ['string', ['get','type']], 'placeholder'];
+            filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
 
-            map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
+            map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType, filterOperator]);
             map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
             map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
 
@@ -124,6 +126,8 @@ $(document).ready(function() {
 
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
             filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
+            filterType = ['!=', ['string', ['get','type']], 'placeholder'];
+            filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
 
             map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
             map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
@@ -143,17 +147,19 @@ $(document).ready(function() {
     // fade text on and off screen
 
     let _this = this;
+    let sectionName = $(this).attr('id');
 
     new Waypoint({
       element: _this,
       handler: function (direction) {
         if (direction == 'down'){
-            $(this.element).animate({'opacity': 1});
+          $(this.element).animate({'opacity': 1});
+          updateMap(sectionName);
         } else {
           $(this.element).animate({'opacity': 0.15});
         }
       },
-      offset: '85%'
+      offset: '60%'
     });
 
     // ensure text coming on to the screen is faded
@@ -161,7 +167,7 @@ $(document).ready(function() {
       element: _this,
       handler: function (direction) {
         if (direction == 'down'){
-            $(this.element).css({'opacity': 0.15});
+          $(this.element).css({'opacity': 0.15});
         }
       },
       offset: '110%'
@@ -171,9 +177,10 @@ $(document).ready(function() {
       element: _this,
       handler: function (direction) {
         if (direction == 'down'){
-            $(this.element).animate({'opacity': 0.15});
+          $(this.element).animate({'opacity': 0.15});
         } else {
           $(this.element).animate({'opacity': 1});
+          updateMap(sectionName);
         }
       },
       offset: '10%'
@@ -201,7 +208,6 @@ $(document).ready(function() {
 window.onbeforeunload = function () {
   window.scrollTo(0,0);
 };
-
 
 // TOGGLE BUTTON
 

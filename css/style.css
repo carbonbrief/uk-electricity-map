@@ -77,11 +77,11 @@ body {
 }
 
 .padding-above {
-  height: 50px;
+  height: 20%;
 }
 
 .padding-below {
-  height: 200px;
+  height: 20%;
 }
 
 .credit {
@@ -475,10 +475,6 @@ select {
 }
 
 /* improve the styling of the slider in Chrome */
-
-/* input[type=range]{
-  -webkit-appearance: none;
-} */
 
 input[type=range]::-webkit-slider-runnable-track {
   background: #282f42;
