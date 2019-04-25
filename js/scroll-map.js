@@ -93,6 +93,53 @@ var filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
 
 map.on('load', function() {
 
+    // underlay to remain when filtering
+    map.addLayer({
+        id: 'underlay',
+        type: 'circle',
+        source: {
+        type: 'geojson',
+        data: './data/power_stations.json'
+        },
+        paint: {
+        'circle-radius': {
+            property: 'capacity',
+            type: 'exponential',
+            base: 0.8,
+            stops: [
+            [{zoom: 2, value: 1}, 0.5],
+            [{zoom: 2, value: 2500}, 18],
+            [{zoom: 4.5, value: 1}, 2.2],
+            [{zoom: 4.5, value: 2500}, 27],
+            [{zoom: 8, value: 1}, 4],
+            [{zoom: 8, value: 2500}, 32],
+            [{zoom: 12, value: 1}, 6],
+            [{zoom: 12, value: 2500}, 37],
+            [{zoom: 15, value: 1}, 8],
+            [{zoom: 15, value: 2500}, 42]
+            ]
+        },
+        'circle-color': [
+            'match',
+            ['get', 'type'],
+            "Coal", "#ced1cc",
+            "Storage", "#4e80e5",
+            "Solar", "#ffc83e",
+            "Nuclear", "#dd54b6",
+            "Oil", "#a45edb",
+            "Hydro", "#43cfef",
+            "Wave & Tidal", "#43cfef",
+            "Wind", "#00a98e",
+            "Biomass", "#A7B734",
+            "Waste", "#ea545c",
+            "Gas", "#cc9b7a",
+            /* other */ '#ccc'
+        ],
+        'circle-opacity': 0.15
+        },
+        'filter': ['all', filterStartYear, filterEndYear, filterType]
+    });
+
     map.addLayer({
         id: 'powerplants',
         type: 'circle',
@@ -259,6 +306,9 @@ map.on('load', function() {
 // function to change map properties
 
 function updateMap (sectionName) {
+
+    // suspect that might need to deal with each stage individually 
+    // if some involve map filters and some involve flyTo
 
     if (sectionName == "section2") {
         filterOperator = ['==', ['string', ['get','operator']], 'Drax Power Ltd'];

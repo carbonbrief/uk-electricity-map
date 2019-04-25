@@ -25,8 +25,8 @@ function setHeights () {
   $endMap.css("height", $height);
 
   if ($width > 979) {
-    $paddingBelow.css("height", $height*0.7);
-    $paddingAbove.css("height", $height*0.7);
+    $paddingBelow.css("height", $height*0.8);
+    $paddingAbove.css("height", $height*0.8);
   } else {
     // further apart since now covering the map
     $paddingBelow.css("height", $height*0.9);
@@ -98,6 +98,7 @@ $(document).ready(function() {
             filterType = ['!=', ['string', ['get','type']], 'placeholder'];
             filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
 
+            map.setFilter('underlay', ['all', filterStartYear, filterEndYear, filterType, filterOperator]);
             map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType, filterOperator]);
             map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
             map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
@@ -129,7 +130,8 @@ $(document).ready(function() {
             filterType = ['!=', ['string', ['get','type']], 'placeholder'];
             filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
 
-            map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType]);
+            map.setFilter('underlay', ['all', filterStartYear, filterEndYear, filterType, filterOperator]);
+            map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType, filterOperator]);
             map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
             map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
 
@@ -159,7 +161,7 @@ $(document).ready(function() {
           $(this.element).animate({'opacity': 0.15});
         }
       },
-      offset: '60%'
+      offset: '50%'
     });
 
     // ensure text coming on to the screen is faded
