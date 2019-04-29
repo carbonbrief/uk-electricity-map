@@ -49,7 +49,12 @@ function setHeights () {
     $yearCont.css("left", function () {
       return getYearPadding() + $barCont.width();
     });
+  } else if ($width < 737 && $width > 480 ) {
+    $yearCont.css("left", function () {
+      return ($width/2 - ($yearCont.width()/2) - 25);
+    });
   } else {
+    // different margin to account for
     $yearCont.css("left", function () {
       return ($width/2 - ($yearCont.width()/2) - 15);
     });
