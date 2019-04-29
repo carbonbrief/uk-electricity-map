@@ -1,13 +1,16 @@
 // with help from https://bl.ocks.org/reinson/166bae46dd106b45cf2d77c7802768ca
 
-// nb 2018 = planned in the csv
-
-// width same as line chart, margins and height different
-
-
-var margin = {top: 30, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - 30), bottom: 10, left: 45},
-    width = 30,
+var margin = {top: 30, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - getWidth()), bottom: 10, left: 45},
+    width = getWidth(),
     height = parseInt(d3.select("#stacked-bar").style("height")) - margin.top - margin.bottom;
+
+function getWidth () {
+    if ($width > 1280) {
+        return 30;
+    } else {
+        return 25;
+    }
+}
 
 var svg = d3.select('#stacked-bar').append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -145,7 +148,7 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
     .data(function(d) { return d; })
     .enter().append('text')
     .attr("transform", function (d) {
-        return "translate(" + (x(d.data.y) + 24) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
+        return "translate(" + (x(d.data.y) + (getWidth() - 6)) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
     })
     .text(function () {
         let color = d3.select(this).style('fill');
@@ -191,7 +194,7 @@ function updateStackedBar () {
         .transition()
         .duration(500) 
         .attr("transform", function (d) {
-            return "translate(" + (x(d.data.y) + 24) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
+            return "translate(" + (x(d.data.y) + (getWidth() - 6)) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
         });
 
     });
