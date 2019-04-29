@@ -45,9 +45,15 @@ function setHeights () {
     }
   };
 
-  $yearCont.css("left", function () {
-    return getYearPadding() + $barCont.width();
-  });
+  if ($width > 736) {
+    $yearCont.css("left", function () {
+      return getYearPadding() + $barCont.width();
+    });
+  } else {
+    $yearCont.css("left", function () {
+      return ($width/2 - ($yearCont.width()/2) - 15);
+    });
+  };
 
   $bar.css("height", ($height - 80));
 
