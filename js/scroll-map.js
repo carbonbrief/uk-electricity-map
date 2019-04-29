@@ -23,7 +23,8 @@ if (!mapboxgl.supported()) {
         style: 'https://api.maptiler.com/maps/e7270a26-c7e8-420d-bb9c-dee843aa7bfe/style.json?key=' + config.key3,
         center: [-7, 54],
         zoom: 5,
-        maxZoom: 18
+        maxZoom: 18,
+        interactive: false
     });
 
 }
