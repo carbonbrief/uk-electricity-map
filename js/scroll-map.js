@@ -34,19 +34,19 @@ map.scrollZoom.disable();
 var screenWidth = $(window).width();
 
 var boundsMobile = [
-[ -9, 49],[3, 60]
+[ -9, 49],[3, 61]
 ]
 
 var boundsLaptop = [
-[ -11, 49],[5, 60]
+[ -11, 49],[4, 61]
 ]
 
 var boundsDesktop = [
-[ -13, 49],[6, 60]
+[ -12, 49],[5.5, 61]
 ]
 
 var boundsRetina = [
-[ -15, 49.5],[7, 59.5]
+[ -14, 49],[6.5, 61]
 ]
 
 function getBounds () {
@@ -54,10 +54,10 @@ function getBounds () {
     if (screenWidth > 1400) {
         return boundsRetina
     }
-    else if (screenWidth > 1024 && screenWidth < 1400) {
+    else if (screenWidth > 1100 && screenWidth < 1400) {
         return boundsDesktop
     } 
-    else if (1025 > screenWidth && screenWidth > 850) {
+    else if (1101 > screenWidth && screenWidth > 850) {
         return boundsLaptop
     } else {
         return boundsMobile
@@ -67,7 +67,7 @@ function getBounds () {
 var bounds = getBounds();
 
 // resize map for the screen
-map.fitBounds(bounds, {padding: 10});
+map.fitBounds(bounds, {padding: 5});
 
 var getYear = {
     2008: "2008",

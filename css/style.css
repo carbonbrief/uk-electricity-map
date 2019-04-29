@@ -308,10 +308,6 @@ li {
   height: 130px;
 }
 
-#key-mobile {
-  display: none;
-}
-
 .label-title {
   color: hsla(96, 4%, 75%, 0.83);
   font-weight: bold;
@@ -399,34 +395,6 @@ select {
 .selector {
   width: 190px;
   margin-right: 10px;
-}
-
-#home-button-wrapper {
-  position: absolute;
-  top: 160px;
-  right: 10px;
-  height: 18px;
-  width: 18px;
-  z-index: 999999;
-  background-color: #ffffff;
-  border: 1px solid #e4e4e4;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-#scroll-area {
-  position: absolute;
-  right: 0px;
-  width: 50px;
-  height: 800px;       
-}
-
-#home-button-wrapper:hover {
-  background-color: #f3f3f3;
-}
-
-#home-button {
-  color: #333333;
 }
 
 #logo {
