@@ -143,6 +143,10 @@
         display: none;
     }
 
+    #credit-button {
+        visibility: visible;
+    }
+
 }
 
 @media all and (max-width: 736px) {

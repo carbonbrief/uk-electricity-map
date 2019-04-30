@@ -380,6 +380,27 @@ li {
   font-size: 11.5px;
 }
 
+#credit-button {
+  position: absolute;
+  bottom: 10px;
+  right: calc(50% - 17px);
+  width: 15px;
+  height: 15px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgba(50, 59, 82, 0.88);
+  z-index: 6;
+  visibility: hidden;
+}
+
+#credit-button p {
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  line-height: 1em;
+}
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -494,9 +515,10 @@ input[type=range]::-ms-thumb {
 }
 
 input[type=range]:focus::-ms-fill-lower {
-  background: ##282f42;
+  background: #282f42;
   border: none;
 }
+
 input[type=range]:focus::-ms-fill-upper {
   background: #282f42;
 }

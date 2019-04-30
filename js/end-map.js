@@ -59,9 +59,9 @@ if ($width > 1280){
     }));
 }
 
-if ($width > 480) {
+if ($width > 736) {
     // Add zoom and rotation controls to the map
-    // Don't add to mobile since pitch button doesn't work and you can zoom using finger actions
+    // Don't add to mobile/tablet since pitch button doesn't work and you can zoom using finger actions
     map2.addControl(new mapboxgl.NavigationControl());
 }
 

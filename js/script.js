@@ -234,3 +234,18 @@ $(".toggle").click(function(e) {
   $('.arrow-left').toggleClass('arrow-left-hidden');
 
 });
+
+// ANCHOR SCROLL
+
+function scrollToAnchor(x){
+  let aTag = $("a[name='"+ x +"']");
+  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+
+$("#map-jump").click(function() {
+  scrollToAnchor('endmap');
+});
+
+$("#credit-jump").click(function() {
+  scrollToAnchor('credits');
+});

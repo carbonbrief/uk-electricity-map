@@ -9,16 +9,19 @@
     display: block;
 }
 
-.toggle {
+.jump {
     color: #999999;
     text-decoration: none;
-    text-align: right;
     border-bottom: none;
-    font-size: 16px;
 }
 
-.toggle:hover {
+.jump:hover {
     color: #c6e7fa;
+}
+
+.toggle {
+    text-align: right;
+    font-size: 16px;
 }
 
 .arrow-right-hidden {
