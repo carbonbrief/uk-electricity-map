@@ -53,14 +53,17 @@ var filterType2 = ['!=', ['string', ['get','type']], 'placeholder'];
 
 // include search bar first so appears at top of controls
 
-if ($width > 1200){
+if ($width > 1280){
     map2.addControl(new MapboxGeocoder({
         accessToken: config.key1,
     }));
 }
 
-//Add zoom and rotation controls to the map.
-map2.addControl(new mapboxgl.NavigationControl());
+if ($width > 480) {
+    // Add zoom and rotation controls to the map
+    // Don't add to mobile since pitch button doesn't work and you can zoom using finger actions
+    map2.addControl(new mapboxgl.NavigationControl());
+}
 
 var baseLayers = [{
     label: 'Dark',
