@@ -76,6 +76,18 @@
         height: 230px;
     }
 
+    #console {
+        width: 390px;
+    }
+
+    .selector {
+        width: 180px;
+    }
+
+    #first-title {
+        width: 190px;
+    }
+
 }
 
 @media all and (max-width: 1100px) {
@@ -154,7 +166,7 @@
     }
 
     #console {
-        width: 380px;
+        width: 370px;
         margin: 5px;
         padding: 5px 15px;
         padding-right: 25px;
