@@ -235,6 +235,13 @@ $(".toggle").click(function(e) {
 
 });
 
+// FIX FOR BUG
+// where console initially appears at top on window reload
+
+setTimeout(function(){
+  $("#console").css("z-index", 5);
+}, 2000);
+
 // ANCHOR SCROLL
 
 function scrollToAnchor(x){
