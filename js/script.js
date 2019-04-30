@@ -246,6 +246,18 @@ $("#map-jump").click(function() {
   scrollToAnchor('endmap');
 });
 
+let creditState = 0;
+
 $("#credit-jump").click(function() {
-  scrollToAnchor('credits');
+
+  if (creditState == 0) {
+    scrollToAnchor('credits');
+    $("#credit-jump").html("<i class='fas fa-chevron-up'></i>");
+    creditState = 1;
+  } else {
+    scrollToAnchor('explore');
+    $("#credit-jump").html("<i class='fas fa-chevron-down'></i>");
+    creditState = 0;
+  }
+  
 });
