@@ -40,7 +40,7 @@ body {
 .mask {
   width: 100%;
   height: 100%;
-  background-color: rgba(36, 42, 58, 0.72);
+  background-color: rgba(36, 42, 58, 0.71);
 }
 
 .central {
@@ -388,7 +388,7 @@ li {
   height: 15px;
   padding: 10px;
   border-radius: 20px;
-  background-color: rgba(50, 59, 82, 0.88);
+  background-color: rgba(40, 47, 66, 0.8);
   z-index: 6;
   visibility: hidden;
 }
