@@ -1,21 +1,15 @@
 function getHeight () {
-    if ($width > 1200) {
+    if ($width > 1279) {
         return 265;
-    } else if ($width < 1201  && $width > 1100) {
-        return 245;
-    } else if ($width < 1101  && $width > 1000) {
-        return 225;
     } else {
-        return 215;
+        return 225;
     }
 }
-
-var responsiveHeight = getHeight();
 
 // set the dimensions and margin2s of the graph
 var margin2 = {top: 10, right: 10, bottom: 30, left: 35},
     width2 = parseInt(d3.select("#line-wrapper").style("width")) - margin2.left - margin2.right,
-    height2 = responsiveHeight - margin2.top - margin2.bottom;
+    height2 = getHeight() - margin2.top - margin2.bottom;
 
 var x2 = d3.scaleBand()
     .range([0, width2])
