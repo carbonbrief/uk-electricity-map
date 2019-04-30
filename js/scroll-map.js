@@ -29,9 +29,6 @@ if (!mapboxgl.supported()) {
 
 }
 
-// variable to use throughout
-var screenWidth = $(window).width();
-
 var boundsMobile = [
 [ -9, 49],[3, 61]
 ]
@@ -50,13 +47,13 @@ var boundsRetina = [
 
 function getBounds () {
     // 850 pixels is the screen width below which the charts get hidden
-    if (screenWidth > 1400) {
+    if ($width > 1400) {
         return boundsRetina
     }
-    else if (screenWidth > 1100 && screenWidth < 1400) {
+    else if ($width > 1100 && $width < 1400) {
         return boundsDesktop
     } 
-    else if (1101 > screenWidth && screenWidth > 850) {
+    else if (1101 > $width && $width > 850) {
         return boundsLaptop
     } else {
         return boundsMobile
@@ -317,7 +314,7 @@ function updateMap (sectionName) {
 
     map.setFilter('powerplants', ['all', filterOperator, filterType, filterStartYear, filterEndYear]);
 
-    console.log(sectionName);
+    // console.log(sectionName);
     
 }
 

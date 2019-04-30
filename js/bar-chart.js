@@ -1,9 +1,9 @@
 function getHeight () {
-    if (screenWidth > 1200) {
+    if ($width > 1200) {
         return 265;
-    } else if (screenWidth < 1201  && screenWidth > 1100) {
+    } else if ($width < 1201  && $width > 1100) {
         return 245;
-    } else if (screenWidth < 1101  && screenWidth > 1000) {
+    } else if ($width < 1101  && $width > 1000) {
         return 225;
     } else {
         return 215;

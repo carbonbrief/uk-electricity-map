@@ -28,13 +28,13 @@ var boundsRetina2 = [
 
 function getBounds2 () {
     // 850 pixels is the screen width below which the charts get hidden
-    if (screenWidth > 1400) {
+    if ($width > 1400) {
         return boundsRetina2
     }
-    else if (screenWidth > 1024 && screenWidth < 1400) {
+    else if ($width > 1024 && $width < 1400) {
         return boundsDesktop2
     } 
-    else if (1025 > screenWidth && screenWidth > 850) {
+    else if (1025 > $width && $width > 850) {
         return boundsLaptop2
     } else {
         return boundsMobile2
@@ -53,7 +53,7 @@ var filterType2 = ['!=', ['string', ['get','type']], 'placeholder'];
 
 // include search bar first so appears at top of controls
 
-if (screenWidth > 1200){
+if ($width > 1200){
     map2.addControl(new MapboxGeocoder({
         accessToken: config.key1,
     }));
