@@ -29,8 +29,6 @@ if (!mapboxgl.supported()) {
 
 }
 
-map.scrollZoom.disable();
-
 // variable to use throughout
 var screenWidth = $(window).width();
 

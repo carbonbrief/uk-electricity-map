@@ -334,7 +334,7 @@ li {
 }
 
 .slider {
-  height: 12px;
+  height: 15px;
   width: calc(100% - 20px);
   margin-left:0px;
 }
@@ -492,14 +492,14 @@ input[type=range]::-ms-thumb {
   border-radius: 50%;
   background: #f3f3f3;
 }
+
 input[type=range]:focus::-ms-fill-lower {
-  background: #888;
+  background: ##282f42;
+  border: none;
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #ccc;
+  background: #282f42;
 }
-
-/* #region */
 
 /* style the map tooltip */
 
