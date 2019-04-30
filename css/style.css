@@ -401,6 +401,16 @@ li {
   line-height: 1em;
 }
 
+#scroll-area {
+  position: absolute;
+  width: 30px;
+  height: calc(100% - 40px);
+  right: 0px;
+  top: 0px;
+  display: none;
+  z-index: 6;
+}
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;

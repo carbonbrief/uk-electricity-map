@@ -230,6 +230,10 @@
         max-width: 200px;
     }
 
+    #scroll-area {
+        display: block;
+    }
+
 }
 
 @media all and (max-width: 480px) {
