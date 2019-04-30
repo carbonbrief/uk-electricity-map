@@ -421,6 +421,7 @@ select {
   padding: 4px;
   color: #f3f3f3;
   outline:0px;
+  cursor: pointer;
 }
 
 .selector {
@@ -484,6 +485,7 @@ input[type=range]::-webkit-slider-runnable-track {
 
 input[type=range]::-webkit-slider-thumb {
   margin-top: -5px;
+  cursor: pointer;
 }
 
 /* improve the styling of the slider in IE and Edge */
@@ -522,6 +524,7 @@ input[type=range]::-ms-thumb {
   width: 16px;
   border-radius: 50%;
   background: #f3f3f3;
+  cursor: pointer;
 }
 
 input[type=range]:focus::-ms-fill-lower {
@@ -531,6 +534,12 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
   background: #282f42;
+}
+
+/* firefox */
+
+input[type=range]::-moz-range-thumb {
+  cursor: pointer;
 }
 
 /* style the map tooltip */
