@@ -15,7 +15,8 @@ body {
 }
 
 .map-background {
-  background: url(../img/uk-map.jpg) no-repeat center center fixed;
+  background: url(../img/uk-map.jpg) no-repeat center center;
+  background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -447,11 +448,6 @@ select {
 
 #share-menu {
   display: none;
-}
-
-.share-sub {
-  opacity: 0.4;
-  visibility: visible;
 }
 
 .share-icons {
