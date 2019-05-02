@@ -268,3 +268,45 @@ $("#credit-jump").click(function() {
   }
   
 });
+
+// SHARE MENU
+
+let shareState = 0;
+
+$("#share-menu").click(function() {
+
+  let subs = ["twitter", "facebook", "linkedin"];
+  console.log(subs);
+
+  if (shareState == 0) {
+
+    let subReverse = subs.reverse();
+
+    for (var i=0; i<subReverse.length; i++) {
+      let x = subReverse[i];
+      console.log(x);
+      setTimeout(function(){
+        $("#" + x).css("visibility", "visible");
+      }, (70*(i + 1)));
+    }
+
+    shareState = 1;
+
+  } else {
+
+    // do nothing
+
+    for (var i=0; i<subs.length; i++) {
+      let x = subs[i];
+      console.log(x);
+      setTimeout(function(){
+        $("#" + x).css("visibility", "hidden");
+      }, (70*(i + 1)));
+    }
+
+    shareState = 0;
+
+  }
+
+  
+});
