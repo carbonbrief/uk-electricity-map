@@ -110,6 +110,7 @@
         left: 7px;
         top: 7px;
         background-image:url(../img/logo-mobile.svg);
+        opacity: 0.4;
     }
 
     h1 {
