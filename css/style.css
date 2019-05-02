@@ -449,6 +449,11 @@ select {
   display: none;
 }
 
+.share-sub {
+  opacity: 0.4;
+  visibility: visible;
+}
+
 .share-icons {
   position: fixed;
   top: 10px;

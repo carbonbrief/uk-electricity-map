@@ -101,6 +101,7 @@
 
     .share-sub {
         visibility: hidden;
+        opacity: 0;
     }
 
     #logo {

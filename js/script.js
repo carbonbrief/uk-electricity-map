@@ -276,7 +276,6 @@ let shareState = 0;
 $("#share-menu").click(function() {
 
   let subs = ["twitter", "facebook", "linkedin"];
-  console.log(subs);
 
   if (shareState == 0) {
 
@@ -286,8 +285,13 @@ $("#share-menu").click(function() {
       let x = subReverse[i];
       console.log(x);
       setTimeout(function(){
-        $("#" + x).css("visibility", "visible");
-      }, (70*(i + 1)));
+        $("#" + x).css("visibility", "visible").animate({opacity: 0.4}, 400);
+        $("#" + x).hover(function() { 
+          $(this).css("opacity", 1); 
+        }, function() { 
+            $(this).css("opacity", 0.4); 
+        });
+      }, (50*(i + 1)));
     }
 
     shareState = 1;
@@ -300,8 +304,8 @@ $("#share-menu").click(function() {
       let x = subs[i];
       console.log(x);
       setTimeout(function(){
-        $("#" + x).css("visibility", "hidden");
-      }, (70*(i + 1)));
+        $("#" + x).css("visibility", "hidden").animate({opacity: 0}, 400);
+      }, (50*(i + 1)));
     }
 
     shareState = 0;
