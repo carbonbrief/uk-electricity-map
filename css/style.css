@@ -439,7 +439,7 @@ select {
   width: 140px;
   background-image:url(../img/logo-laptop.svg);
   background-repeat: no-repeat;
-  opacity: 0.2;
+  opacity: 0.25;
 }
 
 #logo:hover {
