@@ -445,6 +445,10 @@ select {
   opacity: 1;
 }
 
+#share-menu {
+  display: none;
+}
+
 .share-icons {
   position: fixed;
   top: 10px;
