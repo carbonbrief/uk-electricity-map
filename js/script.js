@@ -298,8 +298,6 @@ $("#share-menu").click(function() {
 
   } else {
 
-    // do nothing
-
     for (var i=0; i<subs.length; i++) {
       let x = subs[i];
       console.log(x);
@@ -312,5 +310,4 @@ $("#share-menu").click(function() {
 
   }
 
-  
 });
