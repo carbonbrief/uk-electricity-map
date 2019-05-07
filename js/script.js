@@ -22,7 +22,7 @@ function setHeights () {
   $width = $(window).width();
 
   $map.css("height", $height);
-  $endMap.css("height", $height - 20);
+  $endMap.css("height", $height - 30);
 
   if ($width > 979) {
     $paddingBelow.css("height", $height*0.8);
@@ -223,9 +223,13 @@ $(document).ready(function() {
       if (direction == 'down'){
         $button.removeClass("bottom");
         $button.addClass("floating");
+        $("#credit-jump").html("<i class='fas fa-chevron-down'></i>");
+        creditState = 0;
       } else {
         $button.addClass("bottom");
         $button.removeClass("floating");
+        $("#credit-jump").html("<i class='fas fa-chevron-up'></i>");
+        creditState = 1;
       }
     },
     offset: "50%"
@@ -237,9 +241,13 @@ $(document).ready(function() {
       if (direction == 'down'){
         $button.addClass("bottom");
         $button.removeClass("floating");
+        $("#credit-jump").html("<i class='fas fa-chevron-up'></i>");
+        creditState = 1;
       } else {
         $button.removeClass("bottom");
         $button.addClass("floating");
+        $("#credit-jump").html("<i class='fas fa-chevron-down'></i>");
+        creditState = 0;
       }
     },
     offset: "100%"
@@ -288,7 +296,7 @@ let creditState = 0;
 $("#credit-jump").click(function() {
 
   if (creditState == 0) {
-    scrollToAnchor('credits');
+    scrollToAnchor('endmap');
     $("#credit-jump").html("<i class='fas fa-chevron-up'></i>");
     creditState = 1;
   } else {
