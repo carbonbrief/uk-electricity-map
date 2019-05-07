@@ -223,79 +223,81 @@ map.on('load', function() {
         return +(Math.round(num + "e+1")  + "e-1");
     }
 
-    map.on('mouseenter', 'powerplants', function(e) {
-        // Change the cursor style as a UI indicator.
-        map.getCanvas().style.cursor = 'pointer';
+    if ($width > 736) {
 
-        coordinates = e.features[0].geometry.coordinates.slice();
-        name = e.features[0].properties.site;
-        capacity = e.features[0].properties.capacity;
-        type = e.features[0].properties.type;
-        fuelDetail = e.features[0].properties.fuelDetail;
-        lowCarbon = e.features[0].properties.lowCarbon;
-        operator = e.features[0].properties.operator;
-        chp = e.features[0].properties.chp;
-        open = e.features[0].properties.yearOpen;
-        plantColor = colors[e.features[0].properties.type]; 
+        map.on('mouseenter', 'powerplants', function(e) {
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
+    
+            coordinates = e.features[0].geometry.coordinates.slice();
+            name = e.features[0].properties.site;
+            capacity = e.features[0].properties.capacity;
+            type = e.features[0].properties.type;
+            fuelDetail = e.features[0].properties.fuelDetail;
+            lowCarbon = e.features[0].properties.lowCarbon;
+            operator = e.features[0].properties.operator;
+            chp = e.features[0].properties.chp;
+            open = e.features[0].properties.yearOpen;
+            plantColor = colors[e.features[0].properties.type]; 
+    
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+    
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            popup.setLngLat(coordinates)
+                .setHTML('<h3 style = "color: ' + plantColor + '; border-bottom: 1px solid ' + plantColor + ';">' + name + 
+                '</h3><div class="colour-key" style="background-color: ' + plantColor + '; margin-right: 5px;"></div><p class="inline">' + getFuel() + 
+                '</p><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
+                ' <span class="units">MW</span></p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
+                getCHP() +
+                '</p><p><span class="label-title">Operator: </span>' + operator + 
+                '</p><p><span class="label-title">Year opened: </span>' + open + 
+                '</p>')
+                .addTo(map);
+        });
+    
+        // adding mousemove behaviour improves UX when moving across overlapping plants
+        map.on('mousemove', 'powerplants', function(e) {
+    
+            coordinates = e.features[0].geometry.coordinates.slice();
+            name = e.features[0].properties.site;
+            capacity = e.features[0].properties.capacity;
+            type = e.features[0].properties.type;
+            fuelDetail = e.features[0].properties.fuelDetail;
+            lowCarbon = e.features[0].properties.lowCarbon;
+            operator = e.features[0].properties.operator;
+            chp = e.features[0].properties.chp;
+            open = e.features[0].properties.yearOpen;
+            plantColor = colors[e.features[0].properties.type]; 
+    
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+    
+            // change the contents of the popup based on the feature found
+            popup.setLngLat(coordinates)
+                .setHTML('<h3 style = "color: ' + plantColor + '; border-bottom: 1px solid ' + plantColor + ';">' + name + 
+                '</h3><div class="colour-key" style="background-color: ' + plantColor + '; margin-right: 5px;"></div><p class="inline">' + getFuel() + 
+                '</p><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
+                ' <span class="units">MW</span></p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
+                getCHP() +
+                '</p><p><span class="label-title">Operator: </span>' + operator + 
+                '</p><p><span class="label-title">Year opened: </span>' + open + 
+                '</p>');
+        });
+    
+        map.on('mouseleave', 'powerplants', function() {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+        });
 
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-
-        // Populate the popup and set its coordinates
-        // based on the feature found.
-        popup.setLngLat(coordinates)
-            .setHTML('<h3 style = "color: ' + plantColor + '; border-bottom: 1px solid ' + plantColor + ';">' + name + 
-            '</h3><div class="colour-key" style="background-color: ' + plantColor + '; margin-right: 5px;"></div><p class="inline">' + getFuel() + 
-            '</p><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
-            ' <span class="units">MW</span></p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
-            getCHP() +
-            '</p><p><span class="label-title">Operator: </span>' + operator + 
-            '</p><p><span class="label-title">Year opened: </span>' + open + 
-            '</p>')
-            .addTo(map);
-    });
-
-    // adding mousemove behaviour improves UX when moving across overlapping plants
-    map.on('mousemove', 'powerplants', function(e) {
-
-        coordinates = e.features[0].geometry.coordinates.slice();
-        name = e.features[0].properties.site;
-        capacity = e.features[0].properties.capacity;
-        type = e.features[0].properties.type;
-        fuelDetail = e.features[0].properties.fuelDetail;
-        lowCarbon = e.features[0].properties.lowCarbon;
-        operator = e.features[0].properties.operator;
-        chp = e.features[0].properties.chp;
-        open = e.features[0].properties.yearOpen;
-        plantColor = colors[e.features[0].properties.type]; 
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-
-        // change the contents of the popup based on the feature found
-        popup.setLngLat(coordinates)
-            .setHTML('<h3 style = "color: ' + plantColor + '; border-bottom: 1px solid ' + plantColor + ';">' + name + 
-            '</h3><div class="colour-key" style="background-color: ' + plantColor + '; margin-right: 5px;"></div><p class="inline">' + getFuel() + 
-            '</p><p><span class="label-title">Capacity: </span>' + roundToOne(capacity) + 
-            ' <span class="units">MW</span></p><p><span class="label-title">Low carbon? </span>' + lowCarbon + 
-            getCHP() +
-            '</p><p><span class="label-title">Operator: </span>' + operator + 
-            '</p><p><span class="label-title">Year opened: </span>' + open + 
-            '</p>');
-    });
-
-    map.on('mouseleave', 'powerplants', function() {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
-    });
-
-    // addInterconnectors();
+    }
 
 });
 
@@ -313,8 +315,6 @@ function updateMap (sectionName) {
     }
 
     map.setFilter('powerplants', ['all', filterOperator, filterType, filterStartYear, filterEndYear]);
-
-    // console.log(sectionName);
     
 }
 
