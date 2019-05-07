@@ -30,7 +30,7 @@ if (!mapboxgl.supported()) {
 }
 
 var boundsMobile = [
-[ -9, 49],[3, 61]
+[ -9, 48.5],[3, 61]
 ]
 
 var boundsLaptop = [
