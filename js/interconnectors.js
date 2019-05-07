@@ -82,77 +82,80 @@ map.on('load', function() {
     let interconnector;
     let country;
 
-    map.on('mouseenter', 'interconnectors', function(e) {
+    if ($width > 736) {
 
-        map.getCanvas().style.cursor = 'pointer';
+        map.on('mouseenter', 'interconnectors', function(e) {
 
-        name = e.features[0].properties.name;
-        operator = e.features[0].properties.operator;
-        connecting = e.features[0].properties.connecting;
-        yearOpen = e.features[0].properties.yearOpen;
-        capacity = e.features[0].properties.capacity;
+            map.getCanvas().style.cursor = 'pointer';
+    
+            name = e.features[0].properties.name;
+            operator = e.features[0].properties.operator;
+            connecting = e.features[0].properties.connecting;
+            yearOpen = e.features[0].properties.yearOpen;
+            capacity = e.features[0].properties.capacity;
+    
+            // Populate the popup and set its coordinates
+            // different strategy to the popup in the script.js since it's a line
+    
+            popup.setLngLat(e.lngLat)
+            .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + name + 
+            '</h3><div class="colour-key" style="background-color: #ff8767; margin-right: 5px;"></div><p class="inline">Interconnector' +
+            '</p><p><span class="label-title">Capacity: </span>' + capacity +
+            ' <span class="units">MW</span></p><p><span class="label-title">Operator: </span>' + operator +
+            '</p><p><span class="label-title">Connecting: </span>' + connecting +
+            '</p><p><span class="label-title">Year opened: </span>' + yearOpen +
+            '</p>')
+            .addTo(map);
+    
+        });
+    
+        map.on('mousemove', 'interconnectors', function(e) {
+    
+            name = e.features[0].properties.name;
+            operator = e.features[0].properties.operator;
+            connecting = e.features[0].properties.connecting;
+            yearOpen = e.features[0].properties.yearOpen;
+            capacity = e.features[0].properties.capacity;
+    
+            popup.setLngLat(e.lngLat)
+            .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + name + 
+            '</h3><div class="colour-key" style="background-color: #ff8767; margin-right: 5px;"></div><p class="inline">Interconnector' +
+            '</p><p><span class="label-title">Capacity: </span>' + capacity +
+            ' <span class="units">MW</span></p><p><span class="label-title">Operator: </span>' + operator +
+            '</p><p><span class="label-title">Connecting: </span>' + connecting +
+            '</p><p><span class="label-title">Year opened: </span>' + yearOpen +
+            '</p>');
+    
+        });
+    
+        map.on('mouseleave', 'interconnectors', function() {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+        });
+    
+        map.on('mouseenter', 'interconnector-stations', function(e) {
+    
+            map.getCanvas().style.cursor = 'pointer';
+    
+            converter = e.features[0].properties.site;
+            interconnector = e.features[0].properties.interconnector;
+            country = e.features[0].properties.country;
+    
+            popup.setLngLat(e.lngLat)
+            .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + converter + 
+            '</h3><p><span class="label-title">Interconnector: </span>' + interconnector + 
+            '</p><p><span class="label-title">Country: </span>' + country +
+            '</p>')
+            .addTo(map);
+    
+        });
+    
+        map.on('mouseleave', 'interconnector-stations', function() {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+        });
 
-        // Populate the popup and set its coordinates
-        // different strategy to the popup in the script.js since it's a line
-
-        popup.setLngLat(e.lngLat)
-        .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + name + 
-        '</h3><div class="colour-key" style="background-color: #ff8767; margin-right: 5px;"></div><p class="inline">Interconnector' +
-        '</p><p><span class="label-title">Capacity: </span>' + capacity +
-        ' <span class="units">MW</span></p><p><span class="label-title">Operator: </span>' + operator +
-        '</p><p><span class="label-title">Connecting: </span>' + connecting +
-        '</p><p><span class="label-title">Year opened: </span>' + yearOpen +
-        '</p>')
-        .addTo(map);
-
-    });
-
-    map.on('mousemove', 'interconnectors', function(e) {
-
-        name = e.features[0].properties.name;
-        operator = e.features[0].properties.operator;
-        connecting = e.features[0].properties.connecting;
-        yearOpen = e.features[0].properties.yearOpen;
-        capacity = e.features[0].properties.capacity;
-
-        popup.setLngLat(e.lngLat)
-        .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + name + 
-        '</h3><div class="colour-key" style="background-color: #ff8767; margin-right: 5px;"></div><p class="inline">Interconnector' +
-        '</p><p><span class="label-title">Capacity: </span>' + capacity +
-        ' <span class="units">MW</span></p><p><span class="label-title">Operator: </span>' + operator +
-        '</p><p><span class="label-title">Connecting: </span>' + connecting +
-        '</p><p><span class="label-title">Year opened: </span>' + yearOpen +
-        '</p>');
-
-    });
-
-    map.on('mouseleave', 'interconnectors', function() {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
-    });
-
-    map.on('mouseenter', 'interconnector-stations', function(e) {
-
-        map.getCanvas().style.cursor = 'pointer';
-
-        converter = e.features[0].properties.site;
-        interconnector = e.features[0].properties.interconnector;
-        country = e.features[0].properties.country;
-
-        popup.setLngLat(e.lngLat)
-        .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + converter + 
-        '</h3><p><span class="label-title">Interconnector: </span>' + interconnector + 
-        '</p><p><span class="label-title">Country: </span>' + country +
-        '</p>')
-        .addTo(map);
-
-    });
-
-    map.on('mouseleave', 'interconnector-stations', function() {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
-    });
-
+    }
 
 });
 
