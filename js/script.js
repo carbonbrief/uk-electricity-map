@@ -22,7 +22,7 @@ function setHeights () {
   $width = $(window).width();
 
   $map.css("height", $height);
-  $endMap.css("height", $height);
+  $endMap.css("height", $height - 20);
 
   if ($width > 979) {
     $paddingBelow.css("height", $height*0.8);
@@ -213,6 +213,36 @@ $(document).ready(function() {
       }
     },
     offset: 35
+  });
+
+  let $button = $("#credit-button");
+
+  new Waypoint({
+    element: document.getElementById('explore'),
+    handler: function(direction) {
+      if (direction == 'down'){
+        $button.removeClass("bottom");
+        $button.addClass("floating");
+      } else {
+        $button.addClass("bottom");
+        $button.removeClass("floating");
+      }
+    },
+    offset: "50%"
+  });
+
+  new Waypoint({
+    element: document.getElementById('credits'),
+    handler: function(direction) {
+      if (direction == 'down'){
+        $button.addClass("bottom");
+        $button.removeClass("floating");
+      } else {
+        $button.removeClass("bottom");
+        $button.addClass("floating");
+      }
+    },
+    offset: "100%"
   });
 
 });

@@ -398,9 +398,6 @@ li {
 }
 
 #credit-button {
-  position: absolute;
-  bottom: 10px;
-  right: calc(50% - 17px);
   width: 15px;
   height: 15px;
   padding: 10px;
@@ -408,6 +405,18 @@ li {
   background-color: rgba(40, 47, 66, 0.8);
   z-index: 6;
   visibility: hidden;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.floating {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
 }
 
 #credit-button p {
