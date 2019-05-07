@@ -182,6 +182,22 @@
         padding-right: 25px;
     }
 
+    #key-mobile {
+        visibility: visible;
+    }
+
+    li {
+        font-size: 11px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+    }
+
+    .colour-key {
+        width: 8px;
+        height: 8px;
+        margin-right: 2px;
+    }
+
     .selector {
         width: 170px;
     }
@@ -299,6 +315,16 @@
 
     #second-title {
         display: none;
+    }
+
+    #key-mobile {
+        min-width: 290px;
+    }
+
+    li {
+        font-size: 10px;
+        padding-right: 8px;
+        padding-bottom: 4px;
     }
 
 }
