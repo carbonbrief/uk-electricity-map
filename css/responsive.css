@@ -318,13 +318,17 @@
     }
 
     #key-mobile {
-        min-width: 290px;
+        min-width: 285px;
+    }
+
+    #key-mobile ul {
+        padding: 6px;
     }
 
     li {
         font-size: 10px;
         padding-right: 8px;
-        padding-bottom: 4px;
+        padding-bottom: 3px;
     }
 
 }
