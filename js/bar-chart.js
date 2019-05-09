@@ -6,9 +6,17 @@ function getHeight () {
     }
 }
 
+function getWidth () {
+    if ($width > 1279) {
+        return 410;
+    } else {
+        return 390;
+    }
+}
+
 // set the dimensions and margin2s of the graph
 var margin2 = {top: 10, right: 10, bottom: 30, left: 35},
-    width2 = parseInt(d3.select("#line-wrapper").style("width")) - margin2.left - margin2.right,
+    width2 = getWidth() - margin2.left - margin2.right,
     height2 = getHeight() - margin2.top - margin2.bottom;
 
 var x2 = d3.scaleBand()
