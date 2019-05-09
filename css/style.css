@@ -51,7 +51,6 @@ body {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
-  vertical-align: center;
   text-align: center;
   margin-top: 5%;
   margin-bottom: 5%;
@@ -298,6 +297,8 @@ li {
   height: auto;
   visibility: hidden;
   z-index: 9999;
+  /* fixes flashing on/off when scrolling in Chrome */
+  -webkit-transform: translateZ(0);
 }
 
 #key-mobile ul {
@@ -506,6 +507,10 @@ select {
 
 /* improve the styling of the slider in Chrome */
 
+input[type=range] {
+  background: transparent; /* Otherwise white in Chrome */
+}
+
 input[type=range]::-webkit-slider-runnable-track {
   background: #282f42;
   border: none;
@@ -534,11 +539,11 @@ input[type=range]::-ms-track {
 }
 
 input[type=range]::-ms-fill-lower {
-  background: #777;
+  background: #282f42;
   border-radius: 10px;
 }
 input[type=range]::-ms-fill-upper {
-  background: #ddd;
+  background: #282f42;
   border-radius: 10px;
 }
 
@@ -606,6 +611,11 @@ input[type=range]::-moz-range-thumb {
     }
 .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
     border-left-color: #242a3a;
+}
+
+.mapboxgl-ctrl-attrib {
+  /* fixes flashing on/off when scrolling in Chrome */
+  -webkit-transform: translateZ(0);
 }
 
 /* animation style */

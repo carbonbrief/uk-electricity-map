@@ -21,7 +21,13 @@ function setHeights () {
   $height = $(window).height();
   $width = $(window).width();
 
-  $map.css("height", $height);
+  if ($width < 737) {
+    // try to deal with address bar hiding when scroll down on mobile
+    // resulting in gap at bottom
+    $map.css("height", "100vh");
+  } else {
+    $map.css("height", $height);
+  }
   $endMap.css("height", $height - 30);
 
   if ($width > 979) {
