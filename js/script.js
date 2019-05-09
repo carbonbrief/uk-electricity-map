@@ -259,99 +259,104 @@ $(document).ready(function() {
     offset: "100%"
   });
 
-});
+  // SCROLL TOP ON WINDOW RELOAD
+  window.onbeforeunload = function () {
+    window.scrollTo(0,0);
+  };
 
-// SCROLL TOP ON WINDOW RELOAD
-window.onbeforeunload = function () {
-  window.scrollTo(0,0);
-};
+  // TOGGLE BUTTON
 
-// TOGGLE BUTTON
+  $(".toggle").click(function(e) {
 
-$(".toggle").click(function(e) {
+    // stop from scrolling to the top
+    e.preventDefault();
 
-  // stop from scrolling to the top
-  e.preventDefault();
+    $("#console").toggleClass('console-close console-open');
+    $('.arrow-right-hidden').toggleClass('arrow-right');
+    $('.arrow-left').toggleClass('arrow-left-hidden');
 
-  $("#console").toggleClass('console-close console-open');
-  $('.arrow-right-hidden').toggleClass('arrow-right');
-  $('.arrow-left').toggleClass('arrow-left-hidden');
+  });
 
-});
+  // FIX FOR BUG
+  // where console initially appears at top on window reload
 
-// FIX FOR BUG
-// where console initially appears at top on window reload
+  setTimeout(function(){
+    $("#console").css("z-index", 5);
+  }, 2000);
 
-setTimeout(function(){
-  $("#console").css("z-index", 5);
-}, 2000);
+  // ANCHOR SCROLL
 
-// ANCHOR SCROLL
+  function scrollToAnchor(x){
+    let aTag = $("a[name='"+ x +"']");
+    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+  }
 
-function scrollToAnchor(x){
-  let aTag = $("a[name='"+ x +"']");
-  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
-}
-
-$("#map-jump").click(function() {
-  scrollToAnchor('endmap');
-});
-
-let creditState = 0;
-
-$("#credit-jump").click(function() {
-
-  if (creditState == 0) {
+  $("#map-jump").click(function() {
     scrollToAnchor('endmap');
-    $("#credit-jump").html("<i class='fas fa-chevron-up'></i>");
-    creditState = 1;
-  } else {
-    scrollToAnchor('explore');
-    $("#credit-jump").html("<i class='fas fa-chevron-down'></i>");
-    creditState = 0;
-  }
-  
-});
+  });
 
-// SHARE MENU
+  let creditState = 0;
 
-let shareState = 0;
+  $("#credit-jump").click(function() {
 
-$("#share-menu").click(function() {
+    if (creditState == 0) {
+      scrollToAnchor('endmap');
+      $("#credit-jump").html("<i class='fas fa-chevron-up'></i>");
+      creditState = 1;
+    } else {
+      scrollToAnchor('explore');
+      $("#credit-jump").html("<i class='fas fa-chevron-down'></i>");
+      creditState = 0;
+    }
+    
+  });
 
-  let subs = ["twitter", "facebook", "linkedin"];
+  // SHARE MENU
 
-  if (shareState == 0) {
+  let shareState = 0;
 
-    let subReverse = subs.reverse();
+  $("#share-menu").click(function() {
 
-    for (var i=0; i<subReverse.length; i++) {
-      let x = subReverse[i];
-      console.log(x);
-      setTimeout(function(){
-        $("#" + x).css("visibility", "visible").animate({opacity: 0.4}, 400);
-        $("#" + x).hover(function() { 
-          $(this).css("opacity", 1); 
-        }, function() { 
-            $(this).css("opacity", 0.4); 
-        });
-      }, (50*(i + 1)));
+    let subs = ["twitter", "facebook", "linkedin"];
+
+    if (shareState == 0) {
+
+      let subReverse = subs.reverse();
+
+      for (var i=0; i<subReverse.length; i++) {
+        let x = subReverse[i];
+        console.log(x);
+        setTimeout(function(){
+          $("#" + x).css("visibility", "visible").animate({opacity: 0.4}, 400);
+          $("#" + x).hover(function() { 
+            $(this).css("opacity", 1); 
+          }, function() { 
+              $(this).css("opacity", 0.4); 
+          });
+        }, (50*(i + 1)));
+      }
+
+      shareState = 1;
+
+    } else {
+
+      for (var i=0; i<subs.length; i++) {
+        let x = subs[i];
+        console.log(x);
+        setTimeout(function(){
+          $("#" + x).css("visibility", "hidden").animate({opacity: 0}, 400);
+        }, (50*(i + 1)));
+      }
+
+      shareState = 0;
+
     }
 
-    shareState = 1;
+  });
 
-  } else {
+  // POSITION STICKY POLYFILL
 
-    for (var i=0; i<subs.length; i++) {
-      let x = subs[i];
-      console.log(x);
-      setTimeout(function(){
-        $("#" + x).css("visibility", "hidden").animate({opacity: 0}, 400);
-      }, (50*(i + 1)));
-    }
-
-    shareState = 0;
-
-  }
+  let stickies = $('.sticky');
+  Stickyfill.add(stickies);
 
 });

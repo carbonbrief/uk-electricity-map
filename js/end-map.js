@@ -113,16 +113,16 @@ function addDataLayers () {
             type: 'exponential',
             base: 0.8,
             stops: [
-            [{zoom: 2, value: 1}, 0.5],
-            [{zoom: 2, value: 2500}, 18],
-            [{zoom: 4.6, value: 1}, 2],
-            [{zoom: 4.6, value: 2500}, 27],
-            [{zoom: 8, value: 1}, 4],
-            [{zoom: 8, value: 2500}, 32],
-            [{zoom: 12, value: 1}, 6],
-            [{zoom: 12, value: 2500}, 37],
-            [{zoom: 15, value: 1}, 8],
-            [{zoom: 15, value: 2500}, 42]
+                [{zoom: 2, value: 1}, 0.5],
+                [{zoom: 2, value: 2500}, 18],
+                [{zoom: 4.6, value: 1}, 2],
+                [{zoom: 4.6, value: 2500}, 27],
+                [{zoom: 8, value: 1}, 4],
+                [{zoom: 8, value: 2500}, 32],
+                [{zoom: 12, value: 1}, 6],
+                [{zoom: 12, value: 2500}, 37],
+                [{zoom: 15, value: 1}, 8],
+                [{zoom: 15, value: 2500}, 42]
             ]
         },
         'circle-color': [

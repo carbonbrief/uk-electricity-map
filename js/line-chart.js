@@ -1,5 +1,5 @@
-var margin3 = {top: 10, right: (getWidth()/ 6.1), bottom: 30, left: 35},
-    width3 = getWidth() - margin3.left - margin3.right,
+var margin3 = {top: 10, right: (getWidth2()/ 6.1), bottom: 30, left: 35},
+    width3 = getWidth2() - margin3.left - margin3.right,
     height3 = getHeight() - margin3.top - margin3.bottom;
 
 var parseDate = d3.timeParse("%Y");
