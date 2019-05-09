@@ -115,8 +115,8 @@ function addDataLayers () {
             stops: [
             [{zoom: 2, value: 1}, 0.5],
             [{zoom: 2, value: 2500}, 18],
-            [{zoom: 4.5, value: 1}, 2.2],
-            [{zoom: 4.5, value: 2500}, 27],
+            [{zoom: 4.6, value: 1}, 2],
+            [{zoom: 4.6, value: 2500}, 27],
             [{zoom: 8, value: 1}, 4],
             [{zoom: 8, value: 2500}, 32],
             [{zoom: 12, value: 1}, 6],
