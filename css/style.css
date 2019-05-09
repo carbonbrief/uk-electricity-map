@@ -33,8 +33,8 @@ body {
   width: 100%;
   height: 800px;
   margin: 0;
-  position: sticky;
   position: -webkit-sticky;
+  position: sticky;
   top: 0;
 }
 
@@ -141,15 +141,23 @@ body {
 }
 
 .year-sticky {
-  position: sticky;
   position: -webkit-sticky;
+  position: sticky;
   top: 40px;
 }
 
 #stacked-bar {
-  position: sticky;
   position: -webkit-sticky;
+  position: sticky;
   top: 40px;
+}
+
+/* clearfix for sticky elements */
+
+.sticky:before,
+.sticky:after {
+    content: '';
+    display: table;
 }
 
 h1 {
