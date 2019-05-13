@@ -107,7 +107,7 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
         let color = d3.select(this).style('fill');
 
         div.html(
-            "<div class='tooltip-key' style='background-color: " + color  + ";'></div><p class='inline'>" + ((d[1]) - (d[0])) + "%</p>"
+            "<div class='tooltip-key' style='background-color: " + color  + ";'></div><p class='inline'>" + labels[color] + "<br>" + ((d[1]) - (d[0])) + "%</p>"
         )
         .style("left", (d3.event.pageX + 10) + "px")
         .style("top", (d3.event.pageY - 20) + "px");
