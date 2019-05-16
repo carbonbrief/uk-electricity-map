@@ -139,6 +139,19 @@ function drawChart(filterData){
         .exit()
         .remove();
 
+        let lineWidths = {
+            largeLine: [380, 283, 377, 286],
+            mediumLine: [341, 267, 340, 270]
+        }
+
+        function getLineLength () {
+            if ($width > 1279) {
+                return "largeLine";
+            } else {
+                return "mediumLine";
+            }
+        }
+
         plant.append("path")
         .attr("class", "line")
         .attr("d", function(d) { return line(d.values); })
@@ -147,14 +160,16 @@ function drawChart(filterData){
             // hacky way of getting the planned section of the chart to be dashed without having to filter data or add new lines
             // split into if/else statement because the lines are different lengths
 
+                let line = getLineLength();
+
                 if (d.name == "Coal") {
-                    return 354 + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                    return lineWidths[line][0] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
                 } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
-                    return 280 + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                    return lineWidths[line][1] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
                 } else if (d.name == "Gas") {
-                    return 352 + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                    return lineWidths[line][2] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
                 } else {
-                    return 282 + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+                    return lineWidths[line][3] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
                 }
 
         });
