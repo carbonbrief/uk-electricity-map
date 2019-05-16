@@ -315,6 +315,8 @@ function updateMap (sectionName) {
     }
 
     map.setFilter('powerplants', ['all', filterOperator, filterType, filterStartYear, filterEndYear]);
+    map.setFilter('interconnector-stations', ['all', filterOperator, filterStartYear, filterStations]);
+    map.setFilter('interconnectors', ['all', filterOperator, filterStartYear, filterLines]);
     
 }
 

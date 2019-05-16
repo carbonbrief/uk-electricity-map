@@ -6,12 +6,6 @@
 var filterLines = ['!=', ['string', ['get','type']], 'placeholder'];
 var filterStations = ['!=', ['string', ['get','type']], 'placeholder'];
 
-// function addInterconnectors () {
-
-
-
-// }
-
 map.on('load', function() {
 
     map.addLayer({

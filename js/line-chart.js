@@ -160,17 +160,17 @@ function drawChart(filterData){
             // hacky way of getting the planned section of the chart to be dashed without having to filter data or add new lines
             // split into if/else statement because the lines are different lengths
 
-                let line = getLineLength();
+            let line = getLineLength();
 
-                if (d.name == "Coal") {
-                    return lineWidths[line][0] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-                } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
-                    return lineWidths[line][1] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-                } else if (d.name == "Gas") {
-                    return lineWidths[line][2] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-                } else {
-                    return lineWidths[line][3] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-                }
+            if (d.name == "Coal") {
+                return lineWidths[line][0] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+            } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
+                return lineWidths[line][1] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+            } else if (d.name == "Gas") {
+                return lineWidths[line][2] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+            } else {
+                return lineWidths[line][3] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+            }
 
         });
 
