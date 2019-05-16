@@ -9,6 +9,55 @@ var filterStations = ['!=', ['string', ['get','type']], 'placeholder'];
 map.on('load', function() {
 
     map.addLayer({
+        id: 'underlay-interconnectors',
+        type: 'line',
+        source: {
+            type: 'geojson',
+            data: './data/interconnector-lines.json'
+        },
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#ff8767",
+            "line-width": {
+                'property': 'capacity',
+                type: 'exponential',
+                base: 0.8,
+                'stops': [
+                    [{zoom: 2, value: 100}, 1],
+                    [{zoom: 2, value: 2000}, 5],
+                    [{zoom: 8, value: 100}, 2],
+                    [{zoom: 8, value: 2000}, 6],
+                    [{zoom: 14, value: 100}, 3],
+                    [{zoom: 14, value: 2000}, 7],
+                    [{zoom: 20, value: 100}, 4],
+                    [{zoom: 20, value: 2000}, 8]
+                ]
+            },
+            "line-opacity": 0.15
+        }
+    }, "powerplants");
+
+    map.addLayer({
+        id: 'underlay-stations',
+        type: 'circle',
+        source: {
+            type: 'geojson',
+            data: './data/interconnector-stations.json'
+        },
+        "paint": {
+            "circle-color": "#ff8767",
+            // make circles larger as the user zooms
+            'circle-radius': {
+                'stops': [[3, 4], [20, 15]]
+            },
+            "circle-opacity": 0.15
+        }
+    }, "powerplants");
+
+    map.addLayer({
         id: 'interconnectors',
         type: 'line',
         source: {
@@ -59,6 +108,8 @@ map.on('load', function() {
 
     map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
     map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
+    map.setFilter('underlay-interconnectors', ['all', filterStartYear, filterLines]);
+    map.setFilter('underlay-stations', ['all', filterStartYear, filterStations]);
 
     // Create a popup, but don't add it to the map yet.
     var popup = new mapboxgl.Popup({

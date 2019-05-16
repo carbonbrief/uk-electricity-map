@@ -117,8 +117,10 @@ $(document).ready(function() {
 
             map.setFilter('underlay', ['all', filterStartYear, filterEndYear, filterType, filterOperator]);
             map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType, filterOperator]);
-            map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
-            map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
+            map.setFilter('underlay-interconnectors', ['all', filterStartYear, filterLines, filterOperator]);
+            map.setFilter('underlay-stations', ['all', filterStartYear, filterStations, filterOperator]);
+            map.setFilter('interconnectors', ['all', filterStartYear, filterLines, filterOperator]);
+            map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations, filterOperator]);
 
             updateStackedBar(year);
             
@@ -144,13 +146,16 @@ $(document).ready(function() {
 
             filterStartYear = ['<=', ['number', ['get', 'yearStart']], year];
             filterEndYear = ['>=', ['number', ['get', 'yearEnd']], year];
+            // remove any other filters in place
             filterType = ['!=', ['string', ['get','type']], 'placeholder'];
             filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
 
             map.setFilter('underlay', ['all', filterStartYear, filterEndYear, filterType, filterOperator]);
             map.setFilter('powerplants', ['all', filterStartYear, filterEndYear, filterType, filterOperator]);
-            map.setFilter('interconnectors', ['all', filterStartYear, filterLines]);
-            map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations]);
+            map.setFilter('underlay-interconnectors', ['all', filterStartYear, filterLines, filterOperator]);
+            map.setFilter('underlay-stations', ['all', filterStartYear, filterStations, filterOperator]);
+            map.setFilter('interconnectors', ['all', filterStartYear, filterLines, filterOperator]);
+            map.setFilter('interconnector-stations', ['all', filterStartYear, filterStations, filterOperator]);
 
             updateStackedBar(year);
 

@@ -14,7 +14,7 @@ var colors = {
 
 if (!mapboxgl.supported()) {
 
-    alert('Your browser does not support Web GL, loading simpler map instead.');
+    alert('Your browser does not support Web GL.');
     
 } else {
 
