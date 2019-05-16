@@ -161,7 +161,7 @@ function drawChart(filterData){
 
         // ADD DOTS WITH TOOLTIP
 
-        // array to ensure that "Planned" shows instead of 2019
+        // array to ensure that "Future" shows instead of 2019
 
         var getYear = {
             2007: "2007",
@@ -176,7 +176,7 @@ function drawChart(filterData){
             2016: "2016",
             2017: "2017",
             2018: "2018",
-            2020: "Planned"
+            2020: "Future"
         }
 
         plant.selectAll("circle")
