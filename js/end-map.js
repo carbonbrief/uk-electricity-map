@@ -161,7 +161,7 @@ map2.on('load', function() {
         // update text in the UI
         document.getElementById('active-hour').innerText = getYear[year];
 
-        // updateTotal();
+        updateTotal();
 
     });
 
