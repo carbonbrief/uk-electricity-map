@@ -13,8 +13,7 @@ var y3 = d3.scaleLinear()
 
 var color = d3.scaleOrdinal()
     // note that the order needs to be the same as the column headers in the CSV or the colours mess up
-    .domain(["Coal", "Nuclear", "Gas", "Other", "Hydro", "Biomass",  "Waste", "Wind", "Solar" ])
-    .range(["#ced1cc", "#dd54b6", "#4e80e5", "#cc9b7a", "#43cfef", "#A7B734", "#ea545c", "#00a98e", "#ffc83e"]);
+    .range(["#ced1cc", "#a45edb", "#cc9b7a", "#dd54b6", "#43cfef", "#00a98e", "#ffc83e", "#A7B734", "#ea545c", '#ff8767']);
 
 var xAxis = d3.axisBottom(x3);
 
@@ -43,10 +42,10 @@ var div2 = d3.select("body").append("div")
     .style("opacity", 0);
 
 // array for background
-var allData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Biomass":true, "Solar": true,  "Wind":true, "Waste":true };
+var allData={"Coal":true,"Oil":true,"Gas":true, "Nuclear": true, "Hydro":true, "Wind":true, "Solar": true,  "Biomass":true, "Waste":true, "Interconnectors":true };
 
 // powerplants to be shown
-var filterData={"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Biomass":true, "Solar": true,  "Wind":true, "Waste":true };
+var filterData={"Coal":true,"Oil":true,"Gas":true, "Nuclear": true, "Hydro":true, "Wind":true, "Solar": true,  "Biomass":true, "Waste":true, "Interconnectors":true };
 
 function drawChart(filterData){
 
