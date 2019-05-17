@@ -9,8 +9,14 @@ function updateTotal () {
         if (error) throw error;
 
         let filterDataYear = data.filter(function(d) {
-            if (d["year"] == yearSlider) {
-                return d;
+            if (yearSlider == 2019) {
+                if (d["year"] == 2020) {
+                    return d;
+                }
+            } else {
+                if (d["year"] == yearSlider) {
+                    return d;
+                }
             }
         });
 
@@ -23,7 +29,6 @@ function updateTotal () {
             for (var i=1; i<11; ++i){
                 total = total + +values[i];
             }
-
         } else if (type == "HighCarbon") {
             for (var i=1; i<11; ++i){
                 if (keys[i] == "Coal" || keys[i] == "Gas" || keys[i] == "Oil") {
@@ -32,7 +37,7 @@ function updateTotal () {
             }
         } else if (type == "LowCarbon") {
             for (var i=1; i<11; ++i){
-                if (keys[i] !== "Coal" && keys[i] !== "Gas" && keys[i] !== "Oil") {
+                if (keys[i] !== "Coal" && keys[i] !== "Gas" && keys[i] !== "Oil" && keys[i] !== "Interconnectors") {
                     total = total + +values[i];
                 }
             }
@@ -42,7 +47,6 @@ function updateTotal () {
                     total = total + +values[i];
                 }
             }
-
         }
 
         document.getElementById('total').innerText = parseInt(total);

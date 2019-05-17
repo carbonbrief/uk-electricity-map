@@ -320,7 +320,7 @@ function reDraw(type){
     if (type == "All") {
         filterData = {"Coal":true,"Nuclear":true,"Gas":true, "Other": true, "Hydro":true, "Biomass":true, "Wind":true, "Waste":true, "Solar":true};
     } else if (type == "LowCarbon") {
-        filterData = {"Wind": true, "Solar": true, "Hydro": true, "Biomass": true, "Waste": true};
+        filterData = {"Wind": true, "Solar": true, "Hydro": true, "Biomass": true, "Waste": true, "Nuclear": true};
     } else if (type == "HighCarbon") {
         filterData = {"Coal":true, "Gas":true, "Oil": true};
     } else if (type == "Biomass") {
