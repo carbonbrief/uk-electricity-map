@@ -9,24 +9,15 @@ function updateTotal () {
         if (error) throw error;
 
         let filterDataYear = data.filter(function(d) {
-
             if (d["year"] == yearSlider) {
                 return d;
             }
-
         });
-
-        console.log(filterDataYear);
 
         filterDataYear = filterDataYear[0];
 
-        console.log(filterDataYear);
-
-
         const keys = Object.keys(filterDataYear);
         const values = Object.values(filterDataYear);
-
-        console.log(keys);
 
         if (type == "All") {
             for (var i=1; i<11; ++i){
