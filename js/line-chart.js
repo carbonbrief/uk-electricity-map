@@ -223,7 +223,7 @@ function drawChart(filterData){
             div2.html( "<h3 style= color:" + color(this.parentNode.__data__.name) + 
             ";>" + this.parentNode.__data__.name + 
             "</h3><p><span class='label-title'>Year: </span>" + getYear[yearFormat(d.year)] + 
-            "</p><p><span class='label-title'>Capacity: </span>" + decimalFormat(d.capacity) + 
+            "</p><p><span class='label-title'>Generation: </span>" + decimalFormat(d.capacity) + 
             " <span class='units'>Twh</span></p>")
             .style("left", (d3.event.pageX + 20) + "px")
             .style("top", (d3.event.pageY - 50) + "px");
