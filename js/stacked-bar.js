@@ -141,7 +141,8 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
     // add some labels for energy types
     g.selectAll('.chart-label')
     .data(stack.keys(cat)(data))
-    .enter().append('g')
+    .enter()
+    .append('g')
     .attr('class', 'chart-label')
     .attr('fill', function(d) { return z(d.key);})
     .selectAll("text")
@@ -195,6 +196,13 @@ function updateStackedBar () {
         .duration(500) 
         .attr("transform", function (d) {
             return "translate(" + (x(d.data.y) + (getWidth() - 6)) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
+        })
+        .style("display", function(d) { 
+            if (y(d[1]) - y(d[0]) == 0) {
+                return "none";
+            } else {
+                return "inline";
+            }
         });
 
     });
