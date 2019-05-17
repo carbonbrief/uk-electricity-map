@@ -77,7 +77,7 @@ var getYear = {
     2016: "2016",
     2017: "2017",
     2018: "2018",
-    2019: "Planned"
+    2019: "Future"
 }
 
 // declare filters
