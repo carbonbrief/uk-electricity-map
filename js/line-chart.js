@@ -336,11 +336,12 @@ function reDraw(type){
     } else if (type == "Nuclear") {
         filterData = {"Nuclear":true};
     } else if (type == "Oil") {
-        filterData = {"Other":true};
-    } else if (type == "Other") {
-        filterData = {"Other":true};
+        filterData = {"Oil":true};
     } else if (type == "Solar") {
         filterData = {"Solar":true};
+    } else if (type == "Storage") {
+        // storage not in chart since negative
+        filterData = {"Placeholder":true};
     } else if (type == "Waste") {
         filterData = {"Waste":true};
     } else if (type == "Wind") {
@@ -349,7 +350,6 @@ function reDraw(type){
         filterData = {"Gas":true};
     }  else {
         // do nothing
-        console.log("error");
     }
 	drawChart(filterData);
 }
