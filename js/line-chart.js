@@ -139,8 +139,8 @@ function drawChart(filterData){
         .remove();
 
         let lineWidths = {
-            largeLine: [380, 283, 377, 286],
-            mediumLine: [341, 267, 340, 270]
+            largeLine: [386, 283, 285, 379, 293, 292, 282],
+            mediumLine: [345, 267, 269, 340, 273, 274, 266]
         }
 
         function getLineLength () {
@@ -163,12 +163,18 @@ function drawChart(filterData){
 
             if (d.name == "Coal") {
                 return lineWidths[line][0] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-            } else if (d.name == "Hydro" || d.name == "Other" || d.name == "Solar" || d.name == "Waste") {
+            } else if (d.name == "Biomass" || d.name == "Solar") {
                 return lineWidths[line][1] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-            } else if (d.name == "Gas") {
+            } else if (d.name == "Interconnectors") {
                 return lineWidths[line][2] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
-            } else {
+            } else if (d.name == "Gas") {
                 return lineWidths[line][3] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+            } else if (d.name == "Wind") {
+                return lineWidths[line][4] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4"
+            } else if (d.name == "Nuclear") {
+                return lineWidths[line][5] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
+            } else {
+                return lineWidths[line][6] + ",4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3"
             }
 
         });
