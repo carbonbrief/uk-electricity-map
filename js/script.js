@@ -105,6 +105,18 @@ $(document).ready(function() {
 
             // grab year of element
             year = $(_this).children("h2").text();
+
+            // update progress nav
+            $("#nav li").removeClass("current");
+            $("#nav li").each(function() {
+              let name = $(this).find("a").text();
+              if (name == year) {
+                $(this).addClass("current");
+                console.log(name);
+              }
+            });
+
+            // reformat year variable
             if (year == "Future") {
               year = "2019";
             }
@@ -139,6 +151,17 @@ $(document).ready(function() {
 
             // grab year of element
             year = $(_this).children("h2").text();
+
+            // update progress nav
+            $("#nav li").removeClass("current");
+            $("#nav li").each(function() {
+              let name = $(this).find("a").text();
+              if (name == year) {
+                $(this).addClass("current");
+                console.log(name);
+              }
+            });
+
             if (year == "Future") {
               year = 2019;
             }
