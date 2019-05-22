@@ -112,7 +112,6 @@ $(document).ready(function() {
               let name = $(this).find("a").text();
               if (name == year) {
                 $(this).addClass("current");
-                console.log(name);
               }
             });
 
@@ -158,7 +157,6 @@ $(document).ready(function() {
               let name = $(this).find("a").text();
               if (name == year) {
                 $(this).addClass("current");
-                console.log(name);
               }
             });
 
@@ -386,5 +384,12 @@ $(document).ready(function() {
 
   let stickies = $('.sticky');
   Stickyfill.add(stickies);
+
+  // NAV BAR
+
+  $("#nav li").on("click", function() {
+    let name = $(this).find("a").text();
+    $('html,body').animate({scrollTop: $("#" + name).offset().top},'slow');
+  });
 
 });
