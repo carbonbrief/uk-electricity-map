@@ -119,15 +119,12 @@ div.tooltip h3 {
   margin-right: 3px;
 }
 
-ul {
-  list-style-type: none;
-}
-
 #list-group {
   padding: 0px;
+  list-style: none;
 }
 
-li {
+#list-group li {
   color: #e9e9e9;
   font-size: 12.5px;
   float: left;

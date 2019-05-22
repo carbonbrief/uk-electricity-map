@@ -314,6 +314,51 @@ li {
   margin: 0px;
 }
 
+#nav ul {
+  list-style: none;
+  position: absolute;
+  right: 20px;
+  top: calc(50% - 112px);
+  z-index: 8;
+}
+
+#nav li {
+  position: relative;
+  display: block;
+  margin: 8px 0;
+	width: 8px;
+	height: 8px;
+	cursor: pointer;
+}
+
+#nav li a {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border-radius: 50%;
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.2);
+	text-indent: -999em;
+	cursor: pointer; /* make the text accessible to screen readers */
+  position: absolute;
+  border-bottom: none;
+  -webkit-transition: -webkit-transform 0.3s ease, background-color 0.3s ease;
+	transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#nav li a:hover,
+#nav li a:focus {
+	background-color: rgba(255,255,255,0.8);
+}
+
+#nav li.current a {
+	background-color: rgba(255,255,255,0.8);
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+}
+
 #console {
   position: absolute;
   top: 20px;
@@ -444,6 +489,31 @@ li {
   top: 0px;
   display: none;
   z-index: 6;
+}
+
+figure {
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+}
+
+figure img {
+  height: 300px;
+  width: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  opacity: 1;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+figcaption {
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  margin: 0.8em;
+  color: #ffffff;
 }
 
 select {
