@@ -318,6 +318,7 @@ li {
   /* fixes flashing on/off when scrolling in Chrome */
   -webkit-transform: translateZ(0);
   margin-bottom: 20px;
+  margin-top: 60px;
 }
 
 #key-mobile ul {

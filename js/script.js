@@ -29,12 +29,7 @@ function setHeights () {
   }
   $endMap.css("height", $height - 30);
 
-  if ($width > 736) {
-    $padding.css("height", $height*0.4);
-  } else {
-    // further apart
-    $padding.css("height", $height*0.7);
-  }
+  $padding.css("height", $height*0.4);
 
   //$paddingAbove.css("height", ($(".year-sticky").height()* 5));
 
