@@ -27,7 +27,7 @@ map.on('load', function() {
                 base: 0.8,
                 'stops': [
                     [{zoom: 2, value: 100}, 1],
-                    [{zoom: 2, value: 2000}, 5],
+                    [{zoom: 2, value: 2000}, 4],
                     [{zoom: 8, value: 100}, 2],
                     [{zoom: 8, value: 2000}, 6],
                     [{zoom: 14, value: 100}, 3],
@@ -51,7 +51,7 @@ map.on('load', function() {
             "circle-color": "#ff8767",
             // make circles larger as the user zooms
             'circle-radius': {
-                'stops': [[3, 4], [20, 15]]
+                'stops': [[2, 2], [20, 15]]
             },
             "circle-opacity": 0.15
         }
@@ -76,7 +76,7 @@ map.on('load', function() {
                 base: 0.8,
                 'stops': [
                     [{zoom: 2, value: 100}, 1],
-                    [{zoom: 2, value: 2000}, 5],
+                    [{zoom: 2, value: 2000}, 4],
                     [{zoom: 8, value: 100}, 2],
                     [{zoom: 8, value: 2000}, 6],
                     [{zoom: 14, value: 100}, 3],
@@ -100,7 +100,7 @@ map.on('load', function() {
             "circle-color": "#ff8767",
             // make circles larger as the user zooms
             'circle-radius': {
-                'stops': [[3, 4], [20, 15]]
+                'stops': [[2, 2], [20, 15]]
             },
             "circle-opacity": 0.8
         }
@@ -370,7 +370,7 @@ function addInterconnectors () {
                 base: 0.8,
                 'stops': [
                     [{zoom: 2, value: 100}, 1],
-                    [{zoom: 2, value: 2000}, 5],
+                    [{zoom: 2, value: 2000}, 4],
                     [{zoom: 8, value: 100}, 2],
                     [{zoom: 8, value: 2000}, 6],
                     [{zoom: 14, value: 100}, 3],
