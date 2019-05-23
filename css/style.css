@@ -138,6 +138,11 @@ body {
 
 .scrolltext {
   z-index: 4;
+  opacity: 0.15;
+}
+
+.active {
+  opacity: 1;
 }
 
 .year-sticky {
