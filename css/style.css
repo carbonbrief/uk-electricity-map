@@ -308,6 +308,40 @@ li {
   height: 200px;
 }
 
+.highlight {
+  padding: 3px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 4px;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+  color: #282f42;
+}
+
+.coal {
+  background-color: #ced1cc;
+}
+
+.gas {
+  background-color: #cc9b7a;
+}
+
+.oil {
+  background-color: #a45edb;
+}
+
+.nuclear {
+  background-color: #dd54b6;
+}
+
+.solar {
+  background-color: #ffc83e;
+}
+
+.wind {
+  background-color: #00a98e;
+}
+
 #key-mobile {
   background-color: rgba(50, 59, 82, 0.88);
   position: relative;

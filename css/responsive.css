@@ -185,11 +185,13 @@
         position: absolute;
     }
 
-    /* .scrolltext {
-        background-color: rgba(50, 59, 82, 0.88);
-        padding-left: 15px;
-        padding-right: 15px;
-    } */
+    .scrolltext {
+        opacity: 0.5;
+    }
+
+    .active {
+        opacity: 1;
+    }
 
     .year-highlight {
         background-color: rgba(50, 59, 82, 0.88);
