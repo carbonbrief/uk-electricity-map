@@ -23,7 +23,7 @@ function setHeights () {
   if ($width < 737) {
     // try to deal with address bar hiding when scroll down on mobile
     // resulting in gap at bottom
-    $map.css("height", "100vh");
+    $map.css("height", "50vh");
   } else {
     $map.css("height", $height);
   }
@@ -191,29 +191,59 @@ $(document).ready(function() {
     let _this = this;
     let sectionName = $(this).attr('id');
 
-    new Waypoint({
-      element: _this,
-      handler: function (direction) {
-        if (direction == 'down'){
-          $text.removeClass("active");
-          $(this.element).addClass("active");
-          updateMap(sectionName);
-        }
-      },
-      offset: '50%'
-    });
+    if ($width > 736) {
 
-    new Waypoint({
-      element: _this,
-      handler: function (direction) {
-        if (direction == 'up'){
-          $text.removeClass("active");
-          $(this.element).addClass("active");
-          updateMap(sectionName);
-        }
-      },
-      offset: '32%'
-    });
+      new Waypoint({
+        element: _this,
+        handler: function (direction) {
+          if (direction == 'down'){
+            $text.removeClass("active");
+            $(this.element).addClass("active");
+            updateMap(sectionName);
+          }
+        },
+        offset: '50%'
+      });
+  
+      new Waypoint({
+        element: _this,
+        handler: function (direction) {
+          if (direction == 'up'){
+            $text.removeClass("active");
+            $(this.element).addClass("active");
+            updateMap(sectionName);
+          }
+        },
+        offset: '32%'
+      });
+
+    } else {
+
+      new Waypoint({
+        element: _this,
+        handler: function (direction) {
+          if (direction == 'down'){
+            $text.removeClass("active");
+            $(this.element).addClass("active");
+            updateMap(sectionName);
+          }
+        },
+        offset: '65%'
+      });
+  
+      new Waypoint({
+        element: _this,
+        handler: function (direction) {
+          if (direction == 'up'){
+            $text.removeClass("active");
+            $(this.element).addClass("active");
+            updateMap(sectionName);
+          }
+        },
+        offset: '50%'
+      });
+
+    }
 
   });
 

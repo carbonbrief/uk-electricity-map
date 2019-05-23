@@ -169,15 +169,27 @@
         background-attachment: scroll;
     }
 
+    #map {
+        z-index: 4;
+    }
+
+    #year-container {
+        z-index: 7;
+    }
+
+    .year {
+        z-index: 6;
+    }
+
     .small {
         position: absolute;
     }
 
-    .scrolltext {
+    /* .scrolltext {
         background-color: rgba(50, 59, 82, 0.88);
         padding-left: 15px;
         padding-right: 15px;
-    }
+    } */
 
     .year-highlight {
         background-color: rgba(50, 59, 82, 0.88);
@@ -327,16 +339,17 @@
 
     #key-mobile {
         min-width: 285px;
+        width: 70%;
     }
 
     #key-mobile ul {
         padding: 6px;
     }
 
-    li {
-        font-size: 10px;
-        padding-right: 8px;
-        padding-bottom: 3px;
+    #keymobile li {
+        font-size: 9.5px;
+        padding-right: 7px;
+        padding-bottom: 2px;
     }
 
 }
