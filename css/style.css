@@ -310,16 +310,14 @@ li {
 
 #key-mobile {
   background-color: rgba(50, 59, 82, 0.88);
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  width: 60%;
-  min-width: 320px;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
   height: auto;
   visibility: hidden;
-  z-index: 9999;
   /* fixes flashing on/off when scrolling in Chrome */
   -webkit-transform: translateZ(0);
+  margin-bottom: 20px;
 }
 
 #key-mobile ul {

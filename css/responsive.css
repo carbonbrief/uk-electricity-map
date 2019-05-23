@@ -337,19 +337,14 @@
         display: none;
     }
 
-    #key-mobile {
-        min-width: 285px;
-        width: 70%;
-    }
-
     #key-mobile ul {
         padding: 6px;
     }
 
     #keymobile li {
-        font-size: 9.5px;
-        padding-right: 7px;
-        padding-bottom: 2px;
+        font-size: 10px;
+        padding-right: 8px;
+        padding-bottom: 3px;
     }
 
 }

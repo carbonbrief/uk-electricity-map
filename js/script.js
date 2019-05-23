@@ -29,11 +29,11 @@ function setHeights () {
   }
   $endMap.css("height", $height - 30);
 
-  if ($width > 979) {
+  if ($width > 736) {
     $padding.css("height", $height*0.4);
   } else {
-    // further apart since now covering the map
-    $padding.css("height", $height*0.8);
+    // further apart
+    $padding.css("height", $height*0.7);
   }
 
   //$paddingAbove.css("height", ($(".year-sticky").height()* 5));
@@ -54,12 +54,12 @@ function setHeights () {
     });
   } else if ($width < 737 && $width > 480 ) {
     $yearCont.css("left", function () {
-      return ($width/2 - ($yearCont.width()/2) - 25);
+      return ($width/4 - ($yearCont.width()/2) - 25);
     });
   } else {
     // different margin to account for
     $yearCont.css("left", function () {
-      return ($width/2 - ($yearCont.width()/2) - 15);
+      return ($width/4 - ($yearCont.width()/2) - 15);
     });
   };
 
