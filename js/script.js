@@ -30,7 +30,7 @@ function setHeights () {
   $endMap.css("height", $height - 30);
 
   if ($width > 979) {
-    $padding.css("height", $height*0.3);
+    $padding.css("height", $height*0.4);
   } else {
     // further apart since now covering the map
     $padding.css("height", $height*0.8);
