@@ -157,6 +157,14 @@
 
 @media all and (max-width: 736px) {
 
+    #nav {
+        display: none;
+    }
+
+    figure {
+        display: none;
+    }
+
     .map-background {
         background-attachment: scroll;
     }
@@ -186,7 +194,7 @@
         visibility: visible;
     }
 
-    li {
+    #key-mobile li {
         font-size: 11px;
         padding-right: 10px;
         padding-bottom: 5px;
