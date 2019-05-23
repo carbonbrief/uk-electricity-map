@@ -30,7 +30,7 @@ if (!mapboxgl.supported()) {
 }
 
 var boundsMobile = [
-    [ -9, 48.5],[3, 61]
+    [ -11, 49.7],[2.5, 59.5]
 ]
 
 var boundsLaptop = [
@@ -63,7 +63,7 @@ function getBounds () {
 var bounds = getBounds();
 
 // resize map for the screen
-map.fitBounds(bounds, {padding: 5});
+map.fitBounds(bounds, {padding: 3});
 
 var getYear = {
     2008: "2008",
@@ -104,10 +104,10 @@ map.on('load', function() {
             type: 'exponential',
             base: 0.8,
             stops: [
-                [{zoom: 2, value: 1}, 0.5],
-                [{zoom: 2, value: 2500}, 18],
-                [{zoom: 4.6, value: 1}, 2],
-                [{zoom: 4.6, value: 2500}, 27],
+                [{zoom: 2, value: 1}, 0.2],
+                [{zoom: 2, value: 2500}, 5],
+                [{zoom: 4.5, value: 1}, 2],
+                [{zoom: 4.5, value: 2500}, 21],
                 [{zoom: 8, value: 1}, 4],
                 [{zoom: 8, value: 2500}, 32],
                 [{zoom: 12, value: 1}, 6],
@@ -150,10 +150,10 @@ map.on('load', function() {
             type: 'exponential',
             base: 0.8,
             stops: [
-            [{zoom: 2, value: 1}, 0.5],
-            [{zoom: 2, value: 2500}, 18],
-            [{zoom: 4.5, value: 1}, 2.2],
-            [{zoom: 4.5, value: 2500}, 27],
+            [{zoom: 2, value: 1}, 0.2],
+            [{zoom: 2, value: 2500}, 5],
+            [{zoom: 4.5, value: 1}, 2],
+            [{zoom: 4.5, value: 2500}, 21],
             [{zoom: 8, value: 1}, 4],
             [{zoom: 8, value: 2500}, 32],
             [{zoom: 12, value: 1}, 6],
