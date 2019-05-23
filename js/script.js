@@ -1,6 +1,5 @@
 const $text= $('.scrolltext');
-const $paddingBelow = $('.padding-below');
-const $paddingAbove= $('.padding-above');
+const $padding = $('.padding');
 const $map = $('#map');
 const $mapCont = $('#map-container');
 const $textCont = $('#text-container');
@@ -31,12 +30,10 @@ function setHeights () {
   $endMap.css("height", $height - 30);
 
   if ($width > 979) {
-    $paddingBelow.css("height", $height*0.8);
-    $paddingAbove.css("height", $height*0.8);
+    $padding.css("height", $height*0.3);
   } else {
     // further apart since now covering the map
-    $paddingBelow.css("height", $height*0.9);
-    $paddingAbove.css("height", $height*0.9);
+    $padding.css("height", $height*0.8);
   }
 
   //$paddingAbove.css("height", ($(".year-sticky").height()* 5));

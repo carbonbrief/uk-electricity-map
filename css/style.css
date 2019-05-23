@@ -245,6 +245,14 @@ a:hover {
   text-decoration: none;
 }
 
+.long-quote {
+  margin-left: 2em;
+  padding-left: 1em;
+  border-left: 3px solid #c6e7fa;
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+}
+
 li {
   font-family: "PT Sans", sans-serif;
 }
