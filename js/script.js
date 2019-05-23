@@ -29,7 +29,7 @@ function setHeights () {
   }
   $endMap.css("height", $height - 30);
 
-  $padding.css("height", $height*0.4);
+  $padding.css("height", $height*0.5);
 
   //$paddingAbove.css("height", ($(".year-sticky").height()* 5));
 

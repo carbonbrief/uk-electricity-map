@@ -203,7 +203,7 @@
     }
 
     #key-mobile {
-        visibility: visible;
+        display: block;
     }
 
     #key-mobile li {

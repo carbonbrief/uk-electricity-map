@@ -314,11 +314,11 @@ li {
   width: 100%;
   max-width: 400px;
   height: auto;
-  visibility: hidden;
+  display: none;
   /* fixes flashing on/off when scrolling in Chrome */
   -webkit-transform: translateZ(0);
   margin-bottom: 20px;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 #key-mobile ul {
