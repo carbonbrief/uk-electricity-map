@@ -157,7 +157,7 @@
 
 @media all and (max-width: 736px) {
 
-    #text-mask {
+    #text-mask-wrapper {
         display: none;
     }
 

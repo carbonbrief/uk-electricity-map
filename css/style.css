@@ -174,7 +174,7 @@ body {
 
 .scrolltext {
   z-index: 4;
-  opacity: 0.15;
+  opacity: 0.25;
 }
 
 .active {
