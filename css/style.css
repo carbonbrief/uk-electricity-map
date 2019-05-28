@@ -114,10 +114,36 @@ body {
   left: calc(50% - 60px);
 }
 
+.year-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 40px;
+}
+
+#stacked-bar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 40px;
+}
+
+#text-mask {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-image: linear-gradient(#282f42, rgba(40, 47, 66, 0.9), rgba(40, 47, 66, 0.75), rgba(40, 47, 66, 0));
+  height: 150px;
+  z-index: 5;
+}
+
 #year-container {
   position: absolute;
   left: 100px;
   z-index: 3;
+}
+
+/* fixing z-index of parent of sticky stops it going in front */
+#scrollytext {
+  z-index: 2;
 }
 
 .year-highlight {
@@ -143,18 +169,6 @@ body {
 
 .active {
   opacity: 1;
-}
-
-.year-sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 40px;
-}
-
-#stacked-bar {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 40px;
 }
 
 /* clearfix for sticky elements */
