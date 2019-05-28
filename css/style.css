@@ -126,24 +126,34 @@ body {
   top: 40px;
 }
 
-#text-mask {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background-image: linear-gradient(#282f42, rgba(40, 47, 66, 0.9), rgba(40, 47, 66, 0.75), rgba(40, 47, 66, 0));
-  height: 150px;
-  z-index: 5;
+#scrollytext {
+  z-index: 3;
 }
 
 #year-container {
   position: absolute;
   left: 100px;
-  z-index: 3;
+  /* z-index: 2; */
 }
 
 /* fixing z-index of parent of sticky stops it going in front */
-#scrollytext {
-  z-index: 2;
+#text-mask-wrapper {
+  z-index: 5;
+  height: 150px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+#text-mask {
+  background-image: linear-gradient(#282f42, rgba(40, 47, 66, 0.9), rgba(40, 47, 66, 0.75), rgba(40, 47, 66, 0));
+  z-index: 6;
+  width: inherit;
+  height: inherit;
+}
+
+.year-sticky {
+  z-index: 7;
 }
 
 .year-highlight {
@@ -154,12 +164,12 @@ body {
   -moz-box-shadow:    3px 3px 0px 0px #c6e7fa;
   -webkit-box-shadow: 3px 3px 0px 0px #c6e7fa;
   box-shadow:         3px 3px 0px 0px #c6e7fa;
-  z-index: 7;
+  z-index: 9;
 }
 
 .year {
   height: 800px;
-  z-index: 6;
+  /* z-index: 3; */
 }
 
 .scrolltext {
