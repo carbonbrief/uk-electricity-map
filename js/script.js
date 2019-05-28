@@ -398,7 +398,8 @@ $(document).ready(function() {
 
   $("#nav li").on("click", function() {
     let name = $(this).find("a").text();
-    $('html,body').animate({scrollTop: $("#" + name).offset().top},'slow');
+    // add extra 10px so bottom of other sticky no longer visible
+    $('html,body').animate({scrollTop: ($("#" + name).offset().top) + 10},'slow');
   });
 
 });
