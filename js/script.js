@@ -223,7 +223,7 @@ $(document).ready(function() {
             updateMap(sectionName);
           }
         },
-        offset: '65%'
+        offset: '70%'
       });
   
       new Waypoint({

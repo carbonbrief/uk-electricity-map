@@ -256,12 +256,13 @@ p {
 a {
   text-decoration: none;
   color: #f3f3f3;
-  border-bottom: 1px solid #c6e7fa;
+  border-bottom: 1px solid #f3f3f3;
 }
 
 a:hover {
   color: #c6e7fa;
   text-decoration: none;
+  border-bottom: 1px solid #c6e7fa;
 }
 
 .long-quote {

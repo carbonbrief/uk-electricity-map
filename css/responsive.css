@@ -157,6 +157,10 @@
 
 @media all and (max-width: 736px) {
 
+    #text-mask {
+        display: none;
+    }
+
     #nav {
         display: none;
     }
