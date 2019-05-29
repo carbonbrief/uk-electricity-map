@@ -87,6 +87,7 @@ var filterEndYear = ['>=', ['number', ['get', 'yearEnd']], 2008];
 var filterType = ['!=', ['string', ['get','type']], 'placeholder'];
 var filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
 var filterSite = ['!=', ['string', ['get','site']], 'placeholder'];
+var filterCapacity = ['>=', ['number', ['get','capacity']], 0];
 
 map.on('load', function() {
 
@@ -323,11 +324,18 @@ function updateMap (sectionName) {
         filterSite = ['!=', ['string', ['get','site']], 'placeholder'];
     }
 
+    // CAPACITY FILTERS
+    if (sectionName == "2008-2") {
+        filterCapacity = ['>=', ['number', ['get','capacity']], 500];
+    } else {
+        filterCapacity = ['>=', ['number', ['get','capacity']], 0];
+    }
+
     // TYPE FILTERS
     if (sectionName == "2008-2") {
         filterType = [ "any",["==", ["get", "type"], "Coal"], ["==", ["get", "type"], "Gas"], ["==", ["get", "type"], "Oil"], ["==", ["get", "type"], "Nuclear"]];
     } else if (sectionName == "2008-3") {
-        filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Nuclear"], ["!=", ["get", "type"], "Interconnector"],];
+        filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Storage"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Nuclear"], ["!=", ["get", "type"], "Interconnector"],];
     } else if (sectionName == "2008-4") {
         // All sections where we don't want interconnectors showing
         filterType = ['!=', ['string', ['get','type']], 'Interconnector'];
@@ -335,7 +343,7 @@ function updateMap (sectionName) {
         filterType = ['!=', ['string', ['get','type']], 'placeholder'];
     }
 
-    map.setFilter('powerplants', ['all', filterOperator, filterType, filterStartYear, filterEndYear, filterSite]);
+    map.setFilter('powerplants', ['all', filterOperator, filterType, filterStartYear, filterEndYear, filterSite, filterCapacity]);
     map.setFilter('interconnector-stations', ['all', filterOperator, filterStartYear, filterStations, filterType]);
     map.setFilter('interconnectors', ['all', filterOperator, filterStartYear, filterLines, filterType]);
     
