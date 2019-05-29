@@ -351,6 +351,10 @@ li {
   background-color: #cc9b7a;
 }
 
+.hydro {
+  background-color: #43cfef;
+}
+
 .oil {
   background-color: #a45edb;
 }
@@ -365,6 +369,10 @@ li {
 
 .wind {
   background-color: #00a98e;
+}
+
+.waste {
+  background-color: #ea545c;
 }
 
 #key-mobile {
