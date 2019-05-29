@@ -310,26 +310,48 @@ function updateMap (sectionName) {
     // suspect that might need to deal with each stage individually 
     // if some involve map filters and some involve flyTo
 
+    // ADD OR REMOVE POPUPS
+
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+
+    if (sectionName == "2008-4") {
+        popup.setLngLat([0.603039, 51.416713])
+        .setHTML('<h3 style = "color: #ced1cc; border-bottom: 1px solid #ced1cc;">' + "Kingsnorth" + 
+        '</h3><div class="colour-key" style="background-color: #ced1cc; margin-right: 5px;"></div><p class="inline">' + "Coal" + 
+        '</p><p><span class="label-title">Capacity: </span>' + "1940" + 
+        ' <span class="units">MW</span></p><p><span class="label-title">Low carbon? </span>' + "No" + 
+        '</p><p><span class="label-title">Operator: </span>' + "E.On UK" + 
+        '</p><p><span class="label-title">Year opened: </span>' + "1970" + 
+        '</p>')
+        .addTo(map);
+    } else {
+        // using JQuery as Mpabox popup.remove() method not working
+        $(".mapboxgl-popup").remove();
+    };
+
     // OPERATOR FILTERS
     if (sectionName == "section2") {
         filterOperator = ['==', ['string', ['get','operator']], 'Drax Power Ltd'];
     } else {
         filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
-    }
+    };
 
     // SITE FILTERS
     if (sectionName == "2008-4") {
         filterSite = ['==', ['string', ['get','site']], 'Kingsnorth'];
     } else {
         filterSite = ['!=', ['string', ['get','site']], 'placeholder'];
-    }
+    };
 
     // CAPACITY FILTERS
     if (sectionName == "2008-2") {
         filterCapacity = ['>=', ['number', ['get','capacity']], 500];
     } else {
         filterCapacity = ['>=', ['number', ['get','capacity']], 0];
-    }
+    };
 
     // TYPE FILTERS
     if (sectionName == "2008-2") {
@@ -341,7 +363,7 @@ function updateMap (sectionName) {
         filterType = ['!=', ['string', ['get','type']], 'Interconnector'];
     } else {
         filterType = ['!=', ['string', ['get','type']], 'placeholder'];
-    }
+    };
 
     map.setFilter('powerplants', ['all', filterOperator, filterType, filterStartYear, filterEndYear, filterSite, filterCapacity]);
     map.setFilter('interconnector-stations', ['all', filterOperator, filterStartYear, filterStations, filterType]);
