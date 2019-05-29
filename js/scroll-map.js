@@ -307,9 +307,6 @@ map.on('load', function() {
 
 function updateMap (sectionName) {
 
-    // suspect that might need to deal with each stage individually 
-    // if some involve map filters and some involve flyTo
-
     // ADD OR REMOVE POPUPS
 
     var popup = new mapboxgl.Popup({
@@ -328,7 +325,7 @@ function updateMap (sectionName) {
         '</p>')
         .addTo(map);
     } else {
-        // using JQuery as Mpabox popup.remove() method not working
+        // using JQuery as Mapbox popup.remove() method not working
         $(".mapboxgl-popup").remove();
     };
 
@@ -358,6 +355,8 @@ function updateMap (sectionName) {
         filterType = [ "any",["==", ["get", "type"], "Coal"], ["==", ["get", "type"], "Gas"], ["==", ["get", "type"], "Oil"], ["==", ["get", "type"], "Nuclear"]];
     } else if (sectionName == "2008-3") {
         filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Storage"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Nuclear"], ["!=", ["get", "type"], "Interconnector"],];
+    } else if (sectionName == "2010-2") {
+        filterType = ['==', ['string', ['get','fuelDetail']], 'Offshore Wind'];
     } else if (sectionName == "2008-4") {
         // All sections where we don't want interconnectors showing
         filterType = ['!=', ['string', ['get','type']], 'Interconnector'];
