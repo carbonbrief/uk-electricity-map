@@ -12,6 +12,11 @@
         margin-right: 35px;
     }
 
+    #animation {
+        width: 400px;
+        height: 400px;
+    }
+
 }
 
 @media all and (max-width: 1280px) {

@@ -371,7 +371,6 @@ function updateMap (sectionName) {
 }
 
 // reset dropdown on window reload
-
 $(document).ready(function () {
     $("select").each(function () {
         $(this).val($(this).find('option[selected]').val());
