@@ -89,6 +89,14 @@ body {
   width: 200px;
 }
 
+.sparkPath {
+  fill: none;
+  stroke: #f3f3f3;
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
 .credit {
   font-family: "PT Sans", sans-serif;
   font-weight: 400;
