@@ -84,6 +84,11 @@ body {
   height: 20%;
 }
 
+.sparkline {
+  height: 50px;
+  width: 200px;
+}
+
 .credit {
   font-family: "PT Sans", sans-serif;
   font-weight: 400;
