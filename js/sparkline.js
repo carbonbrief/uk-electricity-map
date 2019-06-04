@@ -64,16 +64,18 @@ sparkSvg.append("path")
     .attr("d", sparkLine);
 
 sparkSvg.append("circle")
-    .attr("x", sparkX(2008))
-    .attr("y", sparkY(sparkData[0].yVal))
+    .attr("cx", sparkX(2008))
+    .attr("cy", sparkY(sparkData[0].yVal))
     .attr("r", 3)
     .attr("class", "sparkCircle");
 
 sparkSvg.append("circle")
-    .attr("x", sparkX(2018))
-    .attr("y", sparkY(sparkData.slice(-1)[0].yVal))
+    .attr("cx", sparkX(2018))
+    .attr("cy", sparkY(sparkData.slice(-1)[0].yVal))
     .attr("r", 3)
     .attr("class", "sparkCircle");
+
+console.log(sparkData.slice(-1)[0].yVal);
 
 console.log(sparkY(sparkData.slice(-1)[0].yVal));
 
