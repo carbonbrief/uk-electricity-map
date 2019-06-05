@@ -123,7 +123,13 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
         div.transition()
         .duration(100)
         .style("opacity", 0);
-    }    
+    }
+    
+    $(window).scroll(function() {
+        div.transition()
+        .duration(50)
+        .style("opacity", 0);
+    });
 
     g.append("g")
     .attr("class", "axis axis--y")
