@@ -1,6 +1,6 @@
 const sparkMargin = {top: 5, right: 30, bottom: 5, left: 30},
     sparkWidth = 180 - sparkMargin.left - sparkMargin.right,
-    sparkHeight = 40 - sparkMargin.top - sparkMargin.bottom;
+    sparkHeight = 50 - sparkMargin.top - sparkMargin.bottom;
 
 const sparkData = [{
         "xVal": 2008,
@@ -42,7 +42,7 @@ const sparkX = d3.scaleLinear()
     .range([0, sparkWidth]);
 
 const sparkY = d3.scaleLinear()
-    .domain([200, 500])
+    .domain([150, 550])
     .range([sparkHeight, 0]);
 
 const sparkLine = d3.line()
@@ -66,13 +66,13 @@ sparkSvg.append("path")
 sparkSvg.append("circle")
     .attr("cx", sparkX(2008))
     .attr("cy", sparkY(sparkData[0].yVal))
-    .attr("r", 3)
+    .attr("r", 2.5)
     .attr("class", "sparkCircle");
 
 sparkSvg.append("circle")
     .attr("cx", sparkX(2018))
     .attr("cy", sparkY(sparkData.slice(-1)[0].yVal))
-    .attr("r", 3)
+    .attr("r", 2.5)
     .attr("class", "sparkCircle");
 
 sparkSvg.append("text")
@@ -99,7 +99,8 @@ sparkSvg.append("text")
 
 sparkSvg.append("line")
     .attr("x1", sparkX(2008))
-    .attr("y1", sparkY(200))
+    .attr("y1", sparkY(150))
     .attr("x2", sparkX(2008))
-    .attr("y2", sparkY(500))
-    .attr("class", "sparkHighlight");
+    .attr("y2", sparkY(550))
+    .attr("class", "sparkHighlight")
+    .attr("stroke-dasharray", "3,3");
