@@ -24,14 +24,12 @@ function setHeights () {
     // try to deal with address bar hiding when scroll down on mobile
     // resulting in gap at bottom
     $map.css("height", "50vh");
+    $padding.css("height", $height*0.6);
   } else {
     $map.css("height", $height);
+    $padding.css("height", $height*0.37);
   }
   $endMap.css("height", $height - 30);
-
-  $padding.css("height", $height*0.5);
-
-  //$paddingAbove.css("height", ($(".year-sticky").height()* 5));
 
   function getYearPadding () {
     if ($width > 736 && $width < 1281) {
@@ -74,7 +72,6 @@ function setHeights () {
 
   // set map container height to ensure same when position becomes absolute on small screen
   // after have set other things like padding
-
   $mapCont.css("height", $textCont.height() + 240);
 
 }
