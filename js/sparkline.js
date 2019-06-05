@@ -99,17 +99,16 @@ sparkSvg.append("line")
         let div = svg.parent().attr('class');
         let index  = div.split("x")[1];
         sparkIndex = 2008 + parseInt(index);
-        console.log(sparkIndex);
         return sparkX(sparkIndex);
     })
     .attr("y1", sparkY(150))
     .attr("x2", function () {
+        // have to repeat since draws all x1s first
         let group = $(this).parent();
         let svg = group.parent();
         let div = svg.parent().attr('class');
         let index  = div.split("x")[1];
         sparkIndex = 2008 + parseInt(index);
-        console.log(sparkIndex);
         return sparkX(sparkIndex);
     })
     .attr("y2", sparkY(550))

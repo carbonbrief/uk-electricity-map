@@ -67,7 +67,9 @@ function setHeights () {
     $(".index" + i).each(function() {
       outerHeight += $(this).outerHeight();
     });
-    $(this).css("height", outerHeight + "px");
+    // take away 10 to allow for the margin appearing between the year containers
+    $(this).css("height", (outerHeight - 10) + "px");
+    console.log(outerHeight);
   });
 
   // set map container height to ensure same when position becomes absolute on small screen
@@ -80,6 +82,9 @@ function setHeights () {
 setHeights();
 
 $(document).ready(function() {
+
+  // call again once DOM loaded or slightly incorrect
+  setHeights();
 
   window.addEventListener("resize", function(){
       setHeights();
