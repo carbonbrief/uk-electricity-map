@@ -1,6 +1,6 @@
 const sparkMargin = {top: 5, right: 30, bottom: 5, left: 30},
-    sparkWidth = 200 - sparkMargin.left - sparkMargin.right,
-    sparkHeight = 50 - sparkMargin.top - sparkMargin.bottom;
+    sparkWidth = 180 - sparkMargin.left - sparkMargin.right,
+    sparkHeight = 40 - sparkMargin.top - sparkMargin.bottom;
 
 const sparkData = [{
         "xVal": 2008,
@@ -75,8 +75,17 @@ sparkSvg.append("circle")
     .attr("r", 3)
     .attr("class", "sparkCircle");
 
-console.log(sparkData.slice(-1)[0].yVal);
+sparkSvg.append("text")
+    .attr("x", (sparkX(2008) - 8))
+    .attr("y", sparkY(495))
+    .attr("dominant-baseline", "central")
+    .attr("class", "sparkText")
+    .attr("text-anchor", "end")
+    .text("495");
 
-console.log(sparkY(sparkData.slice(-1)[0].yVal));
-
-console.log("sparkline");
+sparkSvg.append("text")
+    .attr("x", (sparkX(2018) + 8))
+    .attr("y", sparkY(207))
+    .attr("dominant-baseline", "central")
+    .attr("class", "sparkText")
+    .text("207");
