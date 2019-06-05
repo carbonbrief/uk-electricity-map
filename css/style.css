@@ -10,10 +10,6 @@ body {
   width: 100%;
 }
 
-.intro-text p {
-  text-align: left;
-}
-
 .map-background {
   background: url(../img/uk-map.jpg) no-repeat center center;
   background-attachment: fixed;
@@ -51,9 +47,12 @@ body {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
-  text-align: center;
   margin-top: 5%;
   margin-bottom: 5%;
+}
+
+.centered {
+  text-align: center;
 }
 
 #animation {
