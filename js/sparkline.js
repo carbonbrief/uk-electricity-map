@@ -1,6 +1,6 @@
-const sparkMargin = {top: 5, right: 30, bottom: 5, left: 30},
-    sparkWidth = 180 - sparkMargin.left - sparkMargin.right,
-    sparkHeight = 50 - sparkMargin.top - sparkMargin.bottom;
+const sparkMargin = {top: 20, right: 90, bottom: 5, left: 30},
+    sparkWidth = 220 - sparkMargin.left - sparkMargin.right,
+    sparkHeight = 80 - sparkMargin.top - sparkMargin.bottom;
 
 const sparkData = [{
         "xVal": 2008,
@@ -42,7 +42,7 @@ const sparkX = d3.scaleLinear()
     .range([0, sparkWidth]);
 
 const sparkY = d3.scaleLinear()
-    .domain([150, 550])
+    .domain([150, 600])
     .range([sparkHeight, 0]);
 
 const sparkLine = d3.line()
@@ -111,6 +111,19 @@ sparkSvg.append("line")
         sparkIndex = 2008 + parseInt(index);
         return sparkX(sparkIndex);
     })
-    .attr("y2", sparkY(550))
+    .attr("y2", sparkY(560))
     .attr("class", "sparkHighlight")
     .attr("stroke-dasharray", "3,3");
+
+sparkSvg.append("text")
+    .attr("x", function () {
+        let group = $(this).parent();
+        let svg = group.parent();
+        let div = svg.parent().attr('class');
+        let index  = div.split("x")[1];
+        sparkIndex = 2008 + parseInt(index);
+        return sparkX(sparkIndex);
+    })
+    .attr("y", sparkY(600))
+    .attr("class", "sparkTitle")
+    .text("Carbon intensity");

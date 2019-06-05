@@ -85,8 +85,8 @@ body {
 }
 
 .sparkline {
-  height: 50px;
-  width: 180px;
+  height: 80px;
+  width: 220px;
 }
 
 .sparkPath {
@@ -103,6 +103,11 @@ body {
 
 .sparkText {
   fill: #f3f3f3;
+  font-size: 12px;
+}
+
+.sparkTitle {
+  fill: #c6e7fa;
   font-size: 12px;
 }
 
