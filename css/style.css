@@ -106,6 +106,10 @@ body {
   font-size: 12px;
 }
 
+.sparkHighlight {
+  stroke: #f3f3f3;
+}
+
 .credit {
   font-family: "PT Sans", sans-serif;
   font-weight: 400;

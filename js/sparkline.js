@@ -89,3 +89,17 @@ sparkSvg.append("text")
     .attr("dominant-baseline", "central")
     .attr("class", "sparkText")
     .text("207");
+
+// let sparkIndex;
+// .attr("x1", function () {
+//     let parent = d3.select(this.parentNode);
+//     console.log(parent);
+
+// })
+
+sparkSvg.append("line")
+    .attr("x1", sparkX(2008))
+    .attr("y1", sparkY(200))
+    .attr("x2", sparkX(2008))
+    .attr("y2", sparkY(500))
+    .attr("class", "sparkHighlight");
