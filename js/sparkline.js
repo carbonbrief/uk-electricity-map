@@ -90,17 +90,28 @@ sparkSvg.append("text")
     .attr("class", "sparkText")
     .text("207");
 
-// let sparkIndex;
-// .attr("x1", function () {
-//     let parent = d3.select(this.parentNode);
-//     console.log(parent);
-
-// })
+let sparkIndex = 2008;
 
 sparkSvg.append("line")
-    .attr("x1", sparkX(2008))
+    .attr("x1", function () {
+        let group = $(this).parent();
+        let svg = group.parent();
+        let div = svg.parent().attr('class');
+        let index  = div.split("x")[1];
+        sparkIndex = 2008 + parseInt(index);
+        console.log(sparkIndex);
+        return sparkX(sparkIndex);
+    })
     .attr("y1", sparkY(150))
-    .attr("x2", sparkX(2008))
+    .attr("x2", function () {
+        let group = $(this).parent();
+        let svg = group.parent();
+        let div = svg.parent().attr('class');
+        let index  = div.split("x")[1];
+        sparkIndex = 2008 + parseInt(index);
+        console.log(sparkIndex);
+        return sparkX(sparkIndex);
+    })
     .attr("y2", sparkY(550))
     .attr("class", "sparkHighlight")
     .attr("stroke-dasharray", "3,3");
