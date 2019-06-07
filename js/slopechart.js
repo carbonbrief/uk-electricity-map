@@ -50,7 +50,7 @@ function drawSlopeChart() {
         });
 
         slopeX.domain([
-            parseDate(2006), parseDate(2020)
+            parseDate(2005), parseDate(2021)
         ]);
 
         slopeY.domain([
@@ -103,6 +103,18 @@ function drawSlopeChart() {
             .style("text-anchor", "end")
             .attr("dx", "-.8em")
             .attr("dy", ".15em");
+
+        slopeSVG.append("g")
+            .attr("class", "y axis")
+            .call(slopeYAxis);
+
+        slopeSVG.append("text")
+            .attr("class", "axis label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 8)
+            .attr("dy", ".5em")
+            .style("text-anchor", "end")
+            .text("Generation (Twh)");
 
 
 
