@@ -50,11 +50,11 @@ function drawSlopeChart() {
         });
 
         slopeX.domain([
-            parseDate(2007), parseDate(2019)
+            parseDate(2006), parseDate(2020)
         ]);
 
         slopeY.domain([
-            d3.min(lines, function(c) { return d3.min(c.values, function(v) { return v.generation; }); }),
+            0,
             d3.max(lines, function(c) { return d3.max(c.values, function(v) { return v.generation; }); })
         ]);
 
@@ -62,8 +62,37 @@ function drawSlopeChart() {
             .data(lines)
             .enter()
             .append("path")
+            .attr("class", "slopeLine")
             .attr("d", function(d) { return slopeLine(d.values); })
             .style("stroke", function(d) { return slopeColor(d.name); });
+
+        console.log(lines);
+
+        slopeSVG.selectAll(".slopeCircle1")
+            .data(lines)
+            .enter()
+            .append("circle")
+            .attr("class", "slopeCircle1")
+            .attr("r", 3)
+            .attr("cx", function(d) {
+                console.log(d.values[0]);
+                console.log(slopeX(parseDate(d.values[0])));
+                return slopeX(d.values[0].year); 
+            })
+            .attr("cy", function(d) { return slopeY(d.values[0].generation); })
+            .style("fill", function(d) { return slopeColor(d.name); });
+
+        slopeSVG.selectAll(".slopeCircle2")
+            .data(lines)
+            .enter()
+            .append("circle")
+            .attr("class", "slopeCircle2")
+            .attr("r", 3)
+            .attr("cx", function(d) {
+                return slopeX(d.values[1].year); 
+            })
+            .attr("cy", function(d) { return slopeY(d.values[1].generation); })
+            .style("fill", function(d) { return slopeColor(d.name); });
 
         slopeSVG.append("g")
             .attr("class", "x axis")
