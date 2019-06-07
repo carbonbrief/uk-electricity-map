@@ -657,6 +657,7 @@ figcaption {
   font-size: 13px;
   margin: 0.8em;
   color: #ffffff;
+  text-align: middle;
 }
 
 select {
