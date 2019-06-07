@@ -83,6 +83,11 @@ body {
   height: 20%;
 }
 
+#slopechart {
+  width: 300px;
+  height: 200px;
+}
+
 .sparkline {
   height: 80px;
   width: 220px;

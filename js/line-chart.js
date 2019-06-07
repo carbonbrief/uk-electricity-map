@@ -49,7 +49,7 @@ var filterData={"Coal":true,"Oil":true,"Gas":true, "Nuclear": true, "Hydro":true
 
 function drawChart(filterData){
 
-    d3.csv("./data/line.csv", function(error, data) {
+    d3.csv("./data/line.csv", function(data) {
 
         color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
 
