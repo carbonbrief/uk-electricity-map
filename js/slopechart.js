@@ -116,6 +116,15 @@ function drawSlopeChart() {
             .style("text-anchor", "end")
             .text("Generation (Twh)");
 
+        slopeSVG.selectAll(".slopeLabel")
+            .data(lines)
+            .enter()
+            .append("text")
+            .text(function(d) {
+                return d.name;
+            });
+
+
 
 
     });
