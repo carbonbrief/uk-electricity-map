@@ -1,6 +1,6 @@
 const slopeMargin = {top: 20, right: 20, bottom: 30, left: 30},
     slopeWidth = 300 - slopeMargin.left - slopeMargin.right,
-    slopeHeight = 200 - slopeMargin.top - slopeMargin.bottom;
+    slopeHeight = 250 - slopeMargin.top - slopeMargin.bottom;
 
 let slopeColor = d3.scaleOrdinal()
 // note that the order needs to be the same as the column headers in the CSV or the colours mess up
@@ -75,8 +75,6 @@ function drawSlopeChart() {
             .attr("class", "slopeCircle1")
             .attr("r", 3)
             .attr("cx", function(d) {
-                console.log(d.values[0]);
-                console.log(slopeX(parseDate(d.values[0])));
                 return slopeX(d.values[0].year); 
             })
             .attr("cy", function(d) { return slopeY(d.values[0].generation); })
@@ -116,16 +114,40 @@ function drawSlopeChart() {
             .style("text-anchor", "end")
             .text("Generation (Twh)");
 
+        let position = $("#slopechart").position();
+        console.log(position);
+
         slopeSVG.selectAll(".slopeLabel")
             .data(lines)
             .enter()
             .append("text")
+            .attr("class", "slopeLabel")
+            .attr("dominant-baseline", "central")
             .text(function(d) {
                 return d.name;
+            })
+            .attr("transform", function(d) {
+                return "translate(" + (slopeX(parseDate(2018)) + 9) + ","+ slopeY(d.values[1].generation) +"),"+ "rotate(0)";
+            })
+            .attr("fill", function(d) {
+                return slopeColor(d.name);
             });
 
+        slopeSVG.selectAll(".slopeLabel")
+        .filter(function(){ 
+            return d3.select(this).text() == "Imports";
+        })
+        .attr("transform", ("transform", function(d) {
+            return "translate(" + (slopeX(parseDate(2018)) + 9) + ","+ (slopeY(d.values[1].generation) -10) +"),"+ "rotate(0)";
+        }));
 
-
+        slopeSVG.selectAll(".slopeLabel")
+        .filter(function(){ 
+            return d3.select(this).text() == "Renewables";
+        })
+        .attr("transform", ("transform", function(d) {
+            return "translate(" + (slopeX(parseDate(2018)) + 9) + ","+ (slopeY(d.values[1].generation) +5) +"),"+ "rotate(0)";
+        }));
 
     });
 };

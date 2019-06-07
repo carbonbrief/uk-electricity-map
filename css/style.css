@@ -85,13 +85,17 @@ body {
 
 #slopechart {
   width: 300px;
-  height: 200px;
+  height: 250px;
 }
 
 .slopeLine {
   stroke-width: 1.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
+}
+
+.slopeLabel {
+  font-size: 11px;
 }
 
 .sparkline {
