@@ -38,6 +38,14 @@
         font-size: 15px;
     }
 
+    .scrolltext ul {
+        font-size: 13px !important;
+    }
+
+    .long-quote {
+        font-size: 13px !important;
+    }
+
     p {
         font-size: 19px;
     }
@@ -270,6 +278,14 @@
         font-size: 14.5px;
     }
 
+    .scrolltext ul {
+        font-size: 12.5px !important;
+    }
+
+    .long-quote {
+        font-size: 12.5px !important;
+    }
+
     #animation {
         width: 300px;
         height: 300px;
@@ -333,6 +349,14 @@
 
     .scrolltext p {
         font-size: 13.5px;
+    }
+
+    .scrolltext ul {
+        font-size: 11.5px !important;
+    }
+
+    .long-quote {
+        font-size: 11.5px !important;
     }
 
     #text-container {

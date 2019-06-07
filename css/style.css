@@ -311,7 +311,17 @@ a:hover {
   padding-left: 1em;
   border-left: 3px solid #c6e7fa;
   font-family: "PT Sans", sans-serif;
-  font-size: 14px;
+  font-size: 14px !important;
+}
+
+.scrolltext ul {
+  font-size: 14px !important;
+  color: #f3f3f3;
+}
+
+.scrolltext li {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 li {
@@ -629,7 +639,7 @@ figure img {
 
 figcaption {
   font-family: "PT Sans", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   margin: 0.8em;
   color: #ffffff;
 }
