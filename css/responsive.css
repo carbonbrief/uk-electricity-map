@@ -1,9 +1,9 @@
 @media all and (max-width: 1380px) {
     
     .small {
-        -ms-flex: 2.5 0 0;
-        -webkit-flex: 2.5 0 0;
-        flex: 2.5 0 0;
+        -ms-flex: 2.6 0 0;
+        -webkit-flex: 2.6 0 0;
+        flex: 2.6 0 0;
     }
 
     #text-container {
@@ -65,9 +65,9 @@
     }
     
     .small {
-        -ms-flex: 1 0 0;
-        -webkit-flex: 1 0 0;
-        flex: 1 0 0;
+        -ms-flex: 1.1 0 0;
+        -webkit-flex: 1.1 0 0;
+        flex: 1.1 0 0;
     }
 
     .large2 {
@@ -103,6 +103,12 @@
     #text-container {
         margin-left: 25px;
         margin-right: 25px;
+    }
+
+    .small {
+        -ms-flex: 1.3 0 0;
+        -webkit-flex: 1.3 0 0;
+        flex: 1.3 0 0;
     }
 }
 
@@ -156,6 +162,12 @@
 
     .footer {
         font-size: 16px;
+    }
+
+    .small {
+        -ms-flex: 1 0 0;
+        -webkit-flex: 1 0 0;
+        flex: 1 0 0;
     }
 
     #bar-container {
