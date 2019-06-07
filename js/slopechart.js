@@ -29,7 +29,6 @@ const slopeSVG = d3.select("#slopechart").append("svg")
 
 function drawSlopeChart() {
     d3.csv("./data/slope-chart.csv", function(data) {
-        console.log(data);
 
         color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Year"; }));
 
@@ -65,8 +64,6 @@ function drawSlopeChart() {
             .attr("class", "slopeLine")
             .attr("d", function(d) { return slopeLine(d.values); })
             .style("stroke", function(d) { return slopeColor(d.name); });
-
-        console.log(lines);
 
         slopeSVG.selectAll(".slopeCircle1")
             .data(lines)
@@ -113,9 +110,6 @@ function drawSlopeChart() {
             .attr("dy", ".5em")
             .style("text-anchor", "end")
             .text("Generation (Twh)");
-
-        let position = $("#slopechart").position();
-        console.log(position);
 
         slopeSVG.selectAll(".slopeLabel")
             .data(lines)
