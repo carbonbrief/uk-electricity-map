@@ -12,7 +12,7 @@ let slopeX = d3.scaleTime()
 let slopeY = d3.scaleLinear()
     .range([slopeHeight, 0]);
 
-let slopeXAxis = d3.axisBottom(slopeX);
+let slopeXAxis = d3.axisBottom(slopeX).tickValues([parseDate(2008), parseDate(2018)]);
 
 let slopeYAxis = d3.axisLeft(slopeY);
 
@@ -59,21 +59,21 @@ function drawSlopeChart() {
         ]);
 
         slopeSVG.selectAll(".slopeLine")
-        .data(lines)
-        .enter()
-        .append("path")
-        .attr("d", function(d) { return slopeLine(d.values); })
-        .style("stroke", function(d) { return slopeColor(d.name); });
+            .data(lines)
+            .enter()
+            .append("path")
+            .attr("d", function(d) { return slopeLine(d.values); })
+            .style("stroke", function(d) { return slopeColor(d.name); });
 
-        // slopeSVG.append("g")
-        // .attr("class", "x axis")
-        // .attr("transform", "translate(0," + slopeHeight + ")")
-        // .call(slopeXAxis)
-        // .selectAll("text")
-        // .attr("transform", "rotate(-45)")
-        // .style("text-anchor", "end")
-        // .attr("dx", "-.8em")
-        // .attr("dy", ".15em");
+        slopeSVG.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + slopeHeight + ")")
+            .call(slopeXAxis)
+            .selectAll("text")
+            .attr("transform", "rotate(-45)")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em");
 
 
 
