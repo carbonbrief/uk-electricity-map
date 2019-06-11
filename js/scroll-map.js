@@ -350,16 +350,20 @@ function updateMap (sectionName) {
         filterSite = ["any", ['==', ['string', ['get','site']], 'Longannet'], ['==', ['string', ['get','site']], 'Sizewell B']];
     } else if (sectionName == "2013-5") {
         filterSite = ['==', ['string', ['get','site']], 'London Array Phase 1'];
+    } else if (sectionName == "2018-4") {
+        filterSite = ['==', ['string', ['get','site']], 'Walney 3'];
     } else if (sectionName == "2012-5") {
         filterSite = ["any", ['==', ['string', ['get','site']], 'Kingsnorth'], ['==', ['string', ['get','site']], 'Grain']];
     } else if (sectionName == "2012-6") {
         filterSite = ["any", ['==', ['string', ['get','site']], 'Pembroke'], ['==', ['string', ['get','site']], 'West Burton CCGT'], ['==', ['string', ['get','site']], 'Staythorpe C'], ['==', ['string', ['get','site']], 'Langage'], ['==', ['string', ['get','site']], 'Severn'], ['==', ['string', ['get','site']], 'Grain']];
+    } else if (sectionName == "2015-2") {
+        filterSite = ["any", ['==', ['string', ['get','site']], 'Littlebrook D'], ['==', ['string', ['get','site']], 'Lynemouth'], ['==', ['string', ['get','site']], 'Longannet'], ['==', ['string', ['get','site']], 'Ironbridge'], ['==', ['string', ['get','site']], 'Ferrybridge C']];
     } else {
         filterSite = ['!=', ['string', ['get','site']], 'placeholder'];
     };
 
     // CAPACITY FILTERS
-    if (sectionName == "2008-2") {
+    if (sectionName == "2008-2" || sectionName == "2014-2") {
         filterCapacity = ['>=', ['number', ['get','capacity']], 500];
     } else {
         filterCapacity = ['>=', ['number', ['get','capacity']], 0];
@@ -368,29 +372,39 @@ function updateMap (sectionName) {
     // TYPE FILTERS
     if (sectionName == "2008-2") {
         filterType = [ "any",["==", ["get", "type"], "Coal"], ["==", ["get", "type"], "Gas"], ["==", ["get", "type"], "Oil"], ["==", ["get", "type"], "Nuclear"]];
-    } else if (sectionName == "2008-3") {
+    } else if (sectionName == "2008-3" || sectionName == "2018-3") {
         // renewable
         filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Storage"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Nuclear"], ["!=", ["get", "type"], "Interconnector"],];
-    } else if (sectionName == "2013-2") {
+    } else if (sectionName == "2013-2" || sectionName == "2017-2") {
         // low carbon
         filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Storage"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Interconnector"],];
     } else if (sectionName == "2010-2") {
         filterType = ['==', ['string', ['get','fuelDetail']], 'Offshore Wind'];
     } else if (sectionName == "2012-2") {
         filterType = ['==', ['string', ['get','fuelDetail']], 'Onshore Wind'];
-    } else if (sectionName == "2009-2") {
+    } else if (sectionName == "2009-2" || sectionName == "2018-2") {
         filterType = ['==', ['string', ['get','type']], 'Coal'];
     } else if (sectionName == "2013-7") {
         filterType = ['==', ['string', ['get','type']], 'Nuclear'];
     } else if (sectionName == "2013-3") {
         filterType = ["any", ['==', ['string', ['get','type']], 'Coal'], ['==', ['string', ['get','type']], 'Gas']];
+    } else if (sectionName == "2014-2") {
+        filterType = ["any", ['==', ['string', ['get','type']], 'Coal'], ['==', ['string', ['get','type']], 'Oil']];
+    } else if (sectionName == "Future-2") {
+        filterType = ["any", ['==', ['string', ['get','type']], 'Coal'], ['==', ['string', ['get','type']], 'Nuclear']];
     } else if (sectionName == "2012-4") {
         filterType = ['==', ['string', ['get','type']], 'Wind'];
+    } else if (sectionName == "2016-2") {
+        filterType = ['==', ['string', ['get','type']], 'Solar'];
+    } else if (sectionName == "2018-5") {
+        filterType = ['==', ['string', ['get','type']], 'Biomass'];
+    } else if (sectionName == "Future-3") {
+        filterType = ['==', ['string', ['get','type']], 'Gas'];
     } else if (sectionName == "2012-6") {
         filterType = ["all", ['!=', ['string', ['get','type']], 'Oil'], ['!=', ['string', ['get','type']], 'Interconnector']];
     } else if (sectionName == "2011-2") {
         filterType = ['==', ['string', ['get','type']], 'Interconnector'];
-    } else if (sectionName == "2008-4" || sectionName == "2008-6" || sectionName == "2009-4" || sectionName == "2012-5" || sectionName == "2013-5") {
+    } else if (sectionName == "2008-4" || sectionName == "2008-6" || sectionName == "2009-4" || sectionName == "2012-5" || sectionName == "2013-5" || sectionName == "2015-2" || sectionName == "2018-4") {
         // All sections where we don't want interconnectors showing
         filterType = ['!=', ['string', ['get','type']], 'Interconnector'];
     } else {

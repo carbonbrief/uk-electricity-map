@@ -228,7 +228,7 @@ body {
 
 .scrolltext {
   z-index: 4;
-  opacity: 0.25;
+  opacity: 0.4;
 }
 
 .active {
@@ -433,6 +433,10 @@ li {
 
 .wind {
   background-color: #00a98e;
+}
+
+.biomass {
+  background-color: #A7B734;
 }
 
 .waste {
