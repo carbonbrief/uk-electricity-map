@@ -348,6 +348,8 @@ function updateMap (sectionName) {
         filterSite = ["any", ['==', ['string', ['get','site']], 'Longannet'], ['==', ['string', ['get','site']], 'Sizewell B']];
     } else if (sectionName == "2012-5") {
         filterSite = ["any", ['==', ['string', ['get','site']], 'Kingsnorth'], ['==', ['string', ['get','site']], 'Grain']];
+    } else if (sectionName == "2012-6") {
+        filterSite = ["any", ['==', ['string', ['get','site']], 'Pembroke'], ['==', ['string', ['get','site']], 'West Burton CCGT'], ['==', ['string', ['get','site']], 'Staythorpe C'], ['==', ['string', ['get','site']], 'Langage'], ['==', ['string', ['get','site']], 'Severn'], ['==', ['string', ['get','site']], 'Grain']];
     } else {
         filterSite = ['!=', ['string', ['get','site']], 'placeholder'];
     };
@@ -373,6 +375,8 @@ function updateMap (sectionName) {
         filterType = ['==', ['string', ['get','type']], 'Coal'];
     } else if (sectionName == "2012-4") {
         filterType = ['==', ['string', ['get','type']], 'Wind'];
+    } else if (sectionName == "2012-6") {
+        filterType = ["all", ['!=', ['string', ['get','type']], 'Oil'], ['!=', ['string', ['get','type']], 'Interconnector']];
     } else if (sectionName == "2011-2") {
         filterType = ['==', ['string', ['get','type']], 'Interconnector'];
     } else if (sectionName == "2008-4" || sectionName == "2008-6" || sectionName == "2009-4" || sectionName == "2012-5") {
