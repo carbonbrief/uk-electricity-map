@@ -4,7 +4,7 @@ const slopeMargin = {top: 20, right: 20, bottom: 30, left: 30},
 
 let slopeColor = d3.scaleOrdinal()
 // note that the order needs to be the same as the column headers in the CSV or the colours mess up
-.range(["#ced1cc", "#a45edb", "#cc9b7a", "#dd54b6", "#43cfef", "#00a98e", "#ffc83e", "#A7B734", "#ea545c", '#ff8767']);
+.range(["#c6e7fa", "#cc9b7a", "#00a98e", "#dd54b6", "#ced1cc", '#ff8767' ]);
 
 let slopeX = d3.scaleTime()
     .range([0, slopeWidth]);
