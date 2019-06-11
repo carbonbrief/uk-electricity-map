@@ -337,6 +337,8 @@ function updateMap (sectionName) {
     // OPERATOR FILTERS
     if (sectionName == "2010-3") {
         filterOperator = ['==', ['string', ['get','operator']], 'Small sites aggregated at local authority level '];
+    } else if (sectionName == "2013-4") {
+        filterOperator = ['==', ['string', ['get','operator']], 'Drax Power Ltd'];
     } else {
         filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
     };
@@ -346,6 +348,8 @@ function updateMap (sectionName) {
         filterSite = ['==', ['string', ['get','site']], 'Kingsnorth'];
     } else if (sectionName == "2008-6") {
         filterSite = ["any", ['==', ['string', ['get','site']], 'Longannet'], ['==', ['string', ['get','site']], 'Sizewell B']];
+    } else if (sectionName == "2013-5") {
+        filterSite = ['==', ['string', ['get','site']], 'London Array Phase 1'];
     } else if (sectionName == "2012-5") {
         filterSite = ["any", ['==', ['string', ['get','site']], 'Kingsnorth'], ['==', ['string', ['get','site']], 'Grain']];
     } else if (sectionName == "2012-6") {
@@ -367,19 +371,26 @@ function updateMap (sectionName) {
     } else if (sectionName == "2008-3") {
         // renewable
         filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Storage"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Nuclear"], ["!=", ["get", "type"], "Interconnector"],];
+    } else if (sectionName == "2013-2") {
+        // low carbon
+        filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Storage"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Interconnector"],];
     } else if (sectionName == "2010-2") {
         filterType = ['==', ['string', ['get','fuelDetail']], 'Offshore Wind'];
     } else if (sectionName == "2012-2") {
         filterType = ['==', ['string', ['get','fuelDetail']], 'Onshore Wind'];
     } else if (sectionName == "2009-2") {
         filterType = ['==', ['string', ['get','type']], 'Coal'];
+    } else if (sectionName == "2013-7") {
+        filterType = ['==', ['string', ['get','type']], 'Nuclear'];
+    } else if (sectionName == "2013-3") {
+        filterType = ["any", ['==', ['string', ['get','type']], 'Coal'], ['==', ['string', ['get','type']], 'Gas']];
     } else if (sectionName == "2012-4") {
         filterType = ['==', ['string', ['get','type']], 'Wind'];
     } else if (sectionName == "2012-6") {
         filterType = ["all", ['!=', ['string', ['get','type']], 'Oil'], ['!=', ['string', ['get','type']], 'Interconnector']];
     } else if (sectionName == "2011-2") {
         filterType = ['==', ['string', ['get','type']], 'Interconnector'];
-    } else if (sectionName == "2008-4" || sectionName == "2008-6" || sectionName == "2009-4" || sectionName == "2012-5") {
+    } else if (sectionName == "2008-4" || sectionName == "2008-6" || sectionName == "2009-4" || sectionName == "2012-5" || sectionName == "2013-5") {
         // All sections where we don't want interconnectors showing
         filterType = ['!=', ['string', ['get','type']], 'Interconnector'];
     } else {
