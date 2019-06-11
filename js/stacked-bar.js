@@ -1,5 +1,7 @@
 // with help from https://bl.ocks.org/reinson/166bae46dd106b45cf2d77c7802768ca
 
+// zero data converted to 0.001 to avoid messing up the order of the colours if bars are added/removed
+
 var margin = {top: 30, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - getWidth()), bottom: 10, left: 45},
     width = getWidth(),
     height = parseInt(d3.select("#stacked-bar").style("height")) - margin.top - margin.bottom;
@@ -36,7 +38,7 @@ var y = d3.scaleLinear()
     .rangeRound([0, height]);	
 
 var z = d3.scaleOrdinal()
-    .range(["#A7B734", "#ced1cc", "#cc9b7a", "#43cfef", '#ff8767', "#dd54b6", "#a45edb", "#4e80e5", "#ffc83e", "#ea545c", "#00a98e"]);
+    .range(["#A7B734", "#ced1cc", "#cc9b7a", "#43cfef", '#ff8767', "#dd54b6", "#a45edb", "#ffc83e", "#4e80e5", "#ea545c", "#00a98e"]);
 
 var stack = d3.stack();
 
@@ -175,8 +177,6 @@ function updateStackedBar () {
                     return d.year
                 })
                 .entries(data);
-    
-        //data = data_nest.filter(function(d){ return d.key == year})[0].values;
         
         var cat = ["Biomass","Coal", "Gas", "Hydro", "Interconnectors", "Nuclear", "Oil", "Solar", "Storage", "Waste", "Wind"];
 
@@ -204,7 +204,8 @@ function updateStackedBar () {
             return "translate(" + (x(d.data.y) + (getWidth() - 6)) + ","+ (y(d[0]) + (y(d[1]) - y(d[0]))/2 + 2) +"),"+ "rotate(35)";
         })
         .style("display", function(d) { 
-            if (y(d[1]) - y(d[0]) == 0) {
+            if (y(d[1]) - y(d[0]) <= 0.1) {
+                console.log(y(d[1]) - y(d[0]));
                 return "none";
             } else {
                 return "inline";
