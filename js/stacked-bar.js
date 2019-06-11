@@ -171,6 +171,14 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
         let color = d3.select(this).style('fill');
         // slightly hacky solution
         return labels[color];
+    })
+    // ensures that solar label is hidden when first scroll to chart
+    .style("display", function(d) { 
+        if (y(d[1]) - y(d[0]) <= 0.1) {
+            return "none";
+        } else {
+            return "inline";
+        }
     });
 
 });
@@ -213,7 +221,6 @@ function updateStackedBar () {
         })
         .style("display", function(d) { 
             if (y(d[1]) - y(d[0]) <= 0.1) {
-                console.log(y(d[1]) - y(d[0]));
                 return "none";
             } else {
                 return "inline";
