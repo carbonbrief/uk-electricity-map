@@ -439,6 +439,10 @@ li {
   background-color: #ea545c;
 }
 
+.carbon {
+  background-color: #c6e7fa; 
+}
+
 #key-mobile {
   background-color: rgba(50, 59, 82, 0.88);
   position: relative;

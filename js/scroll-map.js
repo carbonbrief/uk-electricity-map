@@ -339,6 +339,8 @@ function updateMap (sectionName) {
     // SITE FILTERS
     if (sectionName == "2008-4") {
         filterSite = ['==', ['string', ['get','site']], 'Kingsnorth'];
+    } else if (sectionName == "2008-6") {
+        filterSite = ["any", ['==', ['string', ['get','site']], 'Longannet'], ['==', ['string', ['get','site']], 'Sizewell B']];
     } else {
         filterSite = ['!=', ['string', ['get','site']], 'placeholder'];
     };
@@ -357,7 +359,7 @@ function updateMap (sectionName) {
         filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Storage"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Nuclear"], ["!=", ["get", "type"], "Interconnector"],];
     } else if (sectionName == "2010-2") {
         filterType = ['==', ['string', ['get','fuelDetail']], 'Offshore Wind'];
-    } else if (sectionName == "2008-4") {
+    } else if (sectionName == "2008-4" || sectionName == "2008-6") {
         // All sections where we don't want interconnectors showing
         filterType = ['!=', ['string', ['get','type']], 'Interconnector'];
     } else {
