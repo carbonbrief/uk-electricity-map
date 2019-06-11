@@ -2,7 +2,7 @@
 
 // zero data converted to 0.001 to avoid messing up the order of the colours if bars are added/removed
 
-var margin = {top: 30, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - getWidth()), bottom: 10, left: 45},
+var margin = {top: 55, right: (parseInt(d3.select("#stacked-bar").style("width")) - 35 - getWidth()), bottom: 10, left: 45},
     width = getWidth(),
     height = parseInt(d3.select("#stacked-bar").style("height")) - margin.top - margin.bottom;
 
@@ -145,6 +145,14 @@ d3.csv("./data/stacked-bar.csv", function(error, data) {
     .attr("dy", "0.35em")
     .attr("text-anchor", "start")
     .attr("fill", "#000");
+
+    // add units label
+    g.append("text")
+    .attr("class", "axis label")
+    .attr("y", -20)
+    .attr("x", -30)
+    .attr("dy", ".5em")
+    .text("Capacity (MW)");
 
     // add some labels for energy types
     g.selectAll('.chart-label')
