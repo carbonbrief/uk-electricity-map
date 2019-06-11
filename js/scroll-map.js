@@ -378,7 +378,7 @@ function updateMap (sectionName) {
     } else if (sectionName == "2013-2" || sectionName == "2017-2") {
         // low carbon
         filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Storage"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Interconnector"],];
-    } else if (sectionName == "2010-2") {
+    } else if (sectionName == "2010-2" || sectionName == "Future-4") {
         filterType = ['==', ['string', ['get','fuelDetail']], 'Offshore Wind'];
     } else if (sectionName == "2012-2") {
         filterType = ['==', ['string', ['get','fuelDetail']], 'Onshore Wind'];
@@ -400,9 +400,11 @@ function updateMap (sectionName) {
         filterType = ['==', ['string', ['get','type']], 'Biomass'];
     } else if (sectionName == "Future-3") {
         filterType = ['==', ['string', ['get','type']], 'Gas'];
+    } else if (sectionName == "Future-6") {
+        filterType = ['==', ['string', ['get','type']], 'Storage'];
     } else if (sectionName == "2012-6") {
         filterType = ["all", ['!=', ['string', ['get','type']], 'Oil'], ['!=', ['string', ['get','type']], 'Interconnector']];
-    } else if (sectionName == "2011-2") {
+    } else if (sectionName == "2011-2" || sectionName == "Future-5") {
         filterType = ['==', ['string', ['get','type']], 'Interconnector'];
     } else if (sectionName == "2008-4" || sectionName == "2008-6" || sectionName == "2009-4" || sectionName == "2012-5" || sectionName == "2013-5" || sectionName == "2015-2" || sectionName == "2018-4") {
         // All sections where we don't want interconnectors showing
