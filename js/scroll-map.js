@@ -314,7 +314,7 @@ function updateMap (sectionName) {
         closeOnClick: false
     });
 
-    if (sectionName == "2008-4") {
+    if (sectionName == "2008-4" || sectionName == "2009-4") {
         popup.setLngLat([0.603039, 51.416713])
         .setHTML('<h3 style = "color: #ced1cc; border-bottom: 1px solid #ced1cc;">' + "Kingsnorth" + 
         '</h3><div class="colour-key" style="background-color: #ced1cc; margin-right: 5px;"></div><p class="inline">' + "Coal" + 
@@ -330,14 +330,14 @@ function updateMap (sectionName) {
     };
 
     // OPERATOR FILTERS
-    if (sectionName == "section2") {
-        filterOperator = ['==', ['string', ['get','operator']], 'Drax Power Ltd'];
+    if (sectionName == "2010-3") {
+        filterOperator = ['==', ['string', ['get','operator']], 'Small sites aggregated at local authority level '];
     } else {
         filterOperator = ['!=', ['string', ['get','operator']], 'placeholder'];
     };
 
     // SITE FILTERS
-    if (sectionName == "2008-4") {
+    if (sectionName == "2008-4" || sectionName == "2009-4") {
         filterSite = ['==', ['string', ['get','site']], 'Kingsnorth'];
     } else if (sectionName == "2008-6") {
         filterSite = ["any", ['==', ['string', ['get','site']], 'Longannet'], ['==', ['string', ['get','site']], 'Sizewell B']];
@@ -356,10 +356,13 @@ function updateMap (sectionName) {
     if (sectionName == "2008-2") {
         filterType = [ "any",["==", ["get", "type"], "Coal"], ["==", ["get", "type"], "Gas"], ["==", ["get", "type"], "Oil"], ["==", ["get", "type"], "Nuclear"]];
     } else if (sectionName == "2008-3") {
+        // renewable
         filterType = [ "all",["!=", ["get", "type"], "Coal"], ["!=", ["get", "type"], "Gas"], ["!=", ["get", "type"], "Storage"], ["!=", ["get", "type"], "Oil"], ["!=", ["get", "type"], "Nuclear"], ["!=", ["get", "type"], "Interconnector"],];
     } else if (sectionName == "2010-2") {
         filterType = ['==', ['string', ['get','fuelDetail']], 'Offshore Wind'];
-    } else if (sectionName == "2008-4" || sectionName == "2008-6") {
+    } else if (sectionName == "2009-2") {
+        filterType = ['==', ['string', ['get','type']], 'Coal'];
+    } else if (sectionName == "2008-4" || sectionName == "2008-6" || sectionName == "2009-4") {
         // All sections where we don't want interconnectors showing
         filterType = ['!=', ['string', ['get','type']], 'Interconnector'];
     } else {
