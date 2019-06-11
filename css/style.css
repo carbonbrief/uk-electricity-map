@@ -10,6 +10,10 @@ body {
   width: 100%;
 }
 
+.instructions {
+  font-style: italic;
+}
+
 .map-background {
   background: url(../img/uk-map.jpg) no-repeat center center;
   background-attachment: fixed;
@@ -53,6 +57,10 @@ body {
 
 .centered {
   text-align: center;
+}
+
+.no-gaps {
+  letter-spacing: -0.2em;
 }
 
 #animation {
