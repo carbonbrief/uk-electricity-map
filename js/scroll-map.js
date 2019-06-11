@@ -324,6 +324,16 @@ function updateMap (sectionName) {
         '</p><p><span class="label-title">Year opened: </span>' + "1970" + 
         '</p>')
         .addTo(map);
+    } else if (sectionName == "2011-2") {
+            popup.setLngLat([2.368, 51.698])
+            .setHTML('<h3 style="color: #ff8767; border-bottom: 1px solid #ff8767;">' + "BritNed" + 
+            // '</h3><div class="colour-key" style="background-color: #ff8767; margin-right: 5px;"></div><p class="inline">Interconnector' +
+            // '</p><p><span class="label-title">Capacity: </span>' + "1000" +
+            // ' <span class="units">MW</span></p><p><span class="label-title">Operator: </span>' + 'NGIH and TenneT' +
+            // '</p><p><span class="label-title">Connecting: </span>' + "Netherlands" +
+            // '</p><h3><span class="label-title">Year opened: </span>' + "2011" +
+            '</h3>')
+            .addTo(map);
     } else {
         // using JQuery as Mapbox popup.remove() method not working
         $(".mapboxgl-popup").remove();
@@ -362,6 +372,8 @@ function updateMap (sectionName) {
         filterType = ['==', ['string', ['get','fuelDetail']], 'Offshore Wind'];
     } else if (sectionName == "2009-2") {
         filterType = ['==', ['string', ['get','type']], 'Coal'];
+    } else if (sectionName == "2011-2") {
+        filterType = ['==', ['string', ['get','type']], 'Interconnector'];
     } else if (sectionName == "2008-4" || sectionName == "2008-6" || sectionName == "2009-4") {
         // All sections where we don't want interconnectors showing
         filterType = ['!=', ['string', ['get','type']], 'Interconnector'];
