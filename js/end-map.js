@@ -2,7 +2,7 @@
 
 var map2 = new mapboxgl.Map({
     container: 'end-map',
-    style: 'https://api.maptiler.com/maps/e7270a26-c7e8-420d-bb9c-dee843aa7bfe/style.json?key=' + config.key3,
+    style: 'https://api.maptiler.com/maps/e7270a26-c7e8-420d-bb9c-dee843aa7bfe/style.json?key=' + config1.key4,
     center: [-7, 55],
     zoom: 5,
     maxZoom: 18
