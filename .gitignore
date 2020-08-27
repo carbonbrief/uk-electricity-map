@@ -1,11 +1,1 @@
-config.js
-config1.js
 
-.jpg
-
-.DS_Store
-
-# exclude third party libraries
-vendor/*
-
-uk-map.csv
